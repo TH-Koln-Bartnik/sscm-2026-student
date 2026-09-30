@@ -1,60 +1,61 @@
-### The problem the chapter discusses
+### Problem
 
-Think of the worst service you ever got, and the best. A missed train connection, a doctor's appointment that ran two hours late, a café where the coffee arrived before you had sat down. Each story is a small **production** that failed or worked: something went in (people, equipment, the way the work was organised), something came out (a service, a result, a mood). In the role play the same company has six departments, and each defends its own number: orders won, units per labor-hour, price per part, stock turns (how often the stock is sold and replaced in a year), defect rate (the share of faulty units), machine utilisation (the share of time the machines are busy). Every one of them is right about its number and wrong about the company.
+Every service is a small **production**: inputs (people, equipment, organisation) → output. Six departments, six numbers (orders, units per labor-hour, price per part, stock turns, defect rate, utilisation): each right about its number, wrong about the company.
 
-Chapter 1 gives the tool that sorts this out. **Operations** is the part of a firm that turns inputs into outputs, and the measure it keeps returning to is **productivity**: output divided by input.
+**Operations** = the part of a firm that turns inputs into outputs. **Productivity** = output ÷ input.
 
-### The sentence of the week
+### Sentence of the week
 
 **Productivity is always a ratio, and the interesting question is what goes into the denominator.**
 
-The number above the line (the **numerator**, the output) is usually easy to count: guests served, boxes moved, titles written, parcels delivered. The number below the line (the **denominator**, the input) is a choice, and the choice decides the answer. Name the input, or the number means nothing.
+Numerator (output): easy to count. Denominator (input): a choice that decides the answer. No input named → no meaning.
 
-### The formulas, in words
+### Formulas
 
-| Measure | In words | Example of a unit |
+| Measure | In words | Unit, e.g. |
 |---|---|---|
 | **Productivity** | output ÷ input | guests per person-hour |
-| **Single-factor productivity** | output ÷ one input | crates per labor-hour, units per kWh |
-| **Multifactor productivity** | output ÷ all inputs, in money | titles per dollar, units per euro |
-| **Productivity growth** | (new − old) ÷ old | per cent |
+| **Single-factor** | output ÷ one input | crates per labor-hour, units per kWh |
+| **Multifactor** | output ÷ all inputs, in money | titles per dollar, units per euro |
+| **Growth** | (new − old) ÷ old | % |
 
-A **person-hour** and a **labor-hour** are the same thing: one person working one hour. Hours, kilograms and kilowatt hours cannot be added; euros can. That is why multifactor productivity converts every input into money first. Growth always divides by the *old* value.
+- Person-hour = labor-hour = one person, one hour
+- Multifactor: convert every input to money first (hours + kg + kWh cannot be added)
+- Growth: always divide by the **old** value
+- Heizer et al. (2023), Ch. 1: *The productivity challenge*, *Productivity measurement*
 
-Textbook: Heizer, Render & Munson (2023), Chapter 1, sections *The productivity challenge* and *Productivity measurement*.
+### Student life
 
-### Student life: a party and a moving day
+- **Party, 20 guests:** 335 person-minutes = 5.58 person-hours → 20 ÷ 5.58 = **3.58 guests per person-hour**; per euro of food: a second, different productivity
+- **Mia's moving day:** output fixed (100 moving units); inputs vary (van size, crew, pizza) → **units per person-hour** vs. **units per euro** can rank the plans differently
 
-**A party for 20 guests.** Shopping and a tiramisu the day before; cleaning, toppings, patties, drinks, sound and decoration, cooking on the day. Every task is measured in **person-minutes**: two friends cleaning for 45 minutes are 90 person-minutes. The whole party takes 335 person-minutes = 5.58 person-hours, so 20 ÷ 5.58 = **3.58 guests per person-hour** of preparation. Change the denominator to the money spent on food, and the same party has a second productivity, with a different answer.
+### Factory: textbook anchors
 
-**Mia's moving day.** Mia moves from a third-floor flat without a lift into a ground-floor flat 15 km away. Her whole flat is **100 moving units** (boxes and furniture pieces): the output is fixed, whatever she plans. The inputs are not. A small van is cheap but drives twice; a large one drives once and costs more; every friend who helps is faster but costs pizza. Two ratios compete: **units per person-hour** (time) and **units per euro** (money). You calculate both for two plans by hand on Thursday morning, then build the same day as a model in Colab.
+- **Collins Title:** 8 titles ÷ 32 labor-hours = **0.25** → new system 14 ÷ 32 = 0.4375, **+75 %**; multifactor 8 ÷ 1,040 $ = 0.0077 → 14 ÷ 1,440 $ = 0.0097, **+26 %**. Same change, two measures, two gains
+- **Modern Lumber** (Solved Problems 1.1, 1.2): 240 crates ÷ 300 labor-hours = **0.800** → 260 ÷ 308 = 0.844, **+5.5 %**; multifactor 240 ÷ 4,500 $ = 0.0533 → 260 ÷ 4,580 $ = 0.0568, **+6.4 %**
+- **Fisher Technologies** (Table 1.1): contribution 10,500 $; sales +50 % → 18,000 $; finance costs −50 % → 12,750 $; production costs −20 % → **22,500 $**. Operations = strongest lever
 
-### The factory: three textbook anchors
+### Supply chain
 
-**Collins Title Insurance** (Ch. 1, the Collins Title examples). The firm checks the ownership records of houses before a sale (a *title search*). Four people work 8 hours a day, 32 labor-hours, and prepare 8 title searches a day: 8 ÷ 32 = **0.25 titles per labor-hour**. A new computer system raises the output to 14 a day with the same staff: 0.4375 titles per labor-hour, **+75 %**. Multifactor: wages (payroll) 640 $ plus overhead (rent, energy, other running costs) 400 $ = 1,040 $ a day gives 8 ÷ 1,040 = 0.0077 titles per dollar; the new system doubles the overhead to 800 $, so 14 ÷ 1,440 = 0.0097 titles per dollar, **+26 %**. The same system, two measures, two different gains.
+Output = products delivered to customers; input = what **all** firms spend (€) or emit (t CO₂). One firm's gain can be the chain's loss; € and CO₂ can point in opposite directions.
 
-**Modern Lumber** (Ch. 1, Solved Problems 1.1 and 1.2). 100 logs a day at 3 labor-hours each give 240 crates: 240 ÷ 300 = **0.800 crates per labor-hour**. A professional buyer adds 8 hours a day and buys better logs, which yield 260 crates: 260 ÷ 308 = 0.844, **+5.5 %**. In money (labor 10 $ per hour, material 1,000 $, capital 350 $, energy 150 $): 240 ÷ 4,500 $ = 0.0533 crates per dollar before, 260 ÷ 4,580 $ = 0.0568 after, **+6.4 %**. More input, yet both measures rise, because the output rose faster.
+### Productivity variables
 
-**Fisher Technologies** (Ch. 1, Table 1.1). Sales 100,000 $, production costs 80,000 $, finance costs (interest) 6,000 $, tax 25 %: the contribution, the money left after these costs and tax, is 10,500 $. Raising sales by 50 % (with costs growing alongside) gives 18,000 $; cutting finance costs by 50 % gives 12,750 $; cutting production costs by 20 % gives **22,500 $**. Operations is the strongest of the three levers.
-
-### The supply chain: every firm's inputs in one denominator
-
-A phone reaches its buyer only after a parts supplier, the assembler, a transport firm and a retailer have all done their part. At the level of the chain, the output is **phones delivered to customers**, and the input is what *all* firms spend, in euros, or the tonnes of CO₂ the whole chain emits. A switch that makes one firm more productive can make the chain less productive, and the other way round; the two denominators, euros and CO₂, can also point in opposite directions.
-
-### What drives productivity: labor, capital, management
-
-The chapter names three **productivity variables**: **labor** (people, their skills, their health), **capital** (equipment and tools), and **management** (how the work is organised, including technology and knowledge). The service stories on the sticky-note board sort into exactly these three groups. The chapter also says which of the three contributes most to productivity growth; find that figure in the text. In **services**, productivity is harder to measure, because the output is harder to count: a good consultation or a friendly café has quality that a count of customers misses.
+- **Labor** — people, skills, health
+- **Capital** — equipment, tools
+- **Management** — organisation, technology, knowledge (find in the chapter which one contributes most to growth)
+- **Services:** output hard to count; quality escapes the count
 
 ### Typical errors
 
-1. **No unit.** "Productivity is 3.6" says nothing. Write *guests per person-hour*, *crates per labor-hour*, *units per euro*.
-2. **Adding what cannot be added.** Hours plus kilograms plus kWh is not a multifactor input. Convert every input into money first.
-3. **Growth divided by the new value.** (0.4375 − 0.25) ÷ 0.4375 = 43 % is wrong; divide by the old value: +75 %.
-4. **Faster is not more productive.** Finishing sooner with more people can lower output per person-hour, because the input grew faster than the output.
-5. **Comparing ratios with different denominators.** Titles per labor-hour and titles per dollar cannot be ranked against each other; compare each measure before and after.
+1. No unit ("3.6" says nothing)
+2. Adding hours, kg and kWh — convert to money first
+3. Growth divided by the new value (43 % instead of +75 %)
+4. Faster ≠ more productive (more people can lower output per person-hour)
+5. Ranking ratios with different denominators against each other
 
-### Practice items (no keys: check them against the worked examples' method)
+### Practice items (no keys)
 
-1. A copy shop prints 1,200 pages a day with two people working 6 hours each. After a new printer it prints 1,500 pages with the same staff. Pages per labor-hour before and after? Productivity growth in per cent?
-2. A food truck sells 240 wraps on a Saturday. Inputs: two workers for 10 hours at 15 € per hour, ingredients 360 €, fuel and gas 40 €, the truck's rent 100 € a day. Multifactor productivity in wraps per euro? Which single input would you cut first, and why?
-3. A cargo-bike courier delivers 80 parcels a day; a van delivers 120 parcels a day. Name two denominators under which the cargo bike is more productive and one under which the van is.
+1. Copy shop: 1,200 pages, 2 people × 6 h → new printer: 1,500 pages, same staff. Pages per labor-hour before/after? Growth in %?
+2. Food truck: 240 wraps; 2 workers × 10 h × 15 €, ingredients 360 €, fuel and gas 40 €, rent 100 €. Wraps per euro? Which input to cut first, and why?
+3. Cargo bike 80 parcels/day vs. van 120 parcels/day: two denominators favouring the bike, one favouring the van.
