@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Sustainable Supply Chain Management",
     "section": "",
-    "text": "What you will learn\nSeven Thursdays, one textbook chapter each. This script is the frame: what happens when, what counts, and one page of key content per week to revise from.\nTopics: productivity · process strategy and capacity · design for sustainability · quality · forecasting · supply chains · sales and operations planning",
+    "text": "What you will learn\nThis online script is your guide through the readings, tests and exercises that we will do in this course.\nTopics: productivity · process strategy and capacity · design for sustainability · quality · forecasting · supply chains · sales and operations planning",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
     ]
@@ -366,7 +366,7 @@
     "href": "assessment.html",
     "title": "Tests, bonus and code names",
     "section": "",
-    "text": "Weighting\nPeer evaluation. Your share of the group mark (team tests and project) is multiplied by a peer evaluation factor, as is common in Team-Based Learning: at the end, members rate each other’s contribution. Carried your part → full group mark. Procedure: announced on 8 October.",
+    "text": "Weighting\nPeer evaluation. Your share of the group mark (team tests and project) is multiplied by a peer evaluation factor, as is common in Team-Based Learning: at the end, members rate each other’s contribution. Carried your part → full group mark. Method: see Peer evaluation at the end of this page.",
     "crumbs": [
       "Assessment",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Tests, bonus and code names</span>"
@@ -432,7 +432,18 @@
     "href": "assessment.html#what-is-yours",
     "title": "Tests, bonus and code names",
     "section": "What is yours",
-    "text": "What is yours\nColab notebooks, morning hand calculations, exercises: not marked. They are the training — whoever did them by hand has the easier test.\n\n\n\n\nMichaelsen, L. K., Knight, A. B., & Fink, L. D. (Eds.). (2004). Team-based learning: A transformative use of small groups in college teaching. Stylus.",
+    "text": "What is yours\nColab notebooks, morning hand calculations, exercises: not marked. They are the training — whoever did them by hand has the easier test.",
+    "crumbs": [
+      "Assessment",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Tests, bonus and code names</span>"
+    ]
+  },
+  {
+    "objectID": "assessment.html#peer-evaluation",
+    "href": "assessment.html#peer-evaluation",
+    "title": "Tests, bonus and code names",
+    "section": "Peer evaluation",
+    "text": "Peer evaluation\nFink’s method (O’Dwyer, 2020):\n\n100 points per student, distributed among the other members of your team, by contribution; equal points are allowed\nPeer score = the points you receive from your teammates; with equal points it is 100\nYour multiplier = peer score ÷ 100, applied to your team-test and group-project marks\nExample: team mark 80, peer score 95 → 80 × 0.95 = 76; peer score 105 → 80 × 1.05 = 84\nYour points change your teammates’ grades: give them with care\n\n\n\n\n\nMichaelsen, L. K., Knight, A. B., & Fink, L. D. (Eds.). (2004). Team-based learning: A transformative use of small groups in college teaching. Stylus.\n\n\nO’Dwyer, B. (2020). Peer evaluation: Fink’s method. InteDashboard blog. https://www.blog.intedashboard.com/blogs/peer-evaluation/finks",
     "crumbs": [
       "Assessment",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Tests, bonus and code names</span>"
@@ -695,7 +706,7 @@
     "href": "references.html",
     "title": "Appendix E — References",
     "section": "",
-    "text": "All sources cited in this script, in APA style. The textbook and the dataset are the two you will use every week.\n\n\nChopra, S. (2019). Supply chain management: Strategy, planning, and\noperation (7th ed., Global ed.). Pearson.\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations\nmanagement: Sustainability and supply chain management (14th ed.,\nGlobal ed.). Pearson.\n\n\nMichaelsen, L. K., Knight, A. B., & Fink, L. D. (Eds.). (2004).\nTeam-based learning: A transformative use of small groups in college\nteaching. Stylus.",
+    "text": "All sources cited in this script, in APA style. The textbook and the dataset are the two you will use every week.\n\n\nChopra, S. (2019). Supply chain management: Strategy, planning, and\noperation (7th ed., Global ed.). Pearson.\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations\nmanagement: Sustainability and supply chain management (14th ed.,\nGlobal ed.). Pearson.\n\n\nMichaelsen, L. K., Knight, A. B., & Fink, L. D. (Eds.). (2004).\nTeam-based learning: A transformative use of small groups in college\nteaching. Stylus.\n\n\nO’Dwyer, B. (2020). Peer evaluation: Fink’s method.\nInteDashboard blog. https://www.blog.intedashboard.com/blogs/peer-evaluation/finks",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>E</span>  <span class='chapter-title'>References</span>"

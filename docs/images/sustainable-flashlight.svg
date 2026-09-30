@@ -43,7 +43,7 @@
     <text x="100" y="326" fill="#6b6b73" font-size="11">suppliers, competitors</text>
     <text x="280" y="310">on people</text>
     <text x="280" y="326" fill="#6b6b73" font-size="11">workers, neighbours, customers</text>
-    <text x="460" y="310">on the environment</text>
+    <text x="460" y="310" fill="#c81e0f" font-weight="700" font-size="13">on the environment</text>
     <text x="460" y="326" fill="#6b6b73" font-size="11">CO₂, energy, materials, water, waste</text>
   </g>
   <text x="280" y="262" font-size="11" fill="#6b6b73" text-anchor="middle">external effects — what the firm causes but does not pay for</text>
