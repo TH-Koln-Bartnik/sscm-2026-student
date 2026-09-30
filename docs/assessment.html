@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,7 +50,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./key-learnings.html" rel="next">
+<link href="./project.html" rel="next">
 <link href="./exercises/week01.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -40,7 +60,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0246883524ae6c201833c5b43201d9aa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fb38a76d1a6a174b8616cbf3bf2e7700.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -204,6 +224,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="./assessment.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Tests, bonus and code names</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./project.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Group project</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -258,7 +283,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#weighting" id="toc-weighting" class="nav-link active" data-scroll-target="#weighting">Weighting</a></li>
-  <li><a href="#the-four-tests" id="toc-the-four-tests" class="nav-link" data-scroll-target="#the-four-tests">The four tests</a></li>
+  <li><a href="#the-four-tests" id="toc-the-four-tests" class="nav-link" data-scroll-target="#the-four-tests">The four tests</a>
+  <ul class="collapse">
+  <li><a href="#every-test-in-six-phases" id="toc-every-test-in-six-phases" class="nav-link" data-scroll-target="#every-test-in-six-phases">Every test, in six phases</a></li>
+  </ul></li>
   <li><a href="#the-group-project" id="toc-the-group-project" class="nav-link" data-scroll-target="#the-group-project">The group project</a></li>
   <li><a href="#the-bonus-sheet" id="toc-the-bonus-sheet" class="nav-link" data-scroll-target="#the-bonus-sheet">The bonus sheet</a></li>
   <li><a href="#your-code-name" id="toc-your-code-name" class="nav-link" data-scroll-target="#your-code-name">Your code name</a></li>
@@ -343,7 +371,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p><strong>Peer evaluation.</strong> Your share of the group mark (team tests and project) is multiplied by a <strong>peer evaluation factor</strong>, as is common in Team-Based Learning: at the end, members rate each other’s contribution. Carried your part → full group mark. Procedure: with the project brief, 8 October.</p>
+<p><strong>Peer evaluation.</strong> Your share of the group mark (team tests and project) is multiplied by a <strong>peer evaluation factor</strong>, as is common in Team-Based Learning: at the end, members rate each other’s contribution. Carried your part → full group mark. Procedure: announced on 8 October.</p>
 </section>
 <section id="the-four-tests" class="level2">
 <h2 class="anchored" data-anchor-id="the-four-tests">The four tests</h2>
@@ -394,11 +422,41 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Individual, then team:</strong> alone on paper, hand in, then the same items as a team</li>
 <li>No book, no laptop</li>
 </ul>
+<section id="every-test-in-six-phases" class="level3">
+<h3 class="anchored" data-anchor-id="every-test-in-six-phases">Every test, in six phases</h3>
+<div class="rat-flow">
+<div class="rat-bracket">
+Readiness assurance
+</div>
+<div class="rat-steps">
+<div class="rat-step s-prep">
+<b>Prepare</b><span>read the chapter · solve the example problems</span>
+</div>
+<div class="rat-step s-irat">
+<b>iRAT</b><span>individual test, alone</span>
+</div>
+<div class="rat-step s-trat">
+<b>tRAT</b><span>same items, as a team</span>
+</div>
+<div class="rat-step s-feed">
+<b>Feedback</b><span>answers and open questions</span>
+</div>
+<div class="rat-step s-appeal">
+<b>Appeals</b><span>3–4 days after the test</span>
+</div>
+<div class="rat-step s-apply">
+<b>Application</b><span>team work on real problems, the group project</span>
+</div>
+</div>
+</div>
+<p><span class="rat-caption">The phases of Team-Based Learning, after <span class="citation" data-cites="michaelsen2004team">Michaelsen et al. (<a href="references.html#ref-michaelsen2004team" role="doc-biblioref">2004</a>)</span>.</span></p>
+</section>
 </section>
 <section id="the-group-project" class="level2">
 <h2 class="anchored" data-anchor-id="the-group-project">The group project</h2>
 <ul>
-<li>Groups of 4–5, <strong>one real product</strong>: 4–6 assembly steps on one line, one key purchased part with two sourcing options</li>
+<li><strong>Your team:</strong> the same team of 4–5 as for the team tests (Team-Based Learning: one team for tests and project, formed on 8 October)</li>
+<li><strong>One real product</strong>: 4–6 assembly steps on one line, one key purchased part with two sourcing options</li>
 <li>Small dataset for line and key supplier, in the module’s standard file format</li>
 <li>One year simulated in Google Colab: <strong>units per week, cost per unit, CO₂ per unit</strong> when the key supplier fails, and one countermeasure</li>
 <li>Result as an animation and an A1 poster</li>
@@ -413,7 +471,7 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>Thu 8 Oct</td>
-<td>Brief published; groups of 4–5 formed in class</td>
+<td>Teams of 4–5 formed in class (team tests and project)</td>
 </tr>
 <tr class="even">
 <td>Thu 15 Oct</td>
@@ -446,7 +504,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Poster session:</strong> five-minute pitch, two questions to every member alone, one number changed live with a prediction before the rerun</li>
 <li><strong>Marking:</strong> four parts × 25 points — <strong>A</strong> dataset and choices, <strong>B</strong> model and results, <strong>C</strong> animation, <strong>D</strong> poster and session</li>
 <li>All four are <strong>group marks</strong>; every member’s answers count toward part D. Only individual adjustment: the peer evaluation factor</li>
-<li>Full brief (product rules, file format, rubric): 8 October</li>
+<li><strong>Full description:</strong> <a href="./project.html">Group project</a> (product rules, file format, check cell, rubric)</li>
 </ul>
 </section>
 <section id="the-bonus-sheet" class="level2">
@@ -474,6 +532,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Colab notebooks, morning hand calculations, exercises: not marked. They are the training — whoever did them by hand has the easier test.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-michaelsen2004team" class="csl-entry" role="listitem">
+Michaelsen, L. K., Knight, A. B., &amp; Fink, L. D. (Eds.). (2004). <em>Team-based learning: A transformative use of small groups in college teaching</em>. Stylus.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -906,8 +969,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./key-learnings.html" class="pagination-link" aria-label="Key learnings">
-        <span class="nav-page-text"><span class="chapter-title">Key learnings</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./project.html" class="pagination-link" aria-label="Group project">
+        <span class="nav-page-text"><span class="chapter-title">Group project</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

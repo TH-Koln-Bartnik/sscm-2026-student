@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Prof.&nbsp;Dr.&nbsp;Roman Bartnik">
-<meta name="dcterms.date" content="2026-10-01">
 
-<title>Sustainable Supply Chain Management</title>
+<title>Group project – Sustainable Supply Chain Management</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./syllabus.html" rel="next">
+<link href="./key-learnings.html" rel="next">
+<link href="./assessment.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -42,9 +41,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-fb38a76d1a6a174b8616cbf3bf2e7700.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -74,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -86,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">Welcome</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./assessment.html">Assessment</a></li><li class="breadcrumb-item"><a href="./project.html"><span class="chapter-title">Group project</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -119,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Welcome</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -210,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Group project</span></a>
+  <a href="./project.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Group project</span></a>
   </div>
 </li>
       </ul>
@@ -266,37 +291,38 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-title-in-two-pictures" id="toc-the-title-in-two-pictures" class="nav-link active" data-scroll-target="#the-title-in-two-pictures">The title in two pictures</a></li>
-  <li><a href="#where-to-go-next" id="toc-where-to-go-next" class="nav-link" data-scroll-target="#where-to-go-next">Where to go next</a></li>
+  <li><a href="#the-task" id="toc-the-task" class="nav-link active" data-scroll-target="#the-task">The task</a></li>
+  <li><a href="#choosing-your-product" id="toc-choosing-your-product" class="nav-link" data-scroll-target="#choosing-your-product">Choosing your product</a></li>
+  <li><a href="#what-you-build" id="toc-what-you-build" class="nav-link" data-scroll-target="#what-you-build">What you build</a>
+  <ul class="collapse">
+  <li><a href="#dataset-pack" id="toc-dataset-pack" class="nav-link" data-scroll-target="#dataset-pack">1. Dataset pack</a></li>
+  <li><a href="#model-notebook" id="toc-model-notebook" class="nav-link" data-scroll-target="#model-notebook">2. Model notebook</a></li>
+  <li><a href="#animation" id="toc-animation" class="nav-link" data-scroll-target="#animation">3. Animation</a></li>
+  <li><a href="#poster-and-appendix" id="toc-poster-and-appendix" class="nav-link" data-scroll-target="#poster-and-appendix">4. Poster and appendix</a></li>
+  </ul></li>
+  <li><a href="#the-check-cell" id="toc-the-check-cell" class="nav-link" data-scroll-target="#the-check-cell">The check cell</a></li>
+  <li><a href="#timeline-and-the-checkpoint" id="toc-timeline-and-the-checkpoint" class="nav-link" data-scroll-target="#timeline-and-the-checkpoint">Timeline and the checkpoint</a></li>
+  <li><a href="#the-poster-session-where-you-show-it-is-your-work" id="toc-the-poster-session-where-you-show-it-is-your-work" class="nav-link" data-scroll-target="#the-poster-session-where-you-show-it-is-your-work">The poster session: where you show it is your work</a></li>
+  <li><a href="#using-ai" id="toc-using-ai" class="nav-link" data-scroll-target="#using-ai">Using AI</a></li>
+  <li><a href="#how-the-project-is-marked" id="toc-how-the-project-is-marked" class="nav-link" data-scroll-target="#how-the-project-is-marked">How the project is marked</a></li>
+  <li><a href="#transparency-note" id="toc-transparency-note" class="nav-link" data-scroll-target="#transparency-note">Transparency note</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./assessment.html">Assessment</a></li><li class="breadcrumb-item"><a href="./project.html"><span class="chapter-title">Group project</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Sustainable Supply Chain Management</h1>
-<p class="subtitle lead">TH Köln · winter term 2026/27</p>
+<h1 class="title"><span class="chapter-title">Group project</span></h1>
+<p class="subtitle lead">Your product, your line, your chain</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Prof.&nbsp;Dr.&nbsp;Roman Bartnik </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">1 October 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -309,49 +335,352 @@ ul.task-list li input[type="checkbox"] {
 <div class="th-color-bar">
 
 </div>
-<p>Seven Thursdays, one textbook chapter each. This script is the frame: what happens when, what counts, and one page of key content per week to revise from.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="images/course-overview.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The module at a glance: profit and environmental impact in balance, productivity as the core ratio, seven weekly topics, tests and grading. Image generated with Gemini."><img src="images/course-overview.webp" class="img-fluid figure-img" alt="Roadmap of seven linked rings, Week 1 Productivity to Week 7 Aggregate Planning, under a balance of profit (euro per unit) and environmental impact (CO2 per unit), with productivity = output over input; tests in Weeks 2, 4, 6 and 7; grading 60 % individual tests, 15 % team tests, 25 % group project."></a></p>
-<figcaption>The module at a glance: profit and environmental impact in balance, productivity as the core ratio, seven weekly topics, tests and grading. Image generated with Gemini.</figcaption>
-</figure>
-</div>
-<section id="what-you-will-learn" class="level4 lernziel-box">
-<h4 class="anchored" data-anchor-id="what-you-will-learn">What you will learn</h4>
-<ul>
-<li><strong>Analyse processes</strong> — productivity, capacity, bottlenecks, quality</li>
-<li><strong>Analyse environmental effects across the supply chain</strong> — CO₂, energy, materials, from product to network</li>
-<li><strong>Build models for decision support</strong> — small calculation models in Google Colab</li>
-<li><strong>Simulate and visualise</strong> — simulations, animations, dashboards</li>
-<li><strong>Use AI</strong> — to learn, to analyse processes, to check results</li>
-</ul>
+<section id="the-task" class="level2">
+<h2 class="anchored" data-anchor-id="the-task">The task</h2>
+<p>Your group picks one real product, builds a small dataset for its factory line and its key supplier, and simulates in Google Colab what a supply-chain disruption does to the line and how one countermeasure helps. You show the result as an animation and a poster at the poster session on Thursday 12 November.</p>
+<p>Every project answers one question: <strong>When our key supplier fails, what happens to units per week, cost per unit and CO₂ per unit, and what should we do about it?</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Team</td>
+<td>Your Team-Based Learning team of 4–5 students: the same team as for the team tests, formed in class on 8 October</td>
+</tr>
+<tr class="even">
+<td>Tool</td>
+<td>Python in Google Colab only (plain Python with NumPy; SimPy allowed, no extra credit)</td>
+</tr>
+<tr class="odd">
+<td>Data</td>
+<td>Your own, in the same file format as the UrbanRide bike data</td>
+</tr>
+<tr class="even">
+<td>Weight</td>
+<td>25 % of the module mark, a group mark adjusted for each member by the peer evaluation factor (<a href="./assessment.html">Assessment</a>)</td>
+</tr>
+<tr class="odd">
+<td>Work mode</td>
+<td>Homework in your team. The poster session checks that every member understands the work.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<p><strong>Topics:</strong> productivity · process strategy and capacity · design for sustainability · quality · forecasting · supply chains · sales and operations planning</p>
-<section id="the-title-in-two-pictures" class="level2">
-<h2 class="anchored" data-anchor-id="the-title-in-two-pictures">The title in two pictures</h2>
-<p><strong>Supply chain</strong> — the firms and steps from raw material to customer. Materials move forward, orders and information move back.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/beer-supply-chain.svg" class="img-fluid figure-img" alt="Six boxes from barley farm to consumer, with forward arrows for materials and backward dashed arrows for orders and information."></p>
-<figcaption>A beer supply chain. Materials move forward (red), orders and information move backward (magenta). Own illustration.</figcaption>
-</figure>
-</div>
-<p><strong>Sustainable</strong> — profit drives a firm, but it also causes effects it does not pay for (<em>external effects</em>, Latin <em>externus</em>, “outward”). In this module: the <strong>environmental</strong> effects — CO₂, energy, materials, waste — beside profit. A definition is a tool, like a flashlight: it lights one part of the room sharply.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/sustainable-flashlight.svg" class="img-fluid figure-img" alt="A firm box with profit inside and three arrows of external effects below — on other firms, on people, on the environment; a flashlight beam highlights the environmental effects."></p>
-<figcaption>The firm, driven by profit, and its external effects. The module’s definition puts the flashlight on the environmental ones. Own illustration.</figcaption>
-</figure>
-</div>
+<section id="choosing-your-product" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-your-product">Choosing your product</h2>
+<p>Choose a product you care about, as long as its factory works like the bike factory. Your product must meet four rules:</p>
+<ol type="1">
+<li>It is a physical product assembled from parts, made in 4–6 steps (stations) on one line.</li>
+<li>It has one key purchased component with at least two real sourcing options, for example a cheap supplier far away and a dearer one close by.</li>
+<li>It is sold in Europe, so you can find at least its price in public.</li>
+<li>Each product appears once in the class. First registration wins.</li>
+</ol>
+<p>Not allowed: food, drinks and chemicals (they flow through tanks, not stations), services and software.</p>
+<p>The table shows the kind of product that fits. The sourcing options are illustrations; you research your own.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Product</th>
+<th>Key component</th>
+<th>Two sourcing options (illustration)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>E-scooter</td>
+<td>Battery pack</td>
+<td>Asia by sea, or Eastern Europe by truck</td>
+</tr>
+<tr class="even">
+<td>Espresso machine</td>
+<td>Pump and boiler unit</td>
+<td>Southern Europe by truck, or Asia by sea</td>
+</tr>
+<tr class="odd">
+<td>Office chair</td>
+<td>Gas lift and base</td>
+<td>Asia by sea, or Central Europe by truck</td>
+</tr>
+<tr class="even">
+<td>Electric kettle</td>
+<td>Heating element</td>
+<td>Asia by sea, or a German supplier by van</td>
+</tr>
+<tr class="odd">
+<td>Skateboard</td>
+<td>Maple deck</td>
+<td>North America by sea, or Central Europe by truck</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="where-to-go-next" class="level2">
-<h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>
+<section id="what-you-build" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-build">What you build</h2>
+<p>You hand in four things: a dataset, a model notebook, an animation and a poster. Each one feeds the next.</p>
+<section id="dataset-pack" class="level3">
+<h3 class="anchored" data-anchor-id="dataset-pack">1. Dataset pack</h3>
+<p>Your data uses the same files and column names as the UrbanRide bike data, so the course tools and the check cell run on it unchanged. Open the <a href="https://github.com/TH-Koln-Bartnik/sscm-2026-student/tree/main/week02/project_bike_data">UrbanRide bike data</a> (online with Week 2) first: its twelve tables, README and data dictionary are your worked example.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>One row per</th>
+<th>Columns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>products.csv</td>
+<td>product</td>
+<td>product_id, product_name, frame_material (use it for the main material), mass_kg, list_price_eur</td>
+</tr>
+<tr class="even">
+<td>bom.csv</td>
+<td>part</td>
+<td>product_id, component_id, component_name, qty_per_unit, mass_kg, unit_cost_eur, supplier_id, added_at_workcenter</td>
+</tr>
+<tr class="odd">
+<td>workcenters.csv</td>
+<td>station</td>
+<td>workcenter_id, workcenter_name, seq, num_servers, shift_hours, days_per_week, availability, process_time_cv, fixed_cost_eur_week</td>
+</tr>
+<tr class="even">
+<td>routing.csv</td>
+<td>step</td>
+<td>product_id, seq, workcenter_id, process_time_min, setup_time_min</td>
+</tr>
+<tr class="odd">
+<td>process_environment.csv</td>
+<td>station</td>
+<td>workcenter_id, kw_running, kw_idle, waste_kg_per_unit, water_l_per_unit</td>
+</tr>
+<tr class="even">
+<td>suppliers.csv</td>
+<td>sourcing option</td>
+<td>supplier_id, supplier_name, country, component_id, unit_price_eur, promised_lead_days, lead_time_mean_days, lead_time_sd_days, capacity_per_month, min_per_month, kg_co2e_per_unit, location_id</td>
+</tr>
+<tr class="odd">
+<td>locations.csv</td>
+<td>site</td>
+<td>location_id, name, type, country, lat, lon</td>
+</tr>
+<tr class="even">
+<td>network_lanes.csv</td>
+<td>transport leg</td>
+<td>lane_id, origin_id, destination_id, mode_id, distance_km, transit_days_mean, transit_days_sd</td>
+</tr>
+<tr class="odd">
+<td>freight_rates.csv</td>
+<td>transport leg</td>
+<td>lane_id, mode_id, rate_eur_per_shipment, rate_eur_per_tkm, min_charge_eur</td>
+</tr>
+<tr class="even">
+<td>sources.csv</td>
+<td>number you entered</td>
+<td>file, row_id, column, value, source_type, source_or_calculation, sanity_check</td>
+</tr>
+</tbody>
+</table>
+<p>You may reuse three bike files unchanged: transport_modes.csv, transport_emission_factors.csv and the electricity row of emission_factors.csv. Every other number you type in needs a row in sources.csv. Its source_type is one of three: <strong>public</strong> (a figure with a link), <strong>analogy</strong> (a bike value adapted, with the reason) or <strong>guesstimate</strong> (your own estimate with the calculation shown, for example a station time you stopped on a factory video).</p>
+</section>
+<section id="model-notebook" class="level3">
+<h3 class="anchored" data-anchor-id="model-notebook">2. Model notebook</h3>
+<p>One Colab notebook simulates one year (52 weeks) of your line fed by your key supplier. It runs three scenarios, each with the 10 random seeds 1–10, and reports the mean and the lowest and highest value:</p>
+<ol type="1">
+<li><strong>Baseline</strong>: normal operation.</li>
+<li><strong>Disruption</strong>: one supply-chain event, such as the supplier stopping for three weeks, the lead time doubling or a port closing. You back it with a real event of the same kind (a news report or a published case).</li>
+<li><strong>Disruption plus countermeasure</strong>: one response of your choice, such as safety stock, a second supplier, a nearer supplier, faster transport or a change on the line.</li>
+</ol>
+<p>Each run fills the same scoreboard of four numbers: units per week; one-year total cost per unit; kg CO₂e per unit (key component, factory electricity and transport of the key component); and hours the line stood still for lack of parts.</p>
+<p>The one-year total cost adds everything the year costs, including the CO₂ emitted:</p>
+<p><span class="math display">\[
+\text{Total cost} = \text{materials} + 52 \times \text{station fixed costs} + \text{transport} + 0.20 \times \text{average inventory value} + 100 \,\tfrac{\text{EUR}}{\text{t}} \times \text{t CO}_2\text{e}
+\]</span></p>
+<p>The 20 % inventory holding rate and the price of 100 EUR per tonne CO₂e are course values, the same for every group. Cost per unit is the total cost divided by the units made in the year.</p>
+</section>
+<section id="animation" class="level3">
+<h3 class="anchored" data-anchor-id="animation">3. Animation</h3>
+<p>The animation shows your line (stations, queues, parts waiting) and your supply chain (supplier, transport, stock of the key component) moving through time. You receive a template in Week 4. Your notebook writes its results into a file called <code>results.json</code>; the template reads that file and plays inside a Colab cell, and you save it as <code>animation.html</code>.</p>
+<p>You may restyle the template or rebuild it in D3, but its numbers must come from <code>results.json</code>. The viewer must be able to switch between baseline, disruption and countermeasure.</p>
+</section>
+<section id="poster-and-appendix" class="level3">
+<h3 class="anchored" data-anchor-id="poster-and-appendix">4. Poster and appendix</h3>
+<p>One A1 portrait poster tells your answer in this order: the question, your product and line in one figure, the disruption and the real event behind it, the scoreboard for all three scenarios, and the course idea that explains each result (bottleneck, variability and waiting, Little’s Law, lead time and safety stock, total cost against unit price, CO₂ per unit).</p>
+<p>The poster rests on <strong>two peer-reviewed journal articles</strong> as sources for the course ideas it uses, cited in APA with DOI. Textbooks, websites and AI answers do not count. Suitable journals include the Journal of Operations Management, Journal of Supply Chain Management, Journal of Business Logistics, Production and Operations Management, Journal of Purchasing and Supply Management, and Supply Chain Management: An International Journal; other journals need approval at the checkpoint. Every member must be able to explain each paper’s key argument: the question it asks, what it finds, and why that explains one of your results.</p>
+<p>A two-page appendix holds your sources.csv as a table, the printed output of the check cell, the key argument of each paper in three sentences in your own words, and your AI note.</p>
+</section>
+</section>
+<section id="the-check-cell" class="level2">
+<h2 class="anchored" data-anchor-id="the-check-cell">The check cell</h2>
+<p>Your notebook must pass five tests that a fixed, read-only check cell runs on your files and your baseline results. You receive the cell in Week 4. Copy it into your notebook unchanged: the grader runs the original on your files, so an edited copy gains you nothing.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>Passes when</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1 Format</td>
+<td>Every required file exists with the exact column names; no value is missing or negative</td>
+<td>The course tools read your data like the bike data</td>
+</tr>
+<tr class="even">
+<td>T2 Capacity</td>
+<td>Every station is busy less than 100 % of its available time in the baseline</td>
+<td>A line loaded over 100 % never reaches a steady state</td>
+</tr>
+<tr class="odd">
+<td>T3 Little’s Law</td>
+<td>Average parts on the line equal units per hour × average hours on the line, within 10 %</td>
+<td>A model that breaks Little’s Law is counting wrong</td>
+</tr>
+<tr class="even">
+<td>T4 Flow balance</td>
+<td>Units finished never exceed units started; key components used equal units finished × quantity per unit</td>
+<td>Nothing appears from nowhere</td>
+</tr>
+<tr class="odd">
+<td>T5 Margin</td>
+<td>Baseline cost per unit is below the list price</td>
+<td>A company that loses money on every unit in normal times is not plausible</td>
+</tr>
+</tbody>
+</table>
+<p>The cell prints PASS or FAIL for each test. All five must pass at the checkpoint and at the final submission. A test passes on real data or it fails; there is no partial pass.</p>
+</section>
+<section id="timeline-and-the-checkpoint" class="level2">
+<h2 class="anchored" data-anchor-id="timeline-and-the-checkpoint">Timeline and the checkpoint</h2>
+<p>The project runs from Week 2 to Week 7, with one checkpoint in Week 5 that decides whether you continue with your own data.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Thu 8 Oct</td>
+<td>Teams of 4–5 formed in class (the same teams as for the team tests)</td>
+</tr>
+<tr class="even">
+<td>Thu 15 Oct</td>
+<td>Product registered on <a href="https://ilu.th-koeln.de/goto.php/crs/875463">ILIAS</a>: product, key component, two sourcing options</td>
+</tr>
+<tr class="odd">
+<td>Thu 22 Oct</td>
+<td>Check cell and animation template released</td>
+</tr>
+<tr class="even">
+<td>Wed 28 Oct, 23:59</td>
+<td>Checkpoint: dataset pack, check-cell output and your two papers (APA with DOI) uploaded; PASS/FAIL feedback on Thu 29 Oct</td>
+</tr>
+<tr class="odd">
+<td>Wed 4 Nov, 23:59</td>
+<td>Last chance to pass the checkpoint for groups that failed</td>
+</tr>
+<tr class="even">
+<td>Wed 11 Nov, 23:59</td>
+<td>Final submission: notebook, dataset pack, animation.html, poster PDF, appendix</td>
+</tr>
+<tr class="odd">
+<td>Thu 12 Nov</td>
+<td>Poster session in the afternoon</td>
+</tr>
+</tbody>
+</table>
+<p>A group whose dataset still fails on 4 November moves to the UrbanRide bike data for the rest of the project. It keeps its question and its disruption idea, and scores zero in rubric part A.</p>
+</section>
+<section id="the-poster-session-where-you-show-it-is-your-work" class="level2">
+<h2 class="anchored" data-anchor-id="the-poster-session-where-you-show-it-is-your-work">The poster session: where you show it is your work</h2>
+<p>You build the project at home, with any help you like, including AI. The poster session on Thursday 12 November is where you show that every member understands what the group built. Each group has 25 minutes at its poster:</p>
+<ol type="1">
+<li><strong>Pitch, 5 minutes.</strong> The group presents the question, the answer and the scoreboard.</li>
+<li><strong>Individual questions, 15 minutes.</strong> Every member answers two questions alone, drawn by the examiner from three kinds; members may not hand a question to someone else.
 <ul>
-<li><a href="./syllabus.html">Syllabus</a> — weekly rhythm, dates, reading, grading</li>
-<li><a href="./overview.html">Week by week</a> — one card per Thursday</li>
-<li><a href="./appendix/tools.html">Tools</a> — Google Colab in five minutes</li>
-<li><a href="./weeks/week01.html">Week 1</a> — Thursday, 1 October</li>
-</ul>
+<li><em>A number</em>: “Where does this station time in your sources.csv come from? What happens to the scoreboard if it is 20 % higher?”</li>
+<li><em>The model</em>: “Why does the queue build at this station? Why did your countermeasure cost what it cost?”</li>
+<li><em>A paper</em>: “What is the key argument of this paper, and which of your results does it explain?”</li>
+</ul></li>
+<li><strong>Live change, 5 minutes.</strong> The examiner changes one number in your data. Before the rerun, the group predicts which way each scoreboard number moves and why. Then you run the notebook and compare.</li>
+</ol>
+<p>The whole group is responsible for every member’s understanding. Each question a member cannot answer soundly lowers the group’s score in part D, so the group mark rewards groups that explain their work to each other before the session. A wrong prediction in the live change costs little if the reasoning is sound; a right one with no reason earns little.</p>
+</section>
+<section id="using-ai" class="level2">
+<h2 class="anchored" data-anchor-id="using-ai">Using AI</h2>
+<p>You may use AI for every part of the project: finding data, writing code, styling the animation, drafting the poster. Three rules keep the work yours:</p>
+<ol type="1">
+<li><strong>An AI answer is not a source.</strong> A number an AI suggests enters sources.csv only after you trace it to a public figure or turn it into a guesstimate with your own calculation. The source type “AI” does not exist.</li>
+<li><strong>You can explain every line.</strong> Code you cannot explain in the poster session counts against you, however well it runs.</li>
+<li><strong>You write an AI note</strong> for the appendix, at most half a page: what you handed to AI, how you checked its output, and one AI mistake you found and how you found it.</li>
+</ol>
+</section>
+<section id="how-the-project-is-marked" class="level2">
+<h2 class="anchored" data-anchor-id="how-the-project-is-marked">How the project is marked</h2>
+<p>Four parts of 25 points each make 100 points, and all four are group marks. Each criterion scores full, half or zero.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Points</th>
+<th>Full marks when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A Dataset and choices</td>
+<td>25</td>
+<td>Every file follows the format; every entered number has a sources.csv row with an honest source type and a real sanity check; the disruption rests on a real event of the same kind</td>
+</tr>
+<tr class="even">
+<td>B Model and results</td>
+<td>25</td>
+<td>All five tests pass; three scenarios with 10 seeds each, mean and range reported; each result is explained with the course idea behind it</td>
+</tr>
+<tr class="odd">
+<td>C Animation</td>
+<td>25</td>
+<td>Driven by results.json; the queue builds where the model says the bottleneck is; animated units per week match the notebook; all three scenarios can be viewed</td>
+</tr>
+<tr class="even">
+<td>D Poster and session</td>
+<td>25</td>
+<td>Poster (8): tells question → answer, reads from 2 m, cites two peer-reviewed papers with DOI and ties each to a result. Questions (12): 12 points × the share of all members’ questions answered soundly. Live change (5): the group reasons through its prediction</td>
+</tr>
+</tbody>
+</table>
+<p>A group that moves to the bike data at the checkpoint scores zero in part A and keeps parts B to D. The points convert to a grade on the same scale as the tests.</p>
+</section>
+<section id="transparency-note" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="transparency-note">Transparency note</h2>
+<p>This brief was drafted with Claude Opus 5.5, used to develop the task design (product rules, check tests, rubric), as a reviewer for language and consistency, and for the layout. All content was checked, revised and approved by Roman Bartnik.</p>
 
 
 </section>
@@ -781,10 +1110,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./assessment.html" class="pagination-link" aria-label="Tests, bonus and code names">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Tests, bonus and code names</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./syllabus.html" class="pagination-link" aria-label="Syllabus">
-        <span class="nav-page-text"><span class="chapter-title">Syllabus</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./key-learnings.html" class="pagination-link" aria-label="Key learnings">
+        <span class="nav-page-text"><span class="chapter-title">Key learnings</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -802,38 +1134,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 
