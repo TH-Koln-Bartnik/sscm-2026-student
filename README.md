@@ -4,7 +4,7 @@ The **student repository** of the module *Sustainable Supply Chain Management*
 (TH Köln, winter term 2026/27, Prof. Dr. Roman Bartnik).
 
 - **Online script:** https://th-koln-bartnik.github.io/sscm-2026-student
-- **Weeks published:** 1–1. A week's files appear here before its Thursday; material that would give away an in-class exercise follows after the class.
+- **Published so far:** Week 1. A week's files appear here before its Thursday; material that would give away an in-class exercise follows after the class.
 
 | Folder | What it is |
 |---|---|
