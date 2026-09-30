@@ -22,27 +22,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -52,7 +32,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./overview.html" rel="next">
+<link href="./syllabus.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,6 +42,9 @@ div.csl-indent {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-0246883524ae6c201833c5b43201d9aa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -141,12 +124,12 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Overview</span></a>
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Syllabus</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Setup</span></a>
+  <a href="./overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Week by week</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -243,6 +226,11 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./appendix/tools.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Tools</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./appendix/formula-sheet.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Formula sheet</span></a>
   </div>
 </li>
@@ -273,24 +261,8 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-first-idea-productivity" id="toc-the-first-idea-productivity" class="nav-link active" data-scroll-target="#the-first-idea-productivity">The first idea: productivity</a></li>
-  <li><a href="#what-the-title-says" id="toc-what-the-title-says" class="nav-link" data-scroll-target="#what-the-title-says">What the title says</a>
-  <ul class="collapse">
-  <li><a href="#supply-chain" id="toc-supply-chain" class="nav-link" data-scroll-target="#supply-chain">Supply chain</a></li>
-  <li><a href="#where-this-module-sits-inputs-transformation-outputs" id="toc-where-this-module-sits-inputs-transformation-outputs" class="nav-link" data-scroll-target="#where-this-module-sits-inputs-transformation-outputs">Where this module sits: inputs, transformation, outputs</a></li>
-  <li><a href="#sustainable" id="toc-sustainable" class="nav-link" data-scroll-target="#sustainable">Sustainable</a></li>
-  </ul></li>
-  <li><a href="#the-module-in-one-page" id="toc-the-module-in-one-page" class="nav-link" data-scroll-target="#the-module-in-one-page">The module in one page</a>
-  <ul class="collapse">
-  <li><a href="#every-lesson-in-the-same-order" id="toc-every-lesson-in-the-same-order" class="nav-link" data-scroll-target="#every-lesson-in-the-same-order">Every lesson in the same order</a></li>
-  <li><a href="#every-thursday-in-the-same-rhythm" id="toc-every-thursday-in-the-same-rhythm" class="nav-link" data-scroll-target="#every-thursday-in-the-same-rhythm">Every Thursday in the same rhythm</a></li>
-  <li><a href="#the-seven-thursdays" id="toc-the-seven-thursdays" class="nav-link" data-scroll-target="#the-seven-thursdays">The seven Thursdays</a></li>
-  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">Reading</a></li>
-  <li><a href="#assessment-bonus-and-code-names" id="toc-assessment-bonus-and-code-names" class="nav-link" data-scroll-target="#assessment-bonus-and-code-names">Assessment, bonus and code names</a></li>
-  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Tools</a></li>
-  </ul></li>
-  <li><a href="#transparency-on-the-use-of-ai" id="toc-transparency-on-the-use-of-ai" class="nav-link" data-scroll-target="#transparency-on-the-use-of-ai">Transparency on the use of AI</a></li>
-  <li><a href="#licence" id="toc-licence" class="nav-link" data-scroll-target="#licence">Licence</a></li>
+  <li><a href="#the-title-in-two-pictures" id="toc-the-title-in-two-pictures" class="nav-link active" data-scroll-target="#the-title-in-two-pictures">The title in two pictures</a></li>
+  <li><a href="#where-to-go-next" id="toc-where-to-go-next" class="nav-link" data-scroll-target="#where-to-go-next">Where to go next</a></li>
   </ul>
 </nav>
     </div>
@@ -300,7 +272,7 @@ div.csl-indent {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Sustainable Supply Chain Management</h1>
-<p class="subtitle lead">Sustainable Supply Chain Management — winter term 2026/27</p>
+<p class="subtitle lead">TH Köln · winter term 2026/27</p>
 </div>
 
 
@@ -332,174 +304,51 @@ div.csl-indent {
 <div class="th-color-bar">
 
 </div>
-<p>This online script, the course notes of the module, is its frame. It tells you what happens on each of the seven Thursdays, what you practise and what counts, and it condenses every week’s content to a page you can revise from, or hand to an AI assistant to quiz you. The chapters themselves are in the textbook; this script cites them, it does not replace them.</p>
-<section id="at-the-end-of-the-module-you-can" class="level4 lernziel-box">
-<h4 class="anchored" data-anchor-id="at-the-end-of-the-module-you-can">At the end of the module you can …</h4>
-<ol type="1">
-<li>explain the central ideas of operations and supply chain management in plain words and in the textbook’s terms: productivity, process and capacity, design for sustainability, quality, forecasting, supply chains, aggregate planning;</li>
-<li><strong>compute</strong> the numbers behind them by hand for a small case, and check a computer’s numbers against your own;</li>
-<li><strong>model</strong> a small problem in Google Colab, and <strong>clean</strong> a messy dataset before you trust it;</li>
-<li>use an <strong>AI assistant</strong> for these tasks and say, for every answer it gives, how you checked it.</li>
-</ol>
+<p>Seven Thursdays, one textbook chapter each. This script is the frame: what happens when, what counts, and one page of key content per week to revise from.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/course-overview.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The module at a glance: profit and environmental impact in balance, productivity as the core ratio, seven weekly topics, tests and grading. Image generated with Gemini."><img src="images/course-overview.webp" class="img-fluid figure-img" alt="Roadmap of seven linked rings, Week 1 Productivity to Week 7 Aggregate Planning, under a balance of profit (euro per unit) and environmental impact (CO2 per unit), with productivity = output over input; tests in Weeks 2, 4, 6 and 7; grading 60 % individual tests, 15 % team tests, 25 % group project."></a></p>
+<figcaption>The module at a glance: profit and environmental impact in balance, productivity as the core ratio, seven weekly topics, tests and grading. Image generated with Gemini.</figcaption>
+</figure>
+</div>
+<section id="what-you-will-learn" class="level4 lernziel-box">
+<h4 class="anchored" data-anchor-id="what-you-will-learn">What you will learn</h4>
+<ul>
+<li><strong>Analyse processes</strong> — productivity, capacity, bottlenecks, quality</li>
+<li><strong>Analyse environmental effects across the supply chain</strong> — CO₂, energy, materials, from product to network</li>
+<li><strong>Build models for decision support</strong> — small calculation models in Google Colab</li>
+<li><strong>Simulate and visualise</strong> — simulations, animations, dashboards</li>
+<li><strong>Use AI</strong> — to learn, to analyse processes, to check results</li>
+</ul>
 </section>
-<section id="the-first-idea-productivity" class="level2">
-<h2 class="anchored" data-anchor-id="the-first-idea-productivity">The first idea: productivity</h2>
-<p>Everything in this module starts from one ratio. A firm takes inputs (people’s hours, materials, energy, machines, money) and turns them into outputs (products, services, deliveries). <strong>Productivity</strong> is output divided by input: guests served per hour of party preparation, boxes moved per person-hour, bikes delivered per euro or per tonne of CO₂. The number above the line (the numerator) is usually easy to count. The number below the line (the denominator) is a choice, and the choice decides the answer: the same plan can be more productive per hour and less productive per euro. Week 1 builds this idea from your own experience, and every later week adds one thing that changes the ratio <span class="citation" data-cites="heizer2023operations">(<a href="references.html#ref-heizer2023operations" role="doc-biblioref">Heizer et al., 2023</a>, Ch. 1)</span>.</p>
-</section>
-<section id="what-the-title-says" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-title-says">What the title says</h2>
-<section id="supply-chain" class="level3">
-<h3 class="anchored" data-anchor-id="supply-chain">Supply chain</h3>
-<p>A <strong>supply chain</strong> is the row of firms, and the row of steps inside each firm, that turn raw materials into a product in someone’s hands. Take a beer: barley is grown, malted, brewed, moved to a warehouse, put on a shelf, bought. Each box in the picture is a firm with its own inputs, its own people and its own output, and the boxes are connected twice — by the materials that move forward and by the orders and information that move backward.</p>
+<p><strong>Topics:</strong> productivity · process strategy and capacity · design for sustainability · quality · forecasting · supply chains · sales and operations planning</p>
+<section id="the-title-in-two-pictures" class="level2">
+<h2 class="anchored" data-anchor-id="the-title-in-two-pictures">The title in two pictures</h2>
+<p><strong>Supply chain</strong> — the firms and steps from raw material to customer. Materials move forward, orders and information move back.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/beer-supply-chain.svg" class="img-fluid figure-img" alt="Six boxes from barley farm to consumer, with forward arrows for materials and backward dashed arrows for orders and information."></p>
-<figcaption>A beer supply chain. Materials move forward (red), orders and information move backward (magenta). The brewery is where the transformation happens. Own illustration.</figcaption>
+<figcaption>A beer supply chain. Materials move forward (red), orders and information move backward (magenta). Own illustration.</figcaption>
 </figure>
 </div>
-<p>Two things follow from the picture, and both run through the whole module. The chain produces only as much as its slowest step. And the backward arrows have a life of their own: a small change in what the shelf sells becomes a large swing in what the brewery makes, because every box reacts to the box after it with a delay. The beer game shows this in an afternoon <span class="citation" data-cites="sterman1989modeling">(<a href="references.html#ref-sterman1989modeling" role="doc-biblioref">Sterman, 1989</a>)</span>; the forecasting and planning weeks show it in numbers.</p>
-</section>
-<section id="where-this-module-sits-inputs-transformation-outputs" class="level3">
-<h3 class="anchored" data-anchor-id="where-this-module-sits-inputs-transformation-outputs">Where this module sits: inputs, transformation, outputs</h3>
-<p>Managing a business means transforming inputs into outputs, and doing that on the basis of data. Three sub-modules of your term divide that sentence between them.</p>
+<p><strong>Sustainable</strong> — profit drives a firm, but it also causes effects it does not pay for (<em>external effects</em>, Latin <em>externus</em>, “outward”). In this module: the <strong>environmental</strong> effects — CO₂, energy, materials, waste — beside profit. A definition is a tool, like a flashlight: it lights one part of the room sharply.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/three-submodules.svg" class="img-fluid figure-img" alt="Inputs box, a red transformation box in the middle, outputs box; a magenta band above labelled Controlling, orange arrows and a band below labelled Logistics."></p>
-<figcaption>Controlling gives us the data; logistics moves inputs and outputs; this module is about the transformation itself — inside a firm and between firms. Own illustration.</figcaption>
+<p><img src="images/sustainable-flashlight.svg" class="img-fluid figure-img" alt="A firm box with profit inside and three arrows of external effects below — on other firms, on people, on the environment; a flashlight beam highlights the environmental effects."></p>
+<figcaption>The firm, driven by profit, and its external effects. The module’s definition puts the flashlight on the environmental ones. Own illustration.</figcaption>
 </figure>
 </div>
-<p><strong>Controlling</strong> gives us the data: it measures what goes in, what comes out and what it costs, and turns the factory into numbers a manager can act on. <strong>Logistics</strong>, the Tuesday sub-module, moves inputs and outputs: transport, warehouses, inventory, the arrows between the boxes. <strong>This module</strong> is about the transformation in the middle — how a line of stations turns parts into products, and how a chain of firms turns a forecast into a plan and a supplier into a delivery. Where an example helps, the three sub-modules borrow from one fictional bike maker, UrbanRide, whose trucks and stock the Tuesday module plans.</p>
 </section>
-<section id="sustainable" class="level3">
-<h3 class="anchored" data-anchor-id="sustainable">Sustainable</h3>
-<p>A business is driven by <strong>profit</strong>: it is what motivates the owners to run it, and every decision in this module is first checked against euro per bike. But a firm also causes effects it does not pay for — on the environment, on people, on other firms. Economists call them <strong>external effects</strong> (from Latin <em>externus</em>, “outward”: effects that fall outside the firm’s own books). A <strong>sustainable</strong> supply chain is one that is managed with those effects in view, not only with profit.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/sustainable-flashlight.svg" class="img-fluid figure-img" alt="A firm box with profit inside and three arrows of external effects below — on other firms, on people, on the environment; a flashlight beam highlights the environmental effects and lists what the module measures."></p>
-<figcaption>The firm, driven by profit, and its external effects. This module’s definition puts the flashlight on the environmental effects. Own illustration.</figcaption>
-</figure>
-</div>
-<p><strong>Our definition in this module is narrow on purpose: sustainable means looking at the environmental effects — CO₂, energy, materials, waste — beside profit.</strong> That is why, beside euros, the module keeps asking for kilograms of CO₂. Other definitions are wider. The Brundtland report defines sustainable development as meeting the needs of the present without compromising the ability of future generations to meet theirs <span class="citation" data-cites="wced1987our">(<a href="references.html#ref-wced1987our" role="doc-biblioref">World Commission on Environment and Development, 1987</a>)</span>; the <em>triple bottom line</em> asks a firm to report on people and planet beside profit <span class="citation" data-cites="elkington1997cannibals">(<a href="references.html#ref-elkington1997cannibals" role="doc-biblioref">Elkington, 1997</a>)</span>. Neither is wrong, and you will meet both in later courses.</p>
-<p>In science, a definition is a tool, chosen for a purpose. It works like a flashlight: it lights one part of the room so that you can see it sharply, and it leaves the rest in the dark — not because the rest does not matter, but because you cannot look at everything at once and see anything. Seven weeks are short. Pointing the beam at the environmental effects lets us measure one thing well, from a single product to a year’s plan in Week 7, and the habit of measuring transfers to the other effects when a later course points the beam there.</p>
-</section>
-</section>
-<section id="the-module-in-one-page" class="level2">
-<h2 class="anchored" data-anchor-id="the-module-in-one-page">The module in one page</h2>
-<section id="every-lesson-in-the-same-order" class="level3">
-<h3 class="anchored" data-anchor-id="every-lesson-in-the-same-order">Every lesson in the same order</h3>
-<p>Each new idea arrives in the same five steps: a <strong>real problem</strong> or puzzle from the chapter; the same idea in <strong>student life</strong> (a party, a moving day); the <strong>intuition</strong>, with the formula first in words and then in short practice interactions; the idea in a <strong>factory</strong>, with the textbook’s examples; and finally across a <strong>supply chain</strong>.</p>
-</section>
-<section id="every-thursday-in-the-same-rhythm" class="level3">
-<h3 class="anchored" data-anchor-id="every-thursday-in-the-same-rhythm">Every Thursday in the same rhythm</h3>
-<p><strong>09:00–12:00: test and/or new concepts.</strong> In test weeks the morning opens with the test; then the new chapter: problem, examples, formulas in words, calculations by hand. <strong>13:00–15:30: modelling and applied exercises.</strong> In Google Colab you set up the morning’s problem as a small model (one worked set-up, many practice problems, extensions for quick teams), and from Week 2 you also clean real-looking datasets with a commented script and an AI assistant. The afternoon ends with the <strong>bonus sheet</strong>.</p>
-<p>Every exercise assumes you may use an AI assistant. The point is not whether you use it, but what you delegate, what you check, and how.</p>
-</section>
-<section id="the-seven-thursdays" class="level3">
-<h3 class="anchored" data-anchor-id="the-seven-thursdays">The seven Thursdays</h3>
-<table class="rhythm caption-top table">
-<caption>Seven Thursdays, 09:00–12:00 and 13:00–15:30</caption>
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Week</th>
-<th>Thursday</th>
-<th>Chapter</th>
-<th>Morning test</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>1 Oct 2026</td>
-<td>Ch. 1 Operations and productivity</td>
-<td>none</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>8 Oct</td>
-<td>Ch. 7 + S7 Process strategy, capacity</td>
-<td><strong>T1</strong> · Ch. 1</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>15 Oct</td>
-<td>Ch. 5 + S5 Design for supply-chain sustainability</td>
-<td>none</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>22 Oct</td>
-<td>Ch. 6 + S6 Managing quality</td>
-<td><strong>T2</strong> · Ch. 7, 5</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>29 Oct</td>
-<td>Ch. 4 Forecasting</td>
-<td>none</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>5 Nov</td>
-<td>Ch. 11 + S11 Supply chain management, Chopra Ch. 3</td>
-<td><strong>T3</strong> · Ch. 6, 4</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>12 Nov</td>
-<td>Ch. 13 Aggregate planning and S&amp;OP (sales and operations planning)</td>
-<td><strong>T4</strong> · Ch. 11, Chopra 3, 13</td>
-</tr>
-</tbody>
-</table>
-<p>S5, S6, S7 and S11 are the supplements that follow a chapter in the textbook. The <a href="./overview.html">overview page</a> shows each week as a card; a week’s full page opens after the Thursday before it.</p>
-</section>
-<section id="reading" class="level3">
-<h3 class="anchored" data-anchor-id="reading">Reading</h3>
-<p>The textbook is <span class="citation" data-cites="heizer2023operations">Heizer et al. (<a href="references.html#ref-heizer2023operations" role="doc-biblioref">2023</a>)</span>, <em>Operations Management: Sustainability and Supply Chain Management</em>, 14th edition, Global Edition: one chapter per week. Week 6 adds Chapter 3 of <span class="citation" data-cites="chopra2019supply">Chopra (<a href="references.html#ref-chopra2019supply" role="doc-biblioref">2019</a>)</span> on supply chain drivers and metrics. The slides help you into the chapter; they do not replace it.</p>
-</section>
-<section id="assessment-bonus-and-code-names" class="level3">
-<h3 class="anchored" data-anchor-id="assessment-bonus-and-code-names">Assessment, bonus and code names</h3>
-<p>The module mark comes from <strong>four tests</strong> in Weeks 2, 4, 6 and 7, each written alone first and then as a team, and one <strong>group project</strong>: <strong>60 % individual tests, 15 % team tests, 25 % group project</strong>; as is common in Team-Based Learning, a peer evaluation factor adjusts each member’s share of the group mark. In the project, groups of four or five simulate in Colab what a supplier failure does to the line of a real product of their choice, and present the answer as an animation and a poster on 12 November.</p>
-<p>In Weeks 1–6 the afternoon ends with a <strong>bonus sheet</strong>: four to six items, done alone on paper in class, scanned with your phone and uploaded to ILIAS by 15:30. It counts if every item is attempted with the path visible and more than half of the results are correct, and it improves your grade on the next test by <strong>0.3</strong> (for example from 2.3 to 2.0), if that test is passed. The bonus is earned in class, not as homework, because at home an AI would do it for you.</p>
-<p>Test papers and bonus sheets carry your <strong>code name</strong>, the name of a pioneer of operations management that you keep for the whole semester, so that the papers themselves are anonymous. Details: <a href="./assessment.html">Assessment</a>.</p>
-</section>
-<section id="tools" class="level3">
-<h3 class="anchored" data-anchor-id="tools">Tools</h3>
-<p>Google Colab (a free Google account is enough; <a href="./setup.html">Setup</a> takes five minutes), the textbook, ILIAS for announcements and uploads, and an AI assistant of your choice. You never install anything.</p>
-</section>
-</section>
-<section id="transparency-on-the-use-of-ai" class="level2">
-<h2 class="anchored" data-anchor-id="transparency-on-the-use-of-ai">Transparency on the use of AI</h2>
-<p>This script and the module’s notebooks, handouts and slides were built with Claude (Anthropic) as drafting assistant, reviewer and layout tool. All content was checked, revised and is the responsibility of Roman Bartnik.</p>
-</section>
-<section id="licence" class="level2">
-<h2 class="anchored" data-anchor-id="licence">Licence</h2>
-<p>Text and materials of this script are published under CC BY-NC-SA 4.0. Sources are cited inline and listed on the <a href="./references.html">References</a> page.</p>
+<section id="where-to-go-next" class="level2">
+<h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="./syllabus.html">Syllabus</a> — weekly rhythm, dates, reading, grading</li>
+<li><a href="./overview.html">Week by week</a> — one card per Thursday</li>
+<li><a href="./appendix/tools.html">Tools</a> — Google Colab in five minutes</li>
+<li><a href="./weeks/week01.html">Week 1</a> — Thursday, 1 October</li>
+</ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
-<div id="ref-chopra2019supply" class="csl-entry" role="listitem">
-Chopra, S. (2019). <em>Supply chain management: Strategy, planning, and operation</em> (7th ed., Global ed.). Pearson.
-</div>
-<div id="ref-elkington1997cannibals" class="csl-entry" role="listitem">
-Elkington, J. (1997). <em>Cannibals with forks: The triple bottom line of 21st century business</em>. Capstone.
-</div>
-<div id="ref-heizer2023operations" class="csl-entry" role="listitem">
-Heizer, J., Render, B., &amp; Munson, C. (2023). <em>Operations management: Sustainability and supply chain management</em> (14th ed., Global ed.). Pearson.
-</div>
-<div id="ref-sterman1989modeling" class="csl-entry" role="listitem">
-Sterman, J. D. (1989). Modeling managerial behavior: Misperceptions of feedback in a dynamic decision making experiment. <em>Management Science</em>, <em>35</em>(3), 321–339. <a href="https://doi.org/10.1287/mnsc.35.3.321">https://doi.org/10.1287/mnsc.35.3.321</a>
-</div>
-<div id="ref-wced1987our" class="csl-entry" role="listitem">
-World Commission on Environment and Development. (1987). <em>Our common future</em>. Oxford University Press.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -929,8 +778,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./overview.html" class="pagination-link" aria-label="Overview">
-        <span class="nav-page-text"><span class="chapter-title">Overview</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./syllabus.html" class="pagination-link" aria-label="Syllabus">
+        <span class="nav-page-text"><span class="chapter-title">Syllabus</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -948,6 +797,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

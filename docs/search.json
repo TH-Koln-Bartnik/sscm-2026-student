@@ -4,129 +4,119 @@
     "href": "index.html",
     "title": "Sustainable Supply Chain Management",
     "section": "",
-    "text": "At the end of the module you can …\nThis online script, the course notes of the module, is its frame. It tells you what happens on each of the seven Thursdays, what you practise and what counts, and it condenses every week’s content to a page you can revise from, or hand to an AI assistant to quiz you. The chapters themselves are in the textbook; this script cites them, it does not replace them.",
+    "text": "What you will learn\nSeven Thursdays, one textbook chapter each. This script is the frame: what happens when, what counts, and one page of key content per week to revise from.\nTopics: productivity · process strategy and capacity · design for sustainability · quality · forecasting · supply chains · sales and operations planning",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
     ]
   },
   {
-    "objectID": "index.html#the-first-idea-productivity",
-    "href": "index.html#the-first-idea-productivity",
+    "objectID": "index.html#the-title-in-two-pictures",
+    "href": "index.html#the-title-in-two-pictures",
     "title": "Sustainable Supply Chain Management",
-    "section": "The first idea: productivity",
-    "text": "The first idea: productivity\nEverything in this module starts from one ratio. A firm takes inputs (people’s hours, materials, energy, machines, money) and turns them into outputs (products, services, deliveries). Productivity is output divided by input: guests served per hour of party preparation, boxes moved per person-hour, bikes delivered per euro or per tonne of CO₂. The number above the line (the numerator) is usually easy to count. The number below the line (the denominator) is a choice, and the choice decides the answer: the same plan can be more productive per hour and less productive per euro. Week 1 builds this idea from your own experience, and every later week adds one thing that changes the ratio (Heizer et al., 2023, Ch. 1).",
+    "section": "The title in two pictures",
+    "text": "The title in two pictures\nSupply chain — the firms and steps from raw material to customer. Materials move forward, orders and information move back.\n\n\n\nA beer supply chain. Materials move forward (red), orders and information move backward (magenta). Own illustration.\n\n\nSustainable — profit drives a firm, but it also causes effects it does not pay for (external effects, Latin externus, “outward”). In this module: the environmental effects — CO₂, energy, materials, waste — beside profit. A definition is a tool, like a flashlight: it lights one part of the room sharply.\n\n\n\nThe firm, driven by profit, and its external effects. The module’s definition puts the flashlight on the environmental ones. Own illustration.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
     ]
   },
   {
-    "objectID": "index.html#what-the-title-says",
-    "href": "index.html#what-the-title-says",
+    "objectID": "index.html#where-to-go-next",
+    "href": "index.html#where-to-go-next",
     "title": "Sustainable Supply Chain Management",
-    "section": "What the title says",
-    "text": "What the title says\n\nSupply chain\nA supply chain is the row of firms, and the row of steps inside each firm, that turn raw materials into a product in someone’s hands. Take a beer: barley is grown, malted, brewed, moved to a warehouse, put on a shelf, bought. Each box in the picture is a firm with its own inputs, its own people and its own output, and the boxes are connected twice — by the materials that move forward and by the orders and information that move backward.\n\n\n\nA beer supply chain. Materials move forward (red), orders and information move backward (magenta). The brewery is where the transformation happens. Own illustration.\n\n\nTwo things follow from the picture, and both run through the whole module. The chain produces only as much as its slowest step. And the backward arrows have a life of their own: a small change in what the shelf sells becomes a large swing in what the brewery makes, because every box reacts to the box after it with a delay. The beer game shows this in an afternoon (Sterman, 1989); the forecasting and planning weeks show it in numbers.\n\n\nWhere this module sits: inputs, transformation, outputs\nManaging a business means transforming inputs into outputs, and doing that on the basis of data. Three sub-modules of your term divide that sentence between them.\n\n\n\nControlling gives us the data; logistics moves inputs and outputs; this module is about the transformation itself — inside a firm and between firms. Own illustration.\n\n\nControlling gives us the data: it measures what goes in, what comes out and what it costs, and turns the factory into numbers a manager can act on. Logistics, the Tuesday sub-module, moves inputs and outputs: transport, warehouses, inventory, the arrows between the boxes. This module is about the transformation in the middle — how a line of stations turns parts into products, and how a chain of firms turns a forecast into a plan and a supplier into a delivery. Where an example helps, the three sub-modules borrow from one fictional bike maker, UrbanRide, whose trucks and stock the Tuesday module plans.\n\n\nSustainable\nA business is driven by profit: it is what motivates the owners to run it, and every decision in this module is first checked against euro per bike. But a firm also causes effects it does not pay for — on the environment, on people, on other firms. Economists call them external effects (from Latin externus, “outward”: effects that fall outside the firm’s own books). A sustainable supply chain is one that is managed with those effects in view, not only with profit.\n\n\n\nThe firm, driven by profit, and its external effects. This module’s definition puts the flashlight on the environmental effects. Own illustration.\n\n\nOur definition in this module is narrow on purpose: sustainable means looking at the environmental effects — CO₂, energy, materials, waste — beside profit. That is why, beside euros, the module keeps asking for kilograms of CO₂. Other definitions are wider. The Brundtland report defines sustainable development as meeting the needs of the present without compromising the ability of future generations to meet theirs (World Commission on Environment and Development, 1987); the triple bottom line asks a firm to report on people and planet beside profit (Elkington, 1997). Neither is wrong, and you will meet both in later courses.\nIn science, a definition is a tool, chosen for a purpose. It works like a flashlight: it lights one part of the room so that you can see it sharply, and it leaves the rest in the dark — not because the rest does not matter, but because you cannot look at everything at once and see anything. Seven weeks are short. Pointing the beam at the environmental effects lets us measure one thing well, from a single product to a year’s plan in Week 7, and the habit of measuring transfers to the other effects when a later course points the beam there.",
+    "section": "Where to go next",
+    "text": "Where to go next\n\nSyllabus — weekly rhythm, dates, reading, grading\nWeek by week — one card per Thursday\nTools — Google Colab in five minutes\nWeek 1 — Thursday, 1 October",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
     ]
   },
   {
-    "objectID": "index.html#the-module-in-one-page",
-    "href": "index.html#the-module-in-one-page",
-    "title": "Sustainable Supply Chain Management",
-    "section": "The module in one page",
-    "text": "The module in one page\n\nEvery lesson in the same order\nEach new idea arrives in the same five steps: a real problem or puzzle from the chapter; the same idea in student life (a party, a moving day); the intuition, with the formula first in words and then in short practice interactions; the idea in a factory, with the textbook’s examples; and finally across a supply chain.\n\n\nEvery Thursday in the same rhythm\n09:00–12:00: test and/or new concepts. In test weeks the morning opens with the test; then the new chapter: problem, examples, formulas in words, calculations by hand. 13:00–15:30: modelling and applied exercises. In Google Colab you set up the morning’s problem as a small model (one worked set-up, many practice problems, extensions for quick teams), and from Week 2 you also clean real-looking datasets with a commented script and an AI assistant. The afternoon ends with the bonus sheet.\nEvery exercise assumes you may use an AI assistant. The point is not whether you use it, but what you delegate, what you check, and how.\n\n\nThe seven Thursdays\n\nSeven Thursdays, 09:00–12:00 and 13:00–15:30\n\n\n\n\n\n\n\n\nWeek\nThursday\nChapter\nMorning test\n\n\n\n\n1\n1 Oct 2026\nCh. 1 Operations and productivity\nnone\n\n\n2\n8 Oct\nCh. 7 + S7 Process strategy, capacity\nT1 · Ch. 1\n\n\n3\n15 Oct\nCh. 5 + S5 Design for supply-chain sustainability\nnone\n\n\n4\n22 Oct\nCh. 6 + S6 Managing quality\nT2 · Ch. 7, 5\n\n\n5\n29 Oct\nCh. 4 Forecasting\nnone\n\n\n6\n5 Nov\nCh. 11 + S11 Supply chain management, Chopra Ch. 3\nT3 · Ch. 6, 4\n\n\n7\n12 Nov\nCh. 13 Aggregate planning and S&OP (sales and operations planning)\nT4 · Ch. 11, Chopra 3, 13\n\n\n\nS5, S6, S7 and S11 are the supplements that follow a chapter in the textbook. The overview page shows each week as a card; a week’s full page opens after the Thursday before it.\n\n\nReading\nThe textbook is Heizer et al. (2023), Operations Management: Sustainability and Supply Chain Management, 14th edition, Global Edition: one chapter per week. Week 6 adds Chapter 3 of Chopra (2019) on supply chain drivers and metrics. The slides help you into the chapter; they do not replace it.\n\n\nAssessment, bonus and code names\nThe module mark comes from four tests in Weeks 2, 4, 6 and 7, each written alone first and then as a team, and one group project: 60 % individual tests, 15 % team tests, 25 % group project; as is common in Team-Based Learning, a peer evaluation factor adjusts each member’s share of the group mark. In the project, groups of four or five simulate in Colab what a supplier failure does to the line of a real product of their choice, and present the answer as an animation and a poster on 12 November.\nIn Weeks 1–6 the afternoon ends with a bonus sheet: four to six items, done alone on paper in class, scanned with your phone and uploaded to ILIAS by 15:30. It counts if every item is attempted with the path visible and more than half of the results are correct, and it improves your grade on the next test by 0.3 (for example from 2.3 to 2.0), if that test is passed. The bonus is earned in class, not as homework, because at home an AI would do it for you.\nTest papers and bonus sheets carry your code name, the name of a pioneer of operations management that you keep for the whole semester, so that the papers themselves are anonymous. Details: Assessment.\n\n\nTools\nGoogle Colab (a free Google account is enough; Setup takes five minutes), the textbook, ILIAS for announcements and uploads, and an AI assistant of your choice. You never install anything.",
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Every Thursday in the same rhythm",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syllabus</span>"
     ]
   },
   {
-    "objectID": "index.html#transparency-on-the-use-of-ai",
-    "href": "index.html#transparency-on-the-use-of-ai",
-    "title": "Sustainable Supply Chain Management",
-    "section": "Transparency on the use of AI",
-    "text": "Transparency on the use of AI\nThis script and the module’s notebooks, handouts and slides were built with Claude (Anthropic) as drafting assistant, reviewer and layout tool. All content was checked, revised and is the responsibility of Roman Bartnik.",
+    "objectID": "syllabus.html#every-thursday-in-the-same-rhythm",
+    "href": "syllabus.html#every-thursday-in-the-same-rhythm",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Morning · 09:00–12:00test (Weeks 2, 4, 6, 7) · new chapter: problem, examples, formulas in words, calculations by hand\n\n\nAfternoon · 13:00–15:30modelling in Google Colab · applied exercises · bonus sheet (Weeks 1–6)\n\n\nAIallowed in every exercise; what counts is what you delegate and how you check it",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syllabus</span>"
     ]
   },
   {
-    "objectID": "index.html#licence",
-    "href": "index.html#licence",
-    "title": "Sustainable Supply Chain Management",
-    "section": "Licence",
-    "text": "Licence\nText and materials of this script are published under CC BY-NC-SA 4.0. Sources are cited inline and listed on the References page.\n\n\n\n\nChopra, S. (2019). Supply chain management: Strategy, planning, and operation (7th ed., Global ed.). Pearson.\n\n\nElkington, J. (1997). Cannibals with forks: The triple bottom line of 21st century business. Capstone.\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations management: Sustainability and supply chain management (14th ed., Global ed.). Pearson.\n\n\nSterman, J. D. (1989). Modeling managerial behavior: Misperceptions of feedback in a dynamic decision making experiment. Management Science, 35(3), 321–339. https://doi.org/10.1287/mnsc.35.3.321\n\n\nWorld Commission on Environment and Development. (1987). Our common future. Oxford University Press.",
+    "objectID": "syllabus.html#every-new-idea-in-the-same-five-steps",
+    "href": "syllabus.html#every-new-idea-in-the-same-five-steps",
+    "title": "Syllabus",
+    "section": "Every new idea in the same five steps",
+    "text": "Every new idea in the same five steps\n\nReal problem — a puzzle from the chapter\nStudent life — the same idea at a party or on moving day\nIntuition — the formula in words, then short practice\nFactory — the textbook’s examples\nSupply chain — the same idea across several firms",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syllabus</span>"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#the-seven-thursdays",
+    "href": "syllabus.html#the-seven-thursdays",
+    "title": "Syllabus",
+    "section": "The seven Thursdays",
+    "text": "The seven Thursdays\n\nSeven Thursdays, 09:00–12:00 and 13:00–15:30. S = supplement to the chapter. Rooms and changes: ILIAS.\n\n\n\n\n\n\n\n\nWeek\nThursday\nChapter\nMorning test\n\n\n\n\n1\n1 Oct 2026\nCh. 1 Operations and productivity\n—\n\n\n2\n8 Oct\nCh. 7 + S7 Process strategy, capacity\nT1 · Ch. 1\n\n\n3\n15 Oct\nCh. 5 + S5 Design for supply-chain sustainability\n—\n\n\n4\n22 Oct\nCh. 6 + S6 Managing quality\nT2 · Ch. 7, 5\n\n\n5\n29 Oct\nCh. 4 Forecasting\n—\n\n\n6\n5 Nov\nCh. 11 + S11 Supply chain management, Chopra Ch. 3\nT3 · Ch. 6, 4\n\n\n7\n12 Nov\nCh. 13 Aggregate planning and S&OP\nT4 · Ch. 11, Chopra 3, 13",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syllabus</span>"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#reading",
+    "href": "syllabus.html#reading",
+    "title": "Syllabus",
+    "section": "Reading",
+    "text": "Reading\n\nHeizer et al. (2023) — one chapter per week\nWeek 6 in addition: Chopra (2019), Ch. 3 (supply chain drivers and metrics)\nThe slides lead into the chapter; they do not replace it.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syllabus</span>"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#grading",
+    "href": "syllabus.html#grading",
+    "title": "Syllabus",
+    "section": "Grading",
+    "text": "Grading\n\nThe group share (40 %) is adjusted for each member by a peer evaluation factor, as is common in Team-Based Learning.\n\n\nComponent\nWeight\n\n\n\n\nIndividual tests (four)\n60 %\n\n\nTeam tests (four)\n15 %\n\n\nGroup project (groups of 4–5, poster session 12 Nov)\n25 %\n\n\n\n\nBonus sheet — Weeks 1–6, alone, on paper, in class; upload to ILIAS by 15:30 → next test grade 0.3 better (e.g. 2.3 → 2.0), if that test is passed\nCode name — a pioneer of operations management, on every test paper and bonus sheet; keeps the papers anonymous\n\nRules and project dates: Assessment.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syllabus</span>"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#tools",
+    "href": "syllabus.html#tools",
+    "title": "Syllabus",
+    "section": "Tools",
+    "text": "Tools\nGoogle Colab (free Google account; how-to in the Tools appendix) · ILIAS for announcements and uploads · the textbook · an AI assistant of your choice. Nothing to install.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syllabus</span>"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#transparency-and-licence",
+    "href": "syllabus.html#transparency-and-licence",
+    "title": "Syllabus",
+    "section": "Transparency and licence",
+    "text": "Transparency and licence\nThis script and the module’s notebooks, handouts and slides were built with Claude (Anthropic) as drafting assistant, reviewer and layout tool. All content was checked, revised and is the responsibility of Roman Bartnik. Text and materials: CC BY-NC-SA 4.0. Sources: References.\n\n\n\n\nChopra, S. (2019). Supply chain management: Strategy, planning, and operation (7th ed., Global ed.). Pearson.\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations management: Sustainability and supply chain management (14th ed., Global ed.). Pearson.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syllabus</span>"
     ]
   },
   {
     "objectID": "overview.html",
     "href": "overview.html",
-    "title": "Overview",
+    "title": "Week by week",
     "section": "",
-    "text": "Dates at a glance\nEvery card names the chapter, the test of the morning and the test the week’s bonus sheet counts toward. Each card links to its week’s page; a page fills in after the Thursday before it.\nRooms and any change of date are announced on ILIAS.",
+    "text": "One card per Thursday: chapter, morning test, bonus sheet, group project. A week’s page fills in after the Thursday before it. Dates and grading: Syllabus.\n\n\n\nWeek 1 · Thu 1 Oct · Operations and productivity\n\n\n\nChapter\n\n\nHeizer Ch. 1\n\n\nProblem\n\n\nYour worst and best service: why did this “production” fail or work?\n\n\nSentence\n\n\nProductivity is always a ratio, and the interesting question is what goes into the denominator.\n\n\nMorning\n\n\nspeed-dating, role play of six departments, productivity in words, Mia’s moving day by hand\n\n\nAfternoon\n\n\nthe moving day as a Colab model; bonus sheet\n\n\nExercises\n\n\n14 Heizer problems and eight new ones\n\n\nTest\n\n\nnone this week\n\n\nBonus sheet\n\n\ncounts toward T1\n\n\n\n\n\nWeek 2 · Thu 8 Oct · Process strategy and capacity\n\n\n\nChapter\n\n\nHeizer Ch. 7 + S7\n\n\nTest\n\n\nT1 in the morning (Ch. 1)\n\n\nBonus sheet\n\n\ncounts toward T2\n\n\nGroup project\n\n\nbrief published; groups of 4–5 formed\n\n\nPage\n\n\nopens after the Week 1 Thursday\n\n\n\n\n\nWeek 3 · Thu 15 Oct · Design for supply-chain sustainability\n\n\n\nChapter\n\n\nHeizer Ch. 5 + S5\n\n\nTest\n\n\nnone\n\n\nBonus sheet\n\n\ncounts toward T2\n\n\nGroup project\n\n\nproduct registered on ILIAS\n\n\nPage\n\n\nopens after the Week 2 Thursday\n\n\n\n\n\nWeek 4 · Thu 22 Oct · Managing quality\n\n\n\nChapter\n\n\nHeizer Ch. 6 + S6\n\n\nTest\n\n\nT2 in the morning (Ch. 7, 5)\n\n\nBonus sheet\n\n\ncounts toward T3\n\n\nGroup project\n\n\ncheck cell (automatic data test) and animation template released\n\n\nPage\n\n\nopens after the Week 3 Thursday\n\n\n\n\n\nWeek 5 · Thu 29 Oct · Forecasting\n\n\n\nChapter\n\n\nHeizer Ch. 4\n\n\nTest\n\n\nnone\n\n\nBonus sheet\n\n\ncounts toward T3\n\n\nGroup project\n\n\ncheckpoint Wed 28 Oct, feedback on this Thursday\n\n\nPage\n\n\nopens after the Week 4 Thursday\n\n\n\n\n\nWeek 6 · Thu 5 Nov · Supply chain management\n\n\n\nChapter\n\n\nHeizer Ch. 11 + S11, Chopra Ch. 3\n\n\nTest\n\n\nT3 in the morning (Ch. 6, 4)\n\n\nBonus sheet\n\n\ncounts toward T4\n\n\nGroup project\n\n\nlast chance for the checkpoint Wed 4 Nov\n\n\nPage\n\n\nopens after the Week 5 Thursday\n\n\n\n\n\nWeek 7 · Thu 12 Nov · Aggregate planning and S&OP\n\n\n\nChapter\n\n\nHeizer Ch. 13\n\n\nTest\n\n\nT4 in the morning (Ch. 11, Chopra 3, 13)\n\n\nBonus sheet\n\n\npractice only; no test follows\n\n\nGroup project\n\n\nfinal submission Wed 11 Nov; poster session in the afternoon\n\n\nPage\n\n\nopens after the Week 6 Thursday",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Overview</span>"
-    ]
-  },
-  {
-    "objectID": "overview.html#dates-at-a-glance",
-    "href": "overview.html#dates-at-a-glance",
-    "title": "Overview",
-    "section": "",
-    "text": "Week\nThursday\nChapter\nMorning test\n\n\n\n\n1\n1 Oct 2026\nCh. 1\n—\n\n\n2\n8 Oct\nCh. 7 + S7\nT1 · Ch. 1\n\n\n3\n15 Oct\nCh. 5 + S5\n—\n\n\n4\n22 Oct\nCh. 6 + S6\nT2 · Ch. 7, 5\n\n\n5\n29 Oct\nCh. 4\n—\n\n\n6\n5 Nov\nCh. 11 + S11, Chopra Ch. 3\nT3 · Ch. 6, 4\n\n\n7\n12 Nov\nCh. 13\nT4 · Ch. 11, Chopra 3, 13",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Overview</span>"
-    ]
-  },
-  {
-    "objectID": "setup.html",
-    "href": "setup.html",
-    "title": "Setup",
-    "section": "",
-    "text": "After this page you can …",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Setup</span>"
-    ]
-  },
-  {
-    "objectID": "setup.html#what-colab-is",
-    "href": "setup.html#what-colab-is",
-    "title": "Setup",
-    "section": "What Colab is",
-    "text": "What Colab is\nGoogle Colab is a notebook that runs in your browser: a page of text cells and code cells, where every code cell runs on a Google computer, not on yours. Think of it as a lab bench that Google lends you for the afternoon: the tools are laid out, you do the experiment, and when you leave, the bench is cleared. Your notebook stays on your Google Drive; what the computer held in memory does not. A free Google account is enough, and you never install anything.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Setup</span>"
-    ]
-  },
-  {
-    "objectID": "setup.html#four-steps-once-per-week",
-    "href": "setup.html#four-steps-once-per-week",
-    "title": "Setup",
-    "section": "Four steps, once per week",
-    "text": "Four steps, once per week\n\nOpen the notebook. On the week page, click the Open … in Colab link. Colab opens the notebook from the module’s student repository on GitHub, a public folder on the web that holds the notebooks. In class the notebook is also on ILIAS: download it, then in Colab File → Upload notebook.\nSave a copy of your own. File → Save a copy in Drive. From now on you work in your copy; the original stays clean for everybody.\nRun the first code cell. It loads the tools the notebook needs. Colab may warn that the notebook was not written by Google; that is expected, click Run anyway.\nWork step by step, top to bottom. Every step ends with a check that shows ✅ or ❌. A ❌ comes with a hint; fix your line and run the cell again.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Setup</span>"
-    ]
-  },
-  {
-    "objectID": "setup.html#when-something-goes-wrong",
-    "href": "setup.html#when-something-goes-wrong",
-    "title": "Setup",
-    "section": "When something goes wrong",
-    "text": "When something goes wrong\n\n\n\n\n\n\n\n\nWhat you see\nWhat it means\nWhat to do\n\n\n\n\nNameError: name '…' is not defined\nA cell above was not run since Colab woke up\nRuntime → Run before, then run the cell again\n\n\n“Session crashed” / everything grey\nColab’s computer was recycled\nRuntime → Restart session, then run the notebook from the top\n\n\nA check shows ❌\nYour number differs from the expected one\nRead the hint, compare with your hand calculation, fix one line\n\n\nYour copy is gone\nIt was not saved to Drive\nOpen the notebook again from the week page and save a copy first",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Setup</span>"
-    ]
-  },
-  {
-    "objectID": "setup.html#ai-assistants-in-the-notebooks",
-    "href": "setup.html#ai-assistants-in-the-notebooks",
-    "title": "Setup",
-    "section": "AI assistants in the notebooks",
-    "text": "AI assistants in the notebooks\nEvery task allows an AI assistant. Two habits make it useful: predict the answer before you ask, and check the assistant’s number against one you computed by hand. The checks in the notebook help with the second habit, not the first.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Setup</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week by week</span>"
     ]
   },
   {
@@ -134,7 +124,7 @@
     "href": "weeks/week01.html",
     "title": "Week 1 — Operations and productivity",
     "section": "",
-    "text": "At the end of this week you can …",
+    "text": "Learning goals",
     "crumbs": [
       "The seven Thursdays",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Week 1 — Operations and productivity</span>"
@@ -145,7 +135,7 @@
     "href": "weeks/week01.html#before-thursday",
     "title": "Week 1 — Operations and productivity",
     "section": "Before Thursday",
-    "text": "Before Thursday\nNothing is due. Week 1 starts slowly on purpose. If you want a head start, read the first half of Chapter 1 of 1, up to and including Productivity measurement. Bring a laptop with a Google account that works, a calculator, a pen, and your phone (you scan your bonus sheet with it at the end of the day).",
+    "text": "Before Thursday\nNothing due. Optional head start: 1, Ch. 1, up to Productivity measurement. Bring laptop (working Google account), calculator, pen, phone (to scan the bonus sheet).",
     "crumbs": [
       "The seven Thursdays",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Week 1 — Operations and productivity</span>"
@@ -156,7 +146,7 @@
     "href": "weeks/week01.html#thursday-block-by-block",
     "title": "Week 1 — Operations and productivity",
     "section": "Thursday, block by block",
-    "text": "Thursday, block by block\n\nThe day, 09:00–12:00 and 13:00–15:30\n\n\n\n\n\n\n\nTime\nBlock\nWhat you do\n\n\n\n\n09:00\nWelcome\nYou receive your code name for the semester; what the module is about\n\n\n09:10\nSpeed-dating\nTwo lines, face to face: the worst service you ever got, then the best; the listener writes one cause on a sticky note\n\n\n09:35\nDebrief\nTalking it over: the sticky notes on the board, sorted: why did this “production” fail or work?\n\n\n09:50\nRole play\nSix departments of a bike maker and a rush order for 2,000 bikes; every character has a limit they will not cross\n\n\n10:25\nBreak\n\n\n\n10:40\nProductivity\nThe formulas in words; a party, Collins Title, Modern Lumber, Fisher Technologies, a supply chain\n\n\n11:15\nMoving day by hand\nIn teams of three: guess first, then calculate Mia’s two plans with Handouts 1–3\n\n\n11:55\nExit ticket\nTwo short questions on paper before lunch: one number, one denominator\n\n\n12:00\nLunch\n\n\n\n13:00\nColab\nBuild the moving-day model step by step; every step checks itself against your morning numbers\n\n\n14:00\nSolved Problems\nModern Lumber 1.1 and 1.2 at the board, laptops closed\n\n\n14:10\nBonus sheet\nAlone, on paper, with a calculator: five items that train Test 1\n\n\n15:20\nUpload\nScan both pages with your phone, upload to ILIAS by 15:30\n\n\n\n\nThe morning: from stories to one formula\nThe day starts with stories, not definitions. Every bad or good service you remember was a small production: people, equipment and the way the work was organised went in, and something came out. The role play puts six departments of one company around a table, each defending its own number, and shows why no option makes everyone happy. The productivity block gives the tool that sorts both out, first in words, then at three levels: student life, the factory, the supply chain. Last, Mia’s moving day: a van, a crew, a packing plan and a budget, calculated by hand. Guess the result before you calculate, and keep your guess.\n\n\nThe afternoon: the moving day as a model\nThe morning’s hand calculation becomes a small computer model. The notebook walks you through seven steps: the task table, the time of one task, the cost, the schedule, the productivity ratios, and two charts (the day as a timeline, and cost against finish time for every option). Every step ends with a check that shows ✅ or ❌. Quick teams go on to the extensions: bad luck with random numbers, the event cards of Handout 4, sliders.\nOpen the build notebook in Colab → then File → Save a copy in Drive (Setup explains it). The notebook needs no data files and no installs.\nA solved version of the notebook appears here after Thursday’s class, for revision at home. In class, the checks in the build notebook are your guide.\n\n\nThe bonus sheet\nAt 14:10 laptops and phones close. Every student works alone on a personal sheet with five items, one for each kind of calculation in Test 1; the numbers differ from sheet to sheet. Write your code name at the top, show the calculation path, and at 15:20 scan both pages with your phone and upload them to ILIAS (Week 1 bonus), file name = your code name, by 15:30. A sheet counts if every item is attempted with the path visible and more than half of the results are correct. It improves your Test 1 grade by 0.3 (for example from 2.3 to 2.0), if Test 1 is passed. Details: Assessment.",
+    "text": "Thursday, block by block\n\nThe day, 09:00–12:00 and 13:00–15:30\n\n\n\n\n\n\n\nTime\nBlock\nWhat you do\n\n\n\n\n09:00\nWelcome\nYou receive your code name for the semester; what the module is about\n\n\n09:10\nSpeed-dating\nTwo lines, face to face: the worst service you ever got, then the best; the listener writes one cause on a sticky note\n\n\n09:35\nDebrief\nTalking it over: the sticky notes on the board, sorted: why did this “production” fail or work?\n\n\n09:50\nRole play\nSix departments of one manufacturer and a rush order; every character has a limit\n\n\n10:25\nBreak\n\n\n\n10:40\nProductivity\nThe formulas in words; a party, Collins Title, Modern Lumber, Fisher Technologies, a supply chain\n\n\n11:15\nMoving day by hand\nIn teams of three: guess first, then calculate Mia’s two plans with Handouts 1–3\n\n\n11:55\nExit ticket\nTwo short questions on paper before lunch: one number, one denominator\n\n\n12:00\nLunch\n\n\n\n13:00\nColab\nBuild the moving-day model step by step; every step checks itself against your morning numbers\n\n\n14:00\nSolved Problems\nModern Lumber 1.1 and 1.2 at the board, laptops closed\n\n\n14:10\nBonus sheet\nAlone, on paper, with a calculator: five items that train Test 1\n\n\n15:20\nUpload\nScan both pages with your phone, upload to ILIAS by 15:30\n\n\n\n\nThe morning: from stories to one formula\n\nStories — every service you remember was a small production: inputs in, something out.\nRole play — six departments, each defending its own number; no option pleases all.\nProductivity — the tool that sorts it out: in words, then student life, factory, supply chain.\nMia’s moving day — van, crew, packing plan, budget, by hand. Guess first; keep your guess.\n\n\n\nThe afternoon: the moving day as a model\nThe morning’s hand calculation as a small model, in seven steps: task table, task time, cost, schedule, productivity ratios, two charts. Every step checks itself (✅/❌). Quick teams: random bad luck, Handout 4’s event cards, sliders.\nOpen the build notebook in Colab → then File → Save a copy in Drive (Tools explains it). The notebook needs no data files and no installs.\nA solved version of the notebook appears here after Thursday’s class, for revision at home. In class, the checks in the build notebook are your guide.\n\n\nThe bonus sheet\n\n14:10: laptops and phones closed; alone, five items, one per Test 1 calculation type\nCode name on top, calculation path visible\n15:20: scan, upload to ILIAS (Week 1 bonus), file name = code name, by 15:30\nCounts if every item attempted and more than half correct → Test 1 grade 0.3 better, if passed. Details: Assessment",
     "crumbs": [
       "The seven Thursdays",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Week 1 — Operations and productivity</span>"
@@ -178,7 +168,7 @@
     "href": "weeks/week01.html#key-content",
     "title": "Week 1 — Operations and productivity",
     "section": "Key content",
-    "text": "Key content\n\n\n\n\n\n\nFor revision\n\n\n\nThis block is written so that you can hand it to an AI assistant with the quiz-me prompt and be tested on the week. Download this week’s key content as a text file. For practice problems, go to the exercises page.\n\n\n\n\nThe problem the chapter discusses\nThink of the worst service you ever got, and the best. A missed train connection, a doctor’s appointment that ran two hours late, a café where the coffee arrived before you had sat down. Each story is a small production that failed or worked: something went in (people, equipment, the way the work was organised), something came out (a service, a result, a mood). In the role play the same company has six departments, and each defends its own number: orders won, bikes per labor-hour, price per part, stock turns (how often the stock is sold and replaced in a year), defect rate (the share of faulty units), machine utilisation (the share of time the machines are busy). Every one of them is right about its number and wrong about the company.\nChapter 1 gives the tool that sorts this out. Operations is the part of a firm that turns inputs into outputs, and the measure it keeps returning to is productivity: output divided by input.\n\n\nThe sentence of the week\nProductivity is always a ratio, and the interesting question is what goes into the denominator.\nThe number above the line (the numerator, the output) is usually easy to count: guests served, boxes moved, titles written, bikes delivered. The number below the line (the denominator, the input) is a choice, and the choice decides the answer. Name the input, or the number means nothing.\n\n\nThe formulas, in words\n\n\n\n\n\n\n\n\nMeasure\nIn words\nExample of a unit\n\n\n\n\nProductivity\noutput ÷ input\nguests per person-hour\n\n\nSingle-factor productivity\noutput ÷ one input\ncrates per labor-hour, bikes per kWh\n\n\nMultifactor productivity\noutput ÷ all inputs, in money\ntitles per dollar, bikes per euro\n\n\nProductivity growth\n(new − old) ÷ old\nper cent\n\n\n\nA person-hour and a labor-hour are the same thing: one person working one hour. Hours, kilograms and kilowatt hours cannot be added; euros can. That is why multifactor productivity converts every input into money first. Growth always divides by the old value.\nTextbook: Heizer, Render & Munson (2023), Chapter 1, sections The productivity challenge and Productivity measurement.\n\n\nStudent life: a party and a moving day\nA party for 20 guests. Shopping and a tiramisu the day before; cleaning, toppings, patties, drinks, sound and decoration, cooking on the day. Every task is measured in person-minutes: two friends cleaning for 45 minutes are 90 person-minutes. The whole party takes 335 person-minutes = 5.58 person-hours, so 20 ÷ 5.58 = 3.58 guests per person-hour of preparation. Change the denominator to the money spent on food, and the same party has a second productivity, with a different answer.\nMia’s moving day. Mia moves from a third-floor flat without a lift into a ground-floor flat 15 km away. Her whole flat is 100 moving units (boxes and furniture pieces): the output is fixed, whatever she plans. The inputs are not. A small van is cheap but drives twice; a large one drives once and costs more; every friend who helps is faster but costs pizza. Two ratios compete: units per person-hour (time) and units per euro (money). You calculate both for two plans by hand on Thursday morning, then build the same day as a model in Colab.\n\n\nThe factory: three textbook anchors\nCollins Title Insurance (Ch. 1, the Collins Title examples). The firm checks the ownership records of houses before a sale (a title search). Four people work 8 hours a day, 32 labor-hours, and prepare 8 title searches a day: 8 ÷ 32 = 0.25 titles per labor-hour. A new computer system raises the output to 14 a day with the same staff: 0.4375 titles per labor-hour, +75 %. Multifactor: wages (payroll) 640 $ plus overhead (rent, energy, other running costs) 400 $ = 1,040 $ a day gives 8 ÷ 1,040 = 0.0077 titles per dollar; the new system doubles the overhead to 800 $, so 14 ÷ 1,440 = 0.0097 titles per dollar, +26 %. The same system, two measures, two different gains.\nModern Lumber (Ch. 1, Solved Problems 1.1 and 1.2). 100 logs a day at 3 labor-hours each give 240 crates: 240 ÷ 300 = 0.800 crates per labor-hour. A professional buyer adds 8 hours a day and buys better logs, which yield 260 crates: 260 ÷ 308 = 0.844, +5.5 %. In money (labor 10 $ per hour, material 1,000 $, capital 350 $, energy 150 $): 240 ÷ 4,500 $ = 0.0533 crates per dollar before, 260 ÷ 4,580 $ = 0.0568 after, +6.4 %. More input, yet both measures rise, because the output rose faster.\nFisher Technologies (Ch. 1, Table 1.1). Sales 100,000 $, production costs 80,000 $, finance costs (interest) 6,000 $, tax 25 %: the contribution, the money left after these costs and tax, is 10,500 $. Raising sales by 50 % (with costs growing alongside) gives 18,000 $; cutting finance costs by 50 % gives 12,750 $; cutting production costs by 20 % gives 22,500 $. Operations is the strongest of the three levers.\n\n\nThe supply chain: every firm’s inputs in one denominator\nA bike reaches its rider only after a parts supplier, the assembler, a transport firm and a dealer have all done their part. At the level of the chain, the output is bikes delivered to customers, and the input is what all firms spend, in euros, or the tonnes of CO₂ the whole chain emits. A switch that makes one firm more productive can make the chain less productive, and the other way round; the two denominators, euros and CO₂, can also point in opposite directions.\n\n\nWhat drives productivity: labor, capital, management\nThe chapter names three productivity variables: labor (people, their skills, their health), capital (equipment and tools), and management (how the work is organised, including technology and knowledge). The service stories on the sticky-note board sort into exactly these three groups. The chapter also says which of the three contributes most to productivity growth; find that figure in the text. In services, productivity is harder to measure, because the output is harder to count: a good consultation or a friendly café has quality that a count of customers misses.\n\n\nTypical errors\n\nNo unit. “Productivity is 3.6” says nothing. Write guests per person-hour, crates per labor-hour, bikes per euro.\nAdding what cannot be added. Hours plus kilograms plus kWh is not a multifactor input. Convert every input into money first.\nGrowth divided by the new value. (0.4375 − 0.25) ÷ 0.4375 = 43 % is wrong; divide by the old value: +75 %.\nFaster is not more productive. Finishing sooner with more people can lower output per person-hour, because the input grew faster than the output.\nComparing ratios with different denominators. Titles per labor-hour and titles per dollar cannot be ranked against each other; compare each measure before and after.\n\n\n\nPractice items (no keys: check them against the worked examples’ method)\n\nA copy shop prints 1,200 pages a day with two people working 6 hours each. After a new printer it prints 1,500 pages with the same staff. Pages per labor-hour before and after? Productivity growth in per cent?\nA food truck sells 240 wraps on a Saturday. Inputs: two workers for 10 hours at 15 € per hour, ingredients 360 €, fuel and gas 40 €, the truck’s rent 100 € a day. Multifactor productivity in wraps per euro? Which single input would you cut first, and why?\nA cargo-bike courier delivers 80 parcels a day; a van delivers 120 parcels a day. Name two denominators under which the cargo bike is more productive and one under which the van is.",
+    "text": "Key content\n\n\n\n\n\n\nFor revision\n\n\n\nThis block is written so that you can hand it to an AI assistant with the quiz-me prompt and be tested on the week. Download this week’s key content as a text file. For practice problems, go to the exercises page.\n\n\n\n\nThe problem the chapter discusses\nThink of the worst service you ever got, and the best. A missed train connection, a doctor’s appointment that ran two hours late, a café where the coffee arrived before you had sat down. Each story is a small production that failed or worked: something went in (people, equipment, the way the work was organised), something came out (a service, a result, a mood). In the role play the same company has six departments, and each defends its own number: orders won, units per labor-hour, price per part, stock turns (how often the stock is sold and replaced in a year), defect rate (the share of faulty units), machine utilisation (the share of time the machines are busy). Every one of them is right about its number and wrong about the company.\nChapter 1 gives the tool that sorts this out. Operations is the part of a firm that turns inputs into outputs, and the measure it keeps returning to is productivity: output divided by input.\n\n\nThe sentence of the week\nProductivity is always a ratio, and the interesting question is what goes into the denominator.\nThe number above the line (the numerator, the output) is usually easy to count: guests served, boxes moved, titles written, parcels delivered. The number below the line (the denominator, the input) is a choice, and the choice decides the answer. Name the input, or the number means nothing.\n\n\nThe formulas, in words\n\n\n\n\n\n\n\n\nMeasure\nIn words\nExample of a unit\n\n\n\n\nProductivity\noutput ÷ input\nguests per person-hour\n\n\nSingle-factor productivity\noutput ÷ one input\ncrates per labor-hour, units per kWh\n\n\nMultifactor productivity\noutput ÷ all inputs, in money\ntitles per dollar, units per euro\n\n\nProductivity growth\n(new − old) ÷ old\nper cent\n\n\n\nA person-hour and a labor-hour are the same thing: one person working one hour. Hours, kilograms and kilowatt hours cannot be added; euros can. That is why multifactor productivity converts every input into money first. Growth always divides by the old value.\nTextbook: Heizer, Render & Munson (2023), Chapter 1, sections The productivity challenge and Productivity measurement.\n\n\nStudent life: a party and a moving day\nA party for 20 guests. Shopping and a tiramisu the day before; cleaning, toppings, patties, drinks, sound and decoration, cooking on the day. Every task is measured in person-minutes: two friends cleaning for 45 minutes are 90 person-minutes. The whole party takes 335 person-minutes = 5.58 person-hours, so 20 ÷ 5.58 = 3.58 guests per person-hour of preparation. Change the denominator to the money spent on food, and the same party has a second productivity, with a different answer.\nMia’s moving day. Mia moves from a third-floor flat without a lift into a ground-floor flat 15 km away. Her whole flat is 100 moving units (boxes and furniture pieces): the output is fixed, whatever she plans. The inputs are not. A small van is cheap but drives twice; a large one drives once and costs more; every friend who helps is faster but costs pizza. Two ratios compete: units per person-hour (time) and units per euro (money). You calculate both for two plans by hand on Thursday morning, then build the same day as a model in Colab.\n\n\nThe factory: three textbook anchors\nCollins Title Insurance (Ch. 1, the Collins Title examples). The firm checks the ownership records of houses before a sale (a title search). Four people work 8 hours a day, 32 labor-hours, and prepare 8 title searches a day: 8 ÷ 32 = 0.25 titles per labor-hour. A new computer system raises the output to 14 a day with the same staff: 0.4375 titles per labor-hour, +75 %. Multifactor: wages (payroll) 640 $ plus overhead (rent, energy, other running costs) 400 $ = 1,040 $ a day gives 8 ÷ 1,040 = 0.0077 titles per dollar; the new system doubles the overhead to 800 $, so 14 ÷ 1,440 = 0.0097 titles per dollar, +26 %. The same system, two measures, two different gains.\nModern Lumber (Ch. 1, Solved Problems 1.1 and 1.2). 100 logs a day at 3 labor-hours each give 240 crates: 240 ÷ 300 = 0.800 crates per labor-hour. A professional buyer adds 8 hours a day and buys better logs, which yield 260 crates: 260 ÷ 308 = 0.844, +5.5 %. In money (labor 10 $ per hour, material 1,000 $, capital 350 $, energy 150 $): 240 ÷ 4,500 $ = 0.0533 crates per dollar before, 260 ÷ 4,580 $ = 0.0568 after, +6.4 %. More input, yet both measures rise, because the output rose faster.\nFisher Technologies (Ch. 1, Table 1.1). Sales 100,000 $, production costs 80,000 $, finance costs (interest) 6,000 $, tax 25 %: the contribution, the money left after these costs and tax, is 10,500 $. Raising sales by 50 % (with costs growing alongside) gives 18,000 $; cutting finance costs by 50 % gives 12,750 $; cutting production costs by 20 % gives 22,500 $. Operations is the strongest of the three levers.\n\n\nThe supply chain: every firm’s inputs in one denominator\nA phone reaches its buyer only after a parts supplier, the assembler, a transport firm and a retailer have all done their part. At the level of the chain, the output is phones delivered to customers, and the input is what all firms spend, in euros, or the tonnes of CO₂ the whole chain emits. A switch that makes one firm more productive can make the chain less productive, and the other way round; the two denominators, euros and CO₂, can also point in opposite directions.\n\n\nWhat drives productivity: labor, capital, management\nThe chapter names three productivity variables: labor (people, their skills, their health), capital (equipment and tools), and management (how the work is organised, including technology and knowledge). The service stories on the sticky-note board sort into exactly these three groups. The chapter also says which of the three contributes most to productivity growth; find that figure in the text. In services, productivity is harder to measure, because the output is harder to count: a good consultation or a friendly café has quality that a count of customers misses.\n\n\nTypical errors\n\nNo unit. “Productivity is 3.6” says nothing. Write guests per person-hour, crates per labor-hour, units per euro.\nAdding what cannot be added. Hours plus kilograms plus kWh is not a multifactor input. Convert every input into money first.\nGrowth divided by the new value. (0.4375 − 0.25) ÷ 0.4375 = 43 % is wrong; divide by the old value: +75 %.\nFaster is not more productive. Finishing sooner with more people can lower output per person-hour, because the input grew faster than the output.\nComparing ratios with different denominators. Titles per labor-hour and titles per dollar cannot be ranked against each other; compare each measure before and after.\n\n\n\nPractice items (no keys: check them against the worked examples’ method)\n\nA copy shop prints 1,200 pages a day with two people working 6 hours each. After a new printer it prints 1,500 pages with the same staff. Pages per labor-hour before and after? Productivity growth in per cent?\nA food truck sells 240 wraps on a Saturday. Inputs: two workers for 10 hours at 15 € per hour, ingredients 360 €, fuel and gas 40 €, the truck’s rent 100 € a day. Multifactor productivity in wraps per euro? Which single input would you cut first, and why?\nA cargo-bike courier delivers 80 parcels a day; a van delivers 120 parcels a day. Name two denominators under which the cargo bike is more productive and one under which the van is.",
     "crumbs": [
       "The seven Thursdays",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Week 1 — Operations and productivity</span>"
@@ -343,7 +333,7 @@
     "href": "assessment.html",
     "title": "Tests, bonus and code names",
     "section": "",
-    "text": "Weighting\nPeer evaluation. As is common in Team-Based Learning, your share of the group mark (team tests and project) is multiplied by a peer evaluation factor. At the end of the module every member rates the contribution of the other members of the team; a member who carried their part keeps the full group mark, a member who did not gets less. The procedure is announced with the project brief on 8 October.",
+    "text": "Weighting\nPeer evaluation. Your share of the group mark (team tests and project) is multiplied by a peer evaluation factor, as is common in Team-Based Learning: at the end, members rate each other’s contribution. Carried your part → full group mark. Procedure: with the project brief, 8 October.",
     "crumbs": [
       "Assessment",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Tests, bonus and code names</span>"
@@ -365,7 +355,7 @@
     "href": "assessment.html#the-four-tests",
     "title": "Tests, bonus and code names",
     "section": "The four tests",
-    "text": "The four tests\n\n\n\n\n\n\n\n\n\nTest\nThursday\nChapters\nBonus sheets that count\n\n\n\n\nT1\nWeek 2 · 8 Oct\nCh. 1, including the Frito-Lay and Hard Rock Cafe cases\nWeek 1\n\n\nT2\nWeek 4 · 22 Oct\nCh. 7 + S7, Ch. 5 + S5\nWeeks 2 and 3\n\n\nT3\nWeek 6 · 5 Nov\nCh. 6 + S6, Ch. 4\nWeeks 4 and 5\n\n\nT4\nWeek 7 · 12 Nov\nCh. 11 + S11, Chopra Ch. 3, Ch. 13\nWeek 6\n\n\n\nEach test covers the chapters just applied. The items mix recognition and calculation; the calculation items are of the kinds you practised on the exercises page and the bonus sheets, with changed numbers. Week 1 has no test, and T1 covers Chapter 1 only, so you can settle into the format.\nIndividual, then team. You answer on paper alone first, hand it in, and answer the same items again as a team; the team answer is discussed, not copied. No book, no laptop during the tests.",
+    "text": "The four tests\n\n\n\n\n\n\n\n\n\nTest\nThursday\nChapters\nBonus sheets that count\n\n\n\n\nT1\nWeek 2 · 8 Oct\nCh. 1, including the Frito-Lay and Hard Rock Cafe cases\nWeek 1\n\n\nT2\nWeek 4 · 22 Oct\nCh. 7 + S7, Ch. 5 + S5\nWeeks 2 and 3\n\n\nT3\nWeek 6 · 5 Nov\nCh. 6 + S6, Ch. 4\nWeeks 4 and 5\n\n\nT4\nWeek 7 · 12 Nov\nCh. 11 + S11, Chopra Ch. 3, Ch. 13\nWeek 6\n\n\n\n\nRecognition and calculation items; calculations as on the exercises pages and bonus sheets, with new numbers\nIndividual, then team: alone on paper, hand in, then the same items as a team\nNo book, no laptop",
     "crumbs": [
       "Assessment",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Tests, bonus and code names</span>"
@@ -376,7 +366,7 @@
     "href": "assessment.html#the-group-project",
     "title": "Tests, bonus and code names",
     "section": "The group project",
-    "text": "The group project\nIn groups of four or five you pick one real product that is assembled in four to six steps on one line and has one key purchased part with two real sourcing options. You build a small dataset for its line and its key supplier, in the same file format as the UrbanRide bike data, and simulate one year in Google Colab: what happens to units per week, cost per unit and CO₂ per unit when the key supplier fails, and what one countermeasure does about it. You show the result as an animation and an A1 poster.\n\n\n\n\n\n\n\nDate\nWhat happens\n\n\n\n\nThu 8 Oct\nBrief published; groups of 4–5 formed in class\n\n\nThu 15 Oct\nProduct registered on ILIAS\n\n\nThu 22 Oct\nCheck cell and animation template released\n\n\nWed 28 Oct, 23:59\nCheckpoint: dataset, output of the check cell (a fixed test cell that checks your data), two peer-reviewed journal articles; feedback Thu 29 Oct\n\n\nWed 4 Nov, 23:59\nLast chance to pass the checkpoint\n\n\nWed 11 Nov, 23:59\nFinal submission: notebook, dataset, animation, poster, appendix\n\n\nThu 12 Nov\nPoster session in the afternoon\n\n\n\nThe project is homework, and any help is allowed, including AI. The poster session is where each group shows that every member understands the work: a five-minute pitch, two questions to every member alone, and a live change to one number with a prediction before the rerun. The marking has four parts of 25 points each: A dataset and choices, B model and results, C animation, D poster and session. All four parts are group marks: every member’s answers in the session count toward the group’s score in part D, so the group is responsible for everyone’s understanding. The only individual adjustment is the peer evaluation factor. The full brief, with the product rules, the file format and the rubric, is published on 8 October.",
+    "text": "The group project\n\nGroups of 4–5, one real product: 4–6 assembly steps on one line, one key purchased part with two sourcing options\nSmall dataset for line and key supplier, in the module’s standard file format\nOne year simulated in Google Colab: units per week, cost per unit, CO₂ per unit when the key supplier fails, and one countermeasure\nResult as an animation and an A1 poster\n\n\n\n\n\n\n\n\nDate\nWhat happens\n\n\n\n\nThu 8 Oct\nBrief published; groups of 4–5 formed in class\n\n\nThu 15 Oct\nProduct registered on ILIAS\n\n\nThu 22 Oct\nCheck cell and animation template released\n\n\nWed 28 Oct, 23:59\nCheckpoint: dataset, output of the check cell (a fixed test cell that checks your data), two peer-reviewed journal articles; feedback Thu 29 Oct\n\n\nWed 4 Nov, 23:59\nLast chance to pass the checkpoint\n\n\nWed 11 Nov, 23:59\nFinal submission: notebook, dataset, animation, poster, appendix\n\n\nThu 12 Nov\nPoster session in the afternoon\n\n\n\n\nHomework; any help allowed, including AI\nPoster session: five-minute pitch, two questions to every member alone, one number changed live with a prediction before the rerun\nMarking: four parts × 25 points — A dataset and choices, B model and results, C animation, D poster and session\nAll four are group marks; every member’s answers count toward part D. Only individual adjustment: the peer evaluation factor\nFull brief (product rules, file format, rubric): 8 October",
     "crumbs": [
       "Assessment",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Tests, bonus and code names</span>"
@@ -387,7 +377,7 @@
     "href": "assessment.html#the-bonus-sheet",
     "title": "Tests, bonus and code names",
     "section": "The bonus sheet",
-    "text": "The bonus sheet\nIn Weeks 1–6 the afternoon ends with a bonus sheet: four to six calculation items, done alone, on paper, in class, laptops and phones closed. Every sheet carries a code name and its own numbers, so copying does not help.\n\nUpload. Scan the sheet with your phone and upload it to the week’s ILIAS exercise by 15:30, file name = your code name.\nWhen it counts. Every item is attempted with the calculation path visible, and more than half of the results are correct.\nWhat it earns. Your grade on the next test improves by 0.3 (for example from 2.3 to 2.0), and only if that test is passed. The sheets of all weeks that feed a test count toward that test (table above).\nWhy in class. At home an AI assistant would do the sheet for you, and the bonus would measure the assistant. In the room it measures you.\n\nThe bonus sheet is handed out in class only. The exercises pages are the training for it.",
+    "text": "The bonus sheet\nWeeks 1–6, end of the afternoon: four to six calculation items, alone, on paper, in class, laptops and phones closed. Every sheet has its own numbers.\n\nUpload. Scan the sheet with your phone and upload it to the week’s ILIAS exercise by 15:30, file name = your code name.\nWhen it counts. Every item is attempted with the calculation path visible, and more than half of the results are correct.\nWhat it earns. Your grade on the next test improves by 0.3 (for example from 2.3 to 2.0), and only if that test is passed. The sheets of all weeks that feed a test count toward that test (table above).\nWhy in class. At home an AI would do the sheet; in the room it measures you.\n\nHanded out in class only; training: the exercises pages.",
     "crumbs": [
       "Assessment",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Tests, bonus and code names</span>"
@@ -398,7 +388,7 @@
     "href": "assessment.html#your-code-name",
     "title": "Tests, bonus and code names",
     "section": "Your code name",
-    "text": "Your code name\nOn the first Thursday you receive a code name: the name of a pioneer of operations management with a year, for example Babbage1791. You keep it for the whole semester and write it, instead of your real name, at the top of every bonus sheet and every test paper. The pairing of code names and students stays with the instructor. The ILIAS upload shows your account name, so the upload itself is not anonymous; the code name keeps the paper anonymous when it is marked. Look your pioneer up: every one of them changed how work is done.",
+    "text": "Your code name\n\nA pioneer of operations management with a year, e.g. Babbage1791; handed out on the first Thursday, kept all semester\nOn every bonus sheet and test paper, instead of your name\nThe pairing stays with the instructor; the ILIAS upload shows your account, but the paper is marked anonymously\nLook your pioneer up: each one changed how work is done",
     "crumbs": [
       "Assessment",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Tests, bonus and code names</span>"
@@ -409,7 +399,7 @@
     "href": "assessment.html#what-is-yours",
     "title": "Tests, bonus and code names",
     "section": "What is yours",
-    "text": "What is yours\nThe in-class Colab notebooks, the hand calculations of the morning and the exercises are not marked. They are the training, and the tests are written so that whoever did them by hand has the easier test.",
+    "text": "What is yours\nColab notebooks, morning hand calculations, exercises: not marked. They are the training — whoever did them by hand has the easier test.",
     "crumbs": [
       "Assessment",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Tests, bonus and code names</span>"
@@ -426,91 +416,146 @@
     ]
   },
   {
+    "objectID": "appendix/tools.html",
+    "href": "appendix/tools.html",
+    "title": "Appendix A — Tools",
+    "section": "",
+    "text": "After this page",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Tools</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/tools.html#what-colab-is",
+    "href": "appendix/tools.html#what-colab-is",
+    "title": "Appendix A — Tools",
+    "section": "What Colab is",
+    "text": "What Colab is\nGoogle Colab is a notebook in your browser: text cells and code cells, and every code cell runs on a Google computer, not on yours. Think of a lab bench Google lends you for the afternoon: the tools are laid out, and when you leave, the bench is cleared. Your notebook stays on your Google Drive; the computer’s memory does not. A free Google account is enough; nothing to install.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Tools</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/tools.html#four-steps-once-per-week",
+    "href": "appendix/tools.html#four-steps-once-per-week",
+    "title": "Appendix A — Tools",
+    "section": "Four steps, once per week",
+    "text": "Four steps, once per week\n\nOpen. Click Open … in Colab on the week page. (In class the notebook is also on ILIAS: download it, then File → Upload notebook.)\nSave a copy. File → Save a copy in Drive. Work in your copy; the original stays clean.\nRun the first code cell. It loads the tools. Warning “not written by Google”: click Run anyway.\nTop to bottom. Every step ends with a check, ✅ or ❌. A ❌ comes with a hint: fix one line, run again.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Tools</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/tools.html#when-something-goes-wrong",
+    "href": "appendix/tools.html#when-something-goes-wrong",
+    "title": "Appendix A — Tools",
+    "section": "When something goes wrong",
+    "text": "When something goes wrong\n\n\n\n\n\n\n\n\nWhat you see\nWhat it means\nWhat to do\n\n\n\n\nNameError: name '…' is not defined\nA cell above was not run since Colab woke up\nRuntime → Run before, then the cell again\n\n\n“Session crashed” / everything grey\nColab’s computer was recycled\nRuntime → Restart session, run from the top\n\n\nA check shows ❌\nYour number differs from the expected one\nRead the hint, compare with your hand calculation\n\n\nYour copy is gone\nIt was not saved to Drive\nOpen from the week page again, save a copy first",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Tools</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/tools.html#ai-assistants",
+    "href": "appendix/tools.html#ai-assistants",
+    "title": "Appendix A — Tools",
+    "section": "AI assistants",
+    "text": "AI assistants\nAllowed in every task. Two habits: predict the answer before you ask, and check the assistant’s number against one you computed by hand.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Tools</span>"
+    ]
+  },
+  {
     "objectID": "appendix/formula-sheet.html",
     "href": "appendix/formula-sheet.html",
-    "title": "Appendix A — Formula sheet",
+    "title": "Appendix B — Formula sheet",
     "section": "",
     "text": "Week 1 — productivity (Heizer Ch. 1)\nSymbols are kept to the textbook’s; every line says in words what the formula does. The sheet grows by one block a week.\nSource: Heizer et al. (2023), Ch. 1; moving-day rules from Handout 2 of Week 1.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formula sheet</span>"
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Formula sheet</span>"
     ]
   },
   {
     "objectID": "appendix/formula-sheet.html#week-1-productivity-heizer-ch.-1",
     "href": "appendix/formula-sheet.html#week-1-productivity-heizer-ch.-1",
-    "title": "Appendix A — Formula sheet",
+    "title": "Appendix B — Formula sheet",
     "section": "",
-    "text": "Formula\nIn words\nUnits\n\n\n\n\nProductivity = output ÷ input\nhow much comes out for each unit that goes in\nguests per person-hour, crates per labor-hour\n\n\nSingle-factor productivity = output ÷ one input\none input at a time: labor-hours, kWh, kg of material\ntitles per labor-hour, bikes per kWh\n\n\nMultifactor productivity = output ÷ (labor + material + energy + capital + other), all in money\nall inputs at once; money is the only unit in which hours, kilograms and kWh can be added\ntitles per dollar, units per euro\n\n\nProductivity growth = (new − old) ÷ old\nthe change, always divided by the old value\n%\n\n\nPerson-hours = people × hours (person-minutes ÷ 60)\nthe labor input of a task done by several people; 90 person-minutes are two people for 45 minutes\nperson-hours\n\n\nTime for a task = work in person-minutes ÷ people working (up to the task’s maximum)\nmore people make a task shorter only until the maximum is reached\nminutes\n\n\nContribution = (sales − production costs − finance costs) × (1 − tax rate)\nFisher Technologies’ comparison of marketing, finance and operations levers\n$ or €\n\n\n\n\n\n\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations management: Sustainability and supply chain management (14th ed., Global ed.). Pearson.",
+    "text": "Formula\nIn words\nUnits\n\n\n\n\nProductivity = output ÷ input\nhow much comes out for each unit that goes in\nguests per person-hour, crates per labor-hour\n\n\nSingle-factor productivity = output ÷ one input\none input at a time: labor-hours, kWh, kg of material\ntitles per labor-hour, units per kWh\n\n\nMultifactor productivity = output ÷ (labor + material + energy + capital + other), all in money\nall inputs at once; money is the only unit in which hours, kilograms and kWh can be added\ntitles per dollar, units per euro\n\n\nProductivity growth = (new − old) ÷ old\nthe change, always divided by the old value\n%\n\n\nPerson-hours = people × hours (person-minutes ÷ 60)\nthe labor input of a task done by several people; 90 person-minutes are two people for 45 minutes\nperson-hours\n\n\nTime for a task = work in person-minutes ÷ people working (up to the task’s maximum)\nmore people make a task shorter only until the maximum is reached\nminutes\n\n\nContribution = (sales − production costs − finance costs) × (1 − tax rate)\nFisher Technologies’ comparison of marketing, finance and operations levers\n$ or €\n\n\n\n\n\n\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations management: Sustainability and supply chain management (14th ed., Global ed.). Pearson.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formula sheet</span>"
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Formula sheet</span>"
     ]
   },
   {
     "objectID": "appendix/glossary.html",
     "href": "appendix/glossary.html",
-    "title": "Appendix B — Glossary",
+    "title": "Appendix C — Glossary",
     "section": "",
     "text": "Left: what we say in the room. Right: what the chapter calls it. The glossary grows by a few rows a week.\n\n\n\n\n\n\n\n\n\nPlain words\nTextbook term\nWeek\nOne line\n\n\n\n\nturning inputs into outputs\noperations, production\n1\nthe part of a firm that creates goods and services by transforming inputs into outputs (Heizer et al., 2023, Ch. 1)\n\n\nthe row of firms from raw material to customer\nsupply chain\n1\nthe firms and steps that turn raw materials into a product in someone’s hands, linked by materials forward and orders backward\n\n\noutput per input\nproductivity\n1\nhow much comes out for each unit that goes in; name the input, or the number means nothing\n\n\noutput per one input\nsingle-factor productivity\n1\noutput ÷ labor-hours, or ÷ kWh, or ÷ kg: one input at a time\n\n\noutput per all inputs in money\nmultifactor productivity, total factor productivity\n1\noutput ÷ the sum of all inputs converted into money\n\n\nhow much better than last time\nproductivity growth\n1\n(new − old) ÷ old, in per cent\n\n\none person working one hour\nperson-hour, labor-hour\n1\nthe unit of the labor input; two people for 45 minutes are 1.5 person-hours\n\n\npeople, machines, the way work is organised\nproductivity variables: labor, capital, management\n1\nthe three groups of causes the chapter names for productivity; the sticky-note board sorts into them\n\n\neffects a firm causes but does not pay for\nexternal effects, externalities\n1\nfrom Latin externus, “outward”; the module looks at the environmental ones beside profit\n\n\nthe anonymous name on your papers\ncode name\n1\na pioneer of operations management with a year, kept for the whole semester\n\n\n\n\n\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations management: Sustainability and supply chain management (14th ed., Global ed.). Pearson.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Glossary</span>"
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Glossary</span>"
     ]
   },
   {
     "objectID": "appendix/quiz-me.html",
     "href": "appendix/quiz-me.html",
-    "title": "Appendix C — Quiz-me prompt",
+    "title": "Appendix D — Quiz-me prompt",
     "section": "",
     "text": "How to use this page\nWhy paste the key content? The assistant then quizzes you on our numbers and our wording — the party, the moving day, the textbook examples we calculated — instead of on a textbook it half remembers. The check is still yours: every worked example in the key content carries the number the assistant should arrive at.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Quiz-me prompt</span>"
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Quiz-me prompt</span>"
     ]
   },
   {
     "objectID": "appendix/quiz-me.html#the-prompt",
     "href": "appendix/quiz-me.html#the-prompt",
-    "title": "Appendix C — Quiz-me prompt",
+    "title": "Appendix D — Quiz-me prompt",
     "section": "The prompt",
     "text": "The prompt\n\n\n\n\n\n\nCopy from here\n\n\n\n\nRole. You are a revision tutor for the module Sustainable Supply Chain Management at TH Köln (Prof. Dr. Roman Bartnik). I am a Bachelor student in my first course taught in English, meeting operations management for the first time.\nMaterial. Below this prompt I paste the key content of one week: the problem the chapter discusses, the sentence of the week, the formulas, examples from student life, the factory and the supply chain with their numbers, typical errors, and practice items without keys. Use only this material and the textbook chapter it names (Heizer, Render & Munson, Operations Management, 14th ed.). Do not invent numbers that are not in the material.\nMethod. Quiz me, one question at a time. Start with the problem in words, then the formula in words, then a calculation on one of the examples’ numbers with one value changed, then a practice item. After each of my answers: say whether it is right, show the calculation in at most four lines, and name the typical error I made if I made one. Never give the answer before I have tried. If I ask for the answer straight away, give one hint first.\nStyle. Plain words before the textbook term, every time: say output per one input and then (single-factor productivity). Short answers, at most six sentences, unless I ask for more. Units on every number. Where a formula appears, write it in words as well.\nTest format. The real tests are on paper, individual then team, with calculation items on these numbers with changed values, and with recognition items on the chapter’s terms and cases. Mix both kinds. End the session with three items in the test’s format and a two-line summary of what I should reread.\nHonesty. If the material does not contain what I ask, say so and point me to the chapter section named in it. Do not guess a number.\n\nKey content of the week:\n(paste here)",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Quiz-me prompt</span>"
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Quiz-me prompt</span>"
     ]
   },
   {
     "objectID": "appendix/quiz-me.html#a-follow-up-prompt-for-the-typical-errors",
     "href": "appendix/quiz-me.html#a-follow-up-prompt-for-the-typical-errors",
-    "title": "Appendix C — Quiz-me prompt",
+    "title": "Appendix D — Quiz-me prompt",
     "section": "A follow-up prompt for the typical errors",
     "text": "A follow-up prompt for the typical errors\n\nTake the typical errors in the material. For each one, give me a short calculation that contains that error and ask me to find and fix it. Then show the corrected calculation in at most four lines.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Quiz-me prompt</span>"
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Quiz-me prompt</span>"
     ]
   },
   {
     "objectID": "appendix/quiz-me.html#what-this-does-not-replace",
     "href": "appendix/quiz-me.html#what-this-does-not-replace",
-    "title": "Appendix C — Quiz-me prompt",
+    "title": "Appendix D — Quiz-me prompt",
     "section": "What this does not replace",
     "text": "What this does not replace\nThe chapter. The assistant works from a page; the test draws on the chapter’s cases and terms as well as on the numbers. Read the chapter, then use the quiz.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Quiz-me prompt</span>"
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Quiz-me prompt</span>"
     ]
   },
   {
     "objectID": "references.html",
     "href": "references.html",
-    "title": "Appendix D — References",
+    "title": "Appendix E — References",
     "section": "",
-    "text": "All sources cited in this script, in APA style. The textbook and the dataset are the two you will use every week.\n\n\nChopra, S. (2019). Supply chain management: Strategy, planning, and\noperation (7th ed., Global ed.). Pearson.\n\n\nElkington, J. (1997). Cannibals with forks: The triple bottom line\nof 21st century business. Capstone.\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations\nmanagement: Sustainability and supply chain management (14th ed.,\nGlobal ed.). Pearson.\n\n\nSterman, J. D. (1989). Modeling managerial behavior: Misperceptions of\nfeedback in a dynamic decision making experiment. Management\nScience, 35(3), 321–339. https://doi.org/10.1287/mnsc.35.3.321\n\n\nWorld Commission on Environment and Development. (1987). Our common\nfuture. Oxford University Press.",
+    "text": "All sources cited in this script, in APA style. The textbook and the dataset are the two you will use every week.\n\n\nChopra, S. (2019). Supply chain management: Strategy, planning, and\noperation (7th ed., Global ed.). Pearson.\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations\nmanagement: Sustainability and supply chain management (14th ed.,\nGlobal ed.). Pearson.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>D</span>  <span class='chapter-title'>References</span>"
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>References</span>"
     ]
   }
 ]

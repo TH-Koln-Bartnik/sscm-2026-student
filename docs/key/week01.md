@@ -1,6 +1,6 @@
 ### The problem the chapter discusses
 
-Think of the worst service you ever got, and the best. A missed train connection, a doctor's appointment that ran two hours late, a café where the coffee arrived before you had sat down. Each story is a small **production** that failed or worked: something went in (people, equipment, the way the work was organised), something came out (a service, a result, a mood). In the role play the same company has six departments, and each defends its own number: orders won, bikes per labor-hour, price per part, stock turns (how often the stock is sold and replaced in a year), defect rate (the share of faulty units), machine utilisation (the share of time the machines are busy). Every one of them is right about its number and wrong about the company.
+Think of the worst service you ever got, and the best. A missed train connection, a doctor's appointment that ran two hours late, a café where the coffee arrived before you had sat down. Each story is a small **production** that failed or worked: something went in (people, equipment, the way the work was organised), something came out (a service, a result, a mood). In the role play the same company has six departments, and each defends its own number: orders won, units per labor-hour, price per part, stock turns (how often the stock is sold and replaced in a year), defect rate (the share of faulty units), machine utilisation (the share of time the machines are busy). Every one of them is right about its number and wrong about the company.
 
 Chapter 1 gives the tool that sorts this out. **Operations** is the part of a firm that turns inputs into outputs, and the measure it keeps returning to is **productivity**: output divided by input.
 
@@ -8,15 +8,15 @@ Chapter 1 gives the tool that sorts this out. **Operations** is the part of a fi
 
 **Productivity is always a ratio, and the interesting question is what goes into the denominator.**
 
-The number above the line (the **numerator**, the output) is usually easy to count: guests served, boxes moved, titles written, bikes delivered. The number below the line (the **denominator**, the input) is a choice, and the choice decides the answer. Name the input, or the number means nothing.
+The number above the line (the **numerator**, the output) is usually easy to count: guests served, boxes moved, titles written, parcels delivered. The number below the line (the **denominator**, the input) is a choice, and the choice decides the answer. Name the input, or the number means nothing.
 
 ### The formulas, in words
 
 | Measure | In words | Example of a unit |
 |---|---|---|
 | **Productivity** | output ÷ input | guests per person-hour |
-| **Single-factor productivity** | output ÷ one input | crates per labor-hour, bikes per kWh |
-| **Multifactor productivity** | output ÷ all inputs, in money | titles per dollar, bikes per euro |
+| **Single-factor productivity** | output ÷ one input | crates per labor-hour, units per kWh |
+| **Multifactor productivity** | output ÷ all inputs, in money | titles per dollar, units per euro |
 | **Productivity growth** | (new − old) ÷ old | per cent |
 
 A **person-hour** and a **labor-hour** are the same thing: one person working one hour. Hours, kilograms and kilowatt hours cannot be added; euros can. That is why multifactor productivity converts every input into money first. Growth always divides by the *old* value.
@@ -39,7 +39,7 @@ Textbook: Heizer, Render & Munson (2023), Chapter 1, sections *The productivity 
 
 ### The supply chain: every firm's inputs in one denominator
 
-A bike reaches its rider only after a parts supplier, the assembler, a transport firm and a dealer have all done their part. At the level of the chain, the output is **bikes delivered to customers**, and the input is what *all* firms spend, in euros, or the tonnes of CO₂ the whole chain emits. A switch that makes one firm more productive can make the chain less productive, and the other way round; the two denominators, euros and CO₂, can also point in opposite directions.
+A phone reaches its buyer only after a parts supplier, the assembler, a transport firm and a retailer have all done their part. At the level of the chain, the output is **phones delivered to customers**, and the input is what *all* firms spend, in euros, or the tonnes of CO₂ the whole chain emits. A switch that makes one firm more productive can make the chain less productive, and the other way round; the two denominators, euros and CO₂, can also point in opposite directions.
 
 ### What drives productivity: labor, capital, management
 
@@ -47,7 +47,7 @@ The chapter names three **productivity variables**: **labor** (people, their ski
 
 ### Typical errors
 
-1. **No unit.** "Productivity is 3.6" says nothing. Write *guests per person-hour*, *crates per labor-hour*, *bikes per euro*.
+1. **No unit.** "Productivity is 3.6" says nothing. Write *guests per person-hour*, *crates per labor-hour*, *units per euro*.
 2. **Adding what cannot be added.** Hours plus kilograms plus kWh is not a multifactor input. Convert every input into money first.
 3. **Growth divided by the new value.** (0.4375 − 0.25) ÷ 0.4375 = 43 % is wrong; divide by the old value: +75 %.
 4. **Faster is not more productive.** Finishing sooner with more people can lower output per person-hour, because the input grew faster than the output.
