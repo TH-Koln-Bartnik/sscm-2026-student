@@ -607,98 +607,208 @@
     "href": "appendix/tools.html#ai-assistants",
     "title": "Appendix A — Tools",
     "section": "AI assistants",
-    "text": "AI assistants\nAllowed in every task. Two habits: predict the answer before you ask, and check the assistant’s number against one you computed by hand.\n\nAcademic Cloud — the service portal of German universities, run by GWDG (Göttingen). Sign in with your TH Köln account and use several language models in Chat AI, free of charge.\nPrompts for this module — quiz-me prompt for revision with the week’s key content.\n\n\nPrinciples for GenAI in this programme\n\nSupport, not a substitute for thinking. Using GenAI to support your own work is welcome and recommended. It must not replace your own academic work.\nBe able to explain it yourself. At any time, you must be able to explain your own work orally, on your own and in answer to follow-up questions.\nAvoid your own work, and you fail. If central parts were not produced by you, the result is a fail (example: whoever cannot coherently explain a source or method more than twice has, as a rule, failed the examination).\n\nTranslated from the German original: Bartnik, R., & Haag, C. (2025). Rahmensetzung zur Nutzung generativer KI im Bachelor- und Master-Studiengang Wirtschaftsingenieurwesen (V02). TH Köln. PDF",
+    "text": "AI assistants\nAllowed in every task. Two habits: predict the answer before you ask, and check the assistant’s number against one you computed by hand.\n\nAcademic Cloud — the service portal of German universities, run by GWDG (Göttingen). Sign in with your TH Köln account and use several language models in Chat AI, free of charge.\nPrompts for this module — quiz-me prompt for revision with the week’s key content.\nHow to work with an assistant — AI Fluency: the four Ds, which model for which task, two applied examples.\n\n\nPrinciples for GenAI in this programme\n\nSupport, not a substitute for thinking. Using GenAI to support your own work is welcome and recommended. It must not replace your own academic work.\nBe able to explain it yourself. At any time, you must be able to explain your own work orally, on your own and in answer to follow-up questions.\nAvoid your own work, and you fail. If central parts were not produced by you, the result is a fail (example: whoever cannot coherently explain a source or method more than twice has, as a rule, failed the examination).\n\nTranslated from the German original: Bartnik, R., & Haag, C. (2025). Rahmensetzung zur Nutzung generativer KI im Bachelor- und Master-Studiengang Wirtschaftsingenieurwesen (V02). TH Köln. PDF",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Tools</span>"
     ]
   },
   {
+    "objectID": "appendix/ai-fluency.html",
+    "href": "appendix/ai-fluency.html",
+    "title": "Appendix B — AI Fluency",
+    "section": "",
+    "text": "After this page",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>AI Fluency</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/ai-fluency.html#the-model",
+    "href": "appendix/ai-fluency.html#the-model",
+    "title": "Appendix B — AI Fluency",
+    "section": "The model",
+    "text": "The model\nAI Fluency is “the ability to work effectively, efficiently, ethically, and safely” with AI systems (Dakan & Feller, 2025). Rick Dakan (Ringling College of Art and Design) and Joseph Feller (University College Cork) break it into four competencies, the 4Ds: Delegation, Description, Discernment and Diligence. Anthropic teaches the framework in free courses, one of them for students (Dakan et al., 2025).\nIn this module we use the four Ds as four phases of one piece of work. You decide what to hand over, you describe it, you judge what comes back, and you vouch for the result. Description and Discernment form a loop: you describe, judge, describe again, until the output passes your check.\n\n\n\n\n\nflowchart LR\n  A[\"1 Delegation&lt;br/&gt;What goes to the AI?\"] --&gt; B[\"2 Description&lt;br/&gt;Say what you want\"]\n  B --&gt; C[\"3 Discernment&lt;br/&gt;Is it right?\"]\n  C -- \"not yet\" --&gt; B\n  C -- \"passes\" --&gt; D[\"4 Diligence&lt;br/&gt;Vouch for it\"]\n\n\n The 4D cycle: Description and Discernment repeat until the output passes the check. \n\n\n\nThink of a head chef with a new kitchen assistant. The chef decides which jobs the assistant takes (Delegation), gives a clear order (Description), tastes the dish before it leaves the kitchen (Discernment), and answers to the guest for every plate (Diligence). The assistant is fast; the name on the menu is still the chef’s.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>AI Fluency</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/ai-fluency.html#three-ways-of-working-with-ai",
+    "href": "appendix/ai-fluency.html#three-ways-of-working-with-ai",
+    "title": "Appendix B — AI Fluency",
+    "section": "Three ways of working with AI",
+    "text": "Three ways of working with AI\nThe framework distinguishes three modes (Dakan & Feller, 2025). Delegation includes choosing among them.\n\n\n\nMode\nWhat happens\nExample in this module\n\n\n\n\nAutomation\nThe AI does a defined task on your instruction\n“Turn this formula into a Python function”\n\n\nAugmentation\nYou and the AI think and build together, step by step\nDesigning a productivity model for a new process\n\n\nAgency\nYou set up an AI to act on its own, also for others\nThe quiz-me prompt: a tutor you configure once",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>AI Fluency</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/ai-fluency.html#phase-1-delegation-what-goes-to-the-ai",
+    "href": "appendix/ai-fluency.html#phase-1-delegation-what-goes-to-the-ai",
+    "title": "Appendix B — AI Fluency",
+    "section": "Phase 1: Delegation — what goes to the AI?",
+    "text": "Phase 1: Delegation — what goes to the AI?\nDecide before you open the chat. Three questions (Dakan & Feller, 2025):\n\nGoal and task. What is the question? What answer would change a decision? Break the work into parts: yours, the AI’s, shared.\nPlatform. What can this assistant do, and what not? Can it run code? Does it see your file? Does it know the textbook’s numbers? (Usually not exactly.)\nTask split. Hand over what is tedious and easy to check: code syntax, plots, formatting. Keep what needs judgement: the question, the formula in words, the expected answer, the interpretation.\n\nRule of thumb for this module: the formula in words and one hand-calculated result stay with you. Code, charts and layout can go to the AI.\n\nWhich model for which task\nModels differ in speed and depth. A stronger model costs more time (and often money or quota); use it where reasoning matters.\n\n\n\n\n\n\n\n\nTier\nExamples (autumn 2026)\nUse it for\n\n\n\n\nFast\nGemini in Colab; “Flash”, “mini” or “Haiku” models; small models in Academic Cloud Chat AI\nExplain one line, fix an error message, rename columns, change colours\n\n\nStrong\nClaude Sonnet, GPT-5, Gemini Pro (standard mode); the largest model in Chat AI\nWrite a function or a full block of cells, build a dashboard\n\n\nStrong + thinking\nThe same models with thinking / reasoning switched on; Claude Opus\nPlan a model’s structure, find a logic error, review someone’s code\n\n\n\nModel names change every few months; the tiers stay. When in doubt: plan and review with the strongest model, type and fix with the fast one.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>AI Fluency</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/ai-fluency.html#phase-2-description-say-what-you-want",
+    "href": "appendix/ai-fluency.html#phase-2-description-say-what-you-want",
+    "title": "Appendix B — AI Fluency",
+    "section": "Phase 2: Description — say what you want",
+    "text": "Phase 2: Description — say what you want\nThe AI knows nothing about your task beyond what you write. Three kinds of description (Dakan & Feller, 2025):\n\nProduct description — what the result looks like: inputs with units, the formula in words, the output, the format (a Python function, a table, a chart), one example with the number you expect.\nProcess description — how to get there: one step at a time, not everything at once. “First the data, then the function, then a test, then the chart.”\nPerformance description — how the AI should behave: “Ask me before you assume a value.” “Explain each line in one comment.” “Use plain words for a first-year student.”\n\nA good prompt carries context, task, constraints and a check:\n\nContext. I study operations management. I model the productivity of a process in Google Colab with pandas. Task. Write a function labour_productivity(units, hours) that returns units per labour-hour. Constraints. Plain Python, one comment per line, no extra libraries. Check. With 120 units and 40 hours the result must be 3.0 units/hour. Add a test cell that prints ✅ if so.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>AI Fluency</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/ai-fluency.html#phase-3-discernment-is-it-right",
+    "href": "appendix/ai-fluency.html#phase-3-discernment-is-it-right",
+    "title": "Appendix B — AI Fluency",
+    "section": "Phase 3: Discernment — is it right?",
+    "text": "Phase 3: Discernment — is it right?\nJudge the output; do not admire it. Three kinds of discernment (Dakan & Feller, 2025):\n\nProduct discernment — is the result correct and useful?\n\nMatches your hand-calculated number?\nUnits right (per hour, not per shift)?\nChange one input: does the output move in the direction you predicted?\nEdge cases: zero hours, empty rows, negative values?\n\nProcess discernment — is the conversation working? Three rounds without progress → start a new chat with a better description, or switch to a stronger model.\nPerformance discernment — does a configured assistant (e.g. your quiz-me tutor) behave as intended? Does it wait for your answer, or give it away?\n\nTypical AI errors in operations calculations: the code runs, the logic is wrong. Utilization computed against the wrong capacity; hours per shift multiplied twice; the bottleneck picked by processing time instead of load. Only your own number catches these.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>AI Fluency</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/ai-fluency.html#phase-4-diligence-vouch-for-it",
+    "href": "appendix/ai-fluency.html#phase-4-diligence-vouch-for-it",
+    "title": "Appendix B — AI Fluency",
+    "section": "Phase 4: Diligence — vouch for it",
+    "text": "Phase 4: Diligence — vouch for it\nYou hand in the result; you answer for it (Bartnik & Haag, 2025; Dakan & Feller, 2025):\n\nCreation diligence — no personal or confidential data in public tools. For data from a company or from fellow students, use Academic Cloud (servers in Germany) or anonymise first.\nTransparency diligence — say what the AI did. In Colab: one markdown cell with the prompt, the model and what you changed.\nDeployment diligence — before you hand it in or show it: every number checked, every line of code explainable by you. In this programme you must be able to explain your work orally at any time (see Tools → Principles).",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>AI Fluency</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/ai-fluency.html#applied-example-1-a-calculation-model",
+    "href": "appendix/ai-fluency.html#applied-example-1-a-calculation-model",
+    "title": "Appendix B — AI Fluency",
+    "section": "Applied example 1: a calculation model",
+    "text": "Applied example 1: a calculation model\nTask. A productivity model in Colab: three process variants (e.g. moving day with 2, 3 or 4 helpers), labour productivity and multifactor productivity for each, one bar chart.\n\n\n\n\n\n\n\n\nPhase\nWhat to do\nModel\n\n\n\n\n1 Delegation\nWrite the question and both formulas in words on paper. Calculate one variant by hand. Mode: augmentation for the structure, automation for the code. Keep: formulas, hand result, interpretation. Hand over: code, table, chart.\n—\n\n\n2 Description\nFirst prompt: ask for a model plan only (inputs, outputs, cells, no code). Then one prompt per cell: input table → function → test against your hand result → chart. Give units and your expected number in every prompt.\nPlan: strong + thinking. Cells: strong, or Gemini in Colab for short cells\n\n\n3 Discernment\nTest cell prints ✅ for your hand-calculated variant. Predict the direction for one more helper, then run. Check units in the table header. Error message → paste it to the fast model with the cell. Result looks odd → ask a different strong model to review the function line by line.\nFixes: fast. Review: strong + thinking, different provider\n\n\n4 Diligence\nMarkdown cell: prompts, model names, what you changed. Re-run the notebook top to bottom. Explain every line to a teammate without the AI.\n—",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>AI Fluency</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/ai-fluency.html#applied-example-2-a-dashboard",
+    "href": "appendix/ai-fluency.html#applied-example-2-a-dashboard",
+    "title": "Appendix B — AI Fluency",
+    "section": "Applied example 2: a dashboard",
+    "text": "Applied example 2: a dashboard\nTask. A one-page dashboard from your model’s results: three KPI tiles (e.g. labour productivity, multifactor productivity, cost per unit), one chart comparing the variants, one filter or slider. Built in Colab with plotly, or as a single HTML file.\n\n\n\n\n\n\n\n\nPhase\nWhat to do\nModel\n\n\n\n\n1 Delegation\nDecide on paper: who reads it, which decision it supports, which three KPIs, which chart. Sketch the layout by hand. Keep: KPI choice and definitions. Hand over: layout code, styling, interactivity.\n—\n\n\n2 Description\nGive the column names, units and five sample rows, not the whole file. State the reader, the decision, each KPI with its formula in words, chart type, filter, and constraints (one file, no outside data, colour-blind-safe colours, axis titles with units). Ask for a text wireframe first, then the code. Afterwards change one thing per prompt.\nWireframe and first build: strong (long, coherent code). Small edits (labels, colours): fast\n\n\n3 Discernment\nEach KPI tile equals the number in your model’s table. Filter set to “all” gives the totals. Bars start at zero. Every axis has a title and unit. Ask the AI: “Explain how each KPI is computed” and compare with your definitions. Test with one extreme row.\nReview of the code: strong + thinking\n\n\n4 Diligence\nAdd source, date and “built with AI assistance (model, date)” to the dashboard footer. No personal data in the file. Be ready to explain each KPI and each chart choice.\n—",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>AI Fluency</span>"
+    ]
+  },
+  {
+    "objectID": "appendix/ai-fluency.html#further-reading",
+    "href": "appendix/ai-fluency.html#further-reading",
+    "title": "Appendix B — AI Fluency",
+    "section": "Further reading",
+    "text": "Further reading\n\nDakan & Feller: Framework for AI Fluency — practical summary\nAnthropic Academy: AI Fluency: Framework & Foundations (free course) and AI Fluency for Students (Coursera)\n\n\n\n\n\nBartnik, R., & Haag, C. (2025). Rahmensetzung zur Nutzung generativer KI im Bachelor- und Master-Studiengang Wirtschaftsingenieurwesen (V02). TH Köln.\n\n\nDakan, R., & Feller, J. (2025). Framework for AI Fluency (practical summary document, version 1.1). Ringling College of Art and Design. https://ringling.libguides.com/ai/framework\n\n\nDakan, R., Feller, J., & Anthropic. (2025). AI Fluency: Framework & Foundations [Online course]. Anthropic Academy. https://anthropic.skilljar.com/ai-fluency-framework-foundations",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>AI Fluency</span>"
+    ]
+  },
+  {
     "objectID": "appendix/formula-sheet.html",
     "href": "appendix/formula-sheet.html",
-    "title": "Appendix B — Formula sheet",
+    "title": "Appendix C — Formula sheet",
     "section": "",
     "text": "Week 1 — productivity (Heizer Ch. 1)\nSymbols are kept to the textbook’s; every line says in words what the formula does. The sheet grows by one block a week.\nSource: Heizer et al. (2023), Ch. 1; moving-day rules from Handout 2 of Week 1.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Formula sheet</span>"
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Formula sheet</span>"
     ]
   },
   {
     "objectID": "appendix/formula-sheet.html#week-1-productivity-heizer-ch.-1",
     "href": "appendix/formula-sheet.html#week-1-productivity-heizer-ch.-1",
-    "title": "Appendix B — Formula sheet",
+    "title": "Appendix C — Formula sheet",
     "section": "",
     "text": "Formula\nIn words\nUnits\n\n\n\n\nProductivity = output ÷ input\nhow much comes out for each unit that goes in\nguests per person-hour, crates per labor-hour\n\n\nSingle-factor productivity = output ÷ one input\none input at a time: labor-hours, kWh, kg of material\ntitles per labor-hour, units per kWh\n\n\nMultifactor productivity = output ÷ (labor + material + energy + capital + other), all in money\nall inputs at once; money is the only unit in which hours, kilograms and kWh can be added\ntitles per dollar, units per euro\n\n\nProductivity growth = (new − old) ÷ old\nthe change, always divided by the old value\n%\n\n\nPerson-hours = people × hours (person-minutes ÷ 60)\nthe labor input of a task done by several people; 90 person-minutes are two people for 45 minutes\nperson-hours\n\n\nTime for a task = work in person-minutes ÷ people working (up to the task’s maximum)\nmore people make a task shorter only until the maximum is reached\nminutes\n\n\nContribution = (sales − production costs − finance costs) × (1 − tax rate)\nFisher Technologies’ comparison of marketing, finance and operations levers\n$ or €\n\n\n\n\n\n\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations management: Sustainability and supply chain management (14th ed., Global ed.). Pearson.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Formula sheet</span>"
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Formula sheet</span>"
     ]
   },
   {
     "objectID": "appendix/glossary.html",
     "href": "appendix/glossary.html",
-    "title": "Appendix C — Glossary",
+    "title": "Appendix D — Glossary",
     "section": "",
     "text": "Left: what we say in the room. Right: what the chapter calls it. The glossary grows by a few rows a week.\n\n\n\n\n\n\n\n\n\nPlain words\nTextbook term\nWeek\nOne line\n\n\n\n\nturning inputs into outputs\noperations, production\n1\nthe part of a firm that creates goods and services by transforming inputs into outputs (Heizer et al., 2023, Ch. 1)\n\n\nthe row of firms from raw material to customer\nsupply chain\n1\nthe firms and steps that turn raw materials into a product in someone’s hands, linked by materials forward and orders backward\n\n\noutput per input\nproductivity\n1\nhow much comes out for each unit that goes in; name the input, or the number means nothing\n\n\noutput per one input\nsingle-factor productivity\n1\noutput ÷ labor-hours, or ÷ kWh, or ÷ kg: one input at a time\n\n\noutput per all inputs in money\nmultifactor productivity, total factor productivity\n1\noutput ÷ the sum of all inputs converted into money\n\n\nhow much better than last time\nproductivity growth\n1\n(new − old) ÷ old, in per cent\n\n\none person working one hour\nperson-hour, labor-hour\n1\nthe unit of the labor input; two people for 45 minutes are 1.5 person-hours\n\n\npeople, machines, the way work is organised\nproductivity variables: labor, capital, management\n1\nthe three groups of causes the chapter names for productivity; the sticky-note board sorts into them\n\n\neffects a firm causes but does not pay for\nexternal effects, externalities\n1\nfrom Latin externus, “outward”; the module looks at the environmental ones beside profit\n\n\nthe anonymous name on your papers\ncode name\n1\na pioneer of operations management with a year, kept for the whole semester\n\n\n\n\n\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations management: Sustainability and supply chain management (14th ed., Global ed.). Pearson.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Glossary</span>"
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Glossary</span>"
     ]
   },
   {
     "objectID": "appendix/quiz-me.html",
     "href": "appendix/quiz-me.html",
-    "title": "Appendix D — Quiz-me prompt",
+    "title": "Appendix E — Quiz-me prompt",
     "section": "",
     "text": "How to use this page\nWhy paste the key content? The assistant then quizzes you on our numbers and our wording — the party, the moving day, the textbook examples we calculated — instead of on a textbook it half remembers. The check is still yours: every worked example in the key content carries the number the assistant should arrive at.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Quiz-me prompt</span>"
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Quiz-me prompt</span>"
     ]
   },
   {
     "objectID": "appendix/quiz-me.html#the-prompt",
     "href": "appendix/quiz-me.html#the-prompt",
-    "title": "Appendix D — Quiz-me prompt",
+    "title": "Appendix E — Quiz-me prompt",
     "section": "The prompt",
     "text": "The prompt\n\n\n\n\n\n\nCopy from here\n\n\n\n\nRole. You are a revision tutor for the module Sustainable Supply Chain Management at TH Köln (Prof. Dr. Roman Bartnik). I am a Bachelor student in my first course taught in English, meeting operations management for the first time.\nMaterial. Below this prompt I paste the key content of one week: the problem the chapter discusses, the sentence of the week, the formulas, examples from student life, the factory and the supply chain with their numbers, typical errors, and practice items without keys. Use only this material and the textbook chapter it names (Heizer, Render & Munson, Operations Management, 14th ed.). Do not invent numbers that are not in the material.\nMethod. Quiz me, one question at a time. Start with the problem in words, then the formula in words, then a calculation on one of the examples’ numbers with one value changed, then a practice item. After each of my answers: say whether it is right, show the calculation in at most four lines, and name the typical error I made if I made one. Never give the answer before I have tried. If I ask for the answer straight away, give one hint first.\nStyle. Plain words before the textbook term, every time: say output per one input and then (single-factor productivity). Short answers, at most six sentences, unless I ask for more. Units on every number. Where a formula appears, write it in words as well.\nTest format. The real tests are on paper, individual then team, with calculation items on these numbers with changed values, and with recognition items on the chapter’s terms and cases. Mix both kinds. End the session with three items in the test’s format and a two-line summary of what I should reread.\nHonesty. If the material does not contain what I ask, say so and point me to the chapter section named in it. Do not guess a number.\n\nKey content of the week:\n(paste here)",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Quiz-me prompt</span>"
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Quiz-me prompt</span>"
     ]
   },
   {
     "objectID": "appendix/quiz-me.html#a-follow-up-prompt-for-the-typical-errors",
     "href": "appendix/quiz-me.html#a-follow-up-prompt-for-the-typical-errors",
-    "title": "Appendix D — Quiz-me prompt",
+    "title": "Appendix E — Quiz-me prompt",
     "section": "A follow-up prompt for the typical errors",
     "text": "A follow-up prompt for the typical errors\n\nTake the typical errors in the material. For each one, give me a short calculation that contains that error and ask me to find and fix it. Then show the corrected calculation in at most four lines.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Quiz-me prompt</span>"
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Quiz-me prompt</span>"
     ]
   },
   {
     "objectID": "appendix/quiz-me.html#what-this-does-not-replace",
     "href": "appendix/quiz-me.html#what-this-does-not-replace",
-    "title": "Appendix D — Quiz-me prompt",
+    "title": "Appendix E — Quiz-me prompt",
     "section": "What this does not replace",
     "text": "What this does not replace\nThe chapter. The assistant works from a page; the test draws on the chapter’s cases and terms as well as on the numbers. Read the chapter, then use the quiz.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Quiz-me prompt</span>"
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Quiz-me prompt</span>"
     ]
   },
   {
     "objectID": "references.html",
     "href": "references.html",
-    "title": "Appendix E — References",
+    "title": "Appendix F — References",
     "section": "",
-    "text": "All sources cited in this script, in APA style. The textbook and the dataset are the two you will use every week.\n\n\nChopra, S. (2019). Supply chain management: Strategy, planning, and\noperation (7th ed., Global ed.). Pearson.\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations\nmanagement: Sustainability and supply chain management (14th ed.,\nGlobal ed.). Pearson.\n\n\nMichaelsen, L. K., Knight, A. B., & Fink, L. D. (Eds.). (2004).\nTeam-based learning: A transformative use of small groups in college\nteaching. Stylus.\n\n\nO’Dwyer, B. (2020). Peer evaluation: Fink’s method.\nInteDashboard blog. https://www.blog.intedashboard.com/blogs/peer-evaluation/finks",
+    "text": "All sources cited in this script, in APA style. The textbook and the dataset are the two you will use every week.\n\n\nBartnik, R., & Haag, C. (2025). Rahmensetzung zur Nutzung generativer KI im Bachelor- und\nMaster-Studiengang Wirtschaftsingenieurwesen (V02). TH Köln.\n\n\nChopra, S. (2019). Supply chain management: Strategy, planning, and\noperation (7th ed., Global ed.). Pearson.\n\n\nDakan, R., & Feller, J. (2025). Framework for AI\nFluency (practical summary document, version 1.1).\nRingling College of Art and Design. https://ringling.libguides.com/ai/framework\n\n\nDakan, R., Feller, J., & Anthropic. (2025). AI\nFluency: Framework &\nFoundations [Online course]. Anthropic\nAcademy. https://anthropic.skilljar.com/ai-fluency-framework-foundations\n\n\nHeizer, J., Render, B., & Munson, C. (2023). Operations\nmanagement: Sustainability and supply chain management (14th ed.,\nGlobal ed.). Pearson.\n\n\nMichaelsen, L. K., Knight, A. B., & Fink, L. D. (Eds.). (2004).\nTeam-based learning: A transformative use of small groups in college\nteaching. Stylus.\n\n\nO’Dwyer, B. (2020). Peer evaluation: Fink’s method.\nInteDashboard blog. https://www.blog.intedashboard.com/blogs/peer-evaluation/finks",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>E</span>  <span class='chapter-title'>References</span>"
+      "<span class='chapter-number'>F</span>  <span class='chapter-title'>References</span>"
     ]
   }
 ]
