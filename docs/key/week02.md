@@ -2,6 +2,8 @@
 
 At 12:15 the Mensa queue reaches the door, yet the cashier waits half the time. The main-dish counter serves 120 guests an hour, the cashier 240, and 180 arrive: the queue grows by 60 guests an hour **in front of the counter**. A second cashier changes nothing.
 
+**Warm-up (role play):** six departments of a bike company, each defending its own single-factor number, face a rush order of 2,000 bikes in four weeks. That is 500 bikes a week: whose capacity decides whether it fits?
+
 ### Sentence of the week
 
 **A process can only go as fast as its slowest step, and that step sets the output for everyone.**

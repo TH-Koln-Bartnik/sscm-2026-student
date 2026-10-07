@@ -1,6 +1,6 @@
 ### Problem
 
-Every service is a small **production**: inputs (people, equipment, organisation) → output. Six departments, six numbers (orders, units per labor-hour, price per part, stock turns, defect rate, utilisation): each right about its number, wrong about the company.
+Every service is a small **production**: inputs (people, equipment, organisation) → output.
 
 **Operations** = the part of a firm that turns inputs into outputs. **Productivity** = output ÷ input.
 
