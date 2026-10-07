@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Line Widget</title>
+<meta name="description" content="Find the bottleneck: change minutes, people and ovens on a four-step pizza line (or the Backhaus Kaya roll line) and watch capacity, bottleneck time, throughput time and utilization change.">
+<style>
+:root {
+  --red: #c1002a;
+  --red-soft: #f6dde3;
+  --bg: #ffffff;
+  --panel: #f4f4f4;
+  --line: #d4d4d4;
+  --text: #1a1a1a;
+  --muted: #5f5f5f;
+  --bar: #a6a6a6;
+  --ok: #1f7a3f;
+  --ok-soft: #e1f2e6;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --red: #ff5c7a;
+    --red-soft: #3b1820;
+    --bg: #141414;
+    --panel: #1f1f1f;
+    --line: #3a3a3a;
+    --text: #f2f2f2;
+    --muted: #b5b5b5;
+    --bar: #7c7c7c;
+    --ok: #6fd18f;
+    --ok-soft: #173322;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --red: #ff5c7a;
+  --red-soft: #3b1820;
+  --bg: #141414;
+  --panel: #1f1f1f;
+  --line: #3a3a3a;
+  --text: #f2f2f2;
+  --muted: #b5b5b5;
+  --bar: #7c7c7c;
+  --ok: #6fd18f;
+  --ok-soft: #173322;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 16px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px;
+  border-bottom: 3px solid var(--red); padding-bottom: 8px; margin-bottom: 14px; }
+h1 { font-size: 1.5rem; margin: 0; line-height: 1.2; }
+h1 span { color: var(--red); }
+h2 { font-size: 1.15rem; margin: 0 0 8px; }
+.modes { display: flex; gap: 6px; flex-wrap: wrap; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.mode-btn { border: 2px solid var(--line); background: var(--panel); border-radius: 999px; padding: 6px 14px; font-size: 0.95rem; }
+.mode-btn[aria-pressed="true"] { border-color: var(--red); background: var(--red); color: #fff; font-weight: 700; }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+@media (min-width: 980px) { .grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); } }
+.panel { background: var(--panel); border-radius: 10px; padding: 14px; }
+.step { border-bottom: 1px solid var(--line); padding: 10px 0; }
+.step:last-child { border-bottom: 0; }
+.step-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.step-name { font-weight: 700; font-size: 1.05rem; }
+.step-name.is-bn { color: var(--red); }
+.step-cap { font-size: 0.95rem; color: var(--muted); }
+.ctrl { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; align-items: center; margin-top: 6px; }
+.ctrl label { font-size: 0.92rem; color: var(--muted); display: block; }
+.ctrl output { font-weight: 700; color: var(--text); }
+input[type="range"] { width: 100%; accent-color: var(--red); height: 32px; margin: 0; }
+.stepper { display: inline-flex; align-items: center; border: 2px solid var(--line); border-radius: 8px; overflow: hidden; }
+.stepper button { width: 40px; height: 40px; border: 0; background: var(--bg); font-size: 1.3rem; font-weight: 700; }
+.stepper button:disabled { opacity: 0.35; cursor: default; }
+.stepper span { min-width: 74px; text-align: center; font-weight: 700; padding: 0 4px; font-size: 0.95rem; }
+.demand { margin-top: 12px; padding-top: 12px; border-top: 2px solid var(--line); }
+.order-row { display: flex; align-items: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+.order-row input { width: 110px; font: inherit; padding: 6px 8px; border: 2px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); }
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px; }
+@media (min-width: 640px) { .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.tile { background: var(--panel); border-top: 4px solid var(--red); border-radius: 6px; padding: 8px 10px; }
+.tile .k { font-size: 0.85rem; color: var(--muted); }
+.tile .v { font-size: 1.55rem; font-weight: 700; line-height: 1.15; }
+.tile .u { font-size: 0.85rem; color: var(--muted); }
+svg text { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+.chart { width: 100%; height: auto; display: block; }
+.explain { font-size: 0.98rem; margin: 8px 0 0; }
+.explain b { color: var(--red); }
+.status { margin-top: 8px; padding: 8px 10px; border-radius: 8px; font-size: 0.98rem; }
+.status.ok { background: var(--ok-soft); }
+.status.bad { background: var(--red-soft); }
+.challenges { margin-top: 16px; }
+.ch { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 4px 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.ch:last-child { border-bottom: 0; }
+.ch .mark { width: 34px; height: 34px; border-radius: 50%; border: 3px solid var(--line); display: flex; align-items: center; justify-content: center; font-weight: 700; }
+.ch.done .mark { border-color: var(--ok); background: var(--ok); color: #fff; }
+.ch .q { font-weight: 700; }
+.ch .fb { grid-column: 2; font-size: 0.95rem; color: var(--muted); }
+.ch.done .fb { color: var(--ok); }
+.row-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.plain-btn { border: 2px solid var(--line); background: var(--bg); border-radius: 8px; padding: 6px 12px; font-size: 0.95rem; }
+.note { font-size: 0.9rem; color: var(--muted); margin-top: 14px; }
+.hidden { display: none !important; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Line widget · <span>find the bottleneck</span></h1>
+    <div class="modes" role="group" aria-label="Choose the line">
+      <button class="mode-btn" id="mode-pizza" aria-pressed="true">Party pizza line</button>
+      <button class="mode-btn" id="mode-bakery" aria-pressed="false">Backhaus Kaya roll line</button>
+      <button class="mode-btn" id="theme-btn" aria-pressed="false" title="Switch light and dark">Dark / light</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <section class="panel" aria-labelledby="ctrl-h">
+      <h2 id="ctrl-h">Change the steps</h2>
+      <div id="steps"></div>
+      <div class="demand">
+        <div class="ctrl">
+          <div>
+            <label for="demand">Demand: <span id="demand-unit">pizzas wanted per hour</span></label>
+            <input type="range" id="demand">
+          </div>
+          <output id="demand-out" for="demand"></output>
+        </div>
+        <div class="order-row">
+          <label for="order">Order size:</label>
+          <input type="number" id="order" min="1" step="1" inputmode="numeric">
+          <span id="order-unit">pizzas</span>
+        </div>
+      </div>
+      <div class="row-btns">
+        <button class="plain-btn" id="reset">Reset this line</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="res-h">
+      <h2 id="res-h" class="hidden">Results</h2>
+      <div class="tiles">
+        <div class="tile"><div class="k">Line capacity</div><div class="v" id="t-cap"></div><div class="u" id="t-cap-u"></div></div>
+        <div class="tile"><div class="k">Bottleneck time</div><div class="v" id="t-bt"></div><div class="u" id="t-bt-u"></div></div>
+        <div class="tile"><div class="k">Throughput time</div><div class="v" id="t-tt"></div><div class="u">one unit, no waiting</div></div>
+        <div class="tile"><div class="k" id="t-n-k">24 pizzas take</div><div class="v" id="t-n"></div><div class="u" id="t-n-u"></div></div>
+      </div>
+      <div class="panel">
+        <svg class="chart" id="chart" role="img" aria-labelledby="chart-title"><title id="chart-title">Capacity per hour of each step</title></svg>
+        <p class="explain" id="explain"></p>
+        <div class="status" id="status"></div>
+      </div>
+
+      <div class="panel challenges" id="challenges" aria-labelledby="ch-h">
+        <h2 id="ch-h">Try this</h2>
+        <div class="ch" id="ch1"><div class="mark" aria-hidden="true">1</div><div class="q">Get 24 pizzas in under 2 hours with only one extra person or one extra oven.</div><div class="fb" aria-live="polite"></div></div>
+        <div class="ch" id="ch2"><div class="mark" aria-hidden="true">2</div><div class="q">Make the toppings step the bottleneck.</div><div class="fb" aria-live="polite"></div></div>
+        <div class="ch" id="ch3"><div class="mark" aria-hidden="true">3</div><div class="q">Which change does nothing for the output per hour? Prove it.</div><div class="fb" aria-live="polite"></div></div>
+      </div>
+      <div class="panel challenges hidden" id="bakery-q">
+        <h2>Questions for your team</h2>
+        <p class="explain">Which step limits the night shift? What does a third baker at “Divide &amp; shape” change? Move the demand slider: from which demand on does the line fall behind? Check your answers with the case, not with this page.</p>
+      </div>
+      <p class="note">Capacity of a step = 60 minutes ÷ minutes per unit × parallel workers or machines (batch: units per load × 60 ÷ minutes per load). Bottleneck = step with the lowest capacity. Time for an order = throughput time + (order − 1) × bottleneck time. Eigene Darstellung, R. Bartnik 2026.</p>
+    </section>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // Two lines. A step is either a batch step (unitsPerLoad units take `time` minutes per load)
+  // or a rate step (`rate` units per minute per worker). Parallel = workers or machines.
+  var LINES = {
+    pizza: {
+      unit: "pizzas", unit1: "pizza", demandUnit: "pizzas wanted per hour",
+      demand: 12, demandMin: 0, demandMax: 40, demandStep: 1, order: 24,
+      steps: [
+        { name: "Roll dough", kind: "batch", time: 3, unitsPerLoad: 1, parallel: 1, res: ["person", "people"], tMin: 1, tMax: 15, tStep: 0.5, pMax: 4 },
+        { name: "Add toppings", kind: "batch", time: 4, unitsPerLoad: 1, parallel: 1, res: ["person", "people"], tMin: 1, tMax: 15, tStep: 0.5, pMax: 4 },
+        { name: "Bake", kind: "batch", time: 10, unitsPerLoad: 2, parallel: 1, res: ["oven", "ovens"], tMin: 4, tMax: 20, tStep: 0.5, pMax: 4 },
+        { name: "Cut & serve", kind: "batch", time: 2, unitsPerLoad: 1, parallel: 1, res: ["person", "people"], tMin: 1, tMax: 15, tStep: 0.5, pMax: 4 }
+      ]
+    },
+    bakery: {
+      unit: "rolls", unit1: "roll", demandUnit: "rolls wanted per hour",
+      demand: 375, demandMin: 0, demandMax: 1500, demandStep: 25, order: 1500,
+      steps: [
+        { name: "Mix dough", kind: "batch", time: 20, unitsPerLoad: 600, parallel: 1, res: ["mixer", "mixers"], tMin: 10, tMax: 40, tStep: 1, pMax: 3 },
+        { name: "Divide & shape", kind: "rate", rate: 7, parallel: 2, res: ["baker", "bakers"], rMin: 3, rMax: 12, rStep: 0.5, pMax: 5 },
+        { name: "Proof", kind: "batch", time: 45, unitsPerLoad: 720, parallel: 1, res: ["cabinet", "cabinets"], tMin: 30, tMax: 90, tStep: 5, pMax: 3 },
+        { name: "Bake", kind: "batch", time: 20, unitsPerLoad: 240, parallel: 1, res: ["deck oven", "deck ovens"], tMin: 12, tMax: 40, tStep: 1, pMax: 3 },
+        { name: "Cool & pack", kind: "rate", rate: 15, parallel: 1, res: ["person", "people"], rMin: 5, rMax: 30, rStep: 1, pMax: 4 }
+      ]
+    }
+  };
+
+  var state = {};
+  var mode = "pizza";
+  var EPS = 1e-9;
+
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function fresh(m) {
+    var L = LINES[m];
+    return { steps: clone(L.steps), demand: L.demand, order: L.order };
+  }
+  state.pizza = fresh("pizza");
+  state.bakery = fresh("bakery");
+
+  // ---- the model, in words ------------------------------------------------
+  function capacity(s) {          // units per hour
+    return s.kind === "rate" ? s.rate * 60 * s.parallel : s.unitsPerLoad * 60 / s.time * s.parallel;
+  }
+  function unitTime(s) {          // minutes one unit spends in the step, without waiting
+    return s.kind === "rate" ? 1 / s.rate : s.time;
+  }
+  function compute(st) {
+    var caps = st.steps.map(capacity);
+    var lineCap = Math.min.apply(null, caps);
+    var bn = [];
+    caps.forEach(function (c, i) { if (Math.abs(c - lineCap) < EPS * Math.max(1, c)) bn.push(i); });
+    var bt = 60 / lineCap;                                   // minutes per unit at the bottleneck
+    var tt = st.steps.reduce(function (a, s) { return a + unitTime(s); }, 0);
+    var output = Math.min(st.demand, lineCap);
+    var util = caps.map(function (c) { return output / c; });
+    var timeN = tt + (st.order - 1) * bt;
+    return { caps: caps, lineCap: lineCap, bottlenecks: bn, bottleneckTime: bt, throughputTime: tt,
+             output: output, utilization: util, timeOrder: timeN, demand: st.demand, order: st.order,
+             queuePerHour: Math.max(0, st.demand - lineCap) };
+  }
+  window.lineWidget = {           // read-only access for tests
+    compute: function () { return compute(state[mode]); },
+    mode: function () { return mode; },
+    state: function () { return clone(state[mode]); }
+  };
+
+  // ---- formatting -----------------------------------------------------------
+  function num(x, d) {
+    if (d === undefined) d = 1;
+    var r = Math.round(x * Math.pow(10, d)) / Math.pow(10, d);
+    return r.toLocaleString("en-GB", { maximumFractionDigits: d });
+  }
+  function minutes(x) {
+    if (x < 1) return num(x * 60, 0) + " s";
+    return num(x, 1) + " min";
+  }
+  function hm(x) {
+    var m = Math.round(x);
+    var h = Math.floor(m / 60);
+    return h > 0 ? "(" + h + " h " + (m - 60 * h) + " min)" : "";
+  }
+  function pct(x) { return num(x * 100, 0) + " %"; }
+  function esc(t) { return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+
+  // ---- controls -------------------------------------------------------------
+  var stepsEl = document.getElementById("steps");
+  function buildControls() {
+    var L = LINES[mode], st = state[mode];
+    stepsEl.innerHTML = "";
+    st.steps.forEach(function (s, i) {
+      var div = document.createElement("div");
+      div.className = "step";
+      var timeCtrl;
+      if (s.kind === "rate") {
+        timeCtrl = '<label for="r' + i + '">' + L.unit + ' per minute per ' + s.res[0] + '</label>' +
+          '<input type="range" id="r' + i + '" min="' + s.rMin + '" max="' + s.rMax + '" step="' + s.rStep + '" value="' + s.rate + '">';
+      } else {
+        var what = s.unitsPerLoad > 1 ? "minutes per load of " + num(s.unitsPerLoad, 0) + " " + L.unit : "minutes per " + L.unit1;
+        timeCtrl = '<label for="t' + i + '">' + what + '</label>' +
+          '<input type="range" id="t' + i + '" min="' + s.tMin + '" max="' + s.tMax + '" step="' + s.tStep + '" value="' + s.time + '">';
+      }
+      div.innerHTML =
+        '<div class="step-head"><span class="step-name" id="n' + i + '">' + esc(s.name) + '</span><span class="step-cap" id="c' + i + '"></span></div>' +
+        '<div class="ctrl"><div>' + timeCtrl + '</div><output id="o' + i + '"></output></div>' +
+        '<div class="ctrl"><div><label>' + s.res[1] + ' in parallel</label></div>' +
+        '<div class="stepper"><button type="button" id="m' + i + '" aria-label="one ' + s.res[0] + ' less at ' + esc(s.name) + '">−</button>' +
+        '<span id="p' + i + '"></span>' +
+        '<button type="button" id="a' + i + '" aria-label="one ' + s.res[0] + ' more at ' + esc(s.name) + '">+</button></div></div>';
+      stepsEl.appendChild(div);
+      var slider = div.querySelector("input[type=range]");
+      slider.addEventListener("input", function () {
+        if (s.kind === "rate") s.rate = parseFloat(slider.value); else s.time = parseFloat(slider.value);
+        render();
+      });
+      div.querySelector("#m" + i).addEventListener("click", function () { if (s.parallel > 1) { s.parallel--; render(); } });
+      div.querySelector("#a" + i).addEventListener("click", function () { if (s.parallel < s.pMax) { s.parallel++; render(); } });
+    });
+    var d = document.getElementById("demand");
+    d.min = L.demandMin; d.max = L.demandMax; d.step = L.demandStep; d.value = st.demand;
+    document.getElementById("demand-unit").textContent = L.demandUnit;
+    document.getElementById("order").value = st.order;
+    document.getElementById("order-unit").textContent = L.unit;
+  }
+  document.getElementById("demand").addEventListener("input", function (e) {
+    state[mode].demand = parseFloat(e.target.value); render();
+  });
+  document.getElementById("order").addEventListener("input", function (e) {
+    var v = parseInt(e.target.value, 10);
+    if (v >= 1 && v <= 100000) { state[mode].order = v; render(); }
+  });
+  document.getElementById("reset").addEventListener("click", function () {
+    state[mode] = fresh(mode); buildControls(); render();
+  });
+
+  // ---- chart ----------------------------------------------------------------
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+  function drawChart(r) {
+    var st = state[mode], L = LINES[mode];
+    var svg = document.getElementById("chart");
+    while (svg.lastChild && svg.lastChild.tagName !== "title") svg.removeChild(svg.lastChild);
+    var pxW = svg.getBoundingClientRect().width || 640;
+    var narrow = pxW < 520;
+    var W = narrow ? Math.max(300, Math.round(pxW)) : 640, labelW = narrow ? 0 : 150, rowH = narrow ? 64 : 46, top = 50, bottom = 14;
+    var H = top + st.steps.length * rowH + bottom;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    var css = getComputedStyle(document.documentElement);
+    var cRed = css.getPropertyValue("--red").trim(), cBar = css.getPropertyValue("--bar").trim(),
+        cText = css.getPropertyValue("--text").trim(), cMuted = css.getPropertyValue("--muted").trim();
+    var maxV = Math.max(Math.max.apply(null, r.caps), st.demand) * 1.08;
+    var x0 = labelW + 4, plotW = W - x0 - (narrow ? 130 : 150);
+    function sx(v) { return x0 + v / maxV * plotW; }
+    svg.appendChild(el("text", { x: 0, y: 18, "font-size": 15, fill: cMuted }, "capacity, " + L.unit + " per hour"));
+    st.steps.forEach(function (s, i) {
+      var y = top + i * rowH;
+      var isBn = r.bottlenecks.indexOf(i) >= 0;
+      var by = narrow ? y + 22 : y + 6, bh = narrow ? 26 : 30;
+      if (narrow) svg.appendChild(el("text", { x: 0, y: y + 17, "font-size": 16, "font-weight": 700, fill: isBn ? cRed : cText }, s.name));
+      else svg.appendChild(el("text", { x: labelW - 6, y: by + 21, "font-size": 17, "text-anchor": "end", "font-weight": isBn ? 700 : 400, fill: isBn ? cRed : cText }, s.name));
+      svg.appendChild(el("rect", { x: x0, y: by, width: Math.max(2, sx(r.caps[i]) - x0), height: bh, fill: isBn ? cRed : cBar, rx: 3 }));
+      svg.appendChild(el("text", { x: sx(r.caps[i]) + 6, y: by + bh / 2 + 6, "font-size": 16, "font-weight": 700, fill: isBn ? cRed : cText },
+        num(r.caps[i], 1) + " · busy " + pct(r.utilization[i])));
+    });
+    var dx = sx(st.demand);
+    svg.appendChild(el("line", { x1: dx, y1: top - 4, x2: dx, y2: H - bottom + 6, stroke: cText, "stroke-width": 2, "stroke-dasharray": "6 5" }));
+    svg.appendChild(el("text", { x: Math.min(dx + 4, W - 4), y: top - 8, "font-size": 14, fill: cText, "text-anchor": dx > W - 140 ? "end" : "start" }, "demand " + num(st.demand, 0)));
+  }
+
+  // ---- results --------------------------------------------------------------
+  function setText(id, t) { document.getElementById(id).textContent = t; }
+  function render() {
+    var L = LINES[mode], st = state[mode], r = compute(st);
+    st.steps.forEach(function (s, i) {
+      var isBn = r.bottlenecks.indexOf(i) >= 0;
+      document.getElementById("n" + i).className = "step-name" + (isBn ? " is-bn" : "");
+      setText("c" + i, num(r.caps[i], 1) + " " + L.unit + " per hour" + (isBn ? " · bottleneck" : ""));
+      setText("o" + i, s.kind === "rate" ? num(s.rate, 1) + " per min" : num(s.time, 1) + " min");
+      setText("p" + i, s.parallel + " " + (s.parallel === 1 ? s.res[0] : s.res[1]));
+      document.getElementById("m" + i).disabled = s.parallel <= 1;
+      document.getElementById("a" + i).disabled = s.parallel >= s.pMax;
+    });
+    setText("demand-out", num(st.demand, 0) + " per hour");
+    setText("t-cap", num(r.lineCap, 1));
+    setText("t-cap-u", L.unit + " per hour");
+    setText("t-bt", minutes(r.bottleneckTime));
+    setText("t-bt-u", "per " + L.unit1 + " at the end of the line");
+    setText("t-tt", minutes(r.throughputTime));
+    setText("t-n-k", num(st.order, 0) + " " + L.unit + " take");
+    setText("t-n", num(r.timeOrder, 0) + " min");
+    setText("t-n-u", hm(r.timeOrder));
+    drawChart(r);
+    var names = r.bottlenecks.map(function (i) { return st.steps[i].name; }).join(" and ");
+    document.getElementById("explain").innerHTML =
+      "Bottleneck: <b>" + esc(names) + "</b>. First " + L.unit1 + " after " + minutes(r.throughputTime) +
+      ", then one every " + minutes(r.bottleneckTime) + ": " + num(r.throughputTime, 1) + " + " + num(st.order - 1, 0) +
+      " × " + num(r.bottleneckTime, r.bottleneckTime < 1 ? 4 : 2) + " = " + num(r.timeOrder, 0) + " min.";
+    var status = document.getElementById("status");
+    if (st.demand > r.lineCap + EPS) {
+      status.className = "status bad";
+      status.textContent = "Demand " + num(st.demand, 0) + " per hour is above the line capacity: the line makes " +
+        num(r.output, 1) + " per hour and the queue grows by " + num(r.queuePerHour, 1) + " " + L.unit + " per hour.";
+    } else {
+      status.className = "status ok";
+      status.textContent = "The line keeps up: it makes " + num(r.output, 1) + " " + L.unit + " per hour, the demand.";
+    }
+    if (mode === "pizza") checkChallenges(r);
+    lastResult = r;
+  }
+  var lastResult = null;
+
+  // ---- challenges (pizza line only) ------------------------------------------
+  var BASE = compute(fresh("pizza"));
+  var solved = { ch1: false, ch2: false, ch3: false };
+  function mark(id, ok, msg) {
+    var box = document.getElementById(id);
+    if (ok) solved[id] = true;
+    box.classList.toggle("done", solved[id]);
+    box.querySelector(".mark").textContent = solved[id] ? "✓" : id.slice(2);
+    box.querySelector(".fb").textContent = msg;
+  }
+  function checkChallenges(r) {
+    var st = state.pizza, base = LINES.pizza.steps;
+    var extra = 0, timesSame = true;
+    st.steps.forEach(function (s, i) {
+      extra += s.parallel - base[i].parallel;
+      if (Math.abs(s.time - base[i].time) > EPS) timesSame = false;
+    });
+    var fewerSomewhere = st.steps.some(function (s, i) { return s.parallel < base[i].parallel; });
+    // 1 — under two hours with exactly one extra person or oven, times unchanged
+    if (st.order !== 24) mark("ch1", false, solved.ch1 ? "Solved earlier. Set the order back to 24 to see it again." : "Set the order size back to 24 pizzas first.");
+    else if (!timesSame) mark("ch1", false, solved.ch1 ? "Solved earlier. Keep the minutes as they were (Reset)." : "Keep the minutes as they are: add one person or one oven only.");
+    else if (extra !== 1 || fewerSomewhere) mark("ch1", false, solved.ch1 ? "Solved earlier." : "Add exactly one person or one oven (now: " + (extra > 0 ? "+" : "") + extra + ").");
+    else if (r.timeOrder < 120 - EPS) mark("ch1", true, "Yes: " + num(r.timeOrder, 0) + " min. You added capacity at the bottleneck, so the whole line got faster.");
+    else mark("ch1", false, "Not yet: " + num(r.timeOrder, 0) + " min. One extra resource, but at a step that was not the bottleneck.");
+    // 2 — toppings is the only bottleneck
+    var tIdx = 1;
+    if (r.bottlenecks.length === 1 && r.bottlenecks[0] === tIdx)
+      mark("ch2", true, "Yes: toppings now set the pace at " + num(r.lineCap, 1) + " pizzas per hour. The bottleneck moved.");
+    else mark("ch2", false, solved.ch2 ? "Solved earlier." : "The bottleneck is " + r.bottlenecks.map(function (i) { return st.steps[i].name; }).join(" and ") + ". Make toppings the only lowest bar.");
+    // 3 — a change that alters one step's capacity but not the line capacity
+    var changed = [];
+    r.caps.forEach(function (c, i) { if (Math.abs(c - BASE.caps[i]) > EPS) changed.push(i); });
+    if (changed.length >= 1 && Math.abs(r.lineCap - BASE.lineCap) < EPS) {
+      var i = changed[0];
+      mark("ch3", true, "Proved: " + st.steps[i].name + " went from " + num(BASE.caps[i], 1) + " to " + num(r.caps[i], 1) +
+        " per hour, yet the line still makes " + num(r.lineCap, 1) + " per hour. It is not the bottleneck.");
+    } else if (changed.length === 0) mark("ch3", false, solved.ch3 ? "Solved earlier." : "Change one step and compare the line capacity before and after.");
+    else mark("ch3", false, solved.ch3 ? "Solved earlier." : "This change moved the line capacity to " + num(r.lineCap, 1) + " per hour, so it did something. Try another step.");
+  }
+
+  // ---- modes and theme ------------------------------------------------------
+  function setMode(m) {
+    mode = m;
+    document.getElementById("mode-pizza").setAttribute("aria-pressed", m === "pizza");
+    document.getElementById("mode-bakery").setAttribute("aria-pressed", m === "bakery");
+    document.getElementById("challenges").classList.toggle("hidden", m !== "pizza");
+    document.getElementById("bakery-q").classList.toggle("hidden", m !== "bakery");
+    buildControls(); render();
+  }
+  document.getElementById("mode-pizza").addEventListener("click", function () { setMode("pizza"); });
+  document.getElementById("mode-bakery").addEventListener("click", function () { setMode("bakery"); });
+  document.getElementById("theme-btn").addEventListener("click", function () {
+    var root = document.documentElement;
+    var dark = root.getAttribute("data-theme") ? root.getAttribute("data-theme") === "dark"
+      : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.setAttribute("data-theme", dark ? "light" : "dark");
+    render();
+  });
+  window.addEventListener("resize", function () { if (lastResult) drawChart(lastResult); });
+  if (window.matchMedia) {
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    if (mq.addEventListener) mq.addEventListener("change", render);
+  }
+  setMode("pizza");
+})();
+</script>
+</body>
+</html>

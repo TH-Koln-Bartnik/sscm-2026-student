@@ -1,0 +1,6 @@
+workcenter_id,workcenter_name,seq,num_servers,shift_hours,days_per_week,availability,process_time_cv,fixed_cost_eur_week
+WC1,Frame preparation,1,1,8.0,5,0.85,0.2,300.0
+WC2,Wheel/drivetrain preparation,2,2,8.0,5,0.8,0.3,250.0
+WC3,Final assembly,3,2,8.0,5,0.9,0.35,120.0
+WC4,Quality inspection/rework,4,1,8.0,5,0.95,0.5,80.0
+WC5,Packaging,5,1,8.0,5,0.9,0.2,100.0

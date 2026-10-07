@@ -1,0 +1,81 @@
+file,column,unit,description
+products.csv,product_id,-,"UR-CITY, UR-E (bonus)."
+products.csv,product_name,-,Product name.
+products.csv,frame_material,-,Frame material: aluminium (the built dataset) or steel; absent = aluminium. The v0.3 Week 3 design decision.
+products.csv,mass_kg,kg,Mass of the finished bike.
+products.csv,list_price_eur,EUR,Net sales price.
+bom.csv,product_id,-,Product.
+bom.csv,component_id,-,"Component (frame, wheelset, drivetrain, ...)."
+bom.csv,component_name,-,Plain name.
+bom.csv,qty_per_unit,units per bike,Quantity per bike.
+bom.csv,mass_kg,kg per bike,Mass per bike.
+bom.csv,unit_cost_eur,EUR per bike,Purchase cost per bike.
+bom.csv,supplier_id,-,Default supplier.
+bom.csv,added_at_workcenter,-,Workcenter where the component enters the bike.
+workcenters.csv,workcenter_id,-,WC1-WC5.
+workcenters.csv,workcenter_name,-,Station name in plain words.
+workcenters.csv,seq,-,Position in the line.
+workcenters.csv,num_servers,machines,"Identical machines or workplaces at the station, one worker each."
+workcenters.csv,shift_hours,hours per day,Hours the station runs per working day.
+workcenters.csv,days_per_week,days per week,Working days.
+workcenters.csv,availability,share (0-1),Share of the shift the station is really working.
+workcenters.csv,process_time_cv,share (spread / average),"Irregularity of minutes_per_bike per station, keyed by station name."
+workcenters.csv,fixed_cost_eur_week,EUR per machine per week,Fixed weekly cost of one machine or workplace.
+routing.csv,product_id,-,Product.
+routing.csv,seq,-,Step.
+routing.csv,workcenter_id,-,Workcenter.
+routing.csv,process_time_min,minutes per bike,"Hands-on time per bike at one machine or workplace, without waiting."
+routing.csv,setup_time_min,minutes per batch,"Setup per batch (bonus, Week 3)."
+process_environment.csv,workcenter_id,-,Workcenter.
+process_environment.csv,kw_running,kW per machine,Power drawn while working on a bike.
+process_environment.csv,kw_idle,kW per machine,Power drawn while switched on and waiting.
+process_environment.csv,waste_kg_per_unit,kg per unit,Reserved (packaging waste).
+process_environment.csv,water_l_per_unit,litres per unit,Reserved.
+suppliers.csv,supplier_id,-,S1..S3.
+suppliers.csv,supplier_name,-,Supplier name.
+suppliers.csv,country,-,Country of the plant.
+suppliers.csv,component_id,-,Component supplied.
+suppliers.csv,unit_price_eur,EUR per frame,Price per frame.
+suppliers.csv,promised_lead_days,working days,Promised delivery time.
+suppliers.csv,lead_time_mean_days,working days,Average delivery time observed for this supplier (Week 6 view); Frames North carries the contract 6.5 of schema/standard/week5.json.
+suppliers.csv,lead_time_sd_days,working days,Spread (standard deviation) of the delivery time for this supplier (Week 6 view).
+suppliers.csv,capacity_per_month,frames per month,Most frames the supplier can deliver per month.
+suppliers.csv,min_per_month,units per month,Minimum order quantity per month agreed with this supplier (0 = none).
+suppliers.csv,kg_co2e_per_unit,kg CO2e per frame,"Footprint of one frame, production plus transport."
+suppliers.csv,location_id,-,Link to locations (logistics layer).
+locations.csv,location_id,-,"Plant, supplier, port, warehouse, dealer region."
+locations.csv,name,-,Plain name.
+locations.csv,type,-,plant / supplier / port / warehouse / customer_region.
+locations.csv,country,-,ISO country.
+locations.csv,lat,degrees,Latitude.
+locations.csv,lon,degrees,Longitude.
+network_lanes.csv,lane_id,-,Lane.
+network_lanes.csv,origin_id,-,From location.
+network_lanes.csv,destination_id,-,To location.
+network_lanes.csv,mode_id,-,Transport mode.
+network_lanes.csv,distance_km,km,Distance.
+network_lanes.csv,transit_days_mean,days,Mean transit time.
+network_lanes.csv,transit_days_sd,days,Spread of transit time.
+freight_rates.csv,lane_id,-,Lane.
+freight_rates.csv,mode_id,-,Mode.
+freight_rates.csv,rate_eur_per_shipment,EUR,Fixed cost per shipment.
+freight_rates.csv,rate_eur_per_tkm,EUR per tonne-km,Variable cost.
+freight_rates.csv,min_charge_eur,EUR,Minimum charge.
+transport_modes.csv,mode_id,-,truck / rail / sea / air / cargo_bike.
+transport_modes.csv,name,-,Plain name.
+transport_modes.csv,capacity_kg,kg,Payload.
+transport_modes.csv,capacity_m3,m3,Volume.
+transport_modes.csv,speed_kmh,km per hour,Average speed.
+transport_emission_factors.csv,mode_id,-,Mode.
+transport_emission_factors.csv,g_co2e_per_tkm,g CO2e per tonne-km,Well-to-wheel factor.
+transport_emission_factors.csv,year,year,Reference year.
+transport_emission_factors.csv,source_url,URL,Document seen.
+transport_emission_factors.csv,class,-,DOCUMENTED / ADAPTED / SYNTHETIC.
+emission_factors.csv,factor_id,-,"grid_electricity_DE_2024, primary_aluminium_global_2023, ..."
+emission_factors.csv,scope,-,"electricity, material, transport."
+emission_factors.csv,value,as in unit,The factor.
+emission_factors.csv,unit,-,"kg CO2e per kWh, kg CO2e per kg, g CO2e per tkm."
+emission_factors.csv,year,year,Reference year.
+emission_factors.csv,source_name,-,"Publisher (UBA, IAI, DESNZ)."
+emission_factors.csv,source_url,URL,Document URL actually seen.
+emission_factors.csv,class,-,DOCUMENTED / ADAPTED / SYNTHETIC.

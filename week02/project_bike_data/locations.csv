@@ -1,0 +1,7 @@
+location_id,name,type,country,lat,lon
+LOC-PLANT,UrbanRide Plant Köln,plant,DE,50.94,6.96
+LOC-NORTH,Frames North (Bremen),supplier,DE,53.08,8.8
+LOC-EAST,Frames East (Taichung),supplier,TW,24.15,120.67
+LOC-LOCAL,Frames Local (Leverkusen),supplier,DE,51.03,6.99
+LOC-RTM,Port of Rotterdam,port,NL,51.92,4.48
+LOC-DC,UrbanRide Dealer DC Frankfurt,warehouse,DE,50.11,8.68

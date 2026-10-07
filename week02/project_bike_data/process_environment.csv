@@ -1,0 +1,6 @@
+workcenter_id,kw_running,kw_idle,waste_kg_per_unit,water_l_per_unit
+WC1,5.0,1.0,0.0,0.0
+WC2,3.0,0.8,0.0,0.0
+WC3,2.0,0.5,0.0,0.0
+WC4,1.0,0.3,0.0,0.0
+WC5,1.5,0.3,0.0,0.0

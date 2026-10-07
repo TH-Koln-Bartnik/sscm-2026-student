@@ -1,0 +1,6 @@
+product_id,seq,workcenter_id,process_time_min,setup_time_min
+UR-CITY,1,WC1,6.0,0.0
+UR-CITY,2,WC2,12.0,0.0
+UR-CITY,3,WC3,16.0,0.0
+UR-CITY,4,WC4,7.0,0.0
+UR-CITY,5,WC5,6.0,0.0

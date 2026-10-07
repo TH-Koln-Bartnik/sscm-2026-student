@@ -1,0 +1,4 @@
+supplier_id,supplier_name,country,component_id,unit_price_eur,promised_lead_days,lead_time_mean_days,lead_time_sd_days,capacity_per_month,min_per_month,kg_co2e_per_unit,location_id
+SUP-EAST,Frames East,TW,CMP-FRAME,85.0,30.0,35.0,6.0,600.0,0.0,30.0,LOC-EAST
+SUP-NORTH,Frames North,DE,CMP-FRAME,95.0,5.0,6.5,3.0,700.0,700.0,24.0,LOC-NORTH
+SUP-LOCAL,Frames Local,DE,CMP-FRAME,118.0,3.0,3.0,0.5,600.0,0.0,10.0,LOC-LOCAL

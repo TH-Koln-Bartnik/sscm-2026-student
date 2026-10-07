@@ -1,0 +1,6 @@
+factor_id,scope,value,unit,year,source_name,source_url,class
+grid_electricity_DE_2024,electricity,0.353,kg CO2e per kWh,2024,Umweltbundesamt (UBA),https://www.umweltbundesamt.de/themen/co2-emissionen-pro-kilowattstunde-strom-2025-nur,DOCUMENTED
+primary_aluminium_global_2023,material,14.8,kg CO2e per kg,2023,International Aluminium Institute (IAI),https://international-aluminium.org/landing/aluminium-carbon-footprint-faqs/,DOCUMENTED
+frame_footprint_SUP-NORTH,material,24.0,kg CO2e per frame,2025,ADAPTED from IAI + BikeLab Studio (see provenance_d1.csv),,ADAPTED
+frame_footprint_SUP-EAST,material,30.0,kg CO2e per frame,2025,ADAPTED from IAI + BikeLab Studio (see provenance_d1.csv),,ADAPTED
+frame_footprint_SUP-LOCAL,material,10.0,kg CO2e per frame,2025,ADAPTED from IAI + BikeLab Studio (see provenance_d1.csv),,ADAPTED

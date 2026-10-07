@@ -1,0 +1,5 @@
+product_id,component_id,component_name,qty_per_unit,mass_kg,unit_cost_eur,supplier_id,added_at_workcenter
+UR-CITY,CMP-FRAME,Aluminium frame,1,1.8,95.0,SUP-NORTH,WC1
+UR-CITY,CMP-WHEELKIT,Wheel/drivetrain kit,1,6.5,120.0,,WC2
+UR-CITY,CMP-ASSYKIT,Assembly parts kit,1,5.2,80.0,,WC3
+UR-CITY,CMP-PACKAGING,Packaging materials,1,1.5,15.0,,WC5
