@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Water Bottle Supply Chain</title>
+<style>
+  /* Layout: process animation on top, cost ledger below — one column per step, stacking on phones */
+  :root { --ink:#1f2937; --muted:#6b7280; --line:#9ca3af; --slot:#e5e7eb; --bg:#ffffff; --token:#1f2937; --accent:#c81e0f; --off:#c4c8ce; --panel:#f6f7f8; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ink:#e5e7eb; --muted:#9ca3af; --line:#6b7280; --slot:#374151; --bg:#14171c; --token:#e5e7eb; --accent:#ff6b5b; --off:#4b5563; --panel:#1c2027; color-scheme: dark; } }
+  :root[data-theme="dark"] { --ink:#e5e7eb; --muted:#9ca3af; --line:#6b7280; --slot:#374151; --bg:#14171c; --token:#e5e7eb; --accent:#ff6b5b; --off:#4b5563; --panel:#1c2027; color-scheme: dark; }
+  body { margin:0; padding-block:24px; padding-inline:16px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color:var(--ink); background:var(--bg); }
+  .pa { max-width:1000px; margin:0 auto; }
+  .pa-header { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:8px 16px; margin-bottom:8px; }
+  .pa-title { font-size:clamp(15px, 1.8vw, 21px); font-weight:600; margin:0; line-height:1.25; text-wrap:balance; }
+  .pa-controls { display:flex; gap:6px; flex-wrap:wrap; margin-left:auto; }
+  .pa-controls button, .pa-controls select { font:500 13px system-ui, sans-serif; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:4px; padding:6px 10px; min-height:34px; cursor:pointer; }
+  .pa-controls button:hover { border-color:var(--ink); }
+  .pa-controls button:focus-visible, .pa-controls select:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+  #pa-canvas { overflow-x:auto; }
+  svg { display:block; width:100%; height:auto; min-width:560px; }
+  .box { fill:var(--bg); stroke:var(--ink); stroke-width:1.5; }
+  .box.running { stroke-width:2.5; }
+  .name { font-size:12px; font-weight:600; fill:var(--ink); text-anchor:middle; }
+  .sub { font-size:10px; fill:var(--muted); text-anchor:middle; }
+  .slot { fill:var(--slot); }
+  .token { fill:var(--token); }
+  .line { stroke:var(--line); stroke-width:1.25; fill:none; }
+  .arrow { fill:var(--line); }
+  .zone { font-size:10px; fill:var(--muted); letter-spacing:.06em; text-transform:uppercase; }
+  .kpi-label { font-size:10px; fill:var(--muted); letter-spacing:.06em; text-transform:uppercase; }
+  .kpi-value { font-size:16px; font-weight:600; fill:var(--ink); font-variant-numeric:tabular-nums; }
+  .clock { font-size:14px; font-weight:600; fill:var(--ink); font-variant-numeric:tabular-nums; }
+  .note-box { fill:var(--bg); stroke:var(--accent); stroke-width:1; }
+  .note-text { font-size:12px; fill:var(--ink); }
+  .note-line { stroke:var(--accent); stroke-width:1; fill:none; }
+  .badge { fill:var(--bg); stroke:var(--ink); stroke-width:1; }
+  .badge-glyph { fill:var(--ink); }
+  .badge-glyph.idle { fill:var(--muted); }
+  .foot { font-size:11px; color:var(--muted); margin-top:6px; }
+
+  /* cost ledger */
+  .ledger { max-width:1000px; margin:20px auto 0; display:grid; gap:14px; }
+  .price { display:grid; grid-template-columns:1fr 2fr; border:1.5px solid var(--ink); border-radius:3px; overflow:hidden; font-size:13px; }
+  .price > div { padding:10px 12px; min-width:0; }
+  .price .mat { background:var(--ink); color:var(--bg); }
+  .price .rest { background:var(--bg); border-left:1.5px dashed var(--ink); }
+  .price b { display:block; font-size:18px; font-variant-numeric:tabular-nums; }
+  .price .rest b.hit { color:var(--accent); }
+  .cols { display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:10px; }
+  .col { background:var(--panel); border-radius:3px; padding:10px; min-width:0; }
+  .col h3 { margin:0 0 6px; font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--off); transition:color .3s; }
+  .col.on h3 { color:var(--ink); }
+  .col ul { list-style:none; margin:0; padding:0; display:grid; gap:4px; font-size:12px; line-height:1.3; }
+  .col li { color:var(--off); transition:color .3s; padding-left:12px; position:relative; }
+  .col li::before { content:""; position:absolute; left:0; top:.45em; width:6px; height:6px; border:1px solid var(--off); border-radius:50%; }
+  .col.on li { color:var(--ink); }
+  .col.on li.hidden::before { background:var(--accent); border-color:var(--accent); }
+  .col.on li.visible::before { background:var(--ink); border-color:var(--ink); }
+  .overhead { font-size:12px; color:var(--off); transition:color .3s; }
+  .overhead.on { color:var(--ink); }
+  .legend { font-size:11px; color:var(--muted); display:flex; flex-wrap:wrap; gap:4px 16px; }
+  .legend span::before { content:""; display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+  .legend .lv::before { background:var(--ink); } .legend .lh::before { background:var(--accent); }
+  .src { font-size:11px; color:var(--muted); line-height:1.45; max-width:75ch; }
+  .src a { color:inherit; }
+  @media (max-width:760px) { .cols { grid-template-columns:repeat(2, minmax(0,1fr)); } .price { grid-template-columns:1fr; } .price .rest { border-left:0; border-top:1.5px dashed var(--ink); } }
+  @media (prefers-reduced-motion: reduce) { .col h3, .col li, .overhead { transition:none; } }
+</style>
+</head>
+<body>
+
+
+<script>
+// ============================================================================
+//  1. HIER DEN PROZESS BESCHREIBEN — nur diesen Block muss man ändern.
+// ============================================================================
+const PROCESS = {
+  lang: "en",
+  title: "The other dollar of a $1.50 bottle pays for the chain, not for profit",
+  unit: "h",
+  unitOne: "h",
+  items: 8,                    // production batches of bottled water
+  arrivalGap: 2,
+  steps: [
+    { name: "Procure",  time: 1 },
+    { name: "Bottling", time: 2 },
+    { name: "Packing",  time: 1 },
+    { name: "Freight",  time: 3, capacity: 2 },
+    { name: "DC",       time: 1 },
+    { name: "Retail",   time: 1.5 },
+  ],
+  labels: {
+    play: "Play", pause: "Pause", step: "Step", reset: "Reset", speed: "Speed",
+    arrivals: "Batches in", finished: "On shelf", done: "On shelf", inProcess: "In the chain", waiting: "Waiting",
+    hint: "Space = play/pause · → = next event · R = reset · each dot is one production batch · step times are illustrative assumptions",
+    queueForms: "A queue forms before “{step}”",
+    allDone: "All {n} batches on the shelf after {t} {unit}",
+  },
+};
+</script>
+
+<div class="pa">
+  <div class="pa-header">
+    <h1 class="pa-title" id="pa-title"></h1>
+    <div class="pa-controls">
+      <button id="pa-play"></button>
+      <button id="pa-step"></button>
+      <button id="pa-reset"></button>
+      <select id="pa-speed" aria-label="speed">
+        <option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option>
+      </select>
+    </div>
+  </div>
+  <div id="pa-canvas"></div>
+  <div class="foot" id="pa-hint"></div>
+</div>
+
+<script>
+// ============================================================================
+//  2. DIE ENGINE — unverändert aus der Vorlage prozessanimation-lehre.
+// ============================================================================
+(function () {
+  const P = PROCESS;
+  const L = Object.assign({ play: "Play", pause: "Pause", step: "Step", reset: "Reset", speed: "Speed", arrivals: "Arrivals", finished: "Done", done: "Done", inProcess: "In process", waiting: "Waiting", hint: "", queueForms: "A queue forms before {step}", allDone: "All {n} done after {t} {unit}" }, P.labels || {});
+  const TRAVEL = 0.5;                                   // time to move between two steps
+  const steps = P.steps.map(s => ({ name: s.name, time: +s.time, capacity: Math.max(1, s.capacity | 0 || 1) }));
+  const n = steps.length;
+  const DEC = P.decimalSeparator || (String(P.lang || "en").toLowerCase().startsWith("de") ? "," : ".");
+  const fmt = x => (Math.abs(x - Math.round(x)) < 1e-9 ? String(Math.round(x)) : x.toFixed(1).replace(".", DEC));
+  const unitFor = x => (Math.abs(x - 1) < 1e-9 && P.unitOne ? P.unitOne : P.unit);   // "1 day" vs "2 days" (optional unitOne)
+
+  // ---- (a) schedule -------------------------------------------------------
+  const items = Array.from({ length: P.items }, (_, i) => ({ id: i, t0: i * P.arrivalGap, arrive: [], start: [], end: [], server: [], rankAtArrival: [] }));
+  steps.forEach((s, k) => {
+    const free = Array(s.capacity).fill(0);            // when each parallel "server" becomes free
+    items.forEach(it => { it.arrive[k] = (k === 0 ? it.t0 : it.end[k - 1]) + TRAVEL; });
+    const order = items.slice().sort((a, b) => a.arrive[k] - b.arrive[k] || a.id - b.id);   // first come, first served
+    order.forEach(it => {
+      let j = 0; for (let m = 1; m < free.length; m++) if (free[m] < free[j]) j = m;
+      it.start[k] = Math.max(it.arrive[k], free[j]); it.end[k] = it.start[k] + s.time; it.server[k] = j; free[j] = it.end[k];
+    });
+    order.forEach(it => { it.rankAtArrival[k] = order.filter(o => o !== it && o.start[k] > it.arrive[k] && (o.arrive[k] < it.arrive[k] || (o.arrive[k] === it.arrive[k] && o.id < it.id))).length; });
+  });
+  items.forEach(it => { it.done = it.end[n - 1] + TRAVEL; });
+  items.slice().sort((a, b) => a.done - b.done || a.id - b.id).forEach((it, i) => { it.sinkIndex = i; });
+  const T_END = Math.max(...items.map(it => it.done));
+  const EVENTS = [...new Set(items.flatMap(it => [it.t0, ...it.arrive, ...it.start, ...it.end, it.done]))].sort((a, b) => a - b);
+  const totalWait = items.reduce((a, it) => a + steps.reduce((b, _, k) => b + (it.start[k] - it.arrive[k]), 0), 0);
+  const avgTime = items.reduce((a, it) => a + (it.done - it.t0), 0) / items.length;
+
+  // ---- teaching moments: the first queue of two at any step, and the end ------
+  const notes = [];
+  steps.forEach((s, k) => {
+    const arrivals = items.map(it => it.arrive[k]).sort((a, b) => a - b);
+    for (const tau of arrivals) {
+      const q = items.filter(it => it.arrive[k] <= tau && it.start[k] > tau).length;
+      if (q >= 2) { notes.push({ t: tau, until: tau + 6, step: k, text: L.queueForms.replace(/\{step\}/g, s.name) }); break; }
+    }
+  });
+  notes.push({ t: T_END, until: Infinity, step: "sink", text: L.allDone.replace(/\{n\}/g, P.items).replace(/\{t\}/g, fmt(T_END)).replace(/\{unit\}/g, P.unit).replace(/\{avg\}/g, fmt(avgTime)).replace(/\{wait\}/g, fmt(totalWait / items.length)) });
+  notes.sort((a, b) => a.t - b.t);
+
+  // ---- (b) drawing: layout --------------------------------------------------
+  const W = 960, H = 300, LINE_Y = 180, BOX_H = 48, SLOT = 14, TOK_R = 6, SOURCE_X = 60, SINK_X = 852;
+  const spacing = n > 1 ? (700 - 170) / (n - 1) : 0;
+  const BOX_W = n > 1 ? Math.max(60, Math.min(96, spacing - 36)) : 96;
+  const xs = steps.map((_, k) => (n > 1 ? 170 + k * spacing : 435));
+  const perRow = Math.max(2, Math.floor(((n > 1 ? spacing : 200) - BOX_W - 8) / 13));
+  const src = () => ({ x: SOURCE_X, y: LINE_Y });
+  const slotPos = (k, j) => ({ x: xs[k] - (steps[k].capacity - 1) * 9 + j * 18, y: LINE_Y + 12 });
+  const queuePos = (k, r) => ({ x: xs[k] - BOX_W / 2 - 12 - (r % perRow) * 13, y: LINE_Y - Math.floor(r / perRow) * 14 });
+  const sinkPos = i => ({ x: SINK_X + (i % 4) * 15, y: LINE_Y - 24 + Math.floor(i / 4) * 15 });
+  const ease = u => (u <= 0 ? 0 : u >= 1 ? 1 : u * u * (3 - 2 * u));
+  const lerp = (a, b, u) => ({ x: a.x + (b.x - a.x) * ease(u), y: a.y + (b.y - a.y) * ease(u) });
+
+  // where is item `it` at time t?  (null = not yet arrived)
+  function posOf(it, t) {
+    if (t < it.t0) return null;
+    for (let k = 0; k < n; k++) {
+      if (t < it.arrive[k]) {
+        const from = k === 0 ? src() : slotPos(k - 1, it.server[k - 1]);
+        const to = it.start[k] > it.arrive[k] ? queuePos(k, it.rankAtArrival[k]) : slotPos(k, it.server[k]);
+        return lerp(from, to, (t - (k === 0 ? it.t0 : it.end[k - 1])) / TRAVEL);
+      }
+      if (t < it.start[k]) {
+        const rank = items.filter(o => o !== it && o.arrive[k] <= t && o.start[k] > t && (o.arrive[k] < it.arrive[k] || (o.arrive[k] === it.arrive[k] && o.id < it.id))).length;
+        return queuePos(k, rank);
+      }
+      if (t < it.end[k]) return slotPos(k, it.server[k]);
+    }
+    if (t < it.done) return lerp(slotPos(n - 1, it.server[n - 1]), sinkPos(it.sinkIndex), (t - it.end[n - 1]) / TRAVEL);
+    return sinkPos(it.sinkIndex);
+  }
+
+  // ---- (b) drawing: build the picture once ----------------------------------
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); parent.appendChild(e); return e; };
+  const txt = (parent, x, y, s, cls, attrs = {}) => { const e = el("text", { x, y, class: cls, ...attrs }, parent); e.textContent = s; return e; };
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": P.title }, document.getElementById("pa-canvas"));
+  const defs = el("defs", {}, svg);
+  const marker = el("marker", { id: "pa-arrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 8, markerHeight: 8, orient: "auto" }, defs);
+  el("path", { d: "M0,0 L10,5 L0,10 z", class: "arrow" }, marker);
+
+  el("line", { x1: SOURCE_X - 20, y1: LINE_Y, x2: SINK_X - 10, y2: LINE_Y, class: "line", "marker-end": "url(#pa-arrow)" }, svg);
+  txt(svg, SOURCE_X, LINE_Y - 34, L.arrivals, "zone", { "text-anchor": "middle" });
+  txt(svg, SINK_X + 22, LINE_Y - 34, L.finished, "zone", { "text-anchor": "middle" });
+  items.forEach((_, i) => { const p = sinkPos(i); el("rect", { x: p.x - 6, y: p.y - 6, width: 12, height: 12, class: "slot" }, svg); });
+
+  const boxes = steps.map((s, k) => {
+    const g = el("g", {}, svg);
+    const box = el("rect", { x: xs[k] - BOX_W / 2, y: LINE_Y - BOX_H / 2, width: BOX_W, height: BOX_H, rx: 3, class: "box" }, g);
+    txt(g, xs[k], LINE_Y - 6, s.name, "name");
+    for (let j = 0; j < s.capacity; j++) { const p = slotPos(k, j); el("rect", { x: p.x - SLOT / 2, y: p.y - SLOT / 2, width: SLOT, height: SLOT, class: "slot" }, g); }
+    txt(g, xs[k], LINE_Y + BOX_H / 2 + 14, `${fmt(s.time)} ${unitFor(s.time)}` + (s.capacity > 1 ? ` · ×${s.capacity}` : ""), "sub");
+    const bx = xs[k] + BOX_W / 2, by = LINE_Y - BOX_H / 2;
+    el("circle", { cx: bx, cy: by, r: 7, class: "badge" }, g);
+    const glyph = el("path", { class: "badge-glyph" }, g);
+    return { box, glyph, bx, by };
+  });
+  const tokens = items.map(() => el("circle", { r: TOK_R, class: "token", visibility: "hidden" }, svg));
+
+  const clock = txt(svg, 24, 34, "", "clock");
+  const kpis = [["done", 200], ["inProcess", 330], ["waiting", 470]].map(([key, x]) => { txt(svg, x, 24, L[key], "kpi-label"); return { key, val: txt(svg, x, 44, "", "kpi-value") }; });
+  const noteG = el("g", { visibility: "hidden" }, svg);
+  const noteBox = el("rect", { height: 22, rx: 2, class: "note-box" }, noteG);
+  const noteTxt = txt(noteG, 0, 0, "", "note-text");
+  const noteLine = el("path", { class: "note-line" }, noteG);
+
+  // ---- (b) drawing: update for time t ---------------------------------------
+  function render(t) {
+    items.forEach((it, i) => { const p = posOf(it, t); if (!p) tokens[i].setAttribute("visibility", "hidden"); else { tokens[i].setAttribute("visibility", "visible"); tokens[i].setAttribute("cx", p.x); tokens[i].setAttribute("cy", p.y); } });
+    steps.forEach((s, k) => {
+      const busy = items.some(it => it.start[k] <= t && t < it.end[k]);
+      boxes[k].box.setAttribute("class", "box" + (busy ? " running" : ""));
+      const { bx, by } = boxes[k];
+      boxes[k].glyph.setAttribute("d", busy ? `M${bx - 2.5},${by - 3.5} L${bx + 3.5},${by} L${bx - 2.5},${by + 3.5} z` : `M${bx - 1.6},${by} a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0`);
+      boxes[k].glyph.setAttribute("class", "badge-glyph" + (busy ? "" : " idle"));
+    });
+    clock.textContent = `t = ${fmt(t)} ${unitFor(t)}`;
+    const v = {
+      done: `${items.filter(it => it.done <= t).length} / ${items.length}`,
+      inProcess: String(items.filter(it => it.t0 <= t && t < it.done).length),
+      waiting: String(items.reduce((a, it) => a + steps.reduce((b, _, k) => b + (it.arrive[k] <= t && t < it.start[k] ? 1 : 0), 0), 0)),
+    };
+    kpis.forEach(k => { k.val.textContent = v[k.key]; });
+    const note = notes.filter(nn => nn.t <= t && t < nn.until).pop();
+    if (!note) noteG.setAttribute("visibility", "hidden");
+    else {
+      noteG.setAttribute("visibility", "visible");
+      noteTxt.textContent = note.text;
+      const tw = noteTxt.getComputedTextLength() + 16;
+      const targetX = note.step === "sink" ? SINK_X + 22 : xs[note.step];
+      const targetY = note.step === "sink" ? LINE_Y - 44 : LINE_Y - BOX_H / 2 - 10;
+      const bxL = Math.max(12, Math.min(W - tw - 12, targetX - tw / 2));
+      noteBox.setAttribute("x", bxL); noteBox.setAttribute("y", 76); noteBox.setAttribute("width", tw);
+      noteTxt.setAttribute("x", bxL + 8); noteTxt.setAttribute("y", 91);
+      noteLine.setAttribute("d", `M${targetX},98 L${targetX},${targetY}`);
+    }
+  }
+
+  // ---- controls: play / step / reset / speed / keyboard ----------------------
+  let t = 0, playing = false, speed = 1, last = null;
+  const btnPlay = document.getElementById("pa-play"), btnStep = document.getElementById("pa-step"), btnReset = document.getElementById("pa-reset"), selSpeed = document.getElementById("pa-speed");
+  document.getElementById("pa-title").textContent = P.title; document.title = P.title;
+  if (P.lang) document.documentElement.lang = P.lang;
+  selSpeed.setAttribute("aria-label", L.speed); selSpeed.title = L.speed;
+  document.getElementById("pa-hint").textContent = L.hint;
+  btnPlay.textContent = L.play; btnStep.textContent = L.step; btnReset.textContent = L.reset;
+  const setPlaying = p => { playing = p; last = null; btnPlay.textContent = playing ? L.pause : L.play; };
+  const seek = x => { t = Math.max(0, Math.min(T_END, x)); render(t); };
+  btnPlay.onclick = () => { if (t >= T_END) seek(0); setPlaying(!playing); };
+  btnStep.onclick = () => { setPlaying(false); seek(EVENTS.find(e => e > t + 1e-6) ?? T_END); };
+  btnReset.onclick = () => { setPlaying(false); seek(0); };
+  selSpeed.onchange = () => { speed = +selSpeed.value; };
+  document.addEventListener("keydown", e => {
+    if (e.target.tagName === "SELECT" || e.target.tagName === "INPUT") return;
+    if (e.key === " ") { e.preventDefault(); btnPlay.onclick(); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); btnStep.onclick(); }
+    else if (e.key === "r" || e.key === "R") btnReset.onclick();
+  });
+  (function frame(now) {
+    if (playing) {
+      if (last !== null) t = Math.min(T_END, t + ((now - last) / 1000) * speed);
+      last = now; render(t);
+      if (t >= T_END) setPlaying(false);
+    }
+    requestAnimationFrame(frame);
+  })(performance.now());
+  render(0);
+  window.PA = { seek, get t() { return t; }, T_END, EVENTS, items, steps, notes };   // handy for testing
+})();
+</script>
+
+<section class="ledger" aria-label="Cost ledger">
+  <div class="price">
+    <div class="mat"><b>$0.50</b>Water, plastic, label: what the consumer sees</div>
+    <div class="rest"><b id="rest-amt">$1.00</b><span id="rest-txt">The consumer's guess: pure profit</span></div>
+  </div>
+  <div class="cols" id="cols"></div>
+  <div class="overhead" id="overhead">Running the whole time: human resources and accounting departments</div>
+  <div class="legend"><span class="lv">Visible material cost</span><span class="lh">Hidden operating cost, switches on when the first batch reaches the step</span></div>
+  <p class="src">The ledger names cost categories only; the source gives no breakdown of the $1.00 into amounts, and step durations in the animation are illustrative. The same logic carries into services: a hotel "manufactures" lodging by buying furniture and fresh food, scheduling housekeeping and moving supplies through the property.<br>Source: W. P. Carey School of Business. (2010). <i>Module 1: What is supply chain management?</i> (ASU-WPC-SCM) [Video]. YouTube. <a href="https://www.youtube.com/watch?v=Mi1QBxVjZAw">https://www.youtube.com/watch?v=Mi1QBxVjZAw</a></p>
+</section>
+
+<script>
+// Cost ledger: reads the engine's schedule (window.PA) and lights up each step's costs
+// once the first batch starts work there. It does not change the animation.
+(function () {
+  const STAGES = [
+    { title: "Procure", items: [["Water", "visible"], ["PET plastic", "visible"], ["Label", "visible"]] },
+    { title: "Bottling plant", items: [["Plant energy", "hidden"], ["Filling machinery", "hidden"], ["Maintenance supplies", "hidden"], ["Line labor", "hidden"]] },
+    { title: "Packing", items: [["Boxes", "hidden"], ["Shrink wrap", "hidden"], ["Pallets", "hidden"], ["Forklifts", "hidden"], ["Forklift operators", "hidden"]] },
+    { title: "Freight", items: [["Trucks", "hidden"], ["Fuel", "hidden"], ["Commercial insurance", "hidden"]] },
+    { title: "Distribution center", items: [["Climate-controlled storage", "hidden"], ["Facility security", "hidden"]] },
+    { title: "Retail", items: [["Store security", "hidden"], ["Retail staff", "hidden"]] },
+  ];
+  const OVERHEAD_COUNT = 2;
+  const cols = document.getElementById("cols");
+  const colEls = STAGES.map(s => {
+    const d = document.createElement("div"); d.className = "col";
+    const h = document.createElement("h3"); h.textContent = s.title; d.appendChild(h);
+    const ul = document.createElement("ul");
+    s.items.forEach(([name, kind]) => { const li = document.createElement("li"); li.className = kind; li.textContent = name; ul.appendChild(li); });
+    d.appendChild(ul); cols.appendChild(d); return d;
+  });
+  const overhead = document.getElementById("overhead");
+  const restAmt = document.getElementById("rest-amt"), restTxt = document.getElementById("rest-txt");
+  const totalHidden = STAGES.reduce((a, s) => a + s.items.filter(i => i[1] === "hidden").length, 0) + OVERHEAD_COUNT;
+  let lastT = -1;
+  function update() {
+    const PA = window.PA; if (!PA) return;
+    const t = PA.t; if (t === lastT) return; lastT = t;
+    let hidden = 0;
+    const ohOn = t > 0; overhead.classList.toggle("on", ohOn); if (ohOn) hidden += OVERHEAD_COUNT;
+    STAGES.forEach((s, k) => {
+      const on = t >= PA.items[0].start[k];
+      colEls[k].classList.toggle("on", on);
+      if (on) hidden += s.items.filter(i => i[1] === "hidden").length;
+    });
+    restAmt.classList.toggle("hit", hidden > 0);
+    if (hidden === 0) restTxt.textContent = "The consumer's guess: pure profit";
+    else if (t < PA.T_END) restTxt.textContent = `Already paying for ${hidden} of ${totalHidden} hidden cost items, plus a margin`;
+    else restTxt.textContent = `Pays for all ${totalHidden} hidden cost items; profit is what remains`;
+  }
+  (function loop() { update(); requestAnimationFrame(loop); })();
+})();
+</script>
+
+</body>
+</html>
