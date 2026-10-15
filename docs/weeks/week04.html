@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Week 4 — Managing quality – Sustainable Supply Chain Management</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -20,7 +26,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -38,10 +64,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1f8ffe5b63764c8dbedd4a8a17b40a1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-1a13eb36b9e43fc2cbf1cae96fd9ecc2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -98,7 +124,8 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/th-koeln-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../images/th-koeln-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../images/th-koeln-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Sustainable Supply Chain Management</a> 
@@ -194,6 +221,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../exercises/week02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Week 2 exercises</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/week03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Week 3 exercises</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -268,8 +300,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#test2" id="toc-test2" class="nav-link active" data-scroll-target="#test2">Test 2 preparation</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -302,7 +340,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Chapter</strong>Heizer Ch. 6 — Managing quality; S6 Statistical process control
 </p>
 <p>
-<strong>Morning test</strong><strong>T2</strong> · Ch. 7, 5
+<strong>Morning test</strong><strong>T2</strong> · calculations from Weeks 2–3 (Ch. 7, S7, S5) + two Chapter 1 calculations
 </p>
 <p>
 <strong>Bonus sheet</strong>counts toward T3
@@ -314,21 +352,46 @@ ul.task-list li input[type="checkbox"] {
 <strong>Times</strong>09:00–12:00 · 13:00–15:30
 </p>
 </div>
+<section id="test2" class="level2">
+<h2 class="anchored" data-anchor-id="test2">Test 2 preparation</h2>
+<p><strong>When and how.</strong> Thursday, 22 October, 09:00. First alone (iRAT), then the same questions in your team (gRAT). On paper, calculator allowed, phones and books closed; your code name on the answer sheet; write the calculation path in the boxes.</p>
+<p><strong>What Test 2 asks: calculations.</strong> Four kinds, as practised in class and on the bonus sheets, with new numbers:</p>
+<ol type="1">
+<li><strong>Crossover charts.</strong> Total cost = fixed cost + variable cost per unit × volume, one line per option; the crossover is where two lines cross: difference in fixed cost ÷ difference in variable cost. You use it twice:
+<ul>
+<li><strong>Process types (Ch. 7):</strong> which process (process focus, repetitive, product focus) is cheapest at which volume; break-even volume = fixed cost ÷ (price − variable cost per unit)</li>
+<li><strong>Vehicles and equipment (S5):</strong> the crossover in km, and in years = km ÷ km per year</li>
+</ul></li>
+<li><strong>Life cycle cost (S5, Equation S5-2):</strong> purchase price + energy cost per km × km per year × years + other operating cost per km × km per year × years; which option is cheaper over its life</li>
+<li><strong>Carbon footprint:</strong> Σ amount × emission factor, stage by stage, with the amount in the factor’s unit (kg, kWh, tonne-km); the share of the biggest stage; the hotspot</li>
+<li><strong>Process efficiency and capacity (Ch. 7 + S7), as on the Week 2 bonus sheet:</strong> design and effective capacity; utilization = actual ÷ design; efficiency = actual ÷ effective; capacity of each step, bottleneck, line output, throughput time; people or machines needed (round <strong>up</strong>); the bottleneck of a supply chain</li>
+</ol>
+<p>You should be able to draw a crossover chart by hand and read the cheapest option for a given volume or distance from it.</p>
+<p><strong>Plus two small Chapter 1 calculations: your learning path.</strong> Every paper carries two short calculations of the kinds you met in Test 1: <strong>multifactor productivity</strong> (turn every input into € before you add) and <strong>people needed</strong> (apply the demand change first, then round up). This is your second chance at Chapter 1. Practise with the <a href="../exercises/week01.html">Week 1 exercises</a> and your Test 1 feedback sheet.</p>
+<p><strong>Read.</strong> Supplement 5, Chapter 7 and Supplement 7 of <span class="citation" data-cites="heizer2023operations">Heizer et al. (<a href="../references.html#ref-heizer2023operations" role="doc-biblioref">2023</a>)</span>, with their case studies: Orlando Magic’s Amway Center, Frito-Lay and Celebrity Cruises (S5), and <strong>Arnold Palmer Hospital</strong> (S7). Work through the discussion questions of every case; questions on the cases are possible. <strong>Chapter 5 itself is not tested.</strong></p>
+<p><strong>Practise.</strong> <a href="../exercises/week02.html">Week 2 exercises</a> · <a href="../exercises/week03.html">Week 3 exercises</a> (footprint, life cycle cost and cost per tonne, with answers; the cost-per-tonne questions there are extra practice, not a Test 2 item) · Solved Problem S5.2 and Example S2 · the Week 2 and Week 3 formula sheets.</p>
+<p><strong>Bonus.</strong> The Week 2 bonus sheet (written on 15 October) counts toward Test 2: if it counts, it makes a passed Test 2 grade 0.3 better (<a href="../assessment.html">Assessment</a>).</p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-This page is a placeholder
+<span class="screen-reader-only">Note</span>The rest of this page is a placeholder
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The full page — the problem of the week, the exercises and the downloads — opens after the Week 3 Thursday. Until then, read the chapter.</p>
+<p>The full page — the problem of the week, the exercises and the downloads — opens soon. Until then, prepare for Test 2 and read Chapter 6.</p>
 </div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-heizer2023operations" class="csl-entry" role="listitem">
+Heizer, J., Render, B., &amp; Munson, C. (2023). <em>Operations management: Sustainability and supply chain management</em> (14th ed., Global ed.). Pearson.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -382,13 +445,14 @@ This page is a placeholder
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
