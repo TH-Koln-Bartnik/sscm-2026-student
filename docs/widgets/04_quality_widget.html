@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quality Widget</title>
+<meta name="description" content="Practise four quality calculations: the Pareto chart, variation on x̄ and R charts, the p-chart, and process capability. Session 4, Sustainable Supply Chain Management, TH Köln.">
+<style>
+:root { --red:#c1002a; --red-soft:#f6dde3; --bg:#fff; --panel:#f4f4f4; --line:#d4d4d4; --text:#1a1a1a; --muted:#5f5f5f; --bar:#a6a6a6; --bar2:#6e6e6e; --ok:#1f7a3f; --ok-soft:#e1f2e6; --input:#fff; color-scheme:light; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --red:#ff5c7a; --red-soft:#3b1820; --bg:#141414; --panel:#1f1f1f; --line:#3a3a3a; --text:#f2f2f2; --muted:#b5b5b5; --bar:#7c7c7c; --bar2:#b0b0b0; --ok:#6fd18f; --ok-soft:#173322; --input:#141414; color-scheme:dark; } }
+:root[data-theme="dark"] { --red:#ff5c7a; --red-soft:#3b1820; --bg:#141414; --panel:#1f1f1f; --line:#3a3a3a; --text:#f2f2f2; --muted:#b5b5b5; --bar:#7c7c7c; --bar2:#b0b0b0; --ok:#6fd18f; --ok-soft:#173322; --input:#141414; color-scheme:dark; }
+* { box-sizing:border-box; } html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:18px; line-height:1.4; }
+.wrap { max-width:1240px; margin:0 auto; padding:16px; }
+header { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px 16px; border-bottom:3px solid var(--red); padding-bottom:8px; margin-bottom:12px; }
+h1 { font-size:1.5rem; margin:0; line-height:1.2; } h1 span { color:var(--red); }
+h2 { font-size:1.15rem; margin:0 0 8px; } h3 { font-size:1rem; margin:10px 0 4px; }
+button { font:inherit; color:inherit; cursor:pointer; }
+.pill { border:2px solid var(--line); background:var(--panel); border-radius:999px; padding:8px 14px; font-size:0.95rem; min-height:44px; }
+.pill[aria-pressed="true"], .pill[aria-selected="true"] { border-color:var(--red); background:var(--red); color:#fff; font-weight:700; }
+.tabs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; margin-bottom:14px; }
+@media (min-width:760px) { .tabs { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+.tabs .pill { border-radius:10px; text-align:left; line-height:1.2; }
+.formula { background:var(--panel); border-left:6px solid var(--red); border-radius:6px; padding:10px 14px; margin-bottom:12px; }
+.formula p { margin:4px 0; } .formula .f { font-weight:700; font-size:1.05rem; } .formula .f em { font-style:normal; color:var(--red); } .formula .small { font-size:0.92rem; color:var(--muted); }
+.grid { display:grid; grid-template-columns:minmax(0,1fr); gap:16px; }
+@media (min-width:980px) { .grid { grid-template-columns:minmax(0,5fr) minmax(0,6fr); } }
+.panel { background:var(--panel); border-radius:10px; padding:14px; }
+.hint { font-size:0.92rem; color:var(--muted); margin:0 0 8px; }
+input[type="number"], input[type="text"] { font:inherit; font-size:1rem; padding:6px 8px; min-height:42px; border:2px solid var(--line); border-radius:8px; background:var(--input); color:var(--text); width:100%; }
+input[type="range"] { width:100%; accent-color:var(--red); }
+table { width:100%; border-collapse:collapse; font-size:0.95rem; } th, td { text-align:left; padding:6px 6px; border-bottom:1px solid var(--line); } td.n, th.n { text-align:right; white-space:nowrap; }
+td input { min-height:38px; }
+.res { display:flex; flex-wrap:wrap; gap:8px 18px; margin:8px 0; font-size:1rem; } .res b { color:var(--red); }
+.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin:6px 0; } .row label { min-width:150px; font-size:0.95rem; }
+.btn { border:2px solid var(--red); background:var(--red); color:#fff; border-radius:10px; padding:8px 14px; font-weight:700; min-height:44px; } .btn.sec { background:transparent; color:var(--text); border-color:var(--line); }
+svg { width:100%; height:auto; display:block; background:var(--bg); border-radius:8px; }
+.sig { background:var(--red-soft); border-radius:8px; padding:8px 12px; margin-top:8px; font-size:0.95rem; } .sig.ok { background:var(--ok-soft); }
+.check { font-size:0.9rem; color:var(--muted); }
+footer { margin-top:18px; font-size:0.8rem; color:var(--muted); border-top:1px solid var(--line); padding-top:8px; }
+[hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>Quality <span>widget</span> · four tools</h1><div class="hint">Session 4 · TH Köln · works on a phone</div></header>
+<div class="tabs" role="tablist">
+  <button class="pill" role="tab" aria-selected="true" data-tab="t1"><b>1</b> Pareto: which cause first?</button>
+  <button class="pill" role="tab" aria-selected="false" data-tab="t2"><b>2</b> Variation: cut strips</button>
+  <button class="pill" role="tab" aria-selected="false" data-tab="t3"><b>3</b> p-chart: wrong-room boxes</button>
+  <button class="pill" role="tab" aria-selected="false" data-tab="t4"><b>4</b> Capability: the window</button>
+</div>
+
+<!-- ============ TAB 1 PARETO ============ -->
+<section id="t1" role="tabpanel">
+<div class="formula"><p class="f">Share of a cause = <em>count ÷ total × 100 %</em> · cumulative share = add the shares from the biggest down</p><p class="small">The party: 40 guests were asked "what went wrong?". Edit the counts, the chart re-sorts itself. The vital few = the first bars that reach about 70–80 %.</p></div>
+<div class="grid">
+<section class="panel"><h2>Complaints</h2><table id="pareto-table"><tr><th>Cause</th><th class="n">Count</th><th class="n">Share</th><th class="n">Cum.</th></tr></table>
+<div class="res"><span>Total <b id="p-total"></b></span><span>Top two <b id="p-top2"></b></span></div></section>
+<section class="panel"><h2>Pareto chart</h2><svg id="pareto-svg" viewBox="0 0 560 300" role="img" aria-label="Pareto chart: bars sorted by count with a cumulative line"></svg><p class="check">Check: the bars must fall from left to right, the line must rise to 100 %.</p></section>
+</div>
+</section>
+
+<!-- ============ TAB 2 VARIATION ============ -->
+<section id="t2" role="tabpanel" hidden>
+<div class="formula"><p class="f">x̄-chart: UCL = <em>x̿ + A₂ × R̄</em>, LCL = x̿ − A₂ × R̄ · R-chart: UCL = <em>D₄ × R̄</em> (n = 5: A₂ = 0.577, D₄ = 2.115)</p><p class="small">A cutter cuts strips of 10 cm by eye. Press "cut 5 strips" to take a sample. After four samples the widget draws the limits from your own data. Then move the cutter (offset) or give it a template (less spread) and watch which chart notices.</p></div>
+<div class="grid">
+<section class="panel"><h2>The cutter</h2>
+<div class="row"><label for="v-offset">Offset (cm)</label><input type="range" id="v-offset" min="-1" max="1" step="0.1" value="0"><span id="v-offset-v">0.0</span></div>
+<div class="row"><label for="v-spread">Spread σ (cm)</label><input type="range" id="v-spread" min="0.1" max="0.8" step="0.05" value="0.4"><span id="v-spread-v">0.40</span></div>
+<div class="row"><button class="btn" id="v-cut">Cut 5 strips (one sample)</button><button class="btn sec" id="v-reset">Start over</button></div>
+<table id="v-table"><tr><th class="n">Sample</th><th>Strips (cm)</th><th class="n">x̄</th><th class="n">R</th></tr></table>
+<div class="res"><span>x̿ <b id="v-xbb">–</b></span><span>R̄ <b id="v-rb">–</b></span><span>UCL<sub>x̄</sub> <b id="v-uclx">–</b></span><span>LCL<sub>x̄</sub> <b id="v-lclx">–</b></span><span>UCL<sub>R</sub> <b id="v-uclr">–</b></span></div>
+<p class="check">The limits are frozen after the first four samples (that is the process as it was). A point outside later = a signal: what did you change?</p></section>
+<section class="panel"><h2>x̄-chart and R-chart</h2><svg id="v-svg" viewBox="0 0 560 360" role="img" aria-label="x-bar chart and R chart of the strip samples"></svg><div id="v-msg" class="sig" hidden></div></section>
+</div>
+</section>
+
+<!-- ============ TAB 3 P-CHART ============ -->
+<section id="t3" role="tabpanel" hidden>
+<div class="formula"><p class="f">p̄ = <em>total defectives ÷ total inspected</em> · σ<sub>p</sub> = √( p̄ (1 − p̄) ÷ n ) · UCL = p̄ + 3 σ<sub>p</sub> · LCL = p̄ − 3 σ<sub>p</sub>, never below 0</p><p class="small">Moving day: eight van trips, 25 boxes each. Some boxes end up in the wrong room. Edit the counts: is any trip a signal, or is it all noise?</p></div>
+<div class="grid">
+<section class="panel"><h2>Boxes in the wrong room</h2><div class="row"><label for="pc-n">Boxes per trip (n)</label><input type="number" id="pc-n" value="25" min="5" max="500" style="max-width:120px"></div>
+<table id="pc-table"><tr><th class="n">Trip</th><th class="n">Wrong room</th><th class="n">p</th></tr></table>
+<div class="res"><span>p̄ <b id="pc-pbar">–</b></span><span>σ<sub>p</sub> <b id="pc-sig">–</b></span><span>UCL <b id="pc-ucl">–</b></span><span>LCL <b id="pc-lcl">–</b></span></div></section>
+<section class="panel"><h2>p-chart</h2><svg id="pc-svg" viewBox="0 0 560 300" role="img" aria-label="p-chart of wrong-room boxes per trip"></svg><div id="pc-msg" class="sig" hidden></div><p class="check">Check: the LCL is often 0 for small n – a formula can go negative, a proportion cannot.</p></section>
+</div>
+</section>
+
+<!-- ============ TAB 4 CAPABILITY ============ -->
+<section id="t4" role="tabpanel" hidden>
+<div class="formula"><p class="f">C<sub>p</sub> = <em>(USL − LSL) ÷ (6 σ)</em> · C<sub>pk</sub> = the smaller of <em>(USL − x̄) ÷ (3 σ)</em> and <em>(x̄ − LSL) ÷ (3 σ)</em></p><p class="small">The customer's window is 56–64 g. Move the process (mean) and its spread (σ). C<sub>p</sub> asks "would the spread fit?"; C<sub>pk</sub> asks "does it fit where the process sits?". Capable: at least 1.00; good practice 1.33.</p></div>
+<div class="grid">
+<section class="panel"><h2>The process</h2>
+<div class="row"><label for="c-lsl">LSL (g)</label><input type="number" id="c-lsl" value="56" step="0.5" style="max-width:110px"><label for="c-usl" style="min-width:60px">USL (g)</label><input type="number" id="c-usl" value="64" step="0.5" style="max-width:110px"></div>
+<div class="row"><label for="c-mean">Process mean x̄ (g)</label><input type="range" id="c-mean" min="54" max="66" step="0.1" value="60"><span id="c-mean-v">60.0</span></div>
+<div class="row"><label for="c-sd">Spread σ (g)</label><input type="range" id="c-sd" min="0.4" max="3" step="0.1" value="1.6"><span id="c-sd-v">1.6</span></div>
+<div class="res"><span>C<sub>p</sub> <b id="c-cp">–</b></span><span>C<sub>pk</sub> <b id="c-cpk">–</b></span><span>Outside the window <b id="c-out">–</b></span></div>
+<div id="c-msg" class="sig"></div>
+<p class="check">Try: mean 59, σ 1.2 → then mean 60 → then σ 1.0. Which move was free?</p></section>
+<section class="panel"><h2>Where the process sits in the window</h2><svg id="c-svg" viewBox="0 0 560 260" role="img" aria-label="Bell curve of the process against the specification window"></svg></section>
+</div>
+</section>
+
+<footer>Formulas: Heizer, J., Render, B., &amp; Munson, C. (2023). <i>Operations management: Sustainability and supply chain management</i> (14th ed., Global ed.). Pearson. Chapter 6 (Pareto chart) and Supplement 6 (x̄, R and p charts, Table S6.1, C<sub>p</sub>, C<sub>pk</sub>). Eigene Darstellung, R. Bartnik 2026; built with Claude (Anthropic). No case data inside.</footer>
+</div>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const A2 = 0.577, D4 = 2.115;
+  const f2 = (x) => (Math.round(x * 100) / 100).toFixed(2), f1 = (x) => (Math.round(x * 10) / 10).toFixed(1), f3 = (x) => (Math.round(x * 1000) / 1000).toFixed(3);
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  // tabs
+  document.querySelectorAll('.tabs .pill').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tabs .pill').forEach(x => x.setAttribute('aria-selected', x === b ? 'true' : 'false'));
+    ['t1', 't2', 't3', 't4'].forEach(t => $(t).hidden = (t !== b.dataset.tab));
+  }));
+  function svgEl(tag, attrs, text) { const e = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; return e; }
+
+  // ---------------- Tab 1 Pareto
+  const causes = [['Cold pizza', 14], ['Music too loud', 9], ['No vegetarian option', 6], ['Queue at the drinks', 5], ['Nowhere to sit', 3], ['Other', 3]];
+  const pt = $('pareto-table');
+  causes.forEach((c, i) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td><input type="text" value="${c[0]}" data-i="${i}" data-k="name" aria-label="cause ${i + 1}"></td><td class="n" style="width:90px"><input type="number" min="0" value="${c[1]}" data-i="${i}" data-k="count" aria-label="count ${i + 1}"></td><td class="n" id="ps${i}"></td><td class="n" id="pcum${i}"></td>`;
+    pt.appendChild(tr);
+  });
+  pt.addEventListener('input', (e) => { const i = +e.target.dataset.i; if (e.target.dataset.k === 'count') causes[i][1] = Math.max(0, +e.target.value || 0); else causes[i][0] = e.target.value; pareto(); });
+  function pareto() {
+    const total = causes.reduce((s, c) => s + c[1], 0);
+    const order = causes.map((c, i) => i).sort((a, b) => causes[b][1] - causes[a][1]);
+    let cum = 0; const shares = {}, cums = {};
+    order.forEach(i => { const sh = total ? causes[i][1] / total * 100 : 0; cum += sh; shares[i] = sh; cums[i] = cum; });
+    causes.forEach((c, i) => { $('ps' + i).textContent = f1(shares[i]) + ' %'; $('pcum' + i).textContent = f1(cums[i]) + ' %'; });
+    $('p-total').textContent = total;
+    $('p-top2').textContent = order.length > 1 ? f1(shares[order[0]] + shares[order[1]]) + ' %' : '–';
+    const svg = $('pareto-svg'); svg.innerHTML = '';
+    const W = 560, H = 300, L = 46, R = 50, T = 16, B = 70, w = (W - L - R) / order.length, max = Math.max(1, ...causes.map(c => c[1]));
+    const ink = css('--text'), red = css('--red'), bar = css('--bar'), muted = css('--muted');
+    svg.appendChild(svgEl('line', { x1: L, y1: H - B, x2: W - R, y2: H - B, stroke: muted }));
+    let prev = null;
+    order.forEach((i, k) => {
+      const h = causes[i][1] / max * (H - T - B), x = L + k * w + w * 0.12;
+      svg.appendChild(svgEl('rect', { x, y: H - B - h, width: w * 0.76, height: h, fill: k < 2 ? red : bar, rx: 3 }));
+      svg.appendChild(svgEl('text', { x: x + w * 0.38, y: H - B - h - 4, 'text-anchor': 'middle', 'font-size': 12, fill: ink }, causes[i][1]));
+      const lab = causes[i][0].length > 13 ? causes[i][0].slice(0, 12) + '…' : causes[i][0];
+      svg.appendChild(svgEl('text', { x: x + w * 0.38, y: H - B + 16, 'text-anchor': 'middle', 'font-size': 11, fill: ink }, lab));
+      const cy = H - B - cums[i] / 100 * (H - T - B), cx = x + w * 0.38;
+      if (prev) svg.appendChild(svgEl('line', { x1: prev[0], y1: prev[1], x2: cx, y2: cy, stroke: ink, 'stroke-width': 2 }));
+      svg.appendChild(svgEl('circle', { cx, cy, r: 4, fill: ink }));
+      svg.appendChild(svgEl('text', { x: cx + 6, y: cy - 6, 'font-size': 11, fill: muted }, f1(cums[i]) + ' %'));
+      prev = [cx, cy];
+    });
+    svg.appendChild(svgEl('text', { x: W - R + 4, y: T + 10, 'font-size': 11, fill: muted }, '100 %'));
+    svg.appendChild(svgEl('text', { x: L, y: H - B + 40, 'font-size': 12, fill: muted }, 'bars = counts, biggest first · line = cumulative share'));
+  }
+  pareto();
+
+  // ---------------- Tab 2 variation
+  let samples = [], frozen = null;
+  function gauss() { let u = 0, v = 0; while (u === 0) u = Math.random(); while (v === 0) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  $('v-offset').addEventListener('input', e => $('v-offset-v').textContent = f1(+e.target.value));
+  $('v-spread').addEventListener('input', e => $('v-spread-v').textContent = f2(+e.target.value));
+  $('v-cut').addEventListener('click', () => {
+    const off = +$('v-offset').value, sd = +$('v-spread').value;
+    const s = Array.from({ length: 5 }, () => Math.round((10 + off + sd * gauss()) * 10) / 10);
+    samples.push(s); if (samples.length > 14) samples.shift();
+    variation();
+  });
+  $('v-reset').addEventListener('click', () => { samples = []; frozen = null; variation(); });
+  function variation() {
+    const tb = $('v-table'); tb.querySelectorAll('tr:not(:first-child)').forEach(r => r.remove());
+    const xb = samples.map(s => s.reduce((a, b) => a + b, 0) / 5), rg = samples.map(s => Math.max(...s) - Math.min(...s));
+    samples.forEach((s, i) => { const tr = document.createElement('tr'); tr.innerHTML = `<td class="n">${i + 1}</td><td>${s.map(f1).join(' · ')}</td><td class="n">${f2(xb[i])}</td><td class="n">${f1(rg[i])}</td>`; tb.appendChild(tr); });
+    if (samples.length >= 4 && !frozen) {
+      const xbb = xb.slice(0, 4).reduce((a, b) => a + b, 0) / 4, rb = rg.slice(0, 4).reduce((a, b) => a + b, 0) / 4;
+      frozen = { xbb, rb, uclx: xbb + A2 * rb, lclx: xbb - A2 * rb, uclr: D4 * rb };
+    }
+    const F = frozen;
+    $('v-xbb').textContent = F ? f2(F.xbb) : '–'; $('v-rb').textContent = F ? f2(F.rb) : '–'; $('v-uclx').textContent = F ? f2(F.uclx) : '–'; $('v-lclx').textContent = F ? f2(F.lclx) : '–'; $('v-uclr').textContent = F ? f2(F.uclr) : '–';
+    const svg = $('v-svg'); svg.innerHTML = '';
+    const ink = css('--text'), red = css('--red'), muted = css('--muted');
+    const W = 560, L = 50, R = 70, n = Math.max(samples.length, 8), step = (W - L - R) / (n - 1 || 1);
+    function panel(top, h, vals, lo, hi, centre, ucl, lcl, label) {
+      const y = v => top + h - (v - lo) / (hi - lo) * h;
+      svg.appendChild(svgEl('rect', { x: L, y: top, width: W - L - R, height: h, fill: 'none', stroke: muted }));
+      svg.appendChild(svgEl('text', { x: 4, y: top + 14, 'font-size': 12, fill: muted }, label));
+      if (centre != null) {
+        [[centre, ink, 'centre'], [ucl, red, 'UCL'], [lcl, red, 'LCL']].forEach(([v, c, t]) => { if (v == null || v < lo || v > hi) return; svg.appendChild(svgEl('line', { x1: L, y1: y(v), x2: W - R, y2: y(v), stroke: c, 'stroke-dasharray': t === 'centre' ? '' : '6 4' })); svg.appendChild(svgEl('text', { x: W - R + 4, y: y(v) + 4, 'font-size': 11, fill: c }, t + ' ' + f2(v))); });
+      }
+      let prev = null;
+      vals.forEach((v, i) => { const px = L + i * step, py = y(Math.min(hi, Math.max(lo, v))); const out = ucl != null && (v > ucl || v < lcl);
+        if (prev) svg.appendChild(svgEl('line', { x1: prev[0], y1: prev[1], x2: px, y2: py, stroke: ink }));
+        svg.appendChild(svgEl('circle', { cx: px, cy: py, r: out ? 7 : 4, fill: out ? red : ink })); prev = [px, py]; });
+    }
+    panel(10, 190, xb, 8.6, 11.4, F && F.xbb, F && F.uclx, F && F.lclx, 'x̄ (cm)');
+    panel(220, 120, rg, 0, 3.2, F && F.rb, F && F.uclr, 0, 'R (cm)');
+    const msg = $('v-msg'); msg.hidden = true;
+    if (F && samples.length > 4) {
+      const outX = xb.map((v, i) => (v > F.uclx || v < F.lclx) ? i + 1 : 0).filter(Boolean), outR = rg.map((v, i) => v > F.uclr ? i + 1 : 0).filter(Boolean);
+      msg.hidden = false;
+      if (outX.length || outR.length) { msg.className = 'sig'; msg.textContent = `Signal: ${outX.length ? 'x̄ out in sample ' + outX.join(', ') + ' (the cutter moved)' : ''}${outX.length && outR.length ? '; ' : ''}${outR.length ? 'R out in sample ' + outR.join(', ') + ' (the spread grew)' : ''}. Find the cause before you redraw the limits.`; }
+      else { msg.className = 'sig ok'; msg.textContent = 'All points inside: noise only. If you changed the spread, note that a smaller spread does not trigger the R-chart’s UCL – the chart only sees what grows.'; }
+    }
+  }
+  variation();
+
+  // ---------------- Tab 3 p-chart
+  const trips = [2, 1, 3, 0, 2, 7, 1, 2];
+  const pct = $('pc-table');
+  trips.forEach((t, i) => { const tr = document.createElement('tr'); tr.innerHTML = `<td class="n">${i + 1}</td><td class="n" style="width:110px"><input type="number" min="0" value="${t}" data-i="${i}" aria-label="trip ${i + 1}"></td><td class="n" id="pcp${i}"></td>`; pct.appendChild(tr); });
+  pct.addEventListener('input', e => { trips[+e.target.dataset.i] = Math.max(0, +e.target.value || 0); pchart(); });
+  $('pc-n').addEventListener('input', pchart);
+  function pchart() {
+    const n = Math.max(1, +$('pc-n').value || 25), tot = trips.reduce((a, b) => a + b, 0), pbar = tot / (n * trips.length), sig = Math.sqrt(pbar * (1 - pbar) / n), ucl = pbar + 3 * sig, lcl = Math.max(0, pbar - 3 * sig);
+    const ps = trips.map(t => t / n); trips.forEach((t, i) => $('pcp' + i).textContent = f3(ps[i]));
+    $('pc-pbar').textContent = f3(pbar); $('pc-sig').textContent = f3(sig); $('pc-ucl').textContent = f3(ucl); $('pc-lcl').textContent = f3(lcl) + (pbar - 3 * sig < 0 ? ' (formula gave ' + f3(pbar - 3 * sig) + ')' : '');
+    const svg = $('pc-svg'); svg.innerHTML = ''; const ink = css('--text'), red = css('--red'), muted = css('--muted');
+    const W = 560, H = 300, L = 50, R = 80, T = 16, B = 36, hi = Math.max(ucl * 1.25, Math.max(...ps) * 1.15, 0.05), y = v => H - B - v / hi * (H - T - B), step = (W - L - R) / (trips.length - 1);
+    svg.appendChild(svgEl('rect', { x: L, y: T, width: W - L - R, height: H - T - B, fill: 'none', stroke: muted }));
+    [[pbar, ink, 'p̄'], [ucl, red, 'UCL'], [lcl, red, 'LCL']].forEach(([v, c, t]) => { svg.appendChild(svgEl('line', { x1: L, y1: y(v), x2: W - R, y2: y(v), stroke: c, 'stroke-dasharray': t === 'p̄' ? '' : '6 4' })); svg.appendChild(svgEl('text', { x: W - R + 4, y: y(v) + 4, 'font-size': 11, fill: c }, t + ' ' + f3(v))); });
+    let prev = null, out = [];
+    ps.forEach((v, i) => { const px = L + i * step, py = y(v), o = v > ucl || v < lcl; if (o) out.push(i + 1); if (prev) svg.appendChild(svgEl('line', { x1: prev[0], y1: prev[1], x2: px, y2: py, stroke: ink })); svg.appendChild(svgEl('circle', { cx: px, cy: py, r: o ? 7 : 4, fill: o ? red : ink })); svg.appendChild(svgEl('text', { x: px, y: H - B + 16, 'text-anchor': 'middle', 'font-size': 11, fill: muted }, 'trip ' + (i + 1))); prev = [px, py]; });
+    const m = $('pc-msg'); m.hidden = false; m.className = out.length ? 'sig' : 'sig ok';
+    m.textContent = out.length ? `Trip ${out.join(', ')} is a signal: something was different on that trip (a new helper? the dark staircase?). The others are noise.` : 'All trips inside the limits: noise. Nobody needs a talking-to.';
+  }
+  pchart();
+
+  // ---------------- Tab 4 capability
+  ['c-lsl', 'c-usl', 'c-mean', 'c-sd'].forEach(id => $(id).addEventListener('input', cap));
+  function erf(x) { const s = x < 0 ? -1 : 1; x = Math.abs(x); const t = 1 / (1 + 0.3275911 * x); const yv = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x); return s * yv; }
+  const Phi = z => 0.5 * (1 + erf(z / Math.SQRT2));
+  function cap() {
+    const lsl = +$('c-lsl').value, usl = +$('c-usl').value, m = +$('c-mean').value, sd = Math.max(0.05, +$('c-sd').value);
+    $('c-mean-v').textContent = f1(m); $('c-sd-v').textContent = f1(sd);
+    const cp = (usl - lsl) / (6 * sd), cpk = Math.min((usl - m) / (3 * sd), (m - lsl) / (3 * sd)), out = (Phi((lsl - m) / sd) + 1 - Phi((usl - m) / sd)) * 100;
+    $('c-cp').textContent = f2(cp); $('c-cpk').textContent = f2(cpk); $('c-out').textContent = (out < 0.01 ? '<0.01' : out.toFixed(2)) + ' %';
+    const msg = $('c-msg'); msg.className = cpk >= 1 ? 'sig ok' : 'sig';
+    msg.textContent = cpk >= 1.33 ? 'Capable with margin (C_pk ≥ 1.33).' : cpk >= 1 ? 'Capable at the book’s 1.00, but little margin: a small drift puts product outside.' : (cp >= 1 ? 'Not capable – but the spread would fit (C_p ≥ 1): the process is off-centre. Centring is usually free.' : 'Not capable – the spread itself is too wide for the window: reduce variation (calibration, a jig, a method).');
+    const svg = $('c-svg'); svg.innerHTML = ''; const ink = css('--text'), red = css('--red'), muted = css('--muted'), soft = css('--red-soft');
+    const W = 560, H = 260, L = 20, R = 20, T = 20, B = 40, lo = Math.min(lsl, m - 4 * sd) - 1, hi = Math.max(usl, m + 4 * sd) + 1, X = v => L + (v - lo) / (hi - lo) * (W - L - R);
+    svg.appendChild(svgEl('rect', { x: X(lsl), y: T, width: X(usl) - X(lsl), height: H - T - B, fill: soft, opacity: 0.5 }));
+    [[lsl, 'LSL ' + lsl], [usl, 'USL ' + usl]].forEach(([v, t]) => { svg.appendChild(svgEl('line', { x1: X(v), y1: T, x2: X(v), y2: H - B, stroke: red, 'stroke-width': 2 })); svg.appendChild(svgEl('text', { x: X(v), y: H - B + 16, 'text-anchor': 'middle', 'font-size': 12, fill: red }, t)); });
+    const pk = 1 / (sd * Math.sqrt(2 * Math.PI)); let d = '';
+    for (let i = 0; i <= 200; i++) { const v = lo + (hi - lo) * i / 200, p = Math.exp(-0.5 * ((v - m) / sd) ** 2) / (sd * Math.sqrt(2 * Math.PI)); const px = X(v), py = H - B - p / pk * (H - T - B) * 0.92; d += (i ? 'L' : 'M') + px.toFixed(1) + ' ' + py.toFixed(1) + ' '; }
+    svg.appendChild(svgEl('path', { d, fill: 'none', stroke: ink, 'stroke-width': 2.5 }));
+    svg.appendChild(svgEl('line', { x1: X(m), y1: T, x2: X(m), y2: H - B, stroke: ink, 'stroke-dasharray': '4 4' }));
+    svg.appendChild(svgEl('text', { x: X(m), y: T - 6, 'text-anchor': 'middle', 'font-size': 12, fill: ink }, 'x̄ ' + f1(m)));
+    [-3, 3].forEach(k => { const v = m + k * sd; if (v > lo && v < hi) svg.appendChild(svgEl('text', { x: X(v), y: H - B + 32, 'text-anchor': 'middle', 'font-size': 11, fill: muted }, (k < 0 ? '−3σ ' : '+3σ ') + f1(v))); });
+    svg.appendChild(svgEl('line', { x1: L, y1: H - B, x2: W - R, y2: H - B, stroke: muted }));
+  }
+  cap();
+})();
+</script>
+</body>
+</html>
