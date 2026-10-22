@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bistro Lindenhof Quality Year</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a manager's desk — inbox of feedback slips on the left, the decision ledger on the right, the month's report and the tally sheet below. TH Köln course palette (same tokens as the Week 4 quality widget). */
+:root {
+  --red:#c1002a; --red-soft:#fbe9ed; --bg:#f7f6f5; --panel:#ffffff; --line:#dedad8; --text:#1c1a1a; --muted:#625c5c;
+  --ok:#1f7a45; --ok-soft:#e5f3ea; --warn:#a35a00; --warn-soft:#fbefdc; --slip:#fffdf8; --bar:#8a8383; --chip:#f0eeec;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif; --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --red:#ff5c7a; --red-soft:#3b1820; --bg:#141313; --panel:#1e1c1c; --line:#3a3636; --text:#f2efef; --muted:#b3abab;
+  --ok:#6fd18f; --ok-soft:#173322; --warn:#f0b25c; --warn-soft:#3a2a12; --slip:#242120; --bar:#9c9494; --chip:#2b2828; color-scheme:dark; } }
+:root[data-theme="dark"] {
+  --red:#ff5c7a; --red-soft:#3b1820; --bg:#141313; --panel:#1e1c1c; --line:#3a3636; --text:#f2efef; --muted:#b3abab;
+  --ok:#6fd18f; --ok-soft:#173322; --warn:#f0b25c; --warn-soft:#3a2a12; --slip:#242120; --bar:#9c9494; --chip:#2b2828; color-scheme:dark; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); font-size:16px; line-height:1.45; }
+.wrap { max-width:1280px; margin:0 auto; padding-block:14px 40px; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); display:flex; flex-direction:column; gap:16px; }
+header.top { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:10px 24px; border-bottom:3px solid var(--red); padding-bottom:10px; }
+h1 { font-size:1.6rem; line-height:1.15; margin:0; text-wrap:balance; } h1 span { color:var(--red); }
+.sub { color:var(--muted); font-size:.92rem; margin:2px 0 0; }
+.stats { display:flex; flex-wrap:wrap; gap:6px 20px; font-variant-numeric:tabular-nums; }
+.stat { display:flex; flex-direction:column; min-width:0; }
+.stat small { font-size:.7rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+.stat b { font-size:1.2rem; } .neg { color:var(--red); } .pos { color:var(--ok); }
+.months { display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); gap:3px; }
+.months div { font-size:.72rem; text-align:center; padding:3px 0; border-radius:4px; background:var(--chip); color:var(--muted); font-variant-numeric:tabular-nums; }
+.months div.done { background:var(--red-soft); color:var(--text); } .months div.now { background:var(--red); color:#fff; font-weight:700; }
+h2 { font-size:1.12rem; margin:0; display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+h2 .step { display:inline-grid; place-items:center; width:1.6em; height:1.6em; border-radius:50%; background:var(--red); color:#fff; font-size:.85rem; }
+h2 small { font-weight:400; color:var(--muted); font-size:.85rem; }
+h3 { font-size:.95rem; margin:6px 0 2px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+.desk { display:grid; grid-template-columns:1fr; gap:16px; }
+@media (min-width:980px) { .desk { grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); } }
+section.panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px; display:flex; flex-direction:column; gap:10px; min-width:0; }
+.hint { color:var(--muted); font-size:.88rem; margin:0; }
+.slips { display:flex; flex-direction:column; gap:10px; }
+.slip { background:var(--slip); border:1px solid var(--line); border-left:5px solid var(--line); border-radius:6px; padding:10px 12px; display:flex; flex-direction:column; gap:8px; }
+.slip.sorted { border-left-color:var(--red); }
+.slip .src { font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+.slip .txt { margin:0; }
+.chips { display:flex; flex-wrap:wrap; gap:5px; }
+button { font:inherit; color:inherit; cursor:pointer; }
+button:focus-visible, input:focus-visible { outline:3px solid var(--red); outline-offset:2px; }
+.chip { border:1.5px solid var(--line); background:var(--chip); border-radius:999px; padding:4px 10px; font-size:.82rem; min-height:32px; }
+.chip[aria-pressed="true"] { background:var(--red); border-color:var(--red); color:#fff; font-weight:700; }
+.chip.none[aria-pressed="true"] { background:var(--muted); border-color:var(--muted); }
+.shop { display:flex; flex-direction:column; gap:8px; }
+.item { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 12px; align-items:center; border:1px solid var(--line); border-radius:6px; padding:8px 10px; }
+.item.on { border-color:var(--ok); background:var(--ok-soft); }
+.item .nm { font-weight:700; } .item .bl { grid-column:1 / -1; font-size:.84rem; color:var(--muted); margin:0; }
+.item .cost { font-size:.84rem; color:var(--muted); font-variant-numeric:tabular-nums; }
+.tag { display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:1px 6px; border-radius:4px; margin-right:6px; vertical-align:1px; background:var(--chip); color:var(--muted); }
+.tag.P { background:var(--ok-soft); color:var(--ok); } .tag.A { background:var(--warn-soft); color:var(--warn); } .tag.F { background:var(--red-soft); color:var(--red); }
+.btn { border:2px solid var(--red); background:transparent; color:var(--red); border-radius:6px; padding:6px 12px; font-weight:700; font-size:.88rem; min-height:38px; white-space:nowrap; }
+.btn.solid { background:var(--red); color:#fff; } .btn:disabled { opacity:.4; cursor:not-allowed; }
+.btn.big { font-size:1.05rem; padding:10px 18px; min-height:48px; }
+.runbar { display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; border-top:2px solid var(--line); padding-top:12px; }
+.news { border-left:5px solid var(--warn); background:var(--warn-soft); padding:8px 12px; border-radius:4px; margin:0; }
+.kpis { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:8px; font-variant-numeric:tabular-nums; }
+.kpi { border:1px solid var(--line); border-radius:6px; padding:8px 10px; } .kpi small { display:block; font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; } .kpi b { font-size:1.15rem; }
+.tblwrap { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; font-size:.88rem; font-variant-numeric:tabular-nums; }
+th, td { border-bottom:1px solid var(--line); padding:4px 8px; text-align:left; } td.n, th.n { text-align:right; }
+tr.sum td { font-weight:700; border-top:2px solid var(--text); }
+.grid2 { display:grid; grid-template-columns:1fr; gap:16px; } @media (min-width:900px) { .grid2 { grid-template-columns:minmax(0,1fr) minmax(0,1fr); } }
+svg { display:block; width:100%; height:auto; max-width:100%; }
+svg text { fill:var(--muted); font-family:var(--sans); font-size:11px; }
+svg .axis { stroke:var(--line); } svg .barr { fill:var(--bar); } svg .bar1 { fill:var(--red); } svg .cum { stroke:var(--text); fill:none; stroke-width:2; }
+svg .cl { stroke:var(--text); stroke-width:1.5; } svg .lim { stroke:var(--red); stroke-dasharray:5 4; stroke-width:1.5; } svg .ln { stroke:var(--muted); fill:none; stroke-width:1.5; }
+svg .pt { fill:var(--text); } svg .pt.out { fill:var(--red); } svg .lbl { fill:var(--text); font-weight:700; }
+svg .P { fill:var(--ok); } svg .A { fill:var(--warn); } svg .IF { fill:var(--bar); } svg .EF { fill:var(--red); }
+.start { max-width:760px; display:flex; flex-direction:column; gap:12px; }
+.start ol { margin:0; padding-left:1.3em; display:flex; flex-direction:column; gap:4px; }
+label.f { display:flex; flex-direction:column; gap:4px; font-weight:700; font-size:.9rem; }
+input[type=text] { font:inherit; padding:8px 10px; border:1.5px solid var(--line); border-radius:6px; background:var(--panel); color:var(--text); max-width:320px; }
+.row { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; }
+pre.code { background:var(--chip); border:1px solid var(--line); border-radius:6px; padding:10px 12px; font-family:var(--mono); font-size:.8rem; overflow-x:auto; margin:0; white-space:pre; }
+.big-result { display:flex; flex-wrap:wrap; gap:12px 32px; font-variant-numeric:tabular-nums; }
+.big-result div b { font-size:2rem; display:block; line-height:1.1; }
+.check-ok { color:var(--ok); font-weight:700; } .check-no { color:var(--red); font-weight:700; }
+details summary { cursor:pointer; font-weight:700; }
+.foot { font-size:.75rem; color:var(--muted); }
+.toast { position:fixed; left:50%; transform:translateX(-50%); bottom:calc(16px + env(safe-area-inset-bottom, 0px)); background:var(--text); color:var(--bg); padding:8px 14px; border-radius:6px; font-size:.9rem; }
+@media (prefers-reduced-motion: no-preference) { .slip, .item { transition:background .15s, border-color .15s; } }
+</style>
+</head>
+<body>
+
+<div class="wrap" id="app"></div>
+<div class="toast" id="toast" hidden></div>
+<script>
+//ENGINE-START
+const CATS = [
+  { id: 'slow',  name: 'Slow service',   base: 0.022 },
+  { id: 'wrong', name: 'Wrong order',    base: 0.015 },
+  { id: 'cold',  name: 'Cold food',      base: 0.010 },
+  { id: 'att',   name: 'Staff attitude', base: 0.006 },
+  { id: 'clean', name: 'Cleanliness',    base: 0.004 },
+  { id: 'price', name: 'Price / value',  base: 0.005 },
+];
+const NOISE = { id: 'none', name: 'Not a complaint' };
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const SEASON = [0.90, 0.90, 1.00, 1.00, 1.05, 1.15, 1.20, 1.15, 1.00, 1.00, 1.05, 1.15];
+const ECON = { baseGuests: 1503, spend: 24, foodShare: 0.30, foodShareLate: 0.33, fixed: 21000,
+  comp: 6, compGenerous: 18, remake: 7, startCash: 20000, startStars: 3.4, baseCatch: 0.10,
+  fine: 3000, cleanLimit: 0.0025 };
+const TYPE_NAME = { P: 'Prevention', A: 'Appraisal', F: 'Failure handling', O: 'Other (no quality effect)' };
+const INV = [
+  { id:'train',   type:'P', name:'Service training for all servers', once:6000, monthly:0,    eff:{slow:0.7, att:0.6}, addr:'Slow service, Staff attitude',
+    blurb:'Two-day course: taking orders, table rotation, handling complaints.' },
+  { id:'tablets', type:'P', name:'Handheld order tablets',            once:8000, monthly:150,  eff:{wrong:0.4, slow:0.9}, addr:'Wrong order',
+    blurb:'Orders go from the table straight to the kitchen screen. No handwriting to misread. €150 a month licence.' },
+  { id:'heat',    type:'P', name:'Heated pass and plate warmers',     once:4000, monthly:0,    eff:{cold:0.45}, addr:'Cold food',
+    blurb:'Plates stay hot while they wait for a server.' },
+  { id:'server',  type:'P', name:'Extra server, Friday to Sunday',    once:0,    monthly:1600, eff:{slow:0.6, att:0.9}, addr:'Slow service',
+    blurb:'One more person on the floor at the busy times. Monthly cost; you can stop it.' },
+  { id:'hygiene', type:'P', name:'Cleaning plan and hygiene course',  once:2500, monthly:300,  eff:{clean:0.35}, addr:'Cleanliness',
+    blurb:'Written cleaning schedule, checklists on the wall, a half-day course. €300 a month for supplies.' },
+  { id:'prep',    type:'P', name:'Standard recipes and prep checklists', once:2000, monthly:0, eff:{cold:0.8, wrong:0.85}, addr:'Cold food, Wrong order',
+    blurb:'Every dish written down: portion, plating, timing. New cooks learn faster.' },
+  { id:'menu',    type:'P', name:'Menu re-engineering',               once:3000, monthly:0,    eff:{price:0.5}, spend:-0.5, addr:'Price / value',
+    blurb:'Fair portions, clear prices, fewer dishes. The average bill falls by €0.50.' },
+  { id:'pass',    type:'A', name:'Head cook checks every plate at the pass', once:0, monthly:1200, eff:{slow:1.05}, catch:{cold:0.5, wrong:0.5}, addr:'Cold food, Wrong order',
+    blurb:'Half of the cold or wrong plates are caught and remade before the guest sees them (€7 per remake). Service gets a little slower.' },
+  { id:'mystery', type:'A', name:'Mystery-guest visits',              once:0,    monthly:900,  eff:{att:0.85}, reveal:true, addr:'all (information)',
+    blurb:'Paid test guests every month. Your monthly report then shows the true complaint count for every cause.' },
+  { id:'survey',  type:'A', name:'Table survey cards',                once:0,    monthly:250,  moreCards:4, addr:'all (information)',
+    blurb:'Guests fill in a short card. You get 4 more pieces of feedback to read each month.' },
+  { id:'comps',   type:'F', name:'Generous comp policy',              once:0,    monthly:0,    generous:true, addr:'all',
+    blurb:'Every complaint gets a free dessert or a refund: about €18 instead of €6. Angry guests write softer reviews.' },
+  { id:'decor',   type:'O', name:'New interior and lighting',         once:15000, monthly:0,   guests:1.03, addr:'none',
+    blurb:'A fresh look for the dining room.' },
+  { id:'ads',     type:'O', name:'Social-media ad campaign',          once:0,    monthly:2500, guests:1.10, addr:'none',
+    blurb:'Paid posts and a local influencer. More guests walk in.' },
+];
+const INV_BY = Object.fromEntries(INV.map(i => [i.id, i]));
+
+function hashStr(s) { let h = 2166136261 >>> 0; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function rngFor(seed, tag) { let a = hashStr(seed + '|' + tag); return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function poisson(lam, rnd) { if (lam <= 0) return 0; if (lam > 40) { const u = Math.max(1e-12, rnd()), v = rnd(); const z = Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); return Math.max(0, Math.round(lam + Math.sqrt(lam) * z)); } let L = Math.exp(-lam), k = 0, p = 1; do { k++; p *= rnd(); } while (p > L); return k - 1; }
+function binom(n, p, rnd) { let k = 0; for (let i = 0; i < n; i++) if (rnd() < p) k++; return k; }
+
+function isOn(st, id) { const v = INV_BY[id]; return v.once > 0 ? !!st.owned[id] : !!st.active[id]; }
+function activeList(st) { return INV.filter(v => isOn(st, v.id)); }
+
+function newGame(team, seed) {
+  return { v: 1, team, seed, month: 0, stars: ECON.startStars, cash: ECON.startCash, cum: 0,
+    owned: {}, active: {}, boughtThisMonth: {}, history: [], blog: 1, blogMonths: 0,
+    sorts: {}, tally: Object.fromEntries([...CATS.map(c => [c.id, 0]), ['none', 0]]),
+    spent: {}, cards: null, phase: 'play', lastReport: null };
+}
+
+function rates(st, m) {
+  const r = Object.fromEntries(CATS.map(c => [c.id, c.base]));
+  for (const v of activeList(st)) if (v.eff) for (const k in v.eff) r[k] *= v.eff[k];
+  if (m >= 2 && m <= 4) { const soft = isOn(st, 'prep') ? 0.4 : 1; r.cold *= 1 + 0.7 * soft; r.wrong *= 1 + 0.25 * soft; }
+  if (m >= 10) r.price *= isOn(st, 'menu') ? 1.1 : 1.4;
+  return r;
+}
+
+function expectedByCat(st, m, guests) { const r = rates(st, m); return Object.fromEntries(CATS.map(c => [c.id, guests * r[c.id]])); }
+
+function runMonth(st) {
+  const m = st.month, rnd = rngFor(st.seed, 'm' + m);
+  const act = activeList(st);
+  let gMult = 1; for (const v of act) if (v.guests) gMult *= v.guests;
+  const guests = Math.round(ECON.baseGuests * (0.25 + 0.22 * st.stars) * SEASON[m] * gMult * (st.blogMonths > 0 ? st.blog : 1));
+  const r = rates(st, m), load = guests / 1500;
+  r.slow *= Math.pow(load, 1.5); r.wrong *= Math.pow(load, 0.5);
+  const generous = isOn(st, 'comps');
+  const byCat = {}, caughtByCat = {}; let complaints = 0, caught = 0;
+  for (const c of CATS) {
+    const d = poisson(guests * r[c.id], rnd);
+    let share = 0; if (c.id === 'cold' || c.id === 'wrong') { share = ECON.baseCatch; if (isOn(st, 'pass')) share += INV_BY.pass.catch[c.id]; }
+    const k = binom(d, share, rnd);
+    byCat[c.id] = d - k; caughtByCat[c.id] = k; complaints += d - k; caught += k;
+  }
+  let spend = ECON.spend; for (const v of act) if (v.spend) spend += v.spend;
+  const revenue = guests * spend, food = revenue * (m >= 10 ? ECON.foodShareLate : ECON.foodShare);
+  const coq = { P: 0, A: 0, IF: caught * ECON.remake, EF: complaints * (generous ? ECON.compGenerous : ECON.comp) };
+  let other = 0; const lines = [];
+  for (const v of act) {
+    let cost = v.monthly + (st.boughtThisMonth[v.id] ? v.once : 0);
+    if (!cost) continue;
+    if (v.type === 'P') coq.P += cost; else if (v.type === 'A') coq.A += cost; else other += cost;
+    st.spent[v.id] = (st.spent[v.id] || 0) + cost; lines.push([v.name, cost]);
+  }
+  const news = [];
+  if (m === 2) news.push(isOn(st, 'prep') ? 'Head cook Marco left. The new cook learns fast with your written recipes, but the first weeks are rough.' : 'Head cook Marco left. The new cook does not know the plates yet: expect more cold and wrong dishes until about May.');
+  if (m === 5) news.push('Summer: the terrace is open. More guests, more pressure on the floor staff.');
+  let fine = 0;
+  if (m === 8) {
+    if (r.clean > ECON.cleanLimit) { fine = ECON.fine; news.push('Food-safety inspection: failed. Fine €3,000, and the report is in the local paper.'); }
+    else news.push('Food-safety inspection: passed without remarks.');
+  }
+  coq.EF += fine;
+  if (m === 10) news.push(isOn(st, 'menu') ? 'Your suppliers raised prices: food cost is now 33 % of revenue. Your re-worked menu absorbs most of the guest reaction.' : 'Your suppliers raised prices: food cost is now 33 % of revenue, and you had to raise menu prices. Guests notice.');
+  if (m === 7) news.push(st.stars >= 4.0 ? 'A well-known food blogger visited and liked it: more guests for the next two months.' : 'A well-known food blogger visited. The post is lukewarm: fewer guests for the next two months.');
+  const profit = revenue - food - ECON.fixed - coq.P - coq.A - coq.IF - coq.EF - other;
+  const p = complaints / guests, pEff = p * (generous ? 0.8 : 1);
+  const target = Math.min(5, Math.max(1, 5.2 - 35 * pEff));
+  const starsBefore = st.stars;
+  st.stars = st.stars + 0.5 * (target - st.stars) - (fine ? 0.4 : 0);
+  st.stars = Math.min(5, Math.max(1, st.stars));
+  if (st.blogMonths > 0) st.blogMonths--;
+  if (m === 7) { st.blog = starsBefore >= 4.0 ? 1.08 : 0.95; st.blogMonths = 2; }
+  st.cash += profit; st.cum += profit;
+  const rep = { m, guests, complaints, caught, byCat, caughtByCat, revenue, food, fixed: ECON.fixed, coq, other, lines, profit,
+    stars: st.stars, starsBefore, news, p,
+    newBuys: Object.keys(st.boughtThisMonth), reveal: isOn(st, 'mystery'), active: act.map(v => v.id) };
+  st.history.push(rep); st.lastReport = rep; st.boughtThisMonth = {}; st.month++;
+  if (st.month >= 12) st.phase = 'end';
+  return rep;
+}
+//ENGINE-END
+
+// ---------- feedback slips ----------
+const R2 = '★★☆☆☆ Online review', R1 = '★☆☆☆☆ Online review', R3 = '★★★☆☆ Online review', CC = 'Comment card', EM = 'Email to the restaurant',
+      SF = 'Staff note · floor', SK = 'Staff note · kitchen', SD = 'Staff note · dish room';
+const FEED = {
+  slow: [[R2,'Waited 25 minutes before anyone took our order. The food was good once it came.'],[CC,'We asked for the bill three times.'],
+    [SF,'Friday: four tables waiting for menus at the same time, and only two of us on the floor.'],[EM,'We had to leave for the cinema before our main courses arrived.'],
+    [R3,'Lovely place, but plan two hours for a quick lunch.'],[R1,'Nobody came to our table. We left after 15 minutes.'],
+    [SF,'Saturday: table 9 waited 20 minutes for drinks. Two servers for 60 seats.'],[CC,'Starters came fast, then a 40-minute gap before the mains.']],
+  wrong: [[EM,'I ordered the vegetarian lasagne and got the beef one. My daughter is vegetarian.'],[R1,'Asked for no onions because of an allergy. Onions everywhere.'],
+    [SK,'Three tickets tonight I could not read. I guessed.'],[CC,'The bill showed two glasses of wine we never ordered.'],
+    [R2,'My steak came well done. I ordered it medium-rare.'],[SF,'Table 12 sent back two plates: they got the order of table 21.'],
+    [CC,'Our side salads were missing and fries came instead.'],[SK,'Two pizzas made twice tonight: the ticket said "funghi", the guest wanted "frutti di mare".']],
+  cold: [[CC,'The soup was lukewarm.'],[R2,'Pasta cold in the middle, and the sauce had a skin on it.'],
+    [SK,'On busy nights plates wait five or six minutes at the pass. They are cold when they reach the table.'],[R3,'Fries were cold and soggy.'],
+    [EM,'My partner\'s plate was hot, mine was cold. It must have waited for the second dish.'],[CC,'The pizza arrived warm at best.'],
+    [R2,'Coffee came lukewarm, twice.'],[SK,'The new cook plates the starters too early. They sit under the lamp that does not work.']],
+  att: [[R1,'The waiter rolled his eyes when we asked about gluten-free options.'],[EM,'When I mentioned the wait, the server said "Not my table."'],
+    [SF,'Two servers argued in front of guests on Saturday.'],[R2,'Nobody smiled the whole evening. We felt like a bother.'],
+    [CC,'Asked for tap water and was told it "isn\'t really done here".'],[R2,'Our server was on her phone at the bar while we waited.']],
+  clean: [[CC,'The toilets had no soap and no paper towels.'],[R2,'Sticky table and crumbs on the bench.'],[EM,'I found a hair in my risotto.'],
+    [SD,'The grease filter in the kitchen hood has not been cleaned since spring.'],[CC,'Smudged glasses at our table.'],[R2,'The menu was greasy and stuck to my hands.']],
+  price: [[R2,'€19 for a small plate of pasta? Not again.'],[CC,'The portions shrank since last year, the prices did not.'],[R3,'Wine prices are steep for the quality.'],
+    [EM,'The children\'s menu costs nearly as much as an adult main course.'],[R3,'Good food, but the bill felt like a city-centre restaurant.'],
+    [SF,'Guests keep asking why our lunch menu costs more than the café next door.']],
+  none: [['★★★★★ Online review','Best tiramisu in town!'],[EM,'Do you sell gift vouchers for Christmas?'],[CC,'Could you add more vegan dishes?'],
+    ['★★★★★ Online review','Lovely terrace, we will be back.'],[EM,'Are you open on Easter Monday?'],[SF,'Can I swap my Tuesday shift with Jamal?'],
+    [CC,'Parking near the bistro was hard to find.'],[CC,'Thank you for the birthday candle on the cake!'],['★★★★☆ Online review','Cosy place, friendly owner, good wine list.']],
+};
+const ALLCATS = [...CATS, NOISE];
+const CATNAME = Object.fromEntries(ALLCATS.map(c => [c.id, c.name]));
+
+function shuffled(arr, rnd) { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function pickCat(weights, rnd) { const tot = Object.values(weights).reduce((a, b) => a + b, 0); let x = rnd() * tot; for (const k in weights) { x -= weights[k]; if (x <= 0) return k; } return Object.keys(weights)[0]; }
+
+function makeCards(st) {
+  const m = st.month, rnd = rngFor(st.seed, 'cards' + m);
+  const prev = st.history.length ? st.history[st.history.length - 1].byCat : expectedByCat(st, 0, 1500);
+  const w = {}; for (const c of CATS) w[c.id] = Math.max(0.3, prev[c.id]);
+  const n = 6 + (isOn(st, 'survey') ? 4 : 0), cats = [];
+  for (let i = 0; i < n; i++) cats.push(pickCat(w, rnd));
+  cats.push('none', 'none');
+  st.used = st.used || {};
+  const cards = shuffled(cats, rnd).map(cat => {
+    const pool = shuffled(FEED[cat], rngFor(st.seed, 'pool' + cat)); const k = (st.used[cat] || 0); st.used[cat] = k + 1;
+    const [src, text] = pool[k % pool.length]; return { cat, src, text };
+  });
+  st.cards = cards; st.sorts = {};
+}
+
+// ---------- state ----------
+const SAVE_KEY = 'bistro-lindenhof-v1';
+let S = null;
+function save() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(S)); } catch (e) {} }
+function load() { try { const s = localStorage.getItem(SAVE_KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
+
+const eur = x => (x < 0 ? '−' : '') + '€' + Math.abs(Math.round(x)).toLocaleString('en-GB');
+const pct = (x, d = 1) => (x * 100).toFixed(d) + ' %';
+const esc = s => String(s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+const starStr = s => s.toFixed(2) + ' ★';
+const OVERDRAFT = -10000;
+
+function toast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 2200); }
+
+// ---------- charts ----------
+function paretoSVG(rows, title) {
+  const data = rows.filter(r => r[1] > 0).sort((a, b) => b[1] - a[1]);
+  const W = 560, H = 270, L = 40, Rm = 44, T = 26, B = 70, iw = W - L - Rm, ih = H - T - B;
+  const tot = data.reduce((a, r) => a + r[1], 0);
+  if (!tot) return `<p class="hint">${esc(title)}: no data yet.</p>`;
+  const step = Math.max(1, Math.ceil(Math.max(...data.map(r => r[1])) / 4)), max = step * 4, bw = iw / data.length;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(title)}"><text x="${L}" y="14" class="lbl">${esc(title)}</text>`;
+  for (let g = 0; g <= 4; g++) { const y = T + ih - ih * g / 4; s += `<line class="axis" x1="${L}" x2="${L + iw}" y1="${y}" y2="${y}"/><text x="${L - 6}" y="${y + 4}" text-anchor="end">${step * g}</text><text x="${L + iw + 6}" y="${y + 4}">${25 * g}%</text>`; }
+  let cum = 0, pts = [];
+  data.forEach((r, i) => {
+    const h = ih * r[1] / max, x = L + i * bw + bw * 0.15, w = bw * 0.7;
+    cum += r[1]; const cy = T + ih - ih * cum / tot; pts.push(`${L + i * bw + bw / 2},${cy}`);
+    s += `<rect class="${i < 2 ? 'bar1' : 'barr'}" x="${x}" y="${T + ih - h}" width="${w}" height="${h}"/><text x="${x + w / 2}" y="${T + ih - h - 4}" text-anchor="middle" class="lbl">${r[1]}</text>`;
+    const words = r[0].split(' / ').join('/').split(' ');
+    words.forEach((wd, k) => s += `<text x="${L + i * bw + bw / 2}" y="${T + ih + 14 + 12 * k}" text-anchor="middle">${esc(wd)}</text>`);
+  });
+  s += `<polyline class="cum" points="${pts.join(' ')}"/>` + pts.map(p => { const [x, y] = p.split(','); return `<circle cx="${x}" cy="${y}" r="3" class="pt"/>`; }).join('');
+  return s + `</svg>`;
+}
+
+function pChart(hist) {
+  if (!hist.length) return { svg: '<p class="hint">The complaint chart appears after the first month.</p>', lim: null };
+  const n = hist.map(h => h.guests), c = hist.map(h => h.complaints), p = hist.map(h => h.complaints / h.guests);
+  const nbar = n.reduce((a, b) => a + b, 0) / n.length, pbar = c.reduce((a, b) => a + b, 0) / n.reduce((a, b) => a + b, 0);
+  const sig = Math.sqrt(pbar * (1 - pbar) / nbar), ucl = pbar + 3 * sig, lcl = Math.max(0, pbar - 3 * sig);
+  const W = 560, H = 250, L = 46, Rm = 74, T = 26, B = 30, iw = W - L - Rm, ih = H - T - B;
+  const ymax = Math.max(ucl, ...p) * 1.15, Y = v => T + ih - ih * v / ymax, X = i => L + iw * (i + 0.5) / 12;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="p-chart of complaints per guest"><text x="${L}" y="14" class="lbl">Complaints per guest, month by month (p-chart)</text>`;
+  for (let g = 0; g <= 4; g++) { const v = ymax * g / 4; s += `<line class="axis" x1="${L}" x2="${L + iw}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end">${(v * 100).toFixed(1)}%</text>`; }
+  MONTHS.forEach((mn, i) => s += `<text x="${X(i)}" y="${H - 10}" text-anchor="middle">${mn}</text>`);
+  if (hist.length >= 2) {
+    s += `<line class="cl" x1="${L}" x2="${L + iw}" y1="${Y(pbar)}" y2="${Y(pbar)}"/><text x="${L + iw + 4}" y="${Y(pbar) + 4}">p̄ ${(pbar * 100).toFixed(1)}%</text>`;
+    s += `<line class="lim" x1="${L}" x2="${L + iw}" y1="${Y(ucl)}" y2="${Y(ucl)}"/><text x="${L + iw + 4}" y="${Y(ucl) + 4}">UCL ${(ucl * 100).toFixed(1)}%</text>`;
+    s += `<line class="lim" x1="${L}" x2="${L + iw}" y1="${Y(lcl)}" y2="${Y(lcl)}"/><text x="${L + iw + 4}" y="${Y(lcl) + 4}">LCL ${(lcl * 100).toFixed(1)}%</text>`;
+  }
+  s += `<polyline class="ln" points="${p.map((v, i) => X(i) + ',' + Y(v)).join(' ')}"/>`;
+  const out = [];
+  p.forEach((v, i) => { const o = hist.length >= 2 && (v > ucl || v < lcl); if (o) out.push(MONTHS[i] + (v > ucl ? ' (above UCL)' : ' (below LCL)')); s += `<circle cx="${X(i)}" cy="${Y(v)}" r="${o ? 5 : 3.5}" class="pt${o ? ' out' : ''}"><title>${MONTHS[i]}: ${c[i]} of ${n[i]} guests = ${(v * 100).toFixed(2)} %</title></circle>`; });
+  return { svg: s + '</svg>', lim: { pbar, nbar, sig, ucl, lcl, out } };
+}
+
+function coqTotals(hist) { const t = { P: 0, A: 0, IF: 0, EF: 0 }; let other = 0; for (const h of hist) { for (const k in t) t[k] += h.coq[k]; other += h.other; } return { t, other }; }
+
+function coqSVG(t) {
+  const items = [['P', 'Prevention'], ['A', 'Appraisal'], ['IF', 'Internal failure'], ['EF', 'External failure']];
+  const tot = items.reduce((a, [k]) => a + t[k], 0) || 1, max = Math.max(...items.map(([k]) => t[k]), 1);
+  const W = 560, H = 190, L = 120, T = 24, rowH = 36;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cost of quality by category" style="max-width:640px"><text x="0" y="14" class="lbl">Cost of quality for the year (Heizer Table 6.1 categories)</text>`;
+  items.forEach(([k, nm], i) => { const y = T + i * rowH + 6, w = (W - L - 130) * t[k] / max; s += `<text x="${L - 8}" y="${y + 16}" text-anchor="end">${nm}</text><rect class="${k}" x="${L}" y="${y}" width="${Math.max(1, w)}" height="22" rx="2"/><text x="${L + w + 6}" y="${y + 16}" class="lbl">${eur(t[k])} · ${Math.round(100 * t[k] / tot)} %</text>`; });
+  return s + '</svg>';
+}
+
+// ---------- tally (boxes A–D) ----------
+function invRows() {
+  return INV.filter(v => S.spent[v.id] > 0 || isOn(S, v.id)).map(v => ({ v, cost: S.spent[v.id] || 0 }));
+}
+function tallyHTML() {
+  const a = CATS.map(c => `<tr><td>${c.name}</td><td class="n">${S.tally[c.id]}</td></tr>`).join('') + `<tr><td class="hint">Not a complaint (left out of the Pareto)</td><td class="n hint">${S.tally.none}</td></tr><tr class="sum"><td>Total complaints sorted</td><td class="n">${CATS.reduce((x, c) => x + S.tally[c.id], 0)}</td></tr>`;
+  const ir = invRows();
+  const b = ir.length ? ir.map(({ v, cost }) => `<tr><td>${esc(v.name)}</td><td class="n">${eur(cost)}</td><td>${v.type === 'O' ? '–' : v.type}</td><td>${esc(v.addr)}</td></tr>`).join('') : '<tr><td colspan="4" class="hint">No investments yet.</td></tr>';
+  const h = S.history;
+  const cRow = MONTHS.map((mn, i) => `<td class="n">${h[i] ? h[i].complaints : ''}</td>`).join('');
+  const nRow = MONTHS.map((mn, i) => `<td class="n">${h[i] ? h[i].guests : ''}</td>`).join('');
+  const iRow = MONTHS.map((mn, i) => `<td class="n">${h[i] && h[i].newBuys.length ? '✓' : ''}</td>`).join('');
+  return `<div class="grid2"><div><h3>A · Feedback by category (your sort)</h3><div class="tblwrap"><table><tr><th>Category</th><th class="n">Count</th></tr>${a}</table></div></div>
+  <div><h3>B · Investments chosen</h3><div class="tblwrap"><table><tr><th>Investment</th><th class="n">Spent so far</th><th>P / A / F</th><th>Addresses</th></tr>${b}</table></div>
+  <p class="hint">P prevention · A appraisal · F failure handling · – no quality effect. Failure costs you paid: internal ${eur(coqTotals(h).t.IF)}, external ${eur(coqTotals(h).t.EF)}.</p></div></div>
+  <h3>C · The year, month by month</h3><div class="tblwrap"><table><tr><th>Month</th>${MONTHS.map(m => `<th class="n">${m}</th>`).join('')}</tr>
+  <tr><td>Complaints</td>${cRow}</tr><tr><td>Guests (n)</td>${nRow}</tr><tr><td>New investment</td>${iRow}</tr></table></div>
+  <h3>D · Result</h3><div class="tblwrap"><table><tr><th>Profit so far</th><th>Review score</th><th>Months played</th></tr><tr><td>${eur(S.cum)}</td><td>${starStr(S.stars)}</td><td>${h.length} of 12</td></tr></table></div>`;
+}
+
+// ---------- Colab export ----------
+function colabCode() {
+  const h = S.history, { t } = coqTotals(h);
+  const fb = CATS.map(c => `    [${JSON.stringify(c.name).padEnd(18)}, ${String(S.tally[c.id]).padStart(3)}],`).join('\n');
+  const inv = invRows().filter(r => r.v.type === 'P' || r.v.type === 'A').map(({ v, cost }) => {
+    const first = v.addr.split(',')[0].trim(); const addr = CATS.some(c => c.name === first) ? first : 'all';
+    return `    [${JSON.stringify(v.name).padEnd(44)}, ${String(Math.round(cost)).padStart(6)}, ${JSON.stringify(v.type === 'P' ? 'prevention' : 'appraisal').padEnd(12)}, ${JSON.stringify(addr)}],`; });
+  inv.push(`    [${JSON.stringify('Remakes at the pass (internal failure)').padEnd(44)}, ${String(Math.round(t.IF)).padStart(6)}, "failure"   , "all"],`);
+  inv.push(`    [${JSON.stringify('Comps, refunds, fines (external failure)').padEnd(44)}, ${String(Math.round(t.EF)).padStart(6)}, "failure"   , "all"],`);
+  const other = invRows().filter(r => r.v.type === 'O' || r.v.type === 'F');
+  const nbar = Math.round(h.reduce((a, x) => a + x.guests, 0) / Math.max(1, h.length));
+  return `# Bistro Lindenhof · team ${S.team || '—'} · world "${S.seed}" · ${h.length} months · profit ${Math.round(S.cum)} € · ${S.stars.toFixed(2)} stars
+# ---- 3a: paste over the "feedback = ..." cell ----
+feedback = pd.DataFrame([
+${fb}
+], columns=["cause", "count"])
+
+pareto_rest = pareto(feedback)
+draw_pareto(pareto_rest, "Our restaurant: feedback by category – which two causes did we attack?")
+pareto_rest.round(1)
+
+# ---- 3b: paste over the "investments = ..." cell ----
+investments = pd.DataFrame([
+${inv.join('\n')}
+], columns=["item", "cost", "type", "addresses"])
+${other.length ? '# not quality costs, left out: ' + other.map(o => o.v.name + ' ' + Math.round(o.cost) + ' €').join(', ') + '\n' : ''}
+by_type = investments.groupby("type")["cost"].sum().reindex(["prevention", "appraisal", "failure"]).fillna(0)
+by_type_pct = (by_type / by_type.sum() * 100).round(1)
+pd.DataFrame({"€": by_type, "%": by_type_pct})
+
+# ---- 3c: paste over the "GUESTS_PER_MONTH = ..." cell ----
+GUESTS_PER_MONTH = ${nbar}                         # average guests per month (they varied ${Math.min(...h.map(x => x.guests))}–${Math.max(...h.map(x => x.guests))})
+complaints = np.array([${h.map(x => x.complaints).join(', ')}])
+
+p_month, plim_rest = p_chart_limits(complaints, GUESTS_PER_MONTH)
+draw_p_chart(p_month, plim_rest, "Our restaurant: complaints per guest, 12 months – did our investments show up as a shift?", xlabel="month")
+print({k: (round(v, 4) if isinstance(v, float) else v) for k, v in plim_rest.items()})`;
+}
+
+// ---------- actions ----------
+function act(e) {
+  const b = e.target.closest('[data-a]'); if (!b) return;
+  const a = b.dataset.a, id = b.dataset.id;
+  if (a === 'start') {
+    const team = document.getElementById('team').value.trim(), seed = document.getElementById('seed').value.trim() || 'SSCM-W4';
+    S = newGame(team, seed); makeCards(S); save(); render(); window.scrollTo(0, 0); return;
+  }
+  if (a === 'continue') { S = load(); render(); return; }
+  if (a === 'sort') { const i = +b.dataset.i; const prev = S.sorts[i]; S.sorts[i] = b.dataset.c; if (prev === b.dataset.c) delete S.sorts[i]; save(); render(); return; }
+  if (a === 'buy') { const v = INV_BY[id]; if (S.cash - v.once < OVERDRAFT) { toast('Not enough cash: the bank allows at most €10,000 overdraft.'); return; } S.owned[id] = true; S.boughtThisMonth[id] = true; S.cash -= v.once; S.cum -= 0; save(); render(); toast('Bought: ' + v.name); return; }
+  if (a === 'undo') { const v = INV_BY[id]; delete S.owned[id]; delete S.boughtThisMonth[id]; S.cash += v.once; save(); render(); toast('Purchase undone'); return; }
+  if (a === 'toggle') { S.active[id] = !S.active[id]; save(); render(); toast((S.active[id] ? 'Started: ' : 'Stopped: ') + INV_BY[id].name); return; }
+  if (a === 'run') {
+    // one-off purchases were already deducted from cash; runMonth books them as cost again, so add them back first
+    for (const id2 in S.boughtThisMonth) S.cash += INV_BY[id2].once;
+    const cards = S.cards; let match = 0;
+    cards.forEach((c, i) => { const s = S.sorts[i]; if (s) { S.tally[s] = (S.tally[s] || 0) + 1; if (s === c.cat) match++; } });
+    const prevAct = S.lastReport ? S.lastReport.active : [];
+    const rep = runMonth(S); rep.sortMatch = match; rep.sortN = cards.length;
+    rep.newBuys = [...new Set([...rep.newBuys, ...rep.active.filter(x => !prevAct.includes(x))])];
+    if (S.phase !== 'end') makeCards(S); else S.cards = [];
+    save(); render(); const r = document.getElementById('report'); if (r) r.scrollIntoView({ behavior: 'smooth', block: 'start' }); return;
+  }
+  if (a === 'copy') {
+    const txt = colabCode(); const fallback = () => { const pre = document.getElementById('code'); const rg = document.createRange(); rg.selectNodeContents(pre); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(rg); toast('Selected: press Ctrl+C to copy'); };
+    try { navigator.clipboard.writeText(txt).then(() => toast('Copied. Paste it into Colab Part 3.'), fallback); } catch (err) { fallback(); }
+    return;
+  }
+  if (a === 'restart') { S = null; try { localStorage.removeItem(SAVE_KEY); } catch (err) {} render(); window.scrollTo(0, 0); return; }
+  if (a === 'askrestart') { document.getElementById('restartbox').hidden = false; return; }
+  if (a === 'norestart') { document.getElementById('restartbox').hidden = true; return; }
+}
+
+// ---------- views ----------
+function headerHTML() {
+  const m = S ? S.month : 0;
+  const strip = MONTHS.map((mn, i) => `<div class="${S && i < S.history.length ? 'done' : ''}${S && S.phase === 'play' && i === m ? ' now' : ''}">${mn}</div>`).join('');
+  return `<header class="top"><div><h1>Bistro <span>Lindenhof</span> · quality year</h1><p class="sub">You run a 60-seat bistro for twelve months. Read the feedback, find the vital few, invest where it pays.${S && S.team ? ' Team: <b>' + esc(S.team) + '</b>' : ''}</p></div>
+  ${S ? `<div class="stats"><div class="stat"><small>Month</small><b>${S.phase === 'end' ? 'Year done' : (m + 1) + ' of 12'}</b></div><div class="stat"><small>Review score</small><b>${starStr(S.stars)}</b></div><div class="stat"><small>Cash</small><b class="${S.cash < 0 ? 'neg' : ''}">${eur(S.cash)}</b></div><div class="stat"><small>Profit so far</small><b class="${S.cum < 0 ? 'neg' : 'pos'}">${eur(S.cum)}</b></div></div>` : ''}
+  </header>${S ? `<div class="months" aria-label="Months">${strip}</div>` : ''}`;
+}
+
+function startHTML() {
+  const saved = load();
+  return headerHTML() + `<section class="panel start"><h2>How a month works</h2>
+  <ol><li><b>Read and sort the feedback</b> from last month: online reviews, comment cards, notes from your staff. Put every slip into a category, or mark it as not a complaint. Your sorting builds the Pareto chart.</li>
+  <li><b>Decide where the money goes.</b> Prevention stops faults, appraisal finds them, failure handling pays for them, and some options look good but change nothing about quality.</li>
+  <li><b>Run the month.</b> You see guests, complaints, the cost of quality and your review score. Better reviews bring more guests next month.</li></ol>
+  <p class="hint">Start: €20,000 cash, 3.4 stars, about 1,500 guests a month at €24 per bill. Things will happen during the year. The team with the highest profit after twelve months wins; the review score breaks a tie. Keep your paper tally sheet next to the laptop: the page fills boxes A–D for you, and at the end it writes the code for Colab Part 3.</p>
+  <div class="row"><label class="f" for="team">Team code name<input type="text" id="team" placeholder="e.g. Team Deming" autocomplete="off"></label>
+  <label class="f" for="seed">World (same for every team = same luck)<input type="text" id="seed" value="SSCM-W4" autocomplete="off"></label></div>
+  <div class="row"><button class="btn solid big" data-a="start">Open the bistro</button>${saved && saved.history ? `<button class="btn big" data-a="continue">Continue saved game (${esc(saved.team || 'no name')}, month ${Math.min(12, saved.month + 1)})</button>` : ''}</div></section>
+  <p class="foot">Classroom stand-in for the Pearson MyLab OM Quality Management simulation (restaurant manager, one simulated year), built for SSCM Session 4. The numbers are invented and the rules are simplified. Cost-of-quality categories follow Heizer, Render &amp; Munson (2023), Operations management, 14th ed., Pearson, Ch. 6.</p>`;
+}
+
+function inboxHTML() {
+  const n = S.cards.length, done = Object.keys(S.sorts).length;
+  const slips = S.cards.map((c, i) => `<div class="slip${S.sorts[i] ? ' sorted' : ''}"><span class="src">${esc(c.src)}</span><p class="txt">${esc(c.text)}</p>
+    <div class="chips" role="group" aria-label="Category">${ALLCATS.map(k => `<button class="chip${k.id === 'none' ? ' none' : ''}" data-a="sort" data-i="${i}" data-c="${k.id}" aria-pressed="${S.sorts[i] === k.id}">${k.name}</button>`).join('')}</div></div>`).join('');
+  return `<section class="panel"><h2><span class="step">1</span> Feedback inbox <small>${MONTHS[S.month]} · from last month · ${done} of ${n} sorted</small></h2>
+  <p class="hint">Sort what the guest experienced, not who is to blame. Staff notes count too: file them under the problem they describe.</p><div class="slips">${slips}</div></section>`;
+}
+
+function shopHTML() {
+  const groups = ['P', 'A', 'F', 'O'].map(t => {
+    const items = INV.filter(v => v.type === t).map(v => {
+      const on = isOn(S, v.id), cost = [v.once ? eur(v.once) + ' once' : '', v.monthly ? eur(v.monthly) + ' a month' : ''].filter(Boolean).join(' + ') || 'no fixed cost';
+      let btn;
+      if (v.once > 0) btn = S.owned[v.id] ? (S.boughtThisMonth[v.id] ? `<button class="btn" data-a="undo" data-id="${v.id}">Undo</button>` : `<span class="check-ok">Owned</span>`) : `<button class="btn solid" data-a="buy" data-id="${v.id}" ${S.cash - v.once < OVERDRAFT ? 'disabled' : ''}>Buy</button>`;
+      else btn = `<button class="btn ${on ? '' : 'solid'}" data-a="toggle" data-id="${v.id}">${on ? 'Stop' : 'Start'}</button>`;
+      return `<div class="item${on ? ' on' : ''}"><div><span class="tag ${v.type}">${t}</span><span class="nm">${esc(v.name)}</span><div class="cost">${cost}</div></div>${btn}<p class="bl">${esc(v.blurb)}</p></div>`;
+    }).join('');
+    return `<h3>${TYPE_NAME[t]}</h3>${items}`;
+  }).join('');
+  const allSorted = Object.keys(S.sorts).length === S.cards.length;
+  const monthly = activeList(S).reduce((a, v) => a + v.monthly, 0);
+  return `<section class="panel"><h2><span class="step">2</span> Decisions <small>cash ${eur(S.cash)} · running costs ${eur(monthly)} a month</small></h2>
+  <p class="hint">One-off buys stay for the rest of the year. Monthly items cost money every month until you stop them. You can overdraw the account by up to €10,000.</p>
+  <div class="shop">${groups}</div>
+  <div class="runbar"><h2><span class="step">3</span></h2><button class="btn solid big" data-a="run" ${allSorted ? '' : 'disabled'}>Run ${MONTHS[S.month]}</button>
+  <span class="hint">${allSorted ? 'Ready.' : 'Sort every slip first (' + (S.cards.length - Object.keys(S.sorts).length) + ' left).'}</span></div></section>`;
+}
+
+function reportHTML(r) {
+  if (!r) return '';
+  const rows = [['Revenue', r.revenue], ['Food and drink cost', -r.food], ['Rent, staff, energy', -r.fixed], ['Prevention', -r.coq.P], ['Appraisal', -r.coq.A], ['Internal failure (remakes)', -r.coq.IF], ['External failure (comps, refunds, fines)', -r.coq.EF], ['Other spending', -r.other]];
+  const d = r.stars - r.starsBefore;
+  const reveal = r.reveal ? `<h3>Mystery-guest report: true complaints by cause</h3><div class="tblwrap"><table><tr>${CATS.map(c => `<th class="n">${c.name}</th>`).join('')}</tr><tr>${CATS.map(c => `<td class="n">${r.byCat[c.id]}</td>`).join('')}</tr></table></div>` : '';
+  return `<section class="panel" id="report"><h2>Report for ${MONTHS[r.m]}</h2>${r.news.map(n => `<p class="news">${esc(n)}</p>`).join('')}
+  <div class="kpis"><div class="kpi"><small>Guests</small><b>${r.guests.toLocaleString('en-GB')}</b></div><div class="kpi"><small>Complaints</small><b>${r.complaints}</b></div>
+  <div class="kpi"><small>Complaint rate</small><b>${pct(r.p, 2)}</b></div><div class="kpi"><small>Caught in the kitchen</small><b>${r.caught}</b></div>
+  <div class="kpi"><small>Review score</small><b>${starStr(r.stars)} <span class="${d < 0 ? 'neg' : 'pos'}" style="font-size:.85rem">${d >= 0 ? '+' : '−'}${Math.abs(d).toFixed(2)}</span></b></div>
+  <div class="kpi"><small>Profit this month</small><b class="${r.profit < 0 ? 'neg' : 'pos'}">${eur(r.profit)}</b></div></div>
+  ${r.sortN ? `<p class="hint">Your sorting agreed with the instructor key on <b>${r.sortMatch} of ${r.sortN}</b> slips.</p>` : ''}
+  <div class="tblwrap"><table>${rows.map(([k, v]) => `<tr><td>${k}</td><td class="n">${eur(v)}</td></tr>`).join('')}<tr class="sum"><td>Profit</td><td class="n">${eur(r.profit)}</td></tr></table></div>${reveal}</section>`;
+}
+
+function chartsHTML() {
+  const pc = pChart(S.history);
+  return `<section class="panel"><h2>Your charts so far</h2><div class="grid2"><div>${paretoSVG(CATS.map(c => [c.name, S.tally[c.id]]), 'Feedback by category, as your team sorted it (Pareto)')}</div><div>${pc.svg}</div></div></section>
+  <section class="panel"><details><summary>Tally sheet view (boxes A–D, same as the paper sheet)</summary>${tallyHTML()}</details></section>`;
+}
+
+function endHTML() {
+  const pc = pChart(S.history), { t, other } = coqTotals(S.history), tot = t.P + t.A + t.IF + t.EF;
+  const top2 = CATS.slice().sort((a, b) => S.tally[b.id] - S.tally[a.id]).slice(0, 2);
+  const totSorted = CATS.reduce((a, c) => a + S.tally[c.id], 0);
+  const h = S.history, first = h.slice(0, 6), second = h.slice(6), rate = a => a.reduce((x, y) => x + y.complaints, 0) / a.reduce((x, y) => x + y.guests, 0);
+  return headerHTML() + reportHTML(S.lastReport) + `<section class="panel"><h2>The year in numbers</h2>
+  <div class="big-result"><div><small class="hint">Profit for the year</small><b class="${S.cum < 0 ? 'neg' : 'pos'}">${eur(S.cum)}</b></div><div><small class="hint">Final review score</small><b>${starStr(S.stars)}</b></div>
+  <div><small class="hint">Complaint rate, Jan–Jun → Jul–Dec</small><b>${pct(rate(first), 2)} → ${pct(rate(second), 2)}</b></div></div>
+  <p class="hint">Write profit and review score on the board for the leaderboard. Your vital few: <b>${top2.map(c => c.name).join('</b> and <b>')}</b> (${totSorted ? Math.round(100 * (S.tally[top2[0].id] + S.tally[top2[1].id]) / totSorted) : 0} % of the complaints you sorted). Cost of quality: ${eur(tot)}, of which prevention ${tot ? Math.round(100 * t.P / tot) : 0} %. Other spending without a quality effect: ${eur(other)}.
+  ${pc.lim && pc.lim.out.length ? 'Months outside the control limits: ' + pc.lim.out.join(', ') + '.' : 'No month fell outside the control limits.'}</p>
+  <div class="grid2"><div>${paretoSVG(CATS.map(c => [c.name, S.tally[c.id]]), 'Feedback by category, as your team sorted it (Pareto)')}</div><div>${pc.svg}</div></div>${coqSVG(t)}</section>
+  <section class="panel"><h2>Debrief: three sentences for your verdict</h2><ol style="margin:0;padding-left:1.3em"><li>Which two causes made up most of your feedback, and which of your investments addressed them?</li><li>Was your money prevention, appraisal or failure, and was the mix what Table 6.1 recommends?</li><li>Did the p-chart show a shift after the investment (points below the old centre line), or just noise? What would you do differently in a second year?</li></ol>
+  <p class="hint">Look again at what the review score did to the number of guests. Lost guests never show up as a cost line, yet they were the largest failure cost of the year.</p></section>
+  <section class="panel"><h2>Your year for Colab Part 3</h2><p class="hint">Copy the code and paste each block over the matching cell in <b>04_week04_quality_lab_build.ipynb</b>, Part 3a–3c. Then run the cells and the check cells.</p>
+  <div class="row"><button class="btn solid" data-a="copy">Copy code</button></div><pre class="code" id="code">${esc(colabCode())}</pre></section>
+  <section class="panel"><details><summary>Tally sheet view (boxes A–D)</summary>${tallyHTML()}</details></section>
+  <div class="row"><button class="btn" data-a="askrestart">New game</button><span id="restartbox" hidden>Start over and delete this year? <button class="btn solid" data-a="restart">Yes, start over</button> <button class="btn" data-a="norestart">Keep it</button></span></div>`;
+}
+
+function render() {
+  const app = document.getElementById('app');
+  if (!S) { app.innerHTML = startHTML(); return; }
+  if (S.phase === 'end') { app.innerHTML = endHTML(); return; }
+  app.innerHTML = headerHTML() + reportHTML(S.lastReport) + `<div class="desk">${inboxHTML()}${shopHTML()}</div>` + chartsHTML() +
+    `<div class="row"><button class="btn" data-a="askrestart">New game</button><span id="restartbox" hidden>Start over and delete this year? <button class="btn solid" data-a="restart">Yes, start over</button> <button class="btn" data-a="norestart">Keep it</button></span></div>
+    <p class="foot">Classroom stand-in for the Pearson MyLab OM Quality Management simulation. Invented numbers, simplified rules. Progress is saved in this browser.</p>`;
+}
+
+function start(data) {
+  S = (data && data.S) || null;
+  document.getElementById('app').addEventListener('click', act);
+  render();
+}
+window.claude?.hot?.snapshot?.(() => ({ S }));
+window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? {});
+</script>
+
+</body>
+</html>
