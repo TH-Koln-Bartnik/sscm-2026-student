@@ -1,0 +1,185 @@
+WEBVTT
+
+1
+00:00:18.930 --> 00:00:23.380
+Morning at the counter, steam is on the glass
+
+2
+00:00:23.430 --> 00:00:28.600
+How many cups tomorrow? Look at what has passed
+
+3
+00:00:28.650 --> 00:00:32.940
+Naive says tomorrow is the same as today
+
+4
+00:00:32.990 --> 00:00:38.000
+So it copies every swing, but one day late
+
+5
+00:00:38.050 --> 00:00:42.980
+Take the last three days and average them out
+
+6
+00:00:43.030 --> 00:00:47.960
+The bumps get smaller and the line calms down
+
+7
+00:00:48.010 --> 00:00:52.620
+But Thursday rushes in and the line stays low
+
+8
+00:00:52.670 --> 00:01:00.420
+It only knows the three days that you already know
+
+9
+00:01:01.320 --> 00:01:19.290
+[Instrumental · worked example on screen]
+
+10
+00:01:19.890 --> 00:01:24.400
+Chasing the dots, chasing the dots
+
+11
+00:01:24.450 --> 00:01:29.840
+Every forecast is wrong, so measure how wrong
+
+12
+00:01:29.890 --> 00:01:34.200
+Add up the misses, divide by the days
+
+13
+00:01:34.250 --> 00:01:39.480
+That's your average miss in cups, the MAD
+
+14
+00:01:39.530 --> 00:01:44.060
+Turn it into percent and you can compare
+
+15
+00:01:44.110 --> 00:01:49.860
+The lowest score wins, the dots don't care
+
+16
+00:01:51.750 --> 00:01:56.160
+Smoothing keeps a running guess from day to day
+
+17
+00:01:56.210 --> 00:02:01.320
+Old forecast plus a share of the miss, that's the way
+
+18
+00:02:01.370 --> 00:02:05.860
+Alpha is the dial for how fast you forget
+
+19
+00:02:05.910 --> 00:02:10.760
+Turn it up, you twitch at every little step
+
+20
+00:02:10.810 --> 00:02:15.520
+Turn it down, you're steady but you're slow to see
+
+21
+00:02:15.570 --> 00:02:20.740
+Point three sits in the middle, where we want to be
+
+22
+00:02:20.790 --> 00:02:25.500
+A little closer every round, but Thursday's still too low
+
+23
+00:02:25.550 --> 00:02:31.460
+The pattern's in the week, and the smoothing doesn't know
+
+24
+00:02:32.360 --> 00:02:52.350
+[Instrumental · worked example on screen]
+
+25
+00:02:52.950 --> 00:02:57.360
+Chasing the dots, chasing the dots
+
+26
+00:02:57.410 --> 00:03:02.960
+Every forecast is wrong, so measure how wrong
+
+27
+00:03:03.010 --> 00:03:07.140
+Add up the misses, divide by the days
+
+28
+00:03:07.190 --> 00:03:12.340
+That's your average miss in cups, the MAD
+
+29
+00:03:12.390 --> 00:03:17.260
+Turn it into percent and you can compare
+
+30
+00:03:17.310 --> 00:03:23.340
+The lowest score wins, the dots don't care
+
+31
+00:03:23.390 --> 00:03:28.320
+Line up the weeks and colour every day
+
+32
+00:03:28.370 --> 00:03:32.880
+Thursday's always high and Friday walks away
+
+33
+00:03:32.930 --> 00:03:37.840
+Thursday over average gives the index you need
+
+34
+00:03:37.890 --> 00:03:42.460
+Times last week's level, and the dots agree
+
+35
+00:03:42.510 --> 00:03:47.320
+But every miss is low, and low again
+
+36
+00:03:47.370 --> 00:03:52.920
+Every week the café climbs by four, my friend
+
+37
+00:03:52.970 --> 00:04:00.260
+Add the climb, then multiply, and you're nearly there
+
+38
+00:04:01.160 --> 00:04:21.190
+[Instrumental · worked example on screen]
+
+39
+00:04:21.790 --> 00:04:25.360
+Chasing the dots, now we've caught the beat
+
+40
+00:04:25.410 --> 00:04:30.720
+Blind to the weekday, you miss by seven to eleven
+
+41
+00:04:30.770 --> 00:04:36.020
+See the season, add the climb, you miss by one
+
+42
+00:04:36.070 --> 00:04:40.440
+Find the pattern first, and the forecast's done
+
+43
+00:04:40.490 --> 00:04:46.060
+Every forecast is wrong, so measure how wrong
+
+44
+00:04:46.110 --> 00:04:51.280
+The lowest score wins, the dots don't care
+
+45
+00:04:53.040 --> 00:04:56.400
+How many cups tomorrow?
+
+46
+00:04:56.450 --> 00:05:01.480
+Look at what has passed

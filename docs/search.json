@@ -472,11 +472,22 @@
     ]
   },
   {
+    "objectID": "weeks/week05.html#revise-with-a-song-5-min",
+    "href": "weeks/week05.html#revise-with-a-song-5-min",
+    "title": "Week 5 — Forecasting",
+    "section": "Revise with a song (5 min)",
+    "text": "Revise with a song (5 min)\nEvery Forecast Is Wrong · How Many Cups Tomorrow? runs through all five methods on one small example: a campus café and its cups of coffee over three weeks. The methods are naive, the 3-day moving average, exponential smoothing, the weekday index and the weekday index plus trend. The choruses score the methods with MAD and MAPE. Three instrumental breaks show a worked calculation: pause the video there and calculate along before the next line appears. Subtitles: CC button in the player.\n\n  \n    \n    \n    Watch the video (MP4, 5:15)\n  \n  Lyrics, example data and animation code: Claude Opus 5.5 · song: Suno · the café and its numbers are fictional · checked by Professor Bartnik",
+    "crumbs": [
+      "The seven Thursdays",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Week 5 — Forecasting</span>"
+    ]
+  },
+  {
     "objectID": "weeks/week05.html#before-thursday-5-november",
     "href": "weeks/week05.html#before-thursday-5-november",
     "title": "Week 5 — Forecasting",
     "section": "Before Thursday 5 November",
-    "text": "Before Thursday 5 November\n\nFinish the case questions and check them against Friday’s numbers.\nRevise Week 4 (x̄ and R chart, p-chart, Cp and Cpk, Pareto, cost of quality) and Week 5 for Test 3.\nGroup project: your checkpoint feedback comes on 5 November.",
+    "text": "Before Thursday 5 November\n\nWatch the forecasting song once more and pause at the three worked examples.\nFinish the case questions and check them against Friday’s numbers.\nRevise Week 4 (x̄ and R chart, p-chart, Cp and Cpk, Pareto, cost of quality) and Week 5 for Test 3.\nGroup project: your checkpoint feedback comes on 5 November.",
     "crumbs": [
       "The seven Thursdays",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Week 5 — Forecasting</span>"
@@ -487,7 +498,7 @@
     "href": "weeks/week05.html#downloads",
     "title": "Week 5 — Forecasting",
     "section": "Downloads",
-    "text": "Downloads\n\nCase: Backhaus Kaya, Part 4 (PDF)\nForecast widget\n\n\nFormula sheet Week 5: forecasting, self-study version (PDF)\n\nOn Friday: the formula sheet with the case numbers as worked examples, together with the self-check numbers.",
+    "text": "Downloads\n\nCase: Backhaus Kaya, Part 4 (PDF)\nForecast widget\nVideo: Every Forecast Is Wrong (MP4, 15 MB) · subtitles (SRT)\n\n\nFormula sheet Week 5: forecasting, self-study version (PDF)\n\nOn Friday: the formula sheet with the case numbers as worked examples, together with the self-check numbers.",
     "crumbs": [
       "The seven Thursdays",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Week 5 — Forecasting</span>"
