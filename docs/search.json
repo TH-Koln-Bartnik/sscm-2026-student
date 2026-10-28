@@ -454,7 +454,7 @@
     "href": "weeks/week05.html",
     "title": "Week 5 — Forecasting",
     "section": "",
-    "text": "At the end of this week you can …\nProfessor Bartnik is ill today, so Week 5 is a self-study day. You work through the chapter, one widget and the Backhaus Kaya case at home. The numbers you need to check your case answers appear on this page on Friday, 30 October. Test 3 on Thursday 5 November covers Week 4 (quality) and Week 5 (forecasting).",
+    "text": "At the end of this week you can …\nHow to look into the future?\nProfessor Bartnik is ill today, so Week 5 is a self-study day. You work through the chapter, one widget and the Backhaus Kaya case at home. The numbers you need to check your case answers appear on this page on Friday, 30 October. Test 3 on Thursday 5 November covers Week 4 (quality) and Week 5 (forecasting).",
     "crumbs": [
       "The seven Thursdays",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Week 5 — Forecasting</span>"
@@ -498,7 +498,7 @@
     "href": "weeks/week05.html#references",
     "title": "Week 5 — Forecasting",
     "section": "References",
-    "text": "References\nHeizer, J., Render, B., & Munson, C. (2023). Operations management: Sustainability and supply chain management (14th ed., Global ed.). Pearson.\n\nThis page was drafted with Claude (Anthropic) from the Session 5 material; all case figures were computed in Python. Content reviewed by and the responsibility of Professor Bartnik.",
+    "text": "References\nHeizer, J., Render, B., & Munson, C. (2023). Operations management: Sustainability and supply chain management (14th ed., Global ed.). Pearson.\n\nThis page was drafted with Claude (Anthropic) from the Session 5 material; all case figures were computed in Python. The oracle image was generated with Gemini. Content reviewed by and the responsibility of Professor Bartnik.",
     "crumbs": [
       "The seven Thursdays",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Week 5 — Forecasting</span>"
