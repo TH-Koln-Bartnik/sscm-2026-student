@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Line and supply chain animation</title>
+<!-- SSCM 2026 · group project · animation template v1.0
+     Reads results.json (format: see project page). Restyle freely; the numbers must come from results.json. -->
+<style>
+  :root { --ink:#1a1a1a; --grey:#9e9e9e; --light:#f2f2f2; --red:#c1002a; --blue:#2b6cb0; --green:#2f855a; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); margin: 0; background: #fff; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 12px 16px 20px; }
+  h1 { font-size: 20px; margin: 4px 0 2px; }
+  .sub { color: #555; font-size: 13px; margin-bottom: 10px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+  button { font: inherit; font-size: 13px; padding: 6px 10px; border: 1px solid #bbb; background: #fff; border-radius: 6px; cursor: pointer; }
+  button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .week { font-variant-numeric: tabular-nums; font-weight: 600; min-width: 80px; }
+  input[type=range] { flex: 1; min-width: 160px; }
+  svg { width: 100%; height: auto; display: block; }
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 8px 0; }
+  .tile { background: var(--light); border-radius: 8px; padding: 8px 10px; }
+  .tile b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; }
+  .tile span { font-size: 12px; color: #555; }
+  .err { background: #fdecef; border: 1px solid var(--red); padding: 10px; border-radius: 6px; white-space: pre-wrap; display: none; }
+  .loader { display: none; margin: 10px 0; }
+  .note { font-size: 11px; color: #777; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 id="title">Line and supply chain</h1>
+  <div class="sub" id="subtitle"></div>
+  <div class="loader" id="loader">Load your results file: <input type="file" id="file" accept=".json"></div>
+  <div class="err" id="err"></div>
+  <div class="bar" id="scenarioBar"></div>
+  <div class="bar">
+    <button id="play">▶ Play</button>
+    <span class="week" id="weekLabel">Week 1</span>
+    <input type="range" id="slider" min="0" max="51" value="0">
+    <label style="font-size:13px">speed
+      <select id="speed"><option value="1">slow</option><option value="2" selected>normal</option><option value="4">fast</option></select>
+    </label>
+  </div>
+  <svg id="scene" viewBox="0 60 960 270" role="img" aria-label="line and supply chain"></svg>
+  <div class="tiles" id="tiles"></div>
+  <svg id="chart" viewBox="0 0 960 170" role="img" aria-label="units finished per week"></svg>
+  <div class="note" id="note"></div>
+</div>
+<script>
+const RESULTS = /*RESULTS_JSON*/null;
+const ORDER = ["baseline", "disruption", "countermeasure"];
+const COLOURS = { baseline: "#555", disruption: "#c1002a", countermeasure: "#2b6cb0" };
+const NS = "http://www.w3.org/2000/svg";
+let R, scen = "baseline", week = 0, playing = false, phase = 0, last = 0;
+
+function el(tag, attrs, parent, text) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text !== undefined) e.textContent = text;
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function fmt(x, d = 0) { return Number(x).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+function validate(r) {
+  const errs = [];
+  if (!r || typeof r !== "object") return ["results is empty"];
+  ["product", "unit", "stations", "scenarios"].forEach(k => { if (!(k in r)) errs.push(`missing key "${k}"`); });
+  if (errs.length) return errs;
+  ORDER.forEach(s => {
+    const sc = r.scenarios[s];
+    if (!sc) { errs.push(`scenarios lacks "${s}"`); return; }
+    ["units_per_week", "cost_per_unit_eur", "kg_co2e_per_unit", "hours_stopped"].forEach(k => {
+      if (!sc.scoreboard || typeof sc.scoreboard[k] !== "number") errs.push(`${s}.scoreboard.${k} missing or not a number`);
+    });
+    const w = sc.weeks || {};
+    ["queue", "in_transit", "stock", "finished", "stopped_hours"].forEach(k => {
+      if (!Array.isArray(w[k])) errs.push(`${s}.weeks.${k} missing (one value per week)`);
+    });
+    if (Array.isArray(w.queue) && w.queue.some(q => !Array.isArray(q) || q.length !== r.stations.length))
+      errs.push(`${s}.weeks.queue: every week needs one number per station (${r.stations.length})`);
+    const n = Array.isArray(w.finished) ? w.finished.length : 0;
+    ["queue", "in_transit", "stock", "stopped_hours"].forEach(k => {
+      if (Array.isArray(w[k]) && w[k].length !== n) errs.push(`${s}.weeks.${k} has ${w[k].length} weeks, finished has ${n}`);
+    });
+  });
+  return errs;
+}
+
+function start(r) {
+  const errs = validate(r);
+  const box = document.getElementById("err");
+  if (errs.length) { box.style.display = "block"; box.textContent = "results.json is not complete yet:\n• " + errs.join("\n• "); return; }
+  box.style.display = "none";
+  R = r;
+  document.getElementById("title").textContent = `${r.product} · line and supply chain`;
+  document.getElementById("subtitle").textContent =
+    `Key component: ${r.key_component || "key component"} from ${r.supplier || "the supplier"}` +
+    (r.transport ? ` by ${r.transport}` : "") + ` · one year, week by week`;
+  const nW = r.scenarios.baseline.weeks.finished.length;
+  document.getElementById("slider").max = nW - 1;
+  const bar = document.getElementById("scenarioBar");
+  bar.innerHTML = "";
+  ORDER.forEach(s => {
+    const b = document.createElement("button");
+    b.textContent = r.scenarios[s].label || s;
+    b.onclick = () => { scen = s; draw(); };
+    b.dataset.s = s;
+    bar.appendChild(b);
+  });
+  // one dot stands for this many units in the queues (same scale in every scenario)
+  let qmax = 1;
+  ORDER.forEach(s => r.scenarios[s].weeks.queue.forEach(q => q.forEach(v => qmax = Math.max(qmax, v))));
+  const raw = qmax / 10, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  R._dot = Math.max(1, [1, 2, 5, 10].map(m => m * mag).find(v => v >= raw) || 10 * mag);
+  let smax = 1;
+  ORDER.forEach(s => r.scenarios[s].weeks.stock.forEach(v => smax = Math.max(smax, v)));
+  R._smax = smax;
+  document.getElementById("note").textContent =
+    `In the queues, one dot = ${fmt(R._dot)} ${r.unit} waiting. Numbers from results.json; drawn with the SSCM 2026 animation template.`;
+  draw();
+}
+
+function draw() {
+  const r = R, sc = r.scenarios[scen], w = sc.weeks, n = r.stations.length;
+  document.querySelectorAll("#scenarioBar button").forEach(b => b.classList.toggle("on", b.dataset.s === scen));
+  document.getElementById("slider").value = week;
+  document.getElementById("weekLabel").textContent = `Week ${week + 1}`;
+  const svg = document.getElementById("scene");
+  svg.innerHTML = "";
+  const down = (w.supplier_down || [])[week] === true;
+  const stopped = w.stopped_hours[week] > 0;
+
+  // supplier
+  el("rect", { x: 10, y: 120, width: 130, height: 70, rx: 8, fill: down ? "#fdecef" : "#f2f2f2", stroke: down ? "#c1002a" : "#9e9e9e", "stroke-width": 2 }, svg);
+  el("text", { x: 75, y: 145, "text-anchor": "middle", "font-size": 13, "font-weight": 600 }, svg, "Supplier");
+  el("text", { x: 75, y: 163, "text-anchor": "middle", "font-size": 11 }, svg, (r.supplier || "").slice(0, 22));
+  el("text", { x: 75, y: 180, "text-anchor": "middle", "font-size": 11, fill: down ? "#c1002a" : "#2f855a", "font-weight": 600 }, svg, down ? "NOT DELIVERING" : "delivering");
+
+  // transport lane with moving dots
+  el("line", { x1: 145, y1: 155, x2: 245, y2: 155, stroke: "#9e9e9e", "stroke-width": 3, "stroke-dasharray": "6 5" }, svg);
+  el("text", { x: 195, y: 140, "text-anchor": "middle", "font-size": 11 }, svg, `in transit: ${fmt(w.in_transit[week])}`);
+  const trucks = Math.min(4, Math.ceil(w.in_transit[week] / Math.max(1, R._smax / 4)));
+  for (let i = 0; i < trucks; i++) {
+    const x = 150 + ((phase + i / Math.max(1, trucks)) % 1) * 90;
+    el("rect", { x: x, y: 147, width: 14, height: 16, rx: 2, fill: "#555" }, svg);
+  }
+
+  // stock of the key component
+  const sh = 120 * Math.min(1, w.stock[week] / R._smax);
+  el("rect", { x: 250, y: 95, width: 70, height: 120, fill: "#fff", stroke: "#9e9e9e", "stroke-width": 2 }, svg);
+  el("rect", { x: 252, y: 213 - sh, width: 66, height: sh, fill: w.stock[week] > 0 ? "#2b6cb0" : "#c1002a", opacity: 0.8 }, svg);
+  el("text", { x: 285, y: 85, "text-anchor": "middle", "font-size": 12, "font-weight": 600 }, svg, "Stock");
+  el("text", { x: 285, y: 232, "text-anchor": "middle", "font-size": 11 }, svg, `${fmt(w.stock[week])} ${r.key_component ? "parts" : ""}`);
+
+  // stations
+  const x0 = 345, x1 = 860, step = (x1 - x0) / n, bw = Math.min(90, step - 14);
+  const q = w.queue[week];
+  const worst = q.indexOf(Math.max(...q));
+  el("line", { x1: 322, y1: 155, x2: x1 + 10, y2: 155, stroke: "#ddd", "stroke-width": 6 }, svg);
+  r.stations.forEach((name, i) => {
+    const cx = x0 + step * i + step / 2, bx = cx - bw / 2;
+    const hot = q[i] > 0 && i === worst;
+    el("rect", { x: bx, y: 130, width: bw, height: 50, rx: 6, fill: stopped ? "#fdecef" : (hot ? "#c1002a" : "#9e9e9e"), stroke: stopped ? "#c1002a" : "none", "stroke-width": 2 }, svg);
+    const words = String(name).split(/[\s/]+/);
+    const lines = [words.slice(0, Math.ceil(words.length / 2)).join(" "), words.slice(Math.ceil(words.length / 2)).join(" ")].filter(Boolean);
+    lines.forEach((t, k) => el("text", { x: cx, y: 197 + k * 13, "text-anchor": "middle", "font-size": 10.5 }, svg, t.slice(0, 18)));
+    el("text", { x: cx, y: 160, "text-anchor": "middle", "font-size": 11, fill: stopped ? "#c1002a" : "#fff", "font-weight": 600 }, svg, stopped ? "waiting" : `S${i + 1}`);
+    // queue in front of the station: stacked dots
+    const dots = Math.min(20, Math.ceil(q[i] / R._dot - 1e-9));
+    for (let d = 0; d < dots; d++) {
+      el("circle", { cx: cx - bw / 2 + 8 + (d % 5) * 9, cy: 118 - Math.floor(d / 5) * 9, r: 3.6, fill: hot ? "#c1002a" : "#1a1a1a" }, svg);
+    }
+    el("text", { x: cx, y: 118 - Math.ceil(Math.max(dots, 1) / 5) * 9 - 4, "text-anchor": "middle", "font-size": 10, fill: "#555" }, svg, `${fmt(q[i])} waiting`);
+  });
+  // a part moving along the line
+  if (!stopped) el("circle", { cx: x0 + phase * (x1 - x0), cy: 155, r: 4, fill: "#2f855a" }, svg);
+
+  // finished goods
+  el("text", { x: 930, y: 140, "text-anchor": "end", "font-size": 12, "font-weight": 600 }, svg, "Finished");
+  el("text", { x: 930, y: 162, "text-anchor": "end", "font-size": 20, "font-weight": 700 }, svg, fmt(w.finished[week]));
+  el("text", { x: 930, y: 178, "text-anchor": "end", "font-size": 11 }, svg, `${r.unit} this week`);
+  const cum = w.finished.slice(0, week + 1).reduce((a, b) => a + b, 0);
+  el("text", { x: 930, y: 196, "text-anchor": "end", "font-size": 11, fill: "#555" }, svg, `${fmt(cum)} so far`);
+  if (stopped) el("text", { x: 600, y: 290, "text-anchor": "middle", "font-size": 14, fill: "#c1002a", "font-weight": 700 }, svg,
+    `Line stood still ${fmt(w.stopped_hours[week], 1)} h this week: no ${r.key_component || "parts"} in stock`);
+  el("text", { x: 10, y: 315, "font-size": 11, fill: "#777" }, svg, `Scenario: ${sc.label || scen}`);
+
+  // scoreboard tiles
+  const b = sc.scoreboard;
+  document.getElementById("tiles").innerHTML = [
+    [fmt(b.units_per_week, 1), `${r.unit} per week`],
+    [fmt(b.cost_per_unit_eur, 2) + " €", "total cost per unit (one year)"],
+    [fmt(b.kg_co2e_per_unit, 2), "kg CO₂e per unit"],
+    [fmt(b.hours_stopped, 1) + " h", "line stood still (year)"],
+  ].map(([v, l]) => `<div class="tile"><b>${v}</b><span>${l}</span></div>`).join("");
+
+  drawChart();
+}
+
+function drawChart() {
+  const svg = document.getElementById("chart");
+  svg.innerHTML = "";
+  const L = 50, Rr = 940, T = 15, B = 140, nW = R.scenarios.baseline.weeks.finished.length;
+  let ymax = 1;
+  ORDER.forEach(s => R.scenarios[s].weeks.finished.forEach(v => ymax = Math.max(ymax, v)));
+  ymax *= 1.1;
+  const X = i => L + (Rr - L) * i / Math.max(1, nW - 1), Y = v => B - (B - T) * v / ymax;
+  el("line", { x1: L, y1: B, x2: Rr, y2: B, stroke: "#999" }, svg);
+  el("text", { x: L, y: 10, "font-size": 11, fill: "#555" }, svg, `${R.unit} finished per week`);
+  [0, Math.round(ymax / 2), Math.round(ymax)].forEach(v => el("text", { x: L - 6, y: Y(v) + 4, "text-anchor": "end", "font-size": 10, fill: "#777" }, svg, fmt(v)));
+  ORDER.forEach(s => {
+    const pts = R.scenarios[s].weeks.finished.map((v, i) => `${X(i)},${Y(v)}`).join(" ");
+    el("polyline", { points: pts, fill: "none", stroke: COLOURS[s], "stroke-width": s === scen ? 2.8 : 1.2, opacity: s === scen ? 1 : 0.45 }, svg);
+  });
+  el("line", { x1: X(week), y1: T, x2: X(week), y2: B, stroke: "#1a1a1a", "stroke-dasharray": "3 3" }, svg);
+  ORDER.forEach((s, k) => {
+    el("rect", { x: L + k * 250, y: 152, width: 12, height: 4, fill: COLOURS[s] }, svg);
+    el("text", { x: L + k * 250 + 18, y: 158, "font-size": 11 }, svg, (R.scenarios[s].label || s).slice(0, 40));
+  });
+}
+
+function tick(t) {
+  if (playing && R) {
+    const speed = +document.getElementById("speed").value;
+    const dt = last ? (t - last) / 1000 : 0;
+    phase += dt * speed * 0.8;
+    if (phase >= 1) {
+      phase = 0;
+      week += 1;
+      if (week >= R.scenarios[scen].weeks.finished.length) { week = R.scenarios[scen].weeks.finished.length - 1; playing = false; document.getElementById("play").textContent = "▶ Play"; }
+    }
+    draw();
+  }
+  last = t;
+  requestAnimationFrame(tick);
+}
+
+document.getElementById("play").onclick = () => {
+  if (!R) return;
+  if (!playing && week >= R.scenarios[scen].weeks.finished.length - 1) week = 0;
+  playing = !playing;
+  document.getElementById("play").textContent = playing ? "❚❚ Pause" : "▶ Play";
+};
+document.getElementById("slider").oninput = e => { week = +e.target.value; phase = 0; if (R) draw(); };
+document.getElementById("file").onchange = e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  f.text().then(t => { try { start(JSON.parse(t)); } catch (x) { const b = document.getElementById("err"); b.style.display = "block"; b.textContent = "Not a valid JSON file: " + x.message; } });
+};
+if (RESULTS && typeof RESULTS === "object") start(RESULTS);
+else document.getElementById("loader").style.display = "block";
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
