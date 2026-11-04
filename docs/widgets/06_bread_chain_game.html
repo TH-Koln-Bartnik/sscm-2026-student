@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bread Chain Game · a beer game in the browser</title>
+<style>
+:root { --red:#c1002a; --red-soft:#f6dde3; --bg:#fff; --panel:#f4f4f4; --line:#d4d4d4; --text:#1a1a1a; --muted:#5f5f5f; --ok:#1f7a3f; --ok-soft:#e1f2e6; --input:#fff;
+  --s0:#9a9a9a; --s1:#6e6e6e; --s2:#3f3f3f; --s3:#111; }
+@media (prefers-color-scheme: dark) { :root { --red:#ff5c7a; --red-soft:#3b1820; --bg:#141414; --panel:#1f1f1f; --line:#3a3a3a; --text:#f2f2f2; --muted:#b5b5b5; --ok:#6fd18f; --ok-soft:#17301f; --input:#1a1a1a;
+  --s0:#6a6a6a; --s1:#9a9a9a; --s2:#c8c8c8; --s3:#f2f2f2; } }
+* { box-sizing:border-box; } html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:18px; line-height:1.4; }
+.wrap { max-width:1100px; margin:0 auto; padding:16px; }
+header { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px 16px; border-bottom:3px solid var(--red); padding-bottom:8px; margin-bottom:12px; }
+h1 { font-size:1.5rem; margin:0; line-height:1.2; } h1 span { color:var(--red); }
+h2 { font-size:1.15rem; margin:0 0 8px; }
+button { font:inherit; color:inherit; cursor:pointer; }
+.pill { border:2px solid var(--line); background:var(--panel); border-radius:10px; padding:8px 14px; font-size:0.95rem; min-height:44px; text-align:left; }
+.pill[aria-pressed="true"] { border-color:var(--red); background:var(--red); color:#fff; font-weight:700; }
+.seg { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; margin:6px 0 12px; }
+@media (min-width:760px) { .seg.four { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+.panel { background:var(--panel); border-radius:10px; padding:14px; margin-bottom:14px; }
+.grid { display:grid; grid-template-columns:minmax(0,1fr); gap:14px; }
+@media (min-width:900px) { .grid { grid-template-columns:minmax(0,5fr) minmax(0,6fr); } }
+.hint { font-size:0.92rem; color:var(--muted); margin:0 0 8px; }
+.formula { background:var(--panel); border-left:6px solid var(--red); border-radius:6px; padding:10px 14px; margin-bottom:12px; }
+.formula p { margin:4px 0; }
+.btn { border:2px solid var(--red); background:var(--red); color:#fff; border-radius:10px; padding:8px 16px; font-weight:700; min-height:44px; }
+.btn.sec { background:transparent; color:var(--text); }
+input[type="number"] { font:inherit; font-size:1.4rem; color:var(--text); background:var(--input); border:2px solid var(--red); border-radius:8px; padding:6px 10px; width:7em; min-height:52px; }
+.chain { display:flex; flex-wrap:nowrap; align-items:center; justify-content:center; gap:4px; margin:4px 0 14px; font-size:0.9rem; }
+.box { border:2px solid var(--line); border-radius:10px; padding:6px 8px; text-align:center; min-width:0; background:var(--panel); }
+.box.me { border-color:var(--red); background:var(--red-soft); font-weight:700; }
+.arrow { color:var(--muted); }
+.kpis { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.kpi { background:var(--bg); border-radius:8px; padding:8px 10px; }
+.kpi .v { font-size:1.6rem; font-weight:700; } .kpi .l { font-size:0.85rem; color:var(--muted); }
+.kpi.alert .v { color:var(--red); }
+.big { font-size:1.1rem; } .big b { color:var(--red); }
+.demandcard { background:var(--ok-soft); border-radius:8px; padding:8px 12px; margin-bottom:10px; }
+table { width:100%; border-collapse:collapse; font-size:0.92rem; } th, td { text-align:right; padding:4px 6px; border-bottom:1px solid var(--line); } th:first-child, td:first-child { text-align:left; }
+tr.me td { font-weight:700; color:var(--red); }
+svg { width:100%; height:auto; display:block; background:var(--bg); border-radius:8px; }
+.report { background:var(--red-soft); border-radius:8px; padding:10px 12px; font-family:Consolas,Menlo,monospace; font-size:0.95rem; word-break:break-word; }
+.legend { display:flex; flex-wrap:wrap; gap:6px 14px; font-size:0.85rem; color:var(--muted); margin-top:4px; }
+.legend i { display:inline-block; width:18px; height:4px; vertical-align:middle; margin-right:4px; }
+footer { margin-top:18px; font-size:0.8rem; color:var(--muted); border-top:1px solid var(--line); padding-top:8px; }
+@media (max-width:520px) { .chain { font-size:0.72rem; gap:2px; } .box { padding:4px 4px; } }
+[hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>Bread <span>chain</span> game</h1><div class="hint">Session 6 · a beer game in the browser · works on a phone · about 8 minutes</div></header>
+
+<!-- START -->
+<section id="start">
+<div class="formula">
+<p><b>The chain:</b> customers → <b>Store</b> → <b>Bakery</b> → <b>Mill</b> → <b>Farm</b> → field. Goods travel down the chain, orders travel up.</p>
+<p><b>Your job:</b> each round, decide how many cases you order from your supplier. Keep your cost low. The other three stages are played by the computer.</p>
+<p><b>Cost per round:</b> 0.50 € for every case in stock + 1.00 € for every case you still owe your customer (backlog).</p>
+<p><b>Delays:</b> your order reaches your supplier after 1 round; goods take 2 more rounds to reach you. You start with 12 cases in stock. 24 rounds.</p>
+</div>
+<div class="panel">
+<h2>1 · Pick your stage</h2>
+<div class="seg four" id="pick-stage">
+<button class="pill" data-s="0" aria-pressed="false"><b>Store</b><br><small>sells to customers</small></button>
+<button class="pill" data-s="1" aria-pressed="true"><b>Bakery</b><br><small>supplies the store</small></button>
+<button class="pill" data-s="2" aria-pressed="false"><b>Mill</b><br><small>supplies the bakery</small></button>
+<button class="pill" data-s="3" aria-pressed="false"><b>Farm</b><br><small>grows and ships</small></button>
+</div>
+<h2>2 · Pick the rules</h2>
+<div class="seg" id="pick-mode">
+<button class="pill" data-m="normal" aria-pressed="true"><b>Normal</b><br><small>you only see the order in front of you</small></button>
+<button class="pill" data-m="shared" aria-pressed="false"><b>Shared information</b><br><small>everyone sees what customers buy</small></button>
+</div>
+<p class="hint">Your team plays four phones, one stage each. Play <b>Normal</b> first. Talk about numbers only after the game.</p>
+<button class="btn" id="go">Start the game</button>
+</div>
+</section>
+
+<!-- PLAY -->
+<section id="play" hidden>
+<div class="chain" id="chain"></div>
+<div class="grid">
+<div class="panel">
+<h2>Round <span id="r-now"></span> of <span id="r-max"></span> · you are the <span id="r-stage" style="color:var(--red)"></span></h2>
+<div class="demandcard" id="r-demand" hidden></div>
+<div class="kpis">
+<div class="kpi"><div class="v" id="k-arr"></div><div class="l">cases arrived from your supplier</div></div>
+<div class="kpi"><div class="v" id="k-inc"></div><div class="l">cases your customer ordered</div></div>
+<div class="kpi"><div class="v" id="k-shp"></div><div class="l">cases you shipped</div></div>
+<div class="kpi" id="kb"><div class="v" id="k-bl"></div><div class="l">backlog: cases you still owe</div></div>
+<div class="kpi"><div class="v" id="k-st"></div><div class="l">cases in stock now</div></div>
+<div class="kpi"><div class="v" id="k-oo"></div><div class="l">ordered, not yet here</div></div>
+</div>
+<p class="big" style="margin:12px 0 6px">Cost this round <b id="k-c"></b> · your total <b id="k-tc"></b></p>
+<form id="f" autocomplete="off" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px">
+<label for="ord"><b>Your order to the <span id="r-sup"></span>:</b></label>
+<input type="number" id="ord" min="0" max="99" step="1" inputmode="numeric" required>
+<button class="btn" type="submit">Place order</button>
+</form>
+</div>
+<div class="panel">
+<h2>Your history</h2>
+<div style="max-height:360px;overflow:auto"><table id="hist"><thead><tr><th>Round</th><th>Customer ordered</th><th>Arrived</th><th>Stock</th><th>Backlog</th><th>You ordered</th></tr></thead><tbody></tbody></table></div>
+</div>
+</div>
+</section>
+
+<!-- END -->
+<section id="end" hidden>
+<div class="panel">
+<h2 id="e-title"></h2>
+<p class="big" id="e-line"></p>
+<div class="report" id="e-report"></div>
+<p class="hint" style="margin-top:6px">Copy this line into your team's row on the board.</p>
+</div>
+<div class="grid">
+<div class="panel">
+<h2>Orders placed by each stage, round by round</h2>
+<svg id="e-svg" viewBox="0 0 560 320" role="img" aria-label="Line chart of the orders each stage placed per round, with customer demand"></svg>
+<div class="legend" id="e-leg"></div>
+</div>
+<div class="panel">
+<h2>The wave in numbers</h2>
+<table id="e-tab"><thead><tr><th>Stage</th><th>Smallest order</th><th>Biggest order</th><th>Range</th><th>Cost (€)</th></tr></thead><tbody></tbody></table>
+<p class="hint" style="margin-top:8px" id="e-bench"></p>
+<p class="hint"><b>Read it:</b> customers changed their order once, from 4 to 8 cases. Does the range grow from Store to Farm? That growing wave is the <b>bullwhip effect</b>.</p>
+</div>
+</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<button class="btn" id="again-shared">Play again with shared information</button>
+<button class="btn sec" id="again">Play again, same rules</button>
+<button class="btn sec" id="back">Change stage or rules</button>
+</div>
+</section>
+
+<footer>Rules after the MIT beer game; the computer players use the ordering rule that Sterman measured in real players. Sources: Sterman, J. D. (1989). Modeling managerial behavior: Misperceptions of feedback in a dynamic decision making experiment. <i>Management Science, 35</i>(3), 321–339. https://doi.org/10.1287/mnsc.35.3.321 · Lee, H. L., Padmanabhan, V., &amp; Whang, S. (1997). Information distortion in a supply chain: The bullwhip effect. <i>Management Science, 43</i>(4), 546–558. https://doi.org/10.1287/mnsc.43.4.546 · Built with Claude for SSCM, TH Köln, Professor Bartnik.</footer>
+</div>
+<script>
+// Beer game engine: 4 stages (0 Store, 1 Bakery, 2 Mill, 3 Farm). Shipping delay 2, order delay 1.
+function makeGame(opts){
+  const N=4, R=opts.rounds||24;
+  const g={R, round:0, shared:!!opts.shared, human:(opts.human===undefined?-1:opts.human),
+    demand:t=> (t<4?4:8),
+    st:[], hist:{orders:[[],[],[],[]], stock:[[],[],[],[]], backlog:[[],[],[],[]], cost:[[],[],[],[]], incoming:[[],[],[],[]], demand:[]}};
+  for(let i=0;i<N;i++) g.st.push({stock:12, backlog:0, shipPipe:[4,4], orderIn:4, onOrder:12, Lhat:4, cost:0, lastIncoming:4, arrived:4, shipped:4});
+  g.supplierOrder=4; // farm's order to the field (production), arrives next round
+  return g;
+}
+// Phase 1 of a round: arrivals, incoming orders, shipping. Returns what each stage sees before ordering.
+function beginRound(g){
+  const t=g.round, N=4, D=g.demand(t);
+  // production start for the farm: last round's farm order enters the farm's pipe end now
+  const prod=g.supplierOrder;
+  for(let i=0;i<N;i++){ const s=g.st[i]; s.arrived=s.shipPipe.shift(); s.stock+=s.arrived; s.onOrder-=s.arrived; }
+  const shippedTo=[0,0,0,0];
+  for(let i=0;i<N;i++){
+    const s=g.st[i]; const inc = i===0? D : s.orderIn; s.lastIncoming=inc;
+    const need=inc+s.backlog; const sh=Math.min(s.stock,need); s.stock-=sh; s.backlog=need-sh; s.shipped=sh;
+    if(i>0) shippedTo[i-1]=sh;
+  }
+  for(let i=0;i<N-1;i++) g.st[i].shipPipe.push(shippedTo[i]);
+  g.st[N-1].shipPipe.push(prod);
+  for(let i=0;i<N;i++){ const s=g.st[i]; const c=0.5*s.stock+1.0*s.backlog; s.cost+=c;
+    g.hist.stock[i].push(s.stock); g.hist.backlog[i].push(s.backlog); g.hist.cost[i].push(c); g.hist.incoming[i].push(s.lastIncoming);}
+  g.hist.demand.push(D);
+  return D;
+}
+// Bot ordering rules
+function botOrder(g,i){
+  const s=g.st[i]; const D=g.hist.demand[g.hist.demand.length-1];
+  if(g.shared){ // sees customer demand, accounts for the whole pipeline
+    const L=2, Sstar=12, a=0.26;
+    const o = D + a*(Sstar-(s.stock-s.backlog)) + a*(D*L - s.onOrder);
+    return Math.max(0,Math.round(o));
+  }
+  // Sterman (1989) anchoring and adjustment, mean estimates: theta .36, alphaS .26, beta .34, S' 15 (tuned so the start is calm)
+  const th=0.36, aS=0.26, b=0.34, Sp=15;
+  s.Lhat = th*s.lastIncoming + (1-th)*s.Lhat;
+  const o = s.Lhat + aS*(Sp-(s.stock-s.backlog)-b*s.onOrder);
+  return Math.max(0,Math.round(o));
+}
+// Phase 2: orders. humanOrder used for g.human stage.
+function endRound(g,humanOrder){
+  const N=4; const orders=[];
+  for(let i=0;i<N;i++){ let o = (i===g.human)? Math.max(0,Math.round(humanOrder)) : botOrder(g,i);
+    if(i===g.human && !g.shared){ const s=g.st[i]; s.Lhat=0.36*s.lastIncoming+0.64*s.Lhat; }
+    orders.push(o); g.st[i].onOrder+=o; g.hist.orders[i].push(o); }
+  for(let i=0;i<N-1;i++) g.st[i+1].orderIn=orders[i];
+  g.supplierOrder=orders[N-1];
+  g.round++;
+  return orders;
+}
+function chainCost(g){ return g.st.reduce((a,s)=>a+s.cost,0); }
+function variance(a){ const m=a.reduce((x,y)=>x+y,0)/a.length; return a.reduce((x,y)=>x+(y-m)**2,0)/a.length; }
+function runPolicy(policy,shared,R){ // policy: 'bots' | 'pass'
+  const g=makeGame({shared, human: policy==='pass'?-2:-1, rounds:R});
+  for(let t=0;t<g.R;t++){ beginRound(g);
+    if(policy==='pass'){ const orders=g.st.map(s=>s.lastIncoming); g.st.forEach((s,i)=>{s.onOrder+=orders[i]; g.hist.orders[i].push(orders[i]);});
+      for(let i=0;i<3;i++) g.st[i+1].orderIn=orders[i]; g.supplierOrder=orders[3]; g.round++; }
+    else endRound(g,0);
+  }
+  return g;
+}
+const NAMES=['Store','Bakery','Mill','Farm'], SUP=['Bakery','Mill','Farm','field'];
+let stage=1, mode='normal', G=null, rounds=24;
+const $=id=>document.getElementById(id);
+function seg(id,attr,cb){ document.querySelectorAll('#'+id+' .pill').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#'+id+' .pill').forEach(x=>x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true'); cb(b.dataset[attr]); })); }
+seg('pick-stage','s',v=>stage=+v); seg('pick-mode','m',v=>mode=v);
+function show(id){ ['start','play','end'].forEach(s=>$(s).hidden=(s!==id)); window.scrollTo(0,0); }
+function eur(x){ return x.toFixed(2)+' €'; }
+function start(){
+  G=makeGame({shared:mode==='shared', human:stage, rounds});
+  $('r-max').textContent=rounds; $('r-stage').textContent=NAMES[stage]; $('r-sup').textContent=SUP[stage];
+  $('chain').innerHTML=['Customers'].concat(NAMES).map((n,i)=> (i?'<span class="arrow">←</span>':'')+'<div class="box'+(i-1===stage?' me':'')+'">'+n+'</div>').join('');
+  document.querySelector('#hist tbody').innerHTML='';
+  show('play'); next();
+}
+function next(){
+  const D=beginRound(G); const s=G.st[stage];
+  $('r-now').textContent=G.round+1;
+  $('k-arr').textContent=s.arrived; $('k-inc').textContent=s.lastIncoming; $('k-shp').textContent=s.shipped;
+  $('k-bl').textContent=s.backlog; $('kb').classList.toggle('alert',s.backlog>0);
+  $('k-st').textContent=s.stock; $('k-oo').textContent=s.onOrder;
+  const c=G.hist.cost[stage][G.round]; $('k-c').textContent=eur(c); $('k-tc').textContent=eur(s.cost);
+  const dc=$('r-demand'); if(G.shared && stage>0){ dc.hidden=false; dc.innerHTML='Shared information: customers bought <b>'+D+'</b> cases at the store this round.'; } else dc.hidden=true;
+  const o=$('ord'); o.value=''; o.focus({preventScroll:true});
+}
+$('f').addEventListener('submit',e=>{ e.preventDefault(); const v=parseInt($('ord').value,10); if(isNaN(v)||v<0) return;
+  const t=G.round, s=G.st[stage];
+  endRound(G,v);
+  const tr=document.createElement('tr'); tr.innerHTML='<td>'+(t+1)+'</td><td>'+G.hist.incoming[stage][t]+'</td><td>'+(t===0?'':'')+s.arrived+'</td><td>'+G.hist.stock[stage][t]+'</td><td>'+G.hist.backlog[stage][t]+'</td><td>'+v+'</td>';
+  const tb=document.querySelector('#hist tbody'); tb.insertBefore(tr,tb.firstChild);
+  if(G.round>=G.R) finish(); else next();
+});
+function finish(){
+  const total=chainCost(G), my=G.st[stage].cost;
+  $('e-title').textContent='Game over · '+(G.shared?'shared information':'normal rules');
+  $('e-line').innerHTML='Your cost as '+NAMES[stage]+': <b>'+eur(my)+'</b> · whole chain: <b>'+eur(total)+'</b>';
+  const rng=G.hist.orders.map(o=>[Math.min(...o),Math.max(...o)]);
+  $('e-report').textContent=(G.shared?'SHARED':'NORMAL')+' | '+NAMES[stage]+' | my cost '+my.toFixed(2)+' € | chain '+total.toFixed(2)+' € | my orders '+rng[stage][0]+'–'+rng[stage][1]+' | Farm orders '+rng[3][0]+'–'+rng[3][1];
+  const tb=document.querySelector('#e-tab tbody'); tb.innerHTML='';
+  const dr='<tr><td>Customers</td><td>4</td><td>8</td><td>4</td><td>–</td></tr>';
+  tb.innerHTML=dr+NAMES.map((n,i)=>'<tr'+(i===stage?' class="me"':'')+'><td>'+n+(i===stage?' (you)':'')+'</td><td>'+rng[i][0]+'</td><td>'+rng[i][1]+'</td><td>'+(rng[i][1]-rng[i][0])+'</td><td>'+G.st[i].cost.toFixed(2)+'</td></tr>').join('');
+  const pass=chainCost(runPolicy('pass',false,rounds)), sh=chainCost(runPolicy('bots',true,rounds)), nb=chainCost(runPolicy('bots',false,rounds));
+  $('e-bench').innerHTML='Benchmarks for the whole chain: four computer players, normal rules <b>'+eur(nb)+'</b> · four computer players, shared information <b>'+eur(sh)+'</b> · every stage simply passes on the order it received <b>'+eur(pass)+'</b>.';
+  draw(); show('end');
+}
+function draw(){
+  const W=560,H=320,L=40,Rm=12,T=12,B=34, n=G.R;
+  const ys=G.hist.orders.flat().concat(G.hist.demand); const ymax=Math.max(10,Math.ceil(Math.max(...ys)/5)*5);
+  const x=i=>L+(W-L-Rm)*i/(n-1), y=v=>T+(H-T-B)*(1-v/ymax);
+  const css=getComputedStyle(document.documentElement); const col=['--s0','--s1','--s2','--s3'].map(c=>css.getPropertyValue(c).trim());
+  let s='';
+  for(let v=0;v<=ymax;v+=5){ s+='<line x1="'+L+'" x2="'+(W-Rm)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--line)" stroke-width="1"/><text x="'+(L-6)+'" y="'+(y(v)+4)+'" font-size="11" text-anchor="end" fill="var(--muted)">'+v+'</text>'; }
+  for(let i=0;i<n;i+=4) s+='<text x="'+x(i)+'" y="'+(H-B+16)+'" font-size="11" text-anchor="middle" fill="var(--muted)">'+(i+1)+'</text>';
+  s+='<text x="'+((W+L)/2)+'" y="'+(H-4)+'" font-size="11" text-anchor="middle" fill="var(--muted)">round</text>';
+  const path=a=>a.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+','+y(v).toFixed(1)).join('');
+  s+='<path d="'+path(G.hist.demand)+'" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-dasharray="6 4"/>';
+  G.hist.orders.forEach((o,i)=>{ s+='<path d="'+path(o)+'" fill="none" stroke="'+(i===stage?'var(--red)':col[i])+'" stroke-width="'+(i===stage?3.5:2)+'"/>'; });
+  $('e-svg').innerHTML=s;
+  $('e-leg').innerHTML='<span><i style="background:var(--ok)"></i>customers</span>'+NAMES.map((n,i)=>'<span><i style="background:'+(i===stage?'var(--red)':col[i])+'"></i>'+n+(i===stage?' (you)':'')+'</span>').join('');
+}
+$('go').addEventListener('click',start);
+$('again').addEventListener('click',start);
+$('again-shared').addEventListener('click',()=>{ mode='shared'; document.querySelectorAll('#pick-mode .pill').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m==='shared'?'true':'false')); start(); });
+$('back').addEventListener('click',()=>show('start'));
+</script>
+</body></html>

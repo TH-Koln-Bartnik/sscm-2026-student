@@ -520,7 +520,51 @@
     "href": "weeks/week06.html",
     "title": "Week 6 — Supply chain management",
     "section": "",
-    "text": "ChapterHeizer Ch. 11 — Supply chain management; S11 Supply chain management analytics; Chopra Ch. 3 — Supply chain drivers and metrics\n\n\nMorning testT3 · Ch. 6, 4\n\n\nBonus sheetcounts toward T4\n\n\nGroup projectcheckpoint Wed 4 Nov, feedback on this Thursday; last chance Sun 8 Nov, 23:59\n\n\nTimes09:00–12:00 · 13:00–15:30\n\n\n\n\n\n\n\n\nThis page is a placeholder\n\n\n\nThe full page — the problem of the week, the exercises and the downloads — opens after the Week 5 Thursday. Until then, read the chapter.",
+    "text": "Learning goals",
+    "crumbs": [
+      "The seven Thursdays",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Week 6 — Supply chain management</span>"
+    ]
+  },
+  {
+    "objectID": "weeks/week06.html#bring",
+    "href": "weeks/week06.html#bring",
+    "title": "Week 6 — Supply chain management",
+    "section": "Bring",
+    "text": "Bring\nPhone (the game) · calculator · pen · laptop if you have one",
+    "crumbs": [
+      "The seven Thursdays",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Week 6 — Supply chain management</span>"
+    ]
+  },
+  {
+    "objectID": "weeks/week06.html#thursday",
+    "href": "weeks/week06.html#thursday",
+    "title": "Week 6 — Supply chain management",
+    "section": "Thursday",
+    "text": "Thursday\n\n\nMorning · 09:00–13:00Test 3, alone and in your team · Two short GenAI exercises · The bread chain game on your phones · Group-project feedback\n\n\nAfternoon · 14:00–16:00Case: Backhaus Kaya Part 5 “The mill question” · Week 6 bonus sheet\n\n\n\n\n\n\n\n\n09:15 · Test 3\n\n\n\n\n\n\nFirst alone (30 min), then the same questions in your team (35 min); forecasting (Ch. 4) and quality (Ch. 6 + S6)\nCalculator allowed; write the calculation path in the box under every calculation\n\n\n\n\n\n\n\n\n\n\nAfter the test · Two short GenAI exercises\n\n\n\n\n\n\nIs GenAI worth its energy and water? A pro-and-contra debate on Kialo (link on ILIAS › Week 6): in pairs, add two claims, each with a number, its source and what the number counts\nWhich model, and how to prompt it today: a leaderboard, the extended model, and a strike test on an old prompt\nOpen the exercise page →\n\n\n\n\n\n\n\n\n\n\nThe bread chain game\n\n\n\n\n\n\nFour stages, store → bakery → mill → farm, a beer game in your browser; one phone per stage in each team\nRound 1 Normal, round 2 Shared (everybody sees the store’s demand); copy your read-out line onto the board after each round\nPlay the game → (no login, works offline once open)\n\n\n\n\n\n\n\n\n\n\n12:20 · Group-project feedback\n\n\n\n\n\n\nFour minutes per team on your checkpoint; waiting teams note one change for their poster\n\n\n\n\n\n\n\n\n\n\nCase: Backhaus Kaya, Part 5 — “The mill question”\n\n\n\n\n\n\nThe Bergheim mill is flooded, and the flour contract for year two is due: one mill or two, and which?\nRead alone, predict, solve in your team (factor rating, landed cost, the cost of an outage), recommend in the plenary\nCase and formula sheet handed out in class\n\n\n\n\n\n\n\n\n\n\n15:15 · Week 6 bonus sheet\n\n\n\n\n\n\nAlone, on paper, with the formula sheet: factor rating, landed cost, one supplier or two\nScan both pages into one PDF and upload it to ILIAS (Week 6 bonus) by 16:00; it counts toward Test 4 (Assessment)",
+    "crumbs": [
+      "The seven Thursdays",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Week 6 — Supply chain management</span>"
+    ]
+  },
+  {
+    "objectID": "weeks/week06.html#homework",
+    "href": "weeks/week06.html#homework",
+    "title": "Week 6 — Supply chain management",
+    "section": "Homework",
+    "text": "Homework\n\nMyLab OM: play the Inventory Management simulation once per team before Thursday 12 November\nOptional, Colab: the supply chain lab — the bread chain game as a model with two sliders, then four charts and three sentences for Aylin. Open the notebook in Colab → then File → Save a copy in Drive (Tools)\nTest 4 on Thursday 12 November: Ch. 11 + S11, Chopra Ch. 3 and Ch. 13, with the Kaya calculations from today\nPoster session: Thursday 12 November, afternoon",
+    "crumbs": [
+      "The seven Thursdays",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Week 6 — Supply chain management</span>"
+    ]
+  },
+  {
+    "objectID": "weeks/week06.html#downloads",
+    "href": "weeks/week06.html#downloads",
+    "title": "Week 6 — Supply chain management",
+    "section": "Downloads",
+    "text": "Downloads\n\nTwo short GenAI exercises\nBread chain game\n\nAfter class: the case, the Week 6 formula sheet, the solved notebook.",
     "crumbs": [
       "The seven Thursdays",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Week 6 — Supply chain management</span>"

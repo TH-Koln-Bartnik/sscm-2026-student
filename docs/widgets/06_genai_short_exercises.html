@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 6 · Two short GenAI exercises</title>
+<style>
+ :root { --red:#c1002a; --bg:#fff; --panel:#f4f4f4; --line:#d4d4d4; --text:#1a1a1a; --muted:#5f5f5f; }
+ @media (prefers-color-scheme: dark) { :root { --red:#ff5c7a; --bg:#141414; --panel:#1f1f1f; --line:#3a3a3a; --text:#f2f2f2; --muted:#b5b5b5; } }
+ * { box-sizing:border-box; }
+ html,body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.55; }
+ main { max-width:980px; margin:0 auto; padding:22px 16px 48px; }
+ .kicker { font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:0; }
+ h1 { font-size:28px; line-height:1.2; margin:4px 0 6px; border-bottom:3px solid var(--red); padding-bottom:8px; }
+ h2 { font-size:22px; margin:34px 0 8px; } h3 { font-size:18px; margin:22px 0 6px; }
+ p { max-width:75ch; margin:0 0 10px; }
+ nav a { display:inline-block; margin:0 10px 6px 0; padding:4px 12px; border:1px solid var(--line); border-radius:999px; text-decoration:none; color:var(--text); font-size:14px; }
+ .thesis { font-size:20px; font-weight:650; border-left:5px solid var(--red); padding:8px 14px; background:var(--panel); border-radius:0 8px 8px 0; max-width:none; }
+ .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0; }
+ @media (max-width:760px) { .steps, .seeds { grid-template-columns:1fr !important; } }
+ .steps div { background:var(--panel); border-top:4px solid var(--line); border-radius:6px; padding:10px 12px; font-size:15px; }
+ .steps div:first-child { border-top-color:var(--red); }
+ .steps b { display:block; margin-bottom:4px; }
+ .seeds { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+ .seed { border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:15px; }
+ .seed.pro { border-left:5px solid var(--red); } .seed.con { border-left:5px solid var(--muted); }
+ .seed p { margin:0 0 6px; } .side { font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+ .claim { font-weight:650; } .counts { font-size:13px; color:var(--muted); font-style:italic; }
+ .ref { font-size:12.5px; color:var(--muted); overflow-wrap:anywhere; }
+ table { border-collapse:collapse; width:100%; font-size:15px; margin:8px 0 14px; }
+ td, th { border-bottom:1px solid var(--line); padding:6px 8px; text-align:left; vertical-align:top; }
+ .emb { width:100%; border:1px solid var(--line); border-radius:8px; margin:6px 0 10px; background:var(--bg); }
+ .box { background:var(--panel); border-radius:8px; padding:10px 14px; margin:10px 0; }
+ .box p:last-child { margin-bottom:0; }
+ .klein { font-size:13px; color:var(--muted); }
+ a { color:inherit; }
+</style></head>
+<body><main>
+<p class="kicker">Sustainable Supply Chain Management · Session 6 · Thursday 5 November 2026 · after Test 3</p>
+<h1>Two short GenAI exercises: what it costs, and how to use it well</h1>
+<p>You used generative AI to prepare for Test 3. Two questions about that tool before the bread chain game: is it worth its energy and water (Part A, 40 minutes), and how do you pick a model and prompt it today (Part B, 20 minutes)?</p>
+<nav><a href="#a">A · Kialo debate</a><a href="#b1">B1 · Which model?</a><a href="#b2">B2 · Extended model</a><a href="#b3">B3 · Strike test</a></nav>
+
+<h2 id="a">A · Is GenAI worth its energy and water? Argue it on Kialo</h2>
+<p class="thesis">Thesis: &ldquo;Because of its energy and water use, students should use GenAI as little as possible.&rdquo;</p>
+<div class="steps">
+ <div><b>1 · Pick a source · 5 min</b>In pairs. Open the Kialo discussion (link in ILIAS › Week 6) and one of the six starter sources below.</div>
+ <div><b>2 · Two claims · 20 min</b>One new claim (pro or con) and one reply to another pair's claim. Each: one sentence, one number, the source (author, year, link), and what the number counts.</div>
+ <div><b>3 · Plenary · 10 min</b>Which claim on each side is strongest, and which single number decides the thesis for a student?</div>
+</div>
+<div class="box"><p><b>Three questions for every number.</b> <em>Per prompt or per year?</em> A tiny number per prompt and a huge number per year can both be true. <em>Local or global?</em> One data centre in a dry region is a different problem from the world total. <em>Measured or estimated, and by whom?</em> A provider measuring its own service, a journalist measuring open models and a researcher modelling the world answer different questions.</p></div>
+<table>
+ <tr><th>Unit</th><th>Plain meaning</th><th>To get a feel for it</th></tr>
+ <tr><td>Wh (watt-hour)</td><td>energy of a 1-watt device running one hour</td><td>an LED lamp of 10 W uses 10 Wh in an hour</td></tr>
+ <tr><td>TWh (terawatt-hour)</td><td>one billion kWh</td><td>Germany uses roughly 500 TWh of electricity a year</td></tr>
+ <tr><td>water withdrawal</td><td>water taken out of a river or the ground, much of it returned</td><td>like borrowing</td></tr>
+ <tr><td>water consumption</td><td>water that evaporates and is gone from the local supply</td><td>like spending</td></tr>
+</table>
+<h3>Six starter claims already in the tree</h3>
+<div class="seeds">
+<div class="seed pro"><p class="side">for the thesis</p><p class="claim">Data-centre electricity grows far faster than the grid.</p><p>Global data-centre demand rose about 17 % in 2025, AI-focused data centres about 50 %; the IEA expects about 950 TWh by 2030, roughly 3 % of world electricity.</p><p class="counts">Counts: world, per year, estimate + projection</p><p class="ref">International Energy Agency. (2026). <em>Key questions on energy and AI</em>. IEA. <a href="https://www.iea.org/reports/key-questions-on-energy-and-ai" target="_blank" rel="noopener">https://www.iea.org/reports/key-questions-on-energy-and-ai</a></p></div>
+<div class="seed pro"><p class="side">for the thesis</p><p class="claim">Big models and video cost far more than a short text prompt.</p><p>One answer of a large open model took about 1.9 Wh including cooling; a five-second AI video about 0.94 kWh. Data-centre electricity in the US was about 48 % more carbon-intensive than the US average.</p><p class="counts">Counts: per request, measured on open models</p><p class="ref">O'Donnell, J., &amp; Crownhart, C. (2025, May 20). We did the math on AI's energy footprint. <em>MIT Technology Review</em>. <a href="https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/" target="_blank" rel="noopener">https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/</a></p></div>
+<div class="seed pro"><p class="side">for the thesis</p><p class="claim">AI's water use is hidden, and it bites locally.</p><p>Global AI demand may withdraw 4.2–6.6 billion m³ of water in 2027 and evaporate (consume) 0.38–0.60 billion m³; where and when a model runs changes its water use several-fold.</p><p class="counts">Counts: world, per year, estimate</p><p class="ref">Li, P., Yang, J., Islam, M. A., &amp; Ren, S. (2025). Making AI less &ldquo;thirsty&rdquo;. <em>Communications of the ACM, 68</em>(7), 54–61. <a href="https://doi.org/10.1145/3724499" target="_blank" rel="noopener">https://doi.org/10.1145/3724499</a></p></div>
+<div class="seed con"><p class="side">against the thesis</p><p class="claim">A median text prompt is tiny, and it keeps shrinking.</p><p>Google measured 0.24 Wh of energy and 0.26 mL of water for the median Gemini text prompt, and a 33-fold drop in energy per prompt within one year.</p><p class="counts">Counts: per prompt, measured by the provider</p><p class="ref">Elsworth, C., Huang, K., Patterson, D., et al. (2025). <em>Measuring the environmental impact of delivering AI at Google scale</em> (arXiv:2508.15734). <a href="https://doi.org/10.48550/arXiv.2508.15734" target="_blank" rel="noopener">https://doi.org/10.48550/arXiv.2508.15734</a></p></div>
+<div class="seed con"><p class="side">against the thesis</p><p class="claim">Ten prompts a day barely move your personal footprint.</p><p>At 0.3–3 Wh per query, ten queries a day are about 0.02–0.2 % of a UK resident's daily electricity, and at most about 11 kg CO₂ a year; diet, heating, driving and flights matter far more.</p><p class="counts">Counts: per person, per year, estimate</p><p class="ref">Ritchie, H. (2025, May 6). What's the carbon footprint of using ChatGPT? <em>By the Numbers</em> [Substack]. <a href="https://hannahritchie.substack.com/p/carbon-footprint-chatgpt" target="_blank" rel="noopener">https://hannahritchie.substack.com/p/carbon-footprint-chatgpt</a></p></div>
+<div class="seed con"><p class="side">against the thesis</p><p class="claim">Data-centre water is small next to other uses.</p><p>Counted generously, with the water at power plants, a prompt uses about 2 mL; US data centres' on-site water use is a few per cent of what US golf courses use.</p><p class="counts">Counts: per prompt and per country, estimate (blog)</p><p class="ref">Masley, A. (2025, April 28; updated). Using ChatGPT is not bad for the environment: A cheat sheet [Substack]. <a href="https://blog.andymasley.com/p/a-cheat-sheet-for-conversations-about" target="_blank" rel="noopener">https://blog.andymasley.com/p/a-cheat-sheet-for-conversations-about</a></p></div>
+</div>
+<p class="klein">More background, with the older figures and the policy debate (in German): Bartnik, R. (2026). Exkurs: Ressourcenverbrauch der Modelle. In <em>KI in der Lehre</em>. <a href="https://th-koln-bartnik.github.io/genai4teaching/energie.html" target="_blank" rel="noopener">https://th-koln-bartnik.github.io/genai4teaching/energie.html</a></p>
+
+<h2 id="b1">B1 · Which model? · 5 minutes</h2>
+<p>TH KI Chat is the university's free AI chat (sign in with your campusID). Its models differ a lot in strength. Open the leaderboard (page in German) and answer two questions for yourself.</p>
+<p><a href="https://th-koln-bartnik.github.io/ki-zum-lernen/parts/00-thki-chat.html#welches-modell" target="_blank" rel="noopener"><b>Open the TH KI Chat leaderboard ↗</b></a></p>
+<div class="box"><p>1. Which TH KI Chat model scores highest, and how far is it from the best commercial models?<br>2. You want an AI to check the calculation path of a bonus item. Which model do you pick, and what do you still check yourself?</p></div>
+<details><summary>Check your answer</summary><p>GPT-5.5 is the strongest model in TH KI Chat (38 points on the Artificial Analysis Intelligence Index, snapshot 20 October 2026); the best commercial models score 58. Use GPT-5.5 for demanding tasks such as a calculation check, a smaller model for simple ones, and recompute at least one number yourself: the index measures average test performance, not your calculation.</p></details>
+
+<h2 id="b2">B2 · Model or extended model? · 5 minutes</h2>
+<p>Predict first, then click through with <b>Next ▶</b>. The model at the centre has stayed a text predictor; what grew since 2022 is the layer around it.</p>
+<iframe id="Extended model animation" class="emb" title="Extended model animation" style="height:760px" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Since 2022, mostly the layer around the model has grown&lt;/title&gt;
+&lt;style&gt;
+  /* Farbbudget: Graustufen + genau eine Akzentfarbe (Regel F1/F2) */
+  :root { --grund:#ffffff; --tinte:#1b1b1b; --grau:#767676; --zurueck:#b5b5b5; --hell:#e4e4e4; --akzent:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.druck) { --grund:#151515; --tinte:#f0f0f0; --grau:#9a9a9a; --zurueck:#5a5a5a; --hell:#3a3a3a; --akzent:#f59e0b; }
+  }
+  html, body { margin:0; background:var(--grund); color:var(--tinte);
+    font-family: system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; line-height:1.45; }
+  main { max-width:960px; margin:0 auto; padding:20px 16px 36px; }
+  h1 { font-size:24px; line-height:1.25; margin:0 0 10px; font-weight:650; }
+  .vorhersage { margin:0 0 10px; }
+  .vorhersage p { margin:0 0 6px; }
+  button { font:inherit; font-size:14px; color:var(--tinte); background:var(--grund); border:1px solid var(--grau);
+    border-radius:6px; padding:5px 11px; cursor:pointer; margin:0 4px 4px 0; }
+  button[aria-pressed=&quot;true&quot;] { background:var(--tinte); color:var(--grund); }
+  button:disabled { opacity:.4; cursor:default; }
+  .steuerung { display:flex; gap:8px; align-items:center; margin:6px 0; }
+  .stand { margin-left:auto; color:var(--grau); font-size:14px; }
+  svg { width:100%; height:auto; display:block; }
+  .unterschrift { min-height:3em; margin:8px 0 12px; max-width:70ch; font-size:17px; }
+  .akz { color:var(--akzent); font-weight:650; }
+  details { border-top:1px solid var(--hell); padding-top:6px; margin-top:6px; }
+  details p { max-width:75ch; }
+  .nachher { display:none; } .nachher.an { display:block; }
+  .klein { font-size:13px; color:var(--grau); }
+
+  /* SVG: drei Zustände je Element (Regel F6) */
+  svg text { font-size:16px; }
+  svg text.u { font-size:14px; }
+  svg text.b { font-weight:650; }
+  .f { fill:var(--c, var(--tinte)); }
+  .s { stroke:var(--c, var(--tinte)); stroke-width:2; fill:none; }
+  .x { opacity:0; visibility:hidden; transition:opacity .45s ease, visibility .45s; }
+  .x.an { opacity:1; visibility:visible; }
+  .neu     { --c:var(--akzent); }
+  .bekannt { --c:var(--tinte); }
+  .kontext { --c:var(--zurueck); }
+  @media (prefers-reduced-motion: reduce) { .x { transition:none; } }
+
+  /* Druckansicht (#druck) und Hörsaalmodus (?hoersaal) */
+  .druck .vorhersage, .druck .steuerung, .druck .unterschrift, .druck .nachher, .druck h1 { display:none !important; }
+  .druck .kontext { --c:var(--grau); }   /* im Druck dunkler, damit Graustufen lesbar bleiben */
+  .druck .neu { --c:var(--tinte); }      /* Druck in reinen Graustufen: belegt keine Farbseite */
+  .hoersaal .unterschrift { display:none; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;main&gt;
+  &lt;h1&gt;Since 2022, mostly the layer around the model has grown&lt;/h1&gt;
+
+  &lt;div class=&quot;vorhersage&quot;&gt;
+    &lt;p&gt;&lt;strong&gt;Predict first:&lt;/strong&gt; In 2026, who chooses the next work step?&lt;/p&gt;
+    &lt;button data-tipp=&quot;0&quot;&gt;the human, every time&lt;/button&gt;
+    &lt;button data-tipp=&quot;1&quot;&gt;the model, within the harness&lt;/button&gt;
+    &lt;button data-tipp=&quot;2&quot;&gt;the model, entirely on its own&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;steuerung&quot;&gt;
+    &lt;button id=&quot;zurueck&quot;&gt;◀ Back&lt;/button&gt;
+    &lt;button id=&quot;weiter&quot;&gt;Next ▶&lt;/button&gt;
+    &lt;span class=&quot;stand&quot; id=&quot;stand&quot; aria-live=&quot;polite&quot;&gt;&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;svg id=&quot;buehne&quot; viewBox=&quot;0 0 900 440&quot; role=&quot;img&quot;
+       aria-label=&quot;A language model in the centre; tools, memory and a work loop are added one after another, enclosed by a ring called the harness. Approvals on the ring set how much room the model has; an outer ring stands for the part that you build yourself.&quot;&gt;
+    &lt;defs&gt;
+      &lt;marker id=&quot;pfeil&quot; viewBox=&quot;0 0 10 10&quot; refX=&quot;9&quot; refY=&quot;5&quot; markerWidth=&quot;7&quot; markerHeight=&quot;7&quot; orient=&quot;auto-start-reverse&quot;&gt;
+        &lt;path d=&quot;M0,0 L10,5 L0,10 z&quot; fill=&quot;context-stroke&quot;/&gt;
+      &lt;/marker&gt;
+    &lt;/defs&gt;
+
+    &lt;!-- Schritt 1: Mensch und Modell, Frage hin, Text zurück --&gt;
+    &lt;g data-ab=&quot;0&quot;&gt;
+      &lt;rect class=&quot;s&quot; x=&quot;30&quot; y=&quot;178&quot; width=&quot;170&quot; height=&quot;74&quot; rx=&quot;8&quot; style=&quot;fill:var(--grund)&quot;/&gt;
+      &lt;text class=&quot;f b&quot; x=&quot;115&quot; y=&quot;210&quot; text-anchor=&quot;middle&quot;&gt;Human&lt;/text&gt;
+      &lt;circle class=&quot;s&quot; cx=&quot;560&quot; cy=&quot;215&quot; r=&quot;48&quot; style=&quot;fill:var(--grund);stroke-width:2.5&quot;/&gt;
+      &lt;text class=&quot;f b&quot; x=&quot;560&quot; y=&quot;221&quot; text-anchor=&quot;middle&quot;&gt;Model&lt;/text&gt;
+    &lt;/g&gt;
+    &lt;g data-ab=&quot;0&quot; data-bis=&quot;6&quot;&gt;
+      &lt;text class=&quot;f u&quot; x=&quot;115&quot; y=&quot;234&quot; text-anchor=&quot;middle&quot;&gt;asks&lt;/text&gt;
+    &lt;/g&gt;
+    &lt;g data-ab=&quot;0&quot; data-grau-ab=&quot;3&quot;&gt;
+      &lt;line class=&quot;s&quot; x1=&quot;204&quot; y1=&quot;204&quot; x2=&quot;508&quot; y2=&quot;204&quot; marker-end=&quot;url(#pfeil)&quot;/&gt;
+      &lt;text class=&quot;f u&quot; x=&quot;250&quot; y=&quot;196&quot; text-anchor=&quot;middle&quot;&gt;question&lt;/text&gt;
+      &lt;line class=&quot;s&quot; x1=&quot;508&quot; y1=&quot;228&quot; x2=&quot;204&quot; y2=&quot;228&quot; marker-end=&quot;url(#pfeil)&quot;/&gt;
+      &lt;text class=&quot;f u&quot; x=&quot;250&quot; y=&quot;248&quot; text-anchor=&quot;middle&quot;&gt;text&lt;/text&gt;
+    &lt;/g&gt;
+
+    &lt;!-- Schritt 2: Werkzeuge --&gt;
+    &lt;g data-ab=&quot;1&quot; data-grau-ab=&quot;4&quot;&gt;
+      &lt;line class=&quot;s&quot; x1=&quot;610&quot; y1=&quot;215&quot; x2=&quot;655&quot; y2=&quot;215&quot; marker-end=&quot;url(#pfeil)&quot;/&gt;
+      &lt;text class=&quot;f b&quot; x=&quot;663&quot; y=&quot;211&quot;&gt;Tools&lt;/text&gt;
+      &lt;text class=&quot;f u&quot; x=&quot;663&quot; y=&quot;231&quot;&gt;search · calculate&lt;/text&gt;
+    &lt;/g&gt;
+
+    &lt;!-- Schritt 3: Gedächtnis --&gt;
+    &lt;g data-ab=&quot;2&quot; data-grau-ab=&quot;4&quot;&gt;
+      &lt;line class=&quot;s&quot; x1=&quot;560&quot; y1=&quot;265&quot; x2=&quot;560&quot; y2=&quot;305&quot; marker-end=&quot;url(#pfeil)&quot;/&gt;
+      &lt;text class=&quot;f b&quot; x=&quot;560&quot; y=&quot;328&quot; text-anchor=&quot;middle&quot;&gt;Memory&lt;/text&gt;
+      &lt;text class=&quot;f u&quot; x=&quot;560&quot; y=&quot;347&quot; text-anchor=&quot;middle&quot;&gt;sources · notes&lt;/text&gt;
+    &lt;/g&gt;
+
+    &lt;!-- Schritt 4: Schleife (Autonomie im Vorgehen) --&gt;
+    &lt;g data-ab=&quot;3&quot; data-grau-ab=&quot;4&quot;&gt;
+      &lt;path class=&quot;s&quot; d=&quot;M 528 178 A 44 44 0 1 1 592 178&quot; marker-end=&quot;url(#pfeil)&quot;/&gt;
+      &lt;text class=&quot;f b&quot; x=&quot;560&quot; y=&quot;58&quot; text-anchor=&quot;middle&quot;&gt;Autonomy&lt;/text&gt;
+      &lt;text class=&quot;f u&quot; x=&quot;560&quot; y=&quot;78&quot; text-anchor=&quot;middle&quot;&gt;plan · act · check&lt;/text&gt;
+    &lt;/g&gt;
+
+    &lt;!-- Schritt 5: Harness als Ring --&gt;
+    &lt;g data-ab=&quot;4&quot;&gt;
+      &lt;ellipse class=&quot;s&quot; cx=&quot;560&quot; cy=&quot;215&quot; rx=&quot;235&quot; ry=&quot;182&quot; style=&quot;stroke-width:3&quot;/&gt;
+      &lt;text class=&quot;f b&quot; x=&quot;890&quot; y=&quot;34&quot; text-anchor=&quot;end&quot;&gt;Harness&lt;/text&gt;
+    &lt;/g&gt;
+
+    &lt;!-- Schritt 6: Freigaben und Haltepunkte als Schranken --&gt;
+    &lt;g data-ab=&quot;5&quot;&gt;
+      &lt;rect class=&quot;f&quot; x=&quot;629&quot; y=&quot;202&quot; width=&quot;6&quot; height=&quot;26&quot;/&gt;
+      &lt;rect class=&quot;f&quot; x=&quot;547&quot; y=&quot;282&quot; width=&quot;26&quot; height=&quot;6&quot;/&gt;
+      &lt;rect class=&quot;f&quot; x=&quot;557&quot; y=&quot;93&quot; width=&quot;6&quot; height=&quot;22&quot;/&gt;
+      &lt;text class=&quot;f u&quot; x=&quot;890&quot; y=&quot;402&quot; text-anchor=&quot;end&quot;&gt;approvals · stop points&lt;/text&gt;
+    &lt;/g&gt;
+
+    &lt;!-- Schritt 7: innerer und äußerer Harness --&gt;
+    &lt;g data-ab=&quot;6&quot;&gt;
+      &lt;ellipse class=&quot;s&quot; cx=&quot;560&quot; cy=&quot;215&quot; rx=&quot;262&quot; ry=&quot;206&quot; style=&quot;stroke-dasharray:7 6&quot;/&gt;
+      &lt;text class=&quot;f u&quot; x=&quot;890&quot; y=&quot;54&quot; text-anchor=&quot;end&quot;&gt;inner · provider&lt;/text&gt;
+      &lt;text class=&quot;f u&quot; x=&quot;345&quot; y=&quot;404&quot; text-anchor=&quot;end&quot;&gt;outer harness: your instructions, files, sources&lt;/text&gt;
+    &lt;/g&gt;
+
+    &lt;!-- Schritt 8: neue Rolle des Menschen --&gt;
+    &lt;g data-ab=&quot;7&quot;&gt;
+      &lt;text class=&quot;f u&quot; x=&quot;115&quot; y=&quot;234&quot; text-anchor=&quot;middle&quot;&gt;sets goal · checks&lt;/text&gt;
+    &lt;/g&gt;
+  &lt;/svg&gt;
+
+  &lt;p class=&quot;unterschrift&quot; id=&quot;unterschrift&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+
+  &lt;section class=&quot;nachher&quot; id=&quot;nachher&quot;&gt;
+    &lt;details&gt;&lt;summary&gt;What the picture shows and what it does not&lt;/summary&gt;
+      &lt;p&gt;A schematic, not a measurement. The core of the model stays the same throughout: it continues a text in a likely way. The models themselves have also improved since 2022, and part of what sits in the harness today will be trained into the model later. So the picture shows today&#x27;s division of labour, not a fixed boundary.&lt;/p&gt;&lt;/details&gt;
+    &lt;details&gt;&lt;summary&gt;Analogy: horse, harness, team, driver&lt;/summary&gt;
+      &lt;p&gt;The model is the horse: it has the power. The harness ties that power to a cart and makes it steerable; the same horse pulls a plough or a coach, depending on the harness. The agent is the team on the move. The human sits on the driver&#x27;s seat and sets the destination, not every hoofstep. A supply-chain version: the model is the engine, the harness is the truck around it, and you are the dispatcher who sets the route and checks the delivery.&lt;/p&gt;&lt;/details&gt;
+    &lt;details&gt;&lt;summary&gt;Sources&lt;/summary&gt;
+      &lt;p class=&quot;klein&quot;&gt;Böckeler, B. (2026, April 2). &lt;em&gt;Harness engineering for coding agent users&lt;/em&gt;. martinfowler.com. https://martinfowler.com/articles/harness-engineering.html&lt;/p&gt;
+      &lt;p class=&quot;klein&quot;&gt;Grace, M., Hadfield, J., Olivares, R., &amp;amp; De Jonghe, J. (2026, January 9). &lt;em&gt;Demystifying evals for AI agents&lt;/em&gt;. Anthropic Engineering. https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents&lt;/p&gt;
+      &lt;p class=&quot;klein&quot;&gt;Schluntz, E., &amp;amp; Zhang, B. (2024, December 19). &lt;em&gt;Building effective agents&lt;/em&gt;. Anthropic Engineering. https://www.anthropic.com/engineering/building-effective-agents&lt;/p&gt;
+      &lt;p class=&quot;klein&quot;&gt;Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., &amp;amp; Cao, Y. (2023). ReAct: Synergizing reasoning and acting in language models. &lt;em&gt;International Conference on Learning Representations (ICLR 2023)&lt;/em&gt;. https://doi.org/10.48550/arXiv.2210.03629&lt;/p&gt;
+    &lt;/details&gt;
+  &lt;/section&gt;
+  &lt;p class=&quot;klein&quot;&gt;Adapted for SSCM 2026/27 from: Bartnik, R. (2026). &lt;em&gt;KI in der Lehre&lt;/em&gt; [online script], Kapitel 2. https://th-koln-bartnik.github.io/genai4teaching/interactions/harness-schichten.html&lt;/p&gt;
+&lt;/main&gt;
+
+&lt;script&gt;
+(function () {
+  &quot;use strict&quot;;
+  var SCHRITTE = [
+    &quot;Around 2022: the human asks, the *model* answers with text; the human does everything else.&quot;,
+    &quot;First extension: the model asks for a *tool*; a program runs it and reports back (web search, Python).&quot;,
+    &quot;Second extension: a *memory* puts your own sources and notes on the model&#x27;s desk (uploaded PDFs, project files).&quot;,
+    &quot;Together they allow *autonomy* in the process: the model picks the next step itself, many times over.&quot;,
+    &quot;Tools, memory and loop sit in the same layer around the model: the *harness*. Model + harness = the extended model.&quot;,
+    &quot;*Approvals and stop points* in the harness set how much room the model gets to act.&quot;,
+    &quot;The provider delivers the inner harness; you build the *outer harness* yourself: instructions, files, sources.&quot;,
+    &quot;The *human* no longer asks for every step; you set the goal and check the result.&quot;
+  ];
+  var VORHERSAGE = { richtig: 1, optionen: [&quot;the human, every time&quot;, &quot;the model, within the harness&quot;, &quot;the model, entirely on its own&quot;] };
+
+  var LETZTER = SCHRITTE.length - 1, schritt = 0, tipp = null;
+  var svg = document.getElementById(&quot;buehne&quot;);
+  var elemente = Array.prototype.slice.call(svg.querySelectorAll(&quot;[data-ab]&quot;));
+  elemente.forEach(function (e) { e.classList.add(&quot;x&quot;); });
+
+  function zustand(e, s) {
+    var ab = +e.dataset.ab;
+    var bis = e.dataset.bis != null ? +e.dataset.bis : Infinity;
+    var grau = e.dataset.grauAb != null ? +e.dataset.grauAb : Infinity;
+    if (s &lt; ab || s &gt; bis) return null;
+    if (s &gt;= grau) return &quot;kontext&quot;;
+    return s === ab ? &quot;neu&quot; : &quot;bekannt&quot;;
+  }
+  function unterschrift(s) {
+    var t = SCHRITTE[s];
+    if (s === LETZTER &amp;&amp; tipp != null) {
+      t += tipp === VORHERSAGE.richtig ? &quot; Your prediction was right.&quot; :
+        &quot; You predicted \u201c&quot; + VORHERSAGE.optionen[tipp] + &quot;\u201d.&quot;;
+    }
+    var esc = t.replace(/&amp;/g, &quot;&amp;amp;&quot;).replace(/&lt;/g, &quot;&amp;lt;&quot;);
+    return esc.replace(/\*([^*]+)\*/g, &#x27;&lt;strong class=&quot;akz&quot;&gt;$1&lt;/strong&gt;&#x27;);
+  }
+  function darstellen() {
+    elemente.forEach(function (e) {
+      var z = zustand(e, schritt);
+      e.classList.toggle(&quot;an&quot;, z !== null);
+      e.classList.toggle(&quot;neu&quot;, z === &quot;neu&quot;);
+      e.classList.toggle(&quot;bekannt&quot;, z === &quot;bekannt&quot;);
+      e.classList.toggle(&quot;kontext&quot;, z === &quot;kontext&quot;);
+    });
+    document.getElementById(&quot;unterschrift&quot;).innerHTML = unterschrift(schritt);
+    document.getElementById(&quot;stand&quot;).textContent = &quot;Step &quot; + (schritt + 1) + &quot; of &quot; + (LETZTER + 1);
+    document.getElementById(&quot;zurueck&quot;).disabled = schritt === 0;
+    document.getElementById(&quot;weiter&quot;).disabled = schritt === LETZTER;
+    document.getElementById(&quot;nachher&quot;).classList.toggle(&quot;an&quot;, schritt === LETZTER);
+  }
+  function gehe(n) { schritt = Math.max(0, Math.min(LETZTER, n)); darstellen(); }
+
+  document.getElementById(&quot;weiter&quot;).onclick = function () { gehe(schritt + 1); };
+  document.getElementById(&quot;zurueck&quot;).onclick = function () { gehe(schritt - 1); };
+  document.addEventListener(&quot;keydown&quot;, function (e) {
+    if (e.key === &quot;ArrowRight&quot; || e.key === &quot; &quot;) { e.preventDefault(); gehe(schritt + 1); }
+    if (e.key === &quot;ArrowLeft&quot;) gehe(schritt - 1);
+  });
+  document.querySelectorAll(&quot;[data-tipp]&quot;).forEach(function (b) {
+    b.onclick = function () {
+      tipp = +b.dataset.tipp;
+      document.querySelectorAll(&quot;[data-tipp]&quot;).forEach(function (o) { o.setAttribute(&quot;aria-pressed&quot;, o === b ? &quot;true&quot; : &quot;false&quot;); });
+      darstellen();
+    };
+  });
+
+  if (/[?&amp;]hoersaal\b/.test(location.search)) document.documentElement.classList.add(&quot;hoersaal&quot;);
+  function hash() {
+    var d = location.hash === &quot;#druck&quot;;
+    document.documentElement.classList.toggle(&quot;druck&quot;, d);
+    if (d) { elemente.forEach(function (e) { e.style.transition = &quot;none&quot;; }); gehe(LETZTER); }
+  }
+  window.addEventListener(&quot;hashchange&quot;, hash);
+  hash(); darstellen();
+  window.ANIM = { gehe: gehe, letzter: LETZTER, get schritt() { return schritt; } };
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+
+<h2 id="b3">B3 · The strike test · 10 minutes</h2>
+<p>Nine lines from a student's 2024 prompt. Cross out what today's reasoning models no longer need, say how sure you are, then reveal.</p>
+<iframe id="Strike test" class="emb" title="Strike test" style="height:1100px" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;The strike test: which lines would you cross out today?&lt;/title&gt;
+&lt;style&gt;
+  :root { --red:#c1002a; --red-soft:#f6dde3; --bg:#fff; --panel:#f4f4f4; --line:#d4d4d4; --text:#1a1a1a; --muted:#5f5f5f; --code:#fbfbfa; }
+  @media (prefers-color-scheme: dark) {
+    :root { --red:#ff5c7a; --red-soft:#3b1820; --bg:#141414; --panel:#1f1f1f; --line:#3a3a3a; --text:#f2f2f2; --muted:#b5b5b5; --code:#1a1a1a; }
+  }
+  * { box-sizing:border-box; }
+  html, body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif; line-height:1.5; }
+  main { max-width:900px; margin:0 auto; padding:18px 14px 32px; }
+  .kicker { font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:0; }
+  h1 { font-size:24px; line-height:1.25; margin:4px 0 10px; font-weight:650; }
+  h2 { font-size:19px; margin:22px 0 8px; font-weight:650; }
+  p { margin:0 0 10px; max-width:72ch; }
+  .klein { font-size:13px; color:var(--muted); }
+  button { font:inherit; font-size:15px; color:var(--text); background:var(--bg); border:1px solid var(--line); border-radius:6px; padding:8px 14px; cursor:pointer; min-height:44px; }
+  button:hover { border-color:var(--text); }
+  button.haupt { background:var(--text); color:var(--bg); border-color:var(--text); }
+  button:focus-visible, [tabindex]:focus-visible, a:focus-visible { outline:3px solid var(--red); outline-offset:2px; }
+  a { color:inherit; }
+  ol.phasen { list-style:none; display:flex; flex-wrap:wrap; gap:6px; padding:0; margin:0 0 14px; font-size:13px; }
+  ol.phasen li { border:1px solid var(--line); border-radius:999px; padding:2px 10px; color:var(--muted); }
+  ol.phasen li[aria-current=&quot;step&quot;] { border-color:var(--text); color:var(--text); font-weight:650; }
+  .prompt { background:var(--code); border:1px solid var(--line); border-radius:8px; padding:8px; }
+  .zeile + .zeile { border-top:1px dashed var(--line); }
+  .zeile.hyper { border-left:5px solid var(--red); background:var(--red-soft); border-radius:6px; }
+  .zk { display:flex; gap:8px; align-items:flex-start; padding:8px; border-radius:6px; cursor:pointer; min-height:44px; }
+  .zk:hover { background:var(--panel); }
+  .zk[aria-disabled=&quot;true&quot;] { cursor:default; } .zk[aria-disabled=&quot;true&quot;]:hover { background:transparent; }
+  .kasten { flex:0 0 auto; width:22px; height:22px; margin-top:1px; border:2px solid var(--muted); border-radius:4px; display:inline-flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; }
+  .nr { flex:0 0 auto; color:var(--muted); min-width:1.4em; font-variant-numeric:tabular-nums; }
+  .text { flex:1 1 auto; font-family:ui-monospace,&quot;SFMono-Regular&quot;,Menlo,Consolas,monospace; font-size:15px; overflow-wrap:anywhere; }
+  .zk[aria-checked=&quot;true&quot;] .text { text-decoration:line-through; text-decoration-color:var(--red); text-decoration-thickness:2px; color:var(--muted); }
+  .zk[aria-checked=&quot;true&quot;] .kasten { border-color:var(--red); color:var(--red); }
+  .sicher { display:flex; flex-wrap:wrap; align-items:center; gap:4px; padding:0 8px 8px 60px; font-size:13px; color:var(--muted); }
+  .sicher button { font-size:13px; padding:4px 10px; min-height:34px; min-width:44px; }
+  .sicher button[aria-checked=&quot;true&quot;] { background:var(--text); color:var(--bg); border-color:var(--text); }
+  @media (max-width:520px) { .sicher, .aufl { padding-left:8px !important; margin-left:8px !important; } }
+  .aktionen { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:12px 0; }
+  .aufl { margin:0 8px 10px 60px; padding:8px 10px; background:var(--panel); border-radius:6px; font-size:14px; }
+  .aufl p { margin:0 0 6px; }
+  .wertung { font-weight:700; }
+  .marke { white-space:nowrap; border:1px solid var(--line); border-radius:4px; padding:0 5px; font-size:13px; }
+  .zitat { font-style:italic; }
+  .bilanz { background:var(--panel); border-radius:8px; padding:10px 12px; margin:8px 0 12px; }
+  .bilanz p { margin:0 0 6px; }
+  pre.code { margin:0; background:var(--code); border:1px solid var(--line); border-radius:8px; padding:12px; white-space:pre-wrap; overflow-wrap:anywhere; font-size:14px; line-height:1.5; font-family:ui-monospace,&quot;SFMono-Regular&quot;,Menlo,Consolas,monospace; }
+  .lab { font-weight:700; color:var(--red); }
+  details { margin:8px 0; } details summary { cursor:pointer; font-weight:650; min-height:32px; }
+  .quellen p { font-size:13px; color:var(--muted); padding-left:1.6em; text-indent:-1.6em; margin:0 0 4px; overflow-wrap:anywhere; }
+  .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  [hidden] { display:none !important; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;main&gt;
+  &lt;p class=&quot;kicker&quot;&gt;GenAI primer · about eight minutes&lt;/p&gt;
+  &lt;h1&gt;The strike test: which lines would you cross out today?&lt;/h1&gt;
+  &lt;ol class=&quot;phasen&quot; aria-label=&quot;Steps&quot;&gt;
+    &lt;li data-p=&quot;1&quot; aria-current=&quot;step&quot;&gt;1 Strike&lt;/li&gt;
+    &lt;li data-p=&quot;2&quot;&gt;2 Reveal&lt;/li&gt;
+    &lt;li data-p=&quot;3&quot;&gt;3 The prompt today&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;section id=&quot;p1&quot;&gt;
+    &lt;p&gt;A student wrote this prompt in 2024 to get a revision quiz before a test. Since then, reasoning models (in TH KI Chat: GPT-5.5) work differently. Click every line you would &lt;strong&gt;cross out&lt;/strong&gt; for today&#x27;s model, then set how sure you are.&lt;/p&gt;
+    &lt;div class=&quot;prompt&quot; id=&quot;prompt&quot; aria-label=&quot;Old prompt, 2024&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;aktionen&quot;&gt;
+      &lt;button type=&quot;button&quot; class=&quot;haupt&quot; id=&quot;aufloesen&quot;&gt;Reveal&lt;/button&gt;
+      &lt;span id=&quot;zaehler&quot; class=&quot;klein&quot; aria-live=&quot;polite&quot;&gt;0 of 9 lines struck&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section id=&quot;p2&quot; hidden&gt;
+    &lt;h2 tabindex=&quot;-1&quot; id=&quot;p2t&quot;&gt;Reveal&lt;/h2&gt;
+    &lt;div class=&quot;bilanz&quot; id=&quot;bilanz&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+    &lt;p class=&quot;klein&quot;&gt;Source marks: ■ lab guide (prompting guide of an AI provider) · ● study (a controlled test) · ▲ folklore (advice that no provider guide ever gave). The reason is shown under each line above.&lt;/p&gt;
+    &lt;div class=&quot;aktionen&quot;&gt;
+      &lt;button type=&quot;button&quot; class=&quot;haupt&quot; id=&quot;weiter3&quot;&gt;Next: the prompt today&lt;/button&gt;
+      &lt;button type=&quot;button&quot; id=&quot;nochmal&quot;&gt;Try again&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section id=&quot;p3&quot; hidden&gt;
+    &lt;h2 tabindex=&quot;-1&quot; id=&quot;p3t&quot;&gt;The same request, written for today&#x27;s models&lt;/h2&gt;
+    &lt;p&gt;Five labels carry what the model cannot know: &lt;span class=&quot;lab&quot;&gt;Goal&lt;/span&gt;, &lt;span class=&quot;lab&quot;&gt;Why&lt;/span&gt;, &lt;span class=&quot;lab&quot;&gt;First&lt;/span&gt;, &lt;span class=&quot;lab&quot;&gt;Material&lt;/span&gt; and &lt;span class=&quot;lab&quot;&gt;Check&lt;/span&gt;. The old prompt never named its material at all.&lt;/p&gt;
+    &lt;pre class=&quot;code&quot; id=&quot;neu&quot;&gt;&lt;/pre&gt;
+    &lt;p&gt;&lt;strong&gt;Try it on Test 4:&lt;/strong&gt; paste the new prompt into TH KI Chat, attach the Week 6 formula sheet (never personal data, never copyrighted chapters), and answer the quiz. Then strike half of one of &lt;em&gt;your own&lt;/em&gt; prompts and compare the two answers. What is missing in the result belongs back in the prompt; what is not missing was a training wheel for older models.&lt;/p&gt;
+    &lt;details&gt;
+      &lt;summary&gt;Why the exercise asks how sure you are&lt;/summary&gt;
+      &lt;p&gt;Judging before the answer is revealed helps you keep the right answer, even when your own judgement was wrong (Richland et al., 2009). Errors held with high confidence are corrected especially well after feedback (Butterfield &amp;amp; Metcalfe, 2001); that is why confident errors are highlighted in red.&lt;/p&gt;
+    &lt;/details&gt;
+    &lt;details&gt;
+      &lt;summary&gt;Weak spot of this exercise&lt;/summary&gt;
+      &lt;p&gt;An AI model (Claude) proposed the verdicts. Seven of nine rest on providers&#x27; own prompting guides, including Anthropic&#x27;s, rather than on independent tests. Every line therefore quotes its source, so you can check the verdict yourself.&lt;/p&gt;
+    &lt;/details&gt;
+    &lt;details&gt;
+      &lt;summary&gt;Sources&lt;/summary&gt;
+      &lt;div class=&quot;quellen&quot; id=&quot;quellen&quot;&gt;&lt;/div&gt;
+    &lt;/details&gt;
+  &lt;/section&gt;
+  &lt;p class=&quot;klein&quot;&gt;Adapted for SSCM 2026/27 from the lecturer version: Bartnik, R. (2026). &lt;em&gt;Der Streich-Test&lt;/em&gt;. In &lt;em&gt;KI in der Lehre&lt;/em&gt; [online script], Kapitel 2. https://th-koln-bartnik.github.io/genai4teaching/kapitel02-grundlagen.html&lt;/p&gt;
+&lt;/main&gt;
+
+&lt;script&gt;
+const ZEILEN = [
+  { nr:1, text:&quot;You are a world-class supply chain professor and an expert examiner.&quot;, urteil:&quot;rephrase&quot;, marke:&quot;Studie&quot;, q:[&quot;basil2025&quot;,&quot;anthropic2026prompting&quot;],
+    zitat:&quot;“Expert personas don&#x27;t improve factual accuracy” (Basil et al., 2025)&quot;,
+    grund:&quot;An expert role does not make the answers more accurate: across six models it did not change the hit rate on hard test questions significantly. Say instead who you are and what the quiz is for (Goal). For tone and for role plays, where the role is the content, a role still makes sense.&quot; },
+  { nr:2, text:&quot;Be structured, precise and didactically reflective.&quot;, urteil:&quot;strike&quot;, marke:&quot;Labor&quot;, q:[&quot;openai2026gpt55&quot;],
+    zitat:&quot;“Start with the smallest prompt that preserves the product contract” (OpenAI, 2026a)&quot;,
+    grund:&quot;Three adjectives describe a character, not a result. What “precise” should mean goes into the Check part, where you and the model can test it.&quot; },
+  { nr:3, text:&quot;Phase 1 – Start (keep this order strictly!)&quot;, urteil:&quot;strike&quot;, marke:&quot;Labor&quot;, q:[&quot;openai2026gpt55&quot;],
+    zitat:&quot;“Reduce or remove detailed step-by-step process guidance.” (OpenAI, 2026a)&quot;,
+    grund:&quot;Reasoning models plan their own route; a choreography with exclamation marks does not replace a goal. Exception: tutors and role plays, where the sequence is the product.&quot; },
+  { nr:4, text:&quot;You MUST wait for my answer before you continue!!!&quot;, urteil:&quot;rephrase&quot;, marke:&quot;Labor&quot;, q:[&quot;anthropic2026prompting&quot;],
+    zitat:&quot;“The fix is to soften any aggressive language.” (Anthropic, 2026a)&quot;,
+    grund:&quot;The waiting stays: the model should ask first and build second. The shouting goes, because newer models follow instructions closely and pressure tends to make them over-eager. New: “One question per message.” (First)&quot; },
+  { nr:5, text:&quot;First ask me which topics I find hardest.&quot;, urteil:&quot;keep&quot;, marke:&quot;Labor&quot;, q:[&quot;anthropic2026prompting&quot;],
+    zitat:&quot;“a brilliant but new employee who lacks context” (Anthropic, 2026a)&quot;,
+    grund:&quot;No model can know your weak spots. The answer decides which questions and which wrong options are worth building. The line gives context, not a method. (First)&quot; },
+  { nr:6, text:&quot;5 multiple-choice questions, 2 calculation items, ordered easy → hard.&quot;, urteil:&quot;keep&quot;, marke:&quot;Labor&quot;, q:[&quot;openai2026gpt55&quot;],
+    zitat:&quot;“State the expected outcome and success criteria.” (OpenAI, 2026a)&quot;,
+    grund:&quot;Number, item type and order are acceptance criteria: you and the model can check whether the result meets them. This kind of line becomes more important, not less. (Check)&quot; },
+  { nr:7, text:&quot;Every wrong answer option must be plausible.&quot;, urteil:&quot;rephrase&quot;, marke:&quot;Labor&quot;, q:[&quot;anthropic2026prompting&quot;],
+    zitat:&quot;“Being specific about the output you want can help enhance results.” (Anthropic, 2026a)&quot;,
+    grund:&quot;The intention stays, but “plausible” cannot be checked. Checkable: “Each wrong option is based on a real student mistake, e.g. comparing prices at the mill gate instead of landed cost.” (Check)&quot; },
+  { nr:8, text:&quot;Think step by step and double-check every question twice before you output it.&quot;, urteil:&quot;strike&quot;, marke:&quot;Labor&quot;, q:[&quot;openai2026reasoning&quot;,&quot;anthropic2026opus5&quot;,&quot;meincke2025a&quot;,&quot;kojima2022&quot;],
+    zitat:&quot;“prompting them to ‘think step by step’ is unnecessary” (OpenAI, n.d.)&quot;,
+    grund:&quot;In 2022, “Let&#x27;s think step by step” raised the hit rate of older models a lot (Kojima et al., 2022). Reasoning models think and check by themselves; Anthropic advises removing check commands such as “double-check your answer”, because they cost time without improving quality.&quot; },
+  { nr:9, text:&quot;If the quiz is good, I&#x27;ll tip you 200 €.&quot;, urteil:&quot;strike&quot;, marke:&quot;Folklore&quot;, q:[&quot;meincke2025b&quot;],
+    zitat:&quot;“Threatening or tipping a model generally has no significant effect” (Meincke et al., 2025b)&quot;,
+    grund:&quot;No provider guide ever recommended tips; the advice spread through anecdotes. In a test, tips and threats did not change results on hard questions overall.&quot; }
+];
+const NEU = [
+  [&quot;Goal&quot;, &quot;I am a first-year business-engineering student at TH Köln. Build me a revision quiz on supply chain management (Heizer, Ch. 11) for my next test.&quot;],
+  [&quot;Why&quot;, &quot;This is retrieval practice, not graded. Mistakes are welcome: I want to find my gaps.&quot;],
+  [&quot;First&quot;, &quot;Ask me which topics I find hardest. One question per message; build the quiz only after I have answered.&quot;],
+  [&quot;Material&quot;, &quot;Use only the attached formula sheet. If something is not in it, say so instead of guessing.&quot;],
+  [&quot;Check&quot;, &quot;5 multiple-choice questions and 2 calculation items, easy → hard. Each wrong option is based on a real student mistake. Show the answer and a one-line reason only after I have answered each item.&quot;]
+];
+const QUELLEN = {
+  anthropic2026prompting: &quot;Anthropic. (2026a). Prompting best practices. Claude Platform Docs. https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices&quot;,
+  anthropic2026opus5: &quot;Anthropic. (2026b). Prompting Claude Opus 5. Claude Platform Docs. https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5&quot;,
+  openai2026gpt55: &quot;OpenAI. (2026a). Using GPT-5.5. OpenAI API Docs. https://developers.openai.com/api/docs/guides/gpt-5.5&quot;,
+  openai2026reasoning: &quot;OpenAI. (n.d.). Reasoning best practices. OpenAI API Docs. Retrieved November 2, 2026, from https://developers.openai.com/api/docs/guides/reasoning-best-practices&quot;,
+  basil2025: &quot;Basil, S., Shapiro, I., Shapiro, D., Mollick, E., Mollick, L., &amp; Meincke, L. (2025). Prompting science report 4: Playing pretend: Expert personas don&#x27;t improve factual accuracy (arXiv:2512.05858). https://doi.org/10.48550/arXiv.2512.05858&quot;,
+  meincke2025a: &quot;Meincke, L., Mollick, E., Mollick, L., &amp; Shapiro, D. (2025a). Prompting science report 2: The decreasing value of chain of thought in prompting (arXiv:2506.07142). https://doi.org/10.48550/arXiv.2506.07142&quot;,
+  meincke2025b: &quot;Meincke, L., Mollick, E., Mollick, L., &amp; Shapiro, D. (2025b). Prompting science report 3: I&#x27;ll pay you or I&#x27;ll kill you – but will you care? (arXiv:2508.00614). https://doi.org/10.48550/arXiv.2508.00614&quot;,
+  kojima2022: &quot;Kojima, T., Gu, S. S., Reid, M., Matsuo, Y., &amp; Iwasawa, Y. (2022). Large language models are zero-shot reasoners. Advances in Neural Information Processing Systems, 35. https://doi.org/10.48550/arXiv.2205.11916&quot;,
+  richland2009: &quot;Richland, L. E., Kornell, N., &amp; Kao, L. S. (2009). The pretesting effect: Do unsuccessful retrieval attempts enhance learning? Journal of Experimental Psychology: Applied, 15(3), 243–257. https://doi.org/10.1037/a0016496&quot;,
+  butterfield2001: &quot;Butterfield, B., &amp; Metcalfe, J. (2001). Errors committed with high confidence are hypercorrected. Journal of Experimental Psychology: Learning, Memory, and Cognition, 27(6), 1491–1494. https://doi.org/10.1037/0278-7393.27.6.1491&quot;
+};
+const MARKE = { Labor:&quot;■ lab guide&quot;, Studie:&quot;● study&quot;, Folklore:&quot;▲ folklore&quot; };
+const WORT = { strike:&quot;Strike&quot;, keep:&quot;Keep&quot;, rephrase:&quot;Rephrase&quot; };
+const SICHER = { 1:&quot;1 guess&quot;, 2:&quot;2&quot;, 3:&quot;3 sure&quot; };
+const $ = s =&gt; document.querySelector(s);
+const esc = t =&gt; String(t).replace(/&amp;/g,&quot;&amp;amp;&quot;).replace(/&lt;/g,&quot;&amp;lt;&quot;).replace(/&gt;/g,&quot;&amp;gt;&quot;);
+const linkify = t =&gt; esc(t).replace(/(https:\/\/\S+)/g,&#x27;&lt;a href=&quot;$1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;$1&lt;/a&gt;&#x27;);
+let zustand = {}, aufgeloest = false;
+
+function phase(n){ document.querySelectorAll(&quot;ol.phasen li&quot;).forEach(li =&gt; { if (+li.dataset.p===n) li.setAttribute(&quot;aria-current&quot;,&quot;step&quot;); else li.removeAttribute(&quot;aria-current&quot;); }); }
+function zaehle(){ const n = Object.values(zustand).filter(z=&gt;z.weg).length; $(&quot;#zaehler&quot;).textContent = n + &quot; of &quot; + ZEILEN.length + &quot; lines struck&quot;; }
+function zeige(nr){
+  const el = document.getElementById(&quot;zeile-&quot;+nr), zk = el.querySelector(&quot;.zk&quot;);
+  zk.setAttribute(&quot;aria-checked&quot;, zustand[nr].weg ? &quot;true&quot;:&quot;false&quot;);
+  el.querySelector(&quot;.kasten&quot;).textContent = zustand[nr].weg ? &quot;✕&quot; : &quot;&quot;;
+  el.querySelectorAll(&quot;.sicher button&quot;).forEach(b =&gt; b.setAttribute(&quot;aria-checked&quot;, +b.dataset.s===zustand[nr].s ? &quot;true&quot;:&quot;false&quot;));
+  zaehle();
+}
+function baue(){
+  const box = $(&quot;#prompt&quot;); box.innerHTML = &quot;&quot;; zustand = {};
+  for (const z of ZEILEN) {
+    zustand[z.nr] = { weg:false, s:2 };
+    const el = document.createElement(&quot;div&quot;); el.className = &quot;zeile&quot;; el.id = &quot;zeile-&quot;+z.nr;
+    el.innerHTML = `&lt;div class=&quot;zk&quot; role=&quot;checkbox&quot; tabindex=&quot;0&quot; aria-checked=&quot;false&quot;&gt;&lt;span class=&quot;kasten&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;span class=&quot;nr&quot;&gt;${z.nr}&lt;/span&gt;&lt;span class=&quot;text&quot;&gt;${esc(z.text)}&lt;/span&gt;&lt;/div&gt;` +
+      `&lt;div class=&quot;sicher&quot; role=&quot;radiogroup&quot; aria-label=&quot;How sure, line ${z.nr}&quot;&gt;How sure:` +
+      [1,2,3].map(s=&gt;`&lt;button type=&quot;button&quot; role=&quot;radio&quot; data-s=&quot;${s}&quot; aria-checked=&quot;${s===2}&quot;&gt;${SICHER[s]}&lt;/button&gt;`).join(&quot;&quot;) + `&lt;/div&gt;` +
+      `&lt;div class=&quot;aufl&quot; hidden&gt;&lt;/div&gt;`;
+    box.appendChild(el);
+    const zk = el.querySelector(&quot;.zk&quot;);
+    const schalte = () =&gt; { if (aufgeloest) return; zustand[z.nr].weg = !zustand[z.nr].weg; zeige(z.nr); };
+    zk.addEventListener(&quot;click&quot;, schalte);
+    zk.addEventListener(&quot;keydown&quot;, e =&gt; { if (e.key===&quot; &quot;||e.key===&quot;Enter&quot;){ e.preventDefault(); schalte(); } });
+    el.querySelectorAll(&quot;.sicher button&quot;).forEach(b =&gt; b.addEventListener(&quot;click&quot;, () =&gt; { if (aufgeloest) return; zustand[z.nr].s = +b.dataset.s; zeige(z.nr); }));
+  }
+  zaehle();
+}
+function punkte(z){ const weg = zustand[z.nr].weg; if (z.urteil===&quot;rephrase&quot;) return 0.5; return (z.urteil===&quot;strike&quot;) === weg ? 1 : 0; }
+function aufloesen(){
+  aufgeloest = true; let summe = 0; const sicherFalsch = [];
+  for (const z of ZEILEN) {
+    const el = document.getElementById(&quot;zeile-&quot;+z.nr), p = punkte(z); summe += p;
+    el.querySelector(&quot;.zk&quot;).setAttribute(&quot;aria-disabled&quot;,&quot;true&quot;);
+    el.querySelectorAll(&quot;.sicher button&quot;).forEach(b =&gt; b.disabled = true);
+    if (p===0 &amp;&amp; zustand[z.nr].s===3) { el.classList.add(&quot;hyper&quot;); sicherFalsch.push(z.nr); }
+    const du = zustand[z.nr].weg ? &quot;you struck it&quot; : &quot;you kept it&quot;;
+    const box = el.querySelector(&quot;.aufl&quot;); box.hidden = false;
+    box.innerHTML = `&lt;p&gt;&lt;span class=&quot;wertung&quot;&gt;${WORT[z.urteil]}&lt;/span&gt; &lt;span class=&quot;marke&quot;&gt;${MARKE[z.marke]}&lt;/span&gt; · ${du}${p===1?&quot; ✓&quot;:p===0.5?&quot; (half right: the content stays, the form changes)&quot;:&quot; ✗&quot;}&lt;/p&gt;` +
+      `&lt;p&gt;${esc(z.grund)}&lt;/p&gt;&lt;p class=&quot;zitat klein&quot;&gt;${esc(z.zitat)}&lt;/p&gt;`;
+  }
+  const s = summe.toString().replace(&quot;.5&quot;,&quot;½&quot;);
+  $(&quot;#bilanz&quot;).innerHTML = `&lt;p&gt;&lt;strong&gt;${s} of ${ZEILEN.length} points.&lt;/strong&gt; Strike 2, 3, 8, 9 · keep 5, 6 · rephrase 1, 4, 7 (half a point either way).&lt;/p&gt;` +
+    (sicherFalsch.length ? `&lt;p&gt;Marked red: line${sicherFalsch.length&gt;1?&quot;s&quot;:&quot;&quot;} ${sicherFalsch.join(&quot;, &quot;)}: you were sure and wrong. Remember ${sicherFalsch.length&gt;1?&quot;these&quot;:&quot;this one&quot;}.&lt;/p&gt;` : `&lt;p&gt;No confident errors.&lt;/p&gt;`);
+  $(&quot;#p2&quot;).hidden = false; phase(2); $(&quot;#p2t&quot;).focus();
+}
+$(&quot;#aufloesen&quot;).onclick = aufloesen;
+$(&quot;#nochmal&quot;).onclick = () =&gt; { aufgeloest = false; $(&quot;#p2&quot;).hidden = true; $(&quot;#p3&quot;).hidden = true; baue(); phase(1); };
+$(&quot;#weiter3&quot;).onclick = () =&gt; { $(&quot;#p3&quot;).hidden = false; phase(3); $(&quot;#p3t&quot;).focus(); };
+$(&quot;#neu&quot;).innerHTML = NEU.map(([k,t]) =&gt; `&lt;span class=&quot;lab&quot;&gt;${k}:&lt;/span&gt; ${esc(t)}`).join(&quot;\n\n&quot;);
+$(&quot;#quellen&quot;).innerHTML = Object.values(QUELLEN).sort().map(q =&gt; `&lt;p&gt;${linkify(q)}&lt;/p&gt;`).join(&quot;&quot;);
+baue();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+
+<p class="klein">Transparency note: Claude (Anthropic) was used to research the updated figures, adapt the animation and the strike test from the lecturer versions, and check consistency. All content was reviewed by and is the responsibility of Professor Bartnik. Figures as published by the cited sources, retrieved 4 November 2026.</p>
+</main>
+<script>
+// Embedded exercises are same-origin srcdoc frames: grow each frame to its content, so no inner scroll bar appears.
+function fit() { document.querySelectorAll("iframe.emb").forEach(f => { try { const m = f.contentDocument.querySelector("main"); const h = m.offsetTop + m.offsetHeight + 16; if (h > 200 && Math.abs(h - f.offsetHeight) > 3) f.style.height = h + "px"; } catch (e) {} }); }
+document.querySelectorAll("iframe.emb").forEach(f => f.addEventListener("load", () => { fit(); try { new ResizeObserver(fit).observe(f.contentDocument.body); } catch (e) {} }));
+setInterval(fit, 1000);
+</script>
+</body></html>
