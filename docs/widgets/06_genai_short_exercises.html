@@ -35,16 +35,87 @@
 <body><main>
 <p class="kicker">Sustainable Supply Chain Management · Session 6 · Thursday 5 November 2026 · after Test 3</p>
 <h1>Two short GenAI exercises: what it costs, and how to use it well</h1>
-<p>You used generative AI to prepare for Test 3. Two questions about that tool before the bread chain game: is it worth its energy and water (Part A, 40 minutes), and how do you pick a model and prompt it today (Part B, 20 minutes)?</p>
-<nav><a href="#a">A · Kialo debate</a><a href="#b1">B1 · Which model?</a><a href="#b2">B2 · Extended model</a><a href="#b3">B3 · Strike test</a></nav>
+<p>You used generative AI to prepare for Test 3. First twelve minutes on weighing evidence (Part A0), then two questions about that tool before the bread chain game: is it worth its energy and water (Part A, 40 minutes, ending with a reflection note), and how do you pick a model and prompt it today (Part B, 20 minutes)?</p>
+<nav><a href="#a0">A0 · Explain it</a><a href="#a">A · Kialo debate</a><a href="#b1">B1 · Which model?</a><a href="#b2">B2 · Extended model</a><a href="#b3">B3 · Strike test</a></nav>
+
+
+<style>
+ .steps.four { grid-template-columns:repeat(4,1fr); }
+ .pbox { border:1px solid var(--line); border-left:5px solid var(--red); border-radius:8px; padding:10px 12px; margin:10px 0; }
+ .pbox:nth-of-type(2) { border-left-color:var(--muted); }
+ .phead { display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+ .prompt { white-space:pre-wrap; font-family:ui-monospace,Consolas,monospace; font-size:13.5px; background:var(--panel); border-radius:6px; padding:10px 12px; margin:0; max-width:none; }
+ button.copy { font:inherit; font-size:14px; padding:4px 12px; border:1px solid var(--red); border-radius:999px; background:var(--bg); color:var(--text); cursor:pointer; }
+ details.check { border:1px solid var(--line); border-radius:8px; padding:8px 12px; margin:10px 0; }
+ details.check summary { font-weight:650; cursor:pointer; }
+</style>
+<h2 id="a0">A0 · Reflect, ask, explain it to your neighbour · 12 minutes</h2>
+<p>Before you argue with numbers on Kialo: how much can one piece of evidence carry? Two ideas, one each. You learn yours from an AI, then you teach it to your neighbour. But first you write down what you think yourself.</p>
+<div class="steps four">
+ <div><b>0 · Reflect first · 3 min</b>Alone, on paper, <strong>no AI</strong>. Two or three lines for each of the two questions below. Stake your own claim; you come back to it after Kialo.</div>
+ <div><b>1 · Ask · 3 min</b>In pairs. Left seat takes A, right seat takes B. Copy your prompt into TH KI Chat (or the chat model you use) and read the answer.</div>
+ <div><b>2 · Teach · 2 × 2 min</b>Screen down. Explain your idea in your own words, with <strong>one example from your own life that the AI did not give</strong>. The listener says the principle back in one sentence.</div>
+ <div><b>3 · Check · 2 min</b>Open &ldquo;Did the AI get it right?&rdquo; below. What did the AI get right, add or leave out, and what does it add to what you wrote in step 0?</div>
+</div>
+<div class="box"><p><b>Step 0 · Your two questions (no AI)</b></p>
+<p><b>1 · A claim reaches you.</b> A friend recommends a stock, a doctor or a video recommends a treatment, a coach tells you how to negotiate your first salary. How do you decide how far to trust the claim? Name what you check, with one example from your own life.</p>
+<p><b>2 · An inquiry goes wrong.</b> A machine has broken down and the shift leader names the cause. A manager asks why a project team she does not belong to works badly. What could lead each of them to the wrong answer? Name two things.</p></div>
+<div class="pbox"><div class="phead"><b>A · Levels of evidence strength (CEBMa)</b><button type="button" class="copy" data-target="promptA">Copy prompt</button></div><pre id="promptA" class="prompt">I am a bachelor student in business engineering, taking a course on supply chain management. Explain to me the levels of evidence strength (“methodological appropriateness”, levels AA to E) in the CEBMa Guideline for Critically Appraised Topics in Management and Organizations (Center for Evidence-Based Management, 2017).
+
+Structure your answer in four short parts:
+1. The general principle, in at most six plain sentences. Define every technical term you use.
+2. Why it matters in my private life, for example when I decide on an investment, weigh medical advice, or judge advice on how to manage a team or how to negotiate.
+3. Why it matters in supply chain management.
+4. Three short examples, two or three sentences each, from different areas of life or business.
+
+Keep the whole answer under 350 words. Name the original source(s) so I can check them, and say where you are unsure.</pre></div>
+<div class="pbox"><div class="phead"><b>B · The Duhem–Quine thesis</b><button type="button" class="copy" data-target="promptB">Copy prompt</button></div><pre id="promptB" class="prompt">I am a bachelor student in business engineering, taking a course on supply chain management. Explain to me the Duhem–Quine thesis: what it says about what can go wrong when a claim is tested against evidence, and why I should be careful when I judge a single claim on a single piece of evidence.
+
+Structure your answer in four short parts:
+1. The general principle, in at most six plain sentences. Define every technical term you use.
+2. Why it matters in my private life, for example when I decide on an investment, weigh medical advice, or judge advice on how to manage a team or how to negotiate.
+3. Why it matters in supply chain management.
+4. Three short examples, two or three sentences each, from different areas of life or business.
+
+Keep the whole answer under 350 words. Name the original source(s) so I can check them, and say where you are unsure.</pre></div>
+<details class="check"><summary>Did the AI get it right? Open after teaching</summary>
+<h3>A · CEBMa levels of evidence</h3>
+<p>The guideline ranks a study by how well its design can show cause and effect (&ldquo;if we do A, does B follow?&rdquo;): a control group, random assignment and a before-and-after measurement make the strongest single study, and a systematic review that pools such studies ranks highest.</p>
+<table>
+ <tr><th>Level</th><th>Design</th></tr>
+ <tr><td>AA</td><td>systematic review or meta-analysis of randomized controlled studies</td></tr>
+ <tr><td>A</td><td>systematic review or meta-analysis of non-randomized controlled and/or before-after studies; randomized controlled study</td></tr>
+ <tr><td>B</td><td>systematic review or meta-analysis of controlled studies without a pretest or uncontrolled studies with a pretest; non-randomized controlled before-after study; interrupted time series</td></tr>
+ <tr><td>C</td><td>systematic review or meta-analysis of cross-sectional studies; controlled study without a pretest or uncontrolled study with a pretest</td></tr>
+ <tr><td>D</td><td>cross-sectional study (survey)</td></tr>
+ <tr><td>E</td><td>case studies, case reports, traditional literature reviews, theoretical papers</td></tr>
+</table>
+<p>Two points an AI often skips. The ladder is for cause-and-effect questions; for &ldquo;how many, how often?&rdquo; a survey can be the most appropriate design. And the CAT guideline gives letters, not percentages: if your AI gave percentages, ask it where they come from.</p>
+<h3>B · The Duhem–Quine thesis</h3>
+<p>A claim is never tested alone. A prediction follows only from the claim <em>plus</em> auxiliary assumptions: the instrument works, the data are clean, the background theory holds, the conditions were as assumed. If the prediction fails, logic says only that something in this bundle is wrong, not what. Duhem showed this for physics (1906); Quine extended it to all of our knowledge (1951). The thesis does not say that tests are useless; it says that one failed (or passed) test does not settle a single claim until you have looked at the assumptions it rested on.</p>
+<p class="klein">Center for Evidence-Based Management. (2017). <em>CEBMa guideline for critically appraised topics in management and organizations</em> (Version 2.0, p. 15). <a href="https://cebma.org/assets/Uploads/CEBMa-CAT-Guidelines-vs-2-v2.0.pdf" target="_blank" rel="noopener">https://cebma.org/assets/Uploads/CEBMa-CAT-Guidelines-vs-2-v2.0.pdf</a> · Duhem, P. (1954). <em>The aim and structure of physical theory</em> (P. P. Wiener, Trans.). Princeton University Press. (Original work published 1906) · Quine, W. V. O. (1951). Main trends in recent philosophy: Two dogmas of empiricism. <em>The Philosophical Review, 60</em>(1), 20–43. <a href="https://doi.org/10.2307/2181906" target="_blank" rel="noopener">https://doi.org/10.2307/2181906</a></p>
+</details>
+<div class="box"><p><b>Take both into Kialo.</b> Ask of every starter source: is it a cause-and-effect claim at all, or a measurement, and who measured? When two numbers disagree, look for the assumption that differs before you call one of them wrong: Google&rsquo;s 0.26 mL per prompt counts the water on site only, Masley&rsquo;s 2 mL adds the water at the power plant.</p></div>
+<script>
+document.querySelectorAll("button.copy").forEach(b => b.addEventListener("click", () => {
+ const el = document.getElementById(b.dataset.target), t = el.innerText;
+ const done = () => { b.textContent = "Copied ✓"; setTimeout(() => b.textContent = "Copy prompt", 1800); };
+ const sel = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); try { if (document.execCommand("copy")) done(); else b.textContent = "Selected: press Ctrl+C"; } catch (e) { b.textContent = "Selected: press Ctrl+C"; } };
+ if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(done, sel); else sel();
+}));
+</script>
 
 <h2 id="a">A · Is GenAI worth its energy and water? Argue it on Kialo</h2>
 <p class="thesis">Thesis: &ldquo;Because of its energy and water use, students should use GenAI as little as possible.&rdquo;</p>
 <div class="steps">
  <div><b>1 · Pick a source · 5 min</b>In pairs. Open the Kialo discussion (link in ILIAS › Week 6) and one of the six starter sources below.</div>
  <div><b>2 · Two claims · 20 min</b>One new claim (pro or con) and one reply to another pair's claim. Each: one sentence, one number, the source (author, year, link), and what the number counts.</div>
- <div><b>3 · Plenary · 10 min</b>Which claim on each side is strongest, and which single number decides the thesis for a student?</div>
+ <div><b>3 · Plenary · 7 min</b>Which claim on each side is strongest, and which single number decides the thesis for a student?</div>
 </div>
+<div class="box" id="a-reflect"><p><b>4 · Reflection note · 3 min, alone, on your paper from Part A0.</b> Read again what you wrote before you asked the AI, then add three lines.</p>
+<p><b>Ladder.</b> Which claim in the tree moved you most? What kind of evidence stands behind it: a cause-and-effect study (which level?), or a measurement or estimate, and by whom?</p>
+<p><b>Bundle.</b> Find two claims that seem to contradict each other. Which assumption differs between them: per prompt or per year, on site or including the power plant, measured or estimated?</p>
+<p><b>Your first answer.</b> What would you now add to, or change in, your answers from step 0? Did your vote change, and which piece of evidence changed it?</p></div>
 <div class="box"><p><b>Three questions for every number.</b> <em>Per prompt or per year?</em> A tiny number per prompt and a huge number per year can both be true. <em>Local or global?</em> One data centre in a dry region is a different problem from the world total. <em>Measured or estimated, and by whom?</em> A provider measuring its own service, a journalist measuring open models and a researcher modelling the world answer different questions.</p></div>
 <table>
  <tr><th>Unit</th><th>Plain meaning</th><th>To get a feel for it</th></tr>
@@ -536,7 +607,7 @@ baue();
 &lt;/html&gt;
 "></iframe>
 
-<p class="klein">Transparency note: Claude (Anthropic) was used to research the updated figures, adapt the animation and the strike test from the lecturer versions, and check consistency. All content was reviewed by and is the responsibility of Professor Bartnik. Figures as published by the cited sources, retrieved 4 November 2026.</p>
+<p class="klein">Transparency note: Claude (Anthropic) was used to research the updated figures, draft the A0 prompts and check box, adapt the animation and the strike test from the lecturer versions, and check consistency. All content was reviewed by and is the responsibility of Professor Bartnik. Figures as published by the cited sources, retrieved 4 November 2026 (CEBMa guideline checked 5 November 2026).</p>
 </main>
 <script>
 // Embedded exercises are same-origin srcdoc frames: grow each frame to its content, so no inner scroll bar appears.
