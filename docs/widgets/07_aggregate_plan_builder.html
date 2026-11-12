@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aggregate Plan Builder · Backhaus Kaya's Christmas quarter</title>
+<style>
+:root { --red:#c1002a; --red-soft:#f6dde3; --bg:#fff; --panel:#f4f4f4; --line:#d4d4d4; --text:#1a1a1a; --muted:#5f5f5f; --ok:#1f7a3f; --ok-soft:#e1f2e6; --input:#fff;
+  --g1:#9a9a9a; --g2:#5f5f5f; --g3:#111; }
+@media (prefers-color-scheme: dark) { :root { --red:#ff5c7a; --red-soft:#3b1820; --bg:#141414; --panel:#1f1f1f; --line:#3a3a3a; --text:#f2f2f2; --muted:#b5b5b5; --ok:#6fd18f; --ok-soft:#17301f; --input:#1a1a1a;
+  --g1:#6a6a6a; --g2:#a0a0a0; --g3:#f2f2f2; } }
+* { box-sizing:border-box; } html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:18px; line-height:1.4; }
+.wrap { max-width:1100px; margin:0 auto; padding:16px; }
+header { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px 16px; border-bottom:3px solid var(--red); padding-bottom:8px; margin-bottom:12px; }
+h1 { font-size:1.5rem; margin:0; line-height:1.2; } h1 span { color:var(--red); }
+h2 { font-size:1.15rem; margin:0 0 8px; }
+button { font:inherit; color:inherit; cursor:pointer; }
+.pill { border:2px solid var(--line); background:var(--panel); border-radius:10px; padding:8px 14px; font-size:0.95rem; min-height:44px; }
+.pill[aria-pressed="true"] { border-color:var(--red); background:var(--red); color:#fff; font-weight:700; }
+.seg { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 12px; }
+.panel { background:var(--panel); border-radius:10px; padding:14px; margin-bottom:14px; }
+.grid { display:grid; grid-template-columns:minmax(0,1fr); gap:14px; }
+@media (min-width:900px) { .grid { grid-template-columns:minmax(0,6fr) minmax(0,5fr); } }
+.hint { font-size:0.92rem; color:var(--muted); margin:0 0 8px; }
+.formula { background:var(--panel); border-left:6px solid var(--red); border-radius:6px; padding:10px 14px; margin-bottom:12px; }
+.formula p { margin:4px 0; }
+table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
+th, td { padding:5px 6px; text-align:right; border-bottom:1px solid var(--line); }
+th:first-child, td:first-child { text-align:left; }
+thead th { font-size:0.9rem; color:var(--muted); }
+tr.sum td { font-weight:700; border-top:2px solid var(--text); }
+input[type="number"] { font:inherit; font-size:1rem; width:4.8em; padding:6px 4px; text-align:right; border:2px solid var(--line); border-radius:8px; background:var(--input); color:var(--text); }
+input[type="number"]:focus { outline:none; border-color:var(--red); }
+input.bad { border-color:var(--red); background:var(--red-soft); }
+.short { color:var(--red); font-weight:700; }
+.kpis { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-bottom:10px; }
+.kpi { background:var(--bg); border-radius:8px; padding:8px 10px; }
+.kpi b { display:block; font-size:1.5rem; line-height:1.15; }
+.kpi small { color:var(--muted); font-size:0.85rem; }
+.msg { border-radius:8px; padding:8px 12px; margin:8px 0; font-size:0.95rem; }
+.msg.warn { background:var(--red-soft); border-left:5px solid var(--red); }
+.msg.ok { background:var(--ok-soft); border-left:5px solid var(--ok); }
+input[type="range"] { width:100%; accent-color:var(--red); }
+.chal li { margin:4px 0; } .chal .done { color:var(--ok); font-weight:700; }
+svg text { font-family:inherit; }
+.source { font-size:0.75rem; color:var(--muted); border-top:1px solid var(--line); margin-top:16px; padding-top:8px; }
+.legend { font-size:0.85rem; color:var(--muted); display:flex; gap:14px; flex-wrap:wrap; margin-top:4px; }
+.sw { display:inline-block; width:18px; height:4px; vertical-align:middle; margin-right:4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Aggregate Plan Builder · <span>Kaya's Christmas quarter</span></h1>
+  <div class="hint" style="margin:0">Session 07 · Heizer Ch. 13 · chase, level, mixed</div>
+</header>
+
+<div class="formula">
+  <p><b>Ending stock</b> = last month's ending stock + regular + overtime + bought − demand (never below zero; below zero = trays not delivered)</p>
+  <p><b>Cost</b> = tray-months × 0.50 € + overtime trays × 1.20 € + bought trays × 2.50 € · <b>CO₂e</b> = tray-months × 0.4 kg + bought trays × 1.5 kg</p>
+</div>
+
+<div class="seg" role="group" aria-label="Load a plan">
+  <button class="pill" data-preset="chase">Load chase</button>
+  <button class="pill" data-preset="level">Load level</button>
+  <button class="pill" data-preset="mixed">Load mixed</button>
+  <button class="pill" data-preset="empty">Start from zero</button>
+</div>
+
+<div class="grid">
+  <div>
+    <div class="panel">
+      <h2>Your plan, in trays per month</h2>
+      <p class="hint">Regular output at most 3,300 · overtime at most 660 (20 % of regular) · buying from another bakery has no limit.</p>
+      <table>
+        <thead><tr><th></th><th>Oct</th><th>Nov</th><th>Dec</th><th>Jan</th><th>Total</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div id="msgs"></div>
+    </div>
+    <div class="panel">
+      <h2>Baked so far against sold so far</h2>
+      <svg id="cum" viewBox="0 0 560 260" width="100%" role="img" aria-label="Cumulative output and cumulative demand by month"></svg>
+      <div class="legend"><span><i class="sw" style="background:var(--g3)"></i>cumulative output of your plan</span><span><i class="sw" style="background:var(--red)"></i>cumulative demand</span><span>gap above red = stock in the freezer</span></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="panel">
+      <h2>Price of the season</h2>
+      <div class="kpis">
+        <div class="kpi"><small>Extra cost</small><b id="k-cost">–</b><small id="k-cost-d"></small></div>
+        <div class="kpi"><small>Extra CO₂e</small><b id="k-co2">–</b><small id="k-co2-d"></small></div>
+      </div>
+      <svg id="sc" viewBox="0 0 440 250" width="100%" role="img" aria-label="Cost against CO2 for chase, level, mixed and your plan"></svg>
+    </div>
+
+    <div class="panel">
+      <h2>Put a price on a tonne of CO₂</h2>
+      <p class="hint">Total = extra cost + CO₂ price × tonnes. Which plan wins?</p>
+      <label for="cp">CO₂ price: <b id="cp-v"></b> € per tonne</label>
+      <input type="range" id="cp" min="0" max="400" step="10" value="100">
+      <table id="rank" style="margin-top:6px"></table>
+    </div>
+
+    <div class="panel">
+      <h2>Three challenges</h2>
+      <ol class="chal">
+        <li id="c1">Build your own plan with no shortage that costs less than 1,300 € <i>and</i> causes less than 900 kg CO₂e.</li>
+        <li id="c2">Build the plan with the lowest CO₂ that still delivers every tray, without loading a preset. Why can no plan go lower?</li>
+        <li id="c3">Move the slider: at what CO₂ price does mixed beat level? Explain the number from the two plans.</li>
+      </ol>
+      <p class="hint">Challenges 1 and 2 tick themselves when a plan you typed qualifies.</p>
+    </div>
+  </div>
+</div>
+
+<div class="source">
+Kaya numbers: teaching values, own calculation, R. Bartnik 2026 (same values as the Session 07 slides). Method: Heizer, J., Render, B., &amp; Munson, C. (2023). <i>Operations management: Sustainability and supply chain management</i> (14th ed., Global ed.). Pearson. Chapter 13.<br>
+Transparency note: this widget was built with Claude (Anthropic) from Professor Bartnik's Session 07 example; all content is reviewed by and the responsibility of Roman Bartnik.
+</div>
+</div>
+
+<script>
+const M=["Oct","Nov","Dec","Jan"], D=[2400,2700,4800,3300], CAP=3300, OT=660;
+const C_HOLD=0.5, C_OT=1.2, C_SUB=2.5, E_HOLD=0.4, E_SUB=1.5;
+const PRESETS={
+  chase:{r:[2400,2700,3300,3300],o:[0,0,660,0],s:[0,0,840,0]},
+  level:{r:[3300,3300,3300,3300],o:[0,0,0,0],s:[0,0,0,0]},
+  mixed:{r:[2640,3300,3300,3300],o:[0,0,660,0],s:[0,0,0,0]},
+  empty:{r:[0,0,0,0],o:[0,0,0,0],s:[0,0,0,0]}
+};
+const ROWS=[["r","Regular output",CAP],["o","Overtime",OT],["s","Bought in",Infinity]];
+let P=JSON.parse(JSON.stringify(PRESETS.level)), active="level";
+const $=id=>document.getElementById(id);
+const fmt=(v,d=0)=>v.toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+
+function price(p){
+  let stock=0; const st=[], sh=[];
+  for(let i=0;i<4;i++){ stock=stock+p.r[i]+p.o[i]+p.s[i]-D[i]; sh.push(Math.max(0,-stock)); stock=Math.max(0,stock); st.push(stock); }
+  const tm=st.reduce((a,b)=>a+b,0), ot=p.o.reduce((a,b)=>a+b,0), sub=p.s.reduce((a,b)=>a+b,0);
+  const hold=tm*C_HOLD, otc=ot*C_OT, subc=sub*C_SUB;
+  return {stock:st, short:sh, tm, ot, sub, hold, otc, subc, cost:hold+otc+subc, co2:tm*E_HOLD+sub*E_SUB,
+          shortTotal:sh.reduce((a,b)=>a+b,0)};
+}
+const REF={chase:price(PRESETS.chase), level:price(PRESETS.level), mixed:price(PRESETS.mixed)};
+
+function buildTable(){
+  let h="<tr><td>Demand</td>"+D.map(d=>"<td>"+fmt(d)+"</td>").join("")+"<td>"+fmt(D.reduce((a,b)=>a+b))+"</td></tr>";
+  ROWS.forEach(([k,lab])=>{
+    h+="<tr><td>"+lab+"</td>"+M.map((m,i)=>'<td><input type="number" min="0" step="60" data-k="'+k+'" data-i="'+i+'" aria-label="'+lab+' '+m+'" value="'+P[k][i]+'"></td>').join("")+'<td id="t-'+k+'"></td></tr>';
+  });
+  h+='<tr class="sum"><td>Ending stock</td>'+M.map((m,i)=>'<td id="st-'+i+'"></td>').join("")+'<td id="t-st"></td></tr>';
+  $("tbody").innerHTML=h;
+  $("tbody").querySelectorAll("input").forEach(el=>el.addEventListener("input",()=>{
+    const v=Math.max(0,Math.round(+el.value||0)); P[el.dataset.k][+el.dataset.i]=v; setActive(null); update();
+  }));
+}
+function setActive(name){ active=name; document.querySelectorAll("[data-preset]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.preset===name)); }
+
+function update(){
+  const r=price(P); let msgs=[];
+  ROWS.forEach(([k,lab,max])=>{
+    $("t-"+k).textContent=fmt(P[k].reduce((a,b)=>a+b,0));
+    document.querySelectorAll('input[data-k="'+k+'"]').forEach(el=>{ const bad=P[k][+el.dataset.i]>max; el.classList.toggle("bad",bad); });
+  });
+  const overR=P.r.some(v=>v>CAP), overO=P.o.some(v=>v>OT);
+  if(overR) msgs.push(["warn","Regular output above 3,300 trays: the ovens cannot bake that. Use overtime or buy in."]);
+  if(overO) msgs.push(["warn","Overtime above 660 trays: the night shift cannot do more than 20 % of regular capacity."]);
+  for(let i=0;i<4;i++){ const c=$("st-"+i);
+    c.innerHTML=r.short[i]>0?'<span class="short">−'+fmt(r.short[i])+' short</span>':fmt(r.stock[i]); }
+  $("t-st").innerHTML=fmt(r.tm)+"<br><small>tray-months</small>";
+  if(r.shortTotal>0) msgs.push(["warn",fmt(r.shortTotal)+" trays not delivered. The plan runs short: customers go home without rolls. Not a valid plan."]);
+  if(r.stock[3]>0) msgs.push(["warn",fmt(r.stock[3])+" trays still frozen at the end of January: baked and stored for nobody."]);
+  const valid=!r.shortTotal && !overR && !overO;
+  if(valid && !r.stock[3]) msgs.push(["ok","Every tray delivered, nothing left over. A valid plan."]);
+  $("msgs").innerHTML=msgs.map(([c,t])=>'<div class="msg '+c+'">'+t+'</div>').join("");
+
+  $("k-cost").textContent=valid?fmt(r.cost)+" €":"invalid";
+  $("k-co2").textContent=valid?fmt(r.co2)+" kg":"invalid";
+  $("k-cost-d").textContent="freezer "+fmt(r.hold)+" · overtime "+fmt(r.otc)+" · bought "+fmt(r.subc);
+  $("k-co2-d").textContent="freezer "+fmt(r.tm*E_HOLD)+" · bought "+fmt(r.sub*E_SUB);
+
+  drawCum(r); drawScatter(r,valid); drawRank(r,valid);
+  const own=valid && !active && !r.stock[3], ok1=own && r.cost<1300 && r.co2<900, ok2=own && r.co2<=432.0001;
+  $("c1").classList.toggle("done",ok1); $("c2").classList.toggle("done",ok2);
+}
+
+function drawCum(r){
+  const W=560,H=260,L=56,Rm=34,T=12,B=34, ymax=14000;
+  const x=i=>L+(W-L-Rm)*i/4, y=v=>T+(H-T-B)*(1-v/ymax);
+  let s="";
+  for(let v=0;v<=ymax;v+=2000) s+='<line x1="'+L+'" x2="'+(W-Rm)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--line)"/><text x="'+(L-6)+'" y="'+(y(v)+4)+'" font-size="12" text-anchor="end" fill="var(--muted)">'+fmt(v)+'</text>';
+  ["1 Oct"].concat(M.map(m=>"end "+m)).forEach((t,i)=>s+='<text x="'+x(i)+'" y="'+(H-B+18)+'" font-size="12" text-anchor="middle" fill="var(--muted)">'+t+'</text>');
+  const cd=[0], co=[0];
+  for(let i=0;i<4;i++){ cd.push(cd[i]+D[i]); co.push(co[i]+P.r[i]+P.o[i]+P.s[i]); }
+  // stock band
+  let band="M"+cd.map((v,i)=>x(i)+","+y(Math.max(v,co[i]))).join("L")+"L"+cd.map((v,i)=>x(i)+","+y(v)).reverse().join("L")+"Z";
+  s+='<path d="'+band+'" fill="var(--g1)" opacity="0.35"/>';
+  const path=a=>a.map((v,i)=>(i?"L":"M")+x(i)+","+y(Math.min(v,ymax))).join("");
+  s+='<path d="'+path(cd)+'" fill="none" stroke="var(--red)" stroke-width="3"/>';
+  s+='<path d="'+path(co)+'" fill="none" stroke="var(--g3)" stroke-width="3" stroke-dasharray="7 4"/>';
+  co.forEach((v,i)=>{ if(i&&r.stock[i-1]>0) s+='<text x="'+x(i)+'" y="'+(y(Math.max(v,cd[i]))-7)+'" font-size="12" text-anchor="middle" fill="var(--text)">'+fmt(r.stock[i-1])+' in stock</text>';
+    if(i&&r.short[i-1]>0) s+='<text x="'+x(i)+'" y="'+(y(cd[i])-7)+'" font-size="12" font-weight="700" text-anchor="middle" fill="var(--red)">'+fmt(r.short[i-1])+' short</text>'; });
+  $("cum").innerHTML=s;
+}
+
+function drawScatter(r,valid){
+  const W=440,H=250,L=56,Rm=16,T=12,B=40, xmax=3200, ymax=1400;
+  const x=v=>L+(W-L-Rm)*Math.min(v,xmax)/xmax, y=v=>T+(H-T-B)*(1-Math.min(v,ymax)/ymax);
+  let s="";
+  for(let v=0;v<=xmax;v+=800) s+='<line x1="'+x(v)+'" x2="'+x(v)+'" y1="'+T+'" y2="'+(H-B)+'" stroke="var(--line)"/><text x="'+x(v)+'" y="'+(H-B+16)+'" font-size="12" text-anchor="middle" fill="var(--muted)">'+fmt(v)+'</text>';
+  for(let v=0;v<=ymax;v+=350) s+='<line x1="'+L+'" x2="'+(W-Rm)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--line)"/><text x="'+(L-6)+'" y="'+(y(v)+4)+'" font-size="12" text-anchor="end" fill="var(--muted)">'+fmt(v)+'</text>';
+  s+='<text x="'+((W+L)/2)+'" y="'+(H-4)+'" font-size="12" text-anchor="middle" fill="var(--muted)">extra cost, €</text>';
+  s+='<text x="12" y="'+((H-B+T)/2)+'" font-size="12" text-anchor="middle" fill="var(--muted)" transform="rotate(-90 12 '+((H-B+T)/2)+')">extra CO₂e, kg</text>';
+  Object.entries(REF).forEach(([n,p])=>{ s+='<circle cx="'+x(p.cost)+'" cy="'+y(p.co2)+'" r="7" fill="var(--g2)"/><text x="'+(x(p.cost)+10)+'" y="'+(y(p.co2)+4)+'" font-size="13" fill="var(--text)">'+n+'</text>'; });
+  if(valid && !active) s+='<circle cx="'+x(r.cost)+'" cy="'+y(r.co2)+'" r="9" fill="none" stroke="var(--red)" stroke-width="3"/><text x="'+(x(r.cost)+12)+'" y="'+(y(r.co2)-10)+'" font-size="13" font-weight="700" fill="var(--red)">your plan</text>';
+  $("sc").innerHTML=s;
+}
+
+function drawRank(r,valid){
+  const cp=+$("cp").value; $("cp-v").textContent=cp;
+  const rows=Object.entries(REF).map(([n,p])=>[n,p]); if(valid && !active) rows.push(["your plan",r]);
+  rows.forEach(x=>x.push(x[1].cost+cp*x[1].co2/1000)); rows.sort((a,b)=>a[2]-b[2]);
+  $("rank").innerHTML='<thead><tr><th>Plan</th><th>€</th><th>CO₂ €</th><th>Total €</th></tr></thead>'+rows.map((x,i)=>'<tr'+(i===0?' style="font-weight:700;color:var(--red)"':'')+'><td>'+(i===0?"▶ ":"")+x[0]+'</td><td>'+fmt(x[1].cost)+'</td><td>'+fmt(cp*x[1].co2/1000)+'</td><td>'+fmt(x[2])+'</td></tr>').join("");
+}
+
+document.querySelectorAll("[data-preset]").forEach(b=>b.addEventListener("click",()=>{
+  P=JSON.parse(JSON.stringify(PRESETS[b.dataset.preset])); buildTable(); setActive(b.dataset.preset==="empty"?null:b.dataset.preset); update();
+}));
+$("cp").addEventListener("input",()=>update());
+buildTable(); setActive("level"); update();
+</script>
+</body>
+</html>
