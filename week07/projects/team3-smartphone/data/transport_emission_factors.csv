@@ -1,0 +1,6 @@
+mode_id,g_co2e_per_tkm,year,source_url,class
+truck,89,2023,https://example.org/bike-data,DOCUMENTED
+rail,21,2023,https://example.org/bike-data,DOCUMENTED
+sea,12,2023,https://example.org/bike-data,DOCUMENTED
+air,500,2023,https://example.org/bike-data,DOCUMENTED
+cargo_bike,0,2023,https://example.org/bike-data,DOCUMENTED

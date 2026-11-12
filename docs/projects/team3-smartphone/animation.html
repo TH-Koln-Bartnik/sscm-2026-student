@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smartphone Supply Chain Dashboard</title>
+<style>
+:root {
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --accent-blue: #38bdf8;
+    --accent-green: #34d399;
+    --accent-red: #f87171;
+    --accent-orange: #fb923c;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+}
+* { box-sizing: border-box; }
+body {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+.header {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+.header h1 {
+    margin: 0;
+    font-size: 25px;
+    color: var(--accent-blue);
+}
+.header-meta {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 6px;
+}
+.controls-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btn:hover { background: #1d4ed8; }
+.slider-container {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15,23,42,.4);
+    padding: 10px;
+    border-radius: 8px;
+}
+input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent-blue);
+}
+.scenario-tabs {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+.tab {
+    padding: 9px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+}
+.tab.active {
+    background: #0369a1;
+    color: white;
+}
+.tab[data-scen="disruption"].active {
+    background: #991b1b;
+}
+.tab[data-scen="countermeasure"].active {
+    background: #065f46;
+}
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 22px;
+}
+.metric-card, .panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 17px;
+}
+.metric-label {
+    color: var(--text-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.metric-value {
+    font-size: 22px;
+    font-weight: bold;
+}
+.pipeline-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 28px 18px;
+    margin-bottom: 22px;
+    overflow-x: auto;
+}
+.pipeline-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 900px;
+}
+.node {
+    background: var(--bg-dark);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px 8px;
+    width: 140px;
+    text-align: center;
+    transition: .3s;
+}
+.node-title {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+.node-value {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 7px;
+    color: var(--accent-blue);
+}
+.node.active-warn {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 12px rgba(248,113,113,.4);
+}
+.node.active-good {
+    border-color: var(--accent-green);
+}
+.connection-lane {
+    flex: 1;
+    height: 4px;
+    min-width: 15px;
+    background: var(--border-color);
+    margin: 0 -5px;
+}
+.connection-lane.active-flow {
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-green));
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+.panel h3 {
+    color: var(--accent-blue);
+    font-size: 14px;
+    margin-top: 0;
+}
+.log-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+.log-table td {
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(51,65,85,.6);
+}
+.log-val {
+    text-align: right;
+    font-weight: bold;
+}
+.chart-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 22px;
+}
+.chart-title {
+    color: var(--accent-blue);
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+.chart-svg {
+    width: 100%;
+    height: 230px;
+}
+.small {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+@media(max-width:750px) {
+    .metrics-grid { grid-template-columns: repeat(2,1fr); }
+    .info-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1 id="product-title">Supply Chain Dashboard</h1>
+        <div class="header-meta">52-week smartphone production simulation</div>
+    </div>
+    <div class="controls-card">
+        <button class="btn" id="play-btn">▶ Play</button>
+        <div class="slider-container">
+            <span>Week 1</span>
+            <input type="range" id="time-slider" min="0" max="51" value="0">
+            <span id="week-label">Week 1</span>
+        </div>
+        <div class="scenario-tabs" id="scenario-selector"></div>
+    </div>
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-label">Finished smartphones</div>
+            <div class="metric-value" id="metric-finished">-</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Cost per unit</div>
+            <div class="metric-value" id="metric-cost">-</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">CO2 footprint per unit</div>
+            <div class="metric-value" id="metric-co2">-</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Production stopped</div>
+            <div class="metric-value" id="metric-stopped">-</div>
+        </div>
+    </div>
+    <div class="pipeline-card">
+        <div class="pipeline-track" id="pipeline-track"></div>
+    </div>
+    <div class="info-grid">
+        <div class="panel">
+            <h3>Supply Chain Status</h3>
+            <table class="log-table">
+                <tr>
+                    <td>Units released this week</td>
+                    <td class="log-val" id="w-out">-</td>
+                </tr>
+                <tr>
+                    <td>Missing memory chips</td>
+                    <td class="log-val" id="w-missing">-</td>
+                </tr>
+                <tr>
+                    <td>Memory stock</td>
+                    <td class="log-val" id="w-stock">-</td>
+                </tr>
+                <tr>
+                    <td>Stopped hours this week</td>
+                    <td class="log-val" id="w-stopped">-</td>
+                </tr>
+                <tr>
+                    <td>Average units on production line</td>
+                    <td class="log-val" id="w-wip">-</td>
+                </tr>
+            </table>
+        </div>
+        <div class="panel">
+            <h3>Disruption Details</h3>
+            <p id="disruption-status" class="small"></p>
+            <p id="supplier-info" class="small"></p>
+        </div>
+    </div>
+    <div class="chart-card">
+        <div class="chart-title">Memory Chip Stock Development</div>
+        <svg id="stock-chart" class="chart-svg" viewBox="0 0 900 230" preserveAspectRatio="none"></svg>
+        <div class="small">Actual weekly stock values from our material supply simulation.</div>
+    </div>
+    <div class="chart-card">
+        <div class="chart-title">Weekly Material Supply</div>
+        <svg id="supply-chart" class="chart-svg" viewBox="0 0 900 230" preserveAspectRatio="none"></svg>
+        <div class="small">Blue: units released to production. Red: missing units.</div>
+    </div>
+</div>
+<script>
+const data = {"product": "Samsung Galaxy S25 Ultra 256GB", "unit": "smartphones", "component": "Memory chips", "stations": ["SMT", "Board test", "Assembly", "Final test", "Packaging"], "scenarios": {"baseline": {"label": "Baseline", "suppliers": "S1 MemCore (100%)", "units_started": 32200, "units_finished": 32196, "units_per_week": 619.1538461538462, "hours_stopped": 240.0, "avg_units_on_line": 2.516865272052957, "cost": 402.12566232376145, "co2": 0.890350785460383, "weeks": [{"week": 1, "memory_stock": 2800.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 2, "memory_stock": 2100.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 3, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 4, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 5, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 6, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 7, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 8, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 9, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 10, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 11, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 12, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 13, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 14, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 15, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 16, "memory_stock": 2100.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 17, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 18, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 19, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 20, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 21, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 22, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 23, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 24, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 25, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 26, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 27, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 28, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 29, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 30, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 31, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 32, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 33, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 34, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 35, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 36, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 37, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 38, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 39, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 40, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 41, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 42, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 43, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 44, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 45, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 46, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 47, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 48, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 49, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 50, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 51, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 52, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}]}, "disruption": {"label": "Red Sea Crisis", "suppliers": "S1 MemCore (100%)", "units_started": 31500, "units_finished": 31498, "units_per_week": 605.7307692307693, "hours_stopped": 280.0, "avg_units_on_line": 2.4612563776446175, "cost": 403.1417209116364, "co2": 0.890350785460383, "weeks": [{"week": 1, "memory_stock": 2800.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 2, "memory_stock": 2100.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 3, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 4, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 5, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 6, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 7, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 8, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 9, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 10, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 11, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 12, "memory_stock": 0.0, "units_released": 0, "missing_units": 700, "stopped_hours": 40.0}, {"week": 13, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 14, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 15, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 16, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 17, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 18, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 19, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 20, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 21, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 22, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 23, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 24, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 25, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 26, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 27, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 28, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 29, "memory_stock": 2100.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 30, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 31, "memory_stock": 2100.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 32, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 33, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 34, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 35, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 36, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 37, "memory_stock": 2100.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 38, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 39, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 40, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 41, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 42, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 43, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 44, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 45, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 46, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 47, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 48, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 49, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 50, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 51, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 52, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}]}, "countermeasure": {"label": "Red Sea Crisis + Dual Sourcing", "suppliers": "S1 MemCore (50%) + S3 MemEU (50%)", "units_started": 35000, "units_finished": 34998, "units_per_week": 673.0384615384615, "hours_stopped": 80.0, "avg_units_on_line": 2.7262749651917657, "cost": 402.8283546657925, "co2": 0.6903507854603831, "weeks": [{"week": 1, "memory_stock": 2800.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 2, "memory_stock": 2100.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 3, "memory_stock": 1750.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 4, "memory_stock": 1400.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 5, "memory_stock": 1050.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 6, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 7, "memory_stock": 350.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 8, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 9, "memory_stock": 0.0, "units_released": 350, "missing_units": 350, "stopped_hours": 20.0}, {"week": 10, "memory_stock": 0.0, "units_released": 350, "missing_units": 350, "stopped_hours": 20.0}, {"week": 11, "memory_stock": 0.0, "units_released": 350, "missing_units": 350, "stopped_hours": 20.0}, {"week": 12, "memory_stock": 0.0, "units_released": 350, "missing_units": 350, "stopped_hours": 20.0}, {"week": 13, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 14, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 15, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 16, "memory_stock": 350.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 17, "memory_stock": 350.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 18, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 19, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 20, "memory_stock": 350.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 21, "memory_stock": 0.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 22, "memory_stock": 350.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 23, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 24, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 25, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 26, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 27, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 28, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 29, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 30, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 31, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 32, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 33, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 34, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 35, "memory_stock": 1050.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 36, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 37, "memory_stock": 1050.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 38, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 39, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 40, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 41, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 42, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 43, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 44, "memory_stock": 350.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 45, "memory_stock": 350.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 46, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 47, "memory_stock": 1050.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 48, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 49, "memory_stock": 350.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 50, "memory_stock": 700.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 51, "memory_stock": 350.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}, {"week": 52, "memory_stock": 350.0, "units_released": 700, "missing_units": 0, "stopped_hours": 0.0}]}}};
+let currentWeek = 0;
+let currentScenario = "baseline";
+let isPlaying = false;
+let playInterval = null;
+
+const scenarioSelector = document.getElementById("scenario-selector");
+document.getElementById("product-title").innerText = data.product + " - Supply Chain";
+
+Object.keys(data.scenarios).forEach((key, index) => {
+    const button = document.createElement("button");
+    button.className = "tab" + (index === 0 ? " active" : "");
+    button.dataset.scen = key;
+    button.innerText = data.scenarios[key].label;
+    button.onclick = () => selectScenario(key);
+    scenarioSelector.appendChild(button);
+});
+
+function selectScenario(key) {
+    currentScenario = key;
+    currentWeek = 0;
+    document.querySelectorAll(".tab").forEach(button => {
+        button.classList.toggle("active", button.dataset.scen === key);
+    });
+    updateDashboard();
+}
+
+function stopPlayback() {
+    if (playInterval) clearInterval(playInterval);
+    playInterval = null;
+    isPlaying = false;
+    document.getElementById("play-btn").innerText = "▶ Play";
+}
+
+function updateDashboard() {
+    const scenario = data.scenarios[currentScenario];
+    const week = scenario.weeks[currentWeek];
+
+    document.getElementById("metric-finished").innerText = Math.round(scenario.units_per_week).toLocaleString("en-US") + " / week";
+    document.getElementById("metric-cost").innerText = scenario.cost.toFixed(2) + " €";
+    document.getElementById("metric-co2").innerText = scenario.co2.toFixed(4) + " kg";
+    document.getElementById("metric-stopped").innerText = scenario.hours_stopped.toFixed(1) + " h";
+    document.getElementById("time-slider").value = currentWeek;
+    document.getElementById("week-label").innerText = "Week " + (currentWeek + 1);
+    document.getElementById("w-out").innerText = week.units_released.toLocaleString("en-US");
+    document.getElementById("w-missing").innerText = week.missing_units.toLocaleString("en-US");
+    document.getElementById("w-stock").innerText = Math.round(week.memory_stock).toLocaleString("en-US");
+    document.getElementById("w-stopped").innerText = week.stopped_hours.toFixed(1) + " h";
+    document.getElementById("w-wip").innerText = scenario.avg_units_on_line.toFixed(2) + " (annual average)";
+    document.getElementById("supplier-info").innerText = "Active sourcing: " + scenario.suppliers;
+
+    const status = document.getElementById("disruption-status");
+    if (week.missing_units > 0) {
+        status.innerHTML = '<b style="color:var(--accent-red)">WARNING:</b> ' + week.missing_units + ' memory chips are missing. Production is partially stopped.';
+    } else {
+        status.innerHTML = '<b style="color:var(--accent-green)">NORMAL:</b> Sufficient memory chips are available.';
+    }
+    drawPipeline(scenario, week);
+    drawStockChart(scenario);
+    drawSupplyChart(scenario);
+}
+
+function drawPipeline(scenario, week) {
+    const track = document.getElementById("pipeline-track");
+    track.innerHTML = "";
+
+    const supplierNode = document.createElement("div");
+    supplierNode.className = "node " + (week.missing_units > 0 ? "active-warn" : "active-good");
+    supplierNode.innerHTML = `<div class="node-title">Memory suppliers</div><div class="node-value">${week.missing_units > 0 ? "SHORTAGE" : "ONLINE"}</div><div class="small">${scenario.suppliers}</div>`;
+    track.appendChild(supplierNode);
+
+    const lane = document.createElement("div");
+    lane.className = "connection-lane active-flow";
+    track.appendChild(lane);
+
+    const plant = document.createElement("div");
+    plant.className = "node";
+    plant.innerHTML = `<div class="node-title">Transport</div><div class="node-value">Supply</div><div class="small">Memory chips</div>`;
+    track.appendChild(plant);
+
+    const lane2 = document.createElement("div");
+    lane2.className = "connection-lane active-flow";
+    track.appendChild(lane2);
+
+    data.stations.forEach((station, index) => {
+        const node = document.createElement("div");
+        node.className = "node " + (week.missing_units > 0 ? "active-warn" : "");
+        node.innerHTML = `<div class="node-title">${station}</div><div class="node-value">${week.missing_units > 0 ? "RESTRICTED" : "NOMINAL"}</div>`;
+        track.appendChild(node);
+        if (index < data.stations.length - 1) {
+            const nextLane = document.createElement("div");
+            nextLane.className = "connection-lane active-flow";
+            track.appendChild(nextLane);
+        }
+    });
+}
+
+function drawStockChart(scenario) {
+    const values = scenario.weeks.map(w => w.memory_stock);
+    const width = 900; const height = 210; const left = 45; const right = 15; const top = 15; const bottom = 35;
+    const max = Math.max(1, ...values) * 1.1; const min = Math.min(0, ...values);
+    const x = i => left + i * (width-left-right) / 51;
+    const y = v => height-bottom - (v-min) / (max-min || 1) * (height-top-bottom);
+    const points = values.map((v,i) => `${x(i)},${y(v)}`).join(" ");
+    const grid = [0, .25, .5, .75, 1].map(f => {
+        const gy = top + f * (height-top-bottom);
+        return `<line x1="${left}" y1="${gy}" x2="${width-right}" y2="${gy}" stroke="#334155" stroke-dasharray="4,4"/>`;
+    }).join("");
+    const markerX = x(currentWeek);
+    document.getElementById("stock-chart").innerHTML = `
+        ${grid}
+        <polyline points="${points}" fill="none" stroke="#34d399" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="${markerX}" y1="${top}" x2="${markerX}" y2="${height-bottom}" stroke="#facc15" stroke-width="2" stroke-dasharray="5,5"/>
+        <circle cx="${markerX}" cy="${y(values[currentWeek])}" r="6" fill="#facc15"/>
+        <text x="${left}" y="${height-8}" fill="#94a3b8" font-size="11">Week 1</text>
+        <text x="${width-right}" y="${height-8}" text-anchor="end" fill="#94a3b8" font-size="11">Week 52</text>
+    `;
+}
+
+function drawSupplyChart(scenario) {
+    const weeks = scenario.weeks;
+    const width = 900; const height = 210; const left = 35; const bottom = 30; const top = 10;
+    const max = Math.max(1, ...weeks.map(w => Math.max(w.units_released, w.missing_units)));
+    const barWidth = 10; const gap = (width-left-10) / 52;
+    let bars = "";
+    weeks.forEach((w, i) => {
+        const x = left + i * gap;
+        const h1 = w.units_released / max * (height-top-bottom);
+        const h2 = w.missing_units / max * (height-top-bottom);
+        bars += `
+            <rect x="${x}" y="${height-bottom-h1}" width="${barWidth}" height="${h1}" fill="#38bdf8" rx="2"/>
+            <rect x="${x+barWidth+1}" y="${height-bottom-h2}" width="${barWidth}" height="${h2}" fill="#f87171" rx="2"/>
+        `;
+    });
+    const markerX = left + currentWeek * gap + barWidth;
+    document.getElementById("supply-chart").innerHTML = `
+        <line x1="${left}" y1="${height-bottom}" x2="${width}" y2="${height-bottom}" stroke="#64748b"/>
+        ${bars}
+        <line x1="${markerX}" y1="${top}" x2="${markerX}" y2="${height-bottom}" stroke="#facc15" stroke-width="2" stroke-dasharray="5,5"/>
+    `;
+}
+
+document.getElementById("time-slider").oninput = function() {
+    currentWeek = Number(this.value);
+    updateDashboard();
+};
+
+document.getElementById("play-btn").onclick = function() {
+    if (isPlaying) {
+        stopPlayback();
+        return;
+    }
+    if (currentWeek >= 51) currentWeek = 0;
+    isPlaying = true;
+    this.innerText = "⏸ Pause";
+    playInterval = setInterval(() => {
+        if (currentWeek >= 51) {
+            stopPlayback();
+            return;
+        }
+        currentWeek++;
+        updateDashboard();
+    }, 450);
+};
+
+updateDashboard();
+</script>
+</body>
+</html>

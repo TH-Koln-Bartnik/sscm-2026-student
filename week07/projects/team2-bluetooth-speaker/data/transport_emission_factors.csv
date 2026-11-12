@@ -1,0 +1,5 @@
+mode_id,g_co2e_per_tkm,year,source_url,class
+MODE-TRUCK,57.89,2024,https://assets.publishing.service.gov.uk/media/6722566a3758e4604742aa1e/ghg-conversion-factors-2024-condensed_set__for_most_users__v1_1.xlsx,DOCUMENTED
+MODE-VAN,616.43,2024,https://assets.publishing.service.gov.uk/media/6722566a3758e4604742aa1e/ghg-conversion-factors-2024-condensed_set__for_most_users__v1_1.xlsx,DOCUMENTED
+MODE-SEA,16.12,2024,https://assets.publishing.service.gov.uk/media/6722566a3758e4604742aa1e/ghg-conversion-factors-2024-condensed_set__for_most_users__v1_1.xlsx,DOCUMENTED
+MODE-RAIL,27.79,2024,https://assets.publishing.service.gov.uk/media/6722566a3758e4604742aa1e/ghg-conversion-factors-2024-condensed_set__for_most_users__v1_1.xlsx,DOCUMENTED

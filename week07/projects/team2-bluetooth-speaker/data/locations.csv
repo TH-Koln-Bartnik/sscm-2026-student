@@ -1,0 +1,6 @@
+location_id,name,type,country,lat,lon
+LOC-PLANT,RhineSound model assembly plant Cologne,plant,DE,50.94,6.96
+LOC-CN,PKCELL Shenzhen dispatch proxy,supplier,CN,22.68,114.04
+LOC-DE,VOLTRONIC Juechen dispatch proxy,supplier,DE,51.1,6.5
+PORT-CN,Yantian port proxy,port,CN,22.57,114.27
+PORT-NL,Rotterdam port proxy,port,NL,51.95,4.14

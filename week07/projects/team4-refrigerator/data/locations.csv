@@ -1,0 +1,6 @@
+location_id,name,type,country,lat,lon
+LOC-PLANT,Liebherr-Hausgeraete Ochsenhausen,plant,DE,48.07222,9.94806
+LOC-SUP-CN,"Jiaxipera Compressor (Huayi), Jiaxing",supplier,CN,30.747,120.756
+LOC-SUP-SK,"Embraco Slovakia (Nidec), Spisska Nova Ves",supplier,SK,48.94389,20.5675
+LOC-SHA,Port of Shanghai,port,CN,30.626539,122.064958
+LOC-RTM,Port of Rotterdam,port,NL,51.885,4.2867

@@ -1,0 +1,5 @@
+lane_id,mode_id,rate_eur_per_shipment,rate_eur_per_tkm,min_charge_eur
+LN-CN-PORT,MODE-TRUCK,60,0.15,80
+LN-OCEAN,MODE-SEA,250,0.03,350
+LN-NL-PLANT,MODE-TRUCK,90,0.15,120
+LN-DE-PLANT,MODE-TRUCK,40,0.15,60

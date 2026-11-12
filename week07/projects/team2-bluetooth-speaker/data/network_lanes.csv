@@ -1,0 +1,5 @@
+lane_id,origin_id,destination_id,mode_id,distance_km,transit_days_mean,transit_days_sd
+LN-CN-PORT,LOC-CN,PORT-CN,MODE-TRUCK,50,1,0.25
+LN-OCEAN,PORT-CN,PORT-NL,MODE-SEA,20000,45,7
+LN-NL-PLANT,PORT-NL,LOC-PLANT,MODE-TRUCK,260,2,0.5
+LN-DE-PLANT,LOC-DE,LOC-PLANT,MODE-TRUCK,60,1,0.25

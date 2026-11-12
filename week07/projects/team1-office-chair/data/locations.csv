@@ -1,0 +1,6 @@
+location_id,name,type,country,lat,lon
+LOC-PLANT,Office Chair Assembly Plant Messstetten,plant,DE,48.2045,8.8752
+LOC-SUP-CN,Ningbo Gas Spring Plant,supplier,CN,29.8683,121.544
+LOC-SUP-DE,Stabilus Plant Koblenz,supplier,DE,50.3569,7.589
+LOC-SHA,Port of Shanghai,port,CN,30.6265,122.065
+LOC-RTM,Port of Rotterdam,port,NL,51.885,4.2867

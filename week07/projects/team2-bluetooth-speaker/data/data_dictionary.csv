@@ -1,0 +1,81 @@
+file,column,unit,description
+products.csv,product_id,-,SPK-01 identifies the JBL Flip 6 reference product in the RhineSound hypothetical supply-chain model.
+products.csv,product_name,-,Product name.
+products.csv,frame_material,-,Main housing material ABS; field name retained for schema compatibility.
+products.csv,mass_kg,kg,Finished speaker mass excluding retail packaging and supplied cable.
+products.csv,list_price_eur,EUR,Public gross retail reference divided by assumed 1.19 VAT factor for net cost comparison; not verified factory revenue.
+bom.csv,product_id,-,Product.
+bom.csv,component_id,-,Purchased kit identifier CMP-HOUSING through CMP-PACKAGING.
+bom.csv,component_name,-,Plain name.
+bom.csv,qty_per_unit,units per speaker,Quantity per speaker.
+bom.csv,mass_kg,kg per speaker,Mass per speaker for the listed purchased kit. All qty_per_unit values are 1.
+bom.csv,unit_cost_eur,EUR per speaker,Purchase cost per speaker.
+bom.csv,supplier_id,-,Default supplier; intentionally empty for non-critical kits. Battery must reference its selected supplier.
+bom.csv,added_at_workcenter,-,Workcenter where the component enters the speaker.
+workcenters.csv,workcenter_id,-,WC1-WC5.
+workcenters.csv,workcenter_name,-,Station name in plain words.
+workcenters.csv,seq,-,Position in the line.
+workcenters.csv,num_servers,machines,"Identical machines or workplaces at the station, one worker each."
+workcenters.csv,shift_hours,hours per day,Hours the station runs per working day.
+workcenters.csv,days_per_week,days per week,Working days.
+workcenters.csv,availability,share (0-1),Effective scheduled time fraction after downtime; setup consumes effective time separately. Not utilization.
+workcenters.csv,process_time_cv,share (spread / average),"Irregularity of minutes_per_speaker per station, keyed by station name."
+workcenters.csv,fixed_cost_eur_week,EUR per machine per week,"Modeled labor plus space/equipment per workplace; no separate electricity purchase charge in course formula, only electricity CO2 charge. Energy bill assumed within overhead allowance."
+routing.csv,product_id,-,Product.
+routing.csv,seq,-,Step.
+routing.csv,workcenter_id,-,Workcenter.
+routing.csv,process_time_min,minutes per speaker,"Hands-on time per speaker at one machine or workplace, without waiting."
+routing.csv,setup_time_min,minutes per batch,"Setup per batch (bonus, Week 3)."
+process_environment.csv,workcenter_id,-,Workcenter.
+process_environment.csv,kw_running,kW per machine,Power drawn while working on a speaker.
+process_environment.csv,kw_idle,kW per machine,Power drawn while switched on and waiting.
+process_environment.csv,waste_kg_per_unit,kg per unit,"Discarded incoming wrapping/labels, outside retained BOM; no modeled product scrap or rework."
+process_environment.csv,water_l_per_unit,litres per unit,Direct process water only; building sanitation and upstream water excluded.
+suppliers.csv,supplier_id,-,SUP-CN and SUP-DE; real candidates with fictional commercial terms.
+suppliers.csv,supplier_name,-,Supplier name.
+suppliers.csv,country,-,Country of the plant.
+suppliers.csv,component_id,-,Component supplied.
+suppliers.csv,unit_price_eur,EUR per battery pack,Price per battery pack.
+suppliers.csv,promised_lead_days,working days,Scenario contractual target; may be shorter than expected delivery. China target is optimistic and unverified.
+suppliers.csv,lead_time_mean_days,working days,"Modeled end-to-end lead time in working days; includes production, queue, transport and customs. Not measured history."
+suppliers.csv,lead_time_sd_days,working days,Spread (standard deviation) of the delivery time for this supplier (Week 6 view).
+suppliers.csv,capacity_per_month,battery packs per month,"Project allocation; planning month is 20 working days (four model weeks), not factory total capacity."
+suppliers.csv,min_per_month,units per month,Minimum monthly purchase allocation if this option is active; not automatically a shipment lot or reorder quantity.
+suppliers.csv,kg_co2e_per_unit,kg CO2e per battery pack,Modeled battery production plus inbound transport; do not add network transport again.
+suppliers.csv,location_id,-,Link to locations (logistics layer).
+locations.csv,location_id,-,"Plant, supplier, port, warehouse, dealer region."
+locations.csv,name,-,Plain name.
+locations.csv,type,-,plant / supplier / port / warehouse / customer_region.
+locations.csv,country,-,ISO country.
+locations.csv,lat,degrees,Latitude.
+locations.csv,lon,degrees,Longitude.
+network_lanes.csv,lane_id,-,Lane.
+network_lanes.csv,origin_id,-,From location.
+network_lanes.csv,destination_id,-,To location.
+network_lanes.csv,mode_id,-,Transport mode.
+network_lanes.csv,distance_km,km,Distance.
+network_lanes.csv,transit_days_mean,calendar days,"Door-to-door elapsed leg time, including stated scheduling allowance; supplier lead time already includes it."
+network_lanes.csv,transit_days_sd,calendar days,Standard deviation of elapsed leg time; not working days.
+freight_rates.csv,lane_id,-,Lane.
+freight_rates.csv,mode_id,-,Mode.
+freight_rates.csv,rate_eur_per_shipment,EUR,Fixed cost per shipment.
+freight_rates.csv,rate_eur_per_tkm,EUR per tonne-km,Variable cost.
+freight_rates.csv,min_charge_eur,EUR,Minimum charge.
+transport_modes.csv,mode_id,-,"MODE-TRUCK, MODE-VAN, MODE-SEA, MODE-RAIL; inherited mode identifiers."
+transport_modes.csv,name,-,Plain name.
+transport_modes.csv,capacity_kg,kg,"Payload of modeled transport unit; MODE-SEA is a container allocation, not an entire vessel."
+transport_modes.csv,capacity_m3,m3,Volume of modeled transport unit; shipping package volume is unspecified.
+transport_modes.csv,speed_kmh,km per hour,Average speed.
+transport_emission_factors.csv,mode_id,-,Mode.
+transport_emission_factors.csv,g_co2e_per_tkm,g CO2e per tonne-km,"DESNZ Freighting goods direct-operation factors; upstream fuel supply excluded, NOT well-to-wheel. Truck uses articulated >33t at 100% laden."
+transport_emission_factors.csv,year,year,Reference year.
+transport_emission_factors.csv,source_url,URL,Document seen.
+transport_emission_factors.csv,class,-,DOCUMENTED / ADAPTED / SYNTHETIC.
+emission_factors.csv,factor_id,-,grid_electricity_DE_2024 and abs_resin_model.
+emission_factors.csv,scope,-,"electricity, material, transport."
+emission_factors.csv,value,as in unit,The factor.
+emission_factors.csv,unit,-,Electricity: kg CO2 per kWh (direct generation CO2 only); material: kg CO2e per kg.
+emission_factors.csv,year,year,Reference year.
+emission_factors.csv,source_name,-,"Publisher (UBA, IAI, DESNZ)."
+emission_factors.csv,source_url,URL,Document URL actually seen.
+emission_factors.csv,class,-,DOCUMENTED / ADAPTED / SYNTHETIC.

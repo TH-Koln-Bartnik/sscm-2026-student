@@ -1,0 +1,5 @@
+mode_id,name,capacity_kg,capacity_m3,speed_kmh
+MODE-TRUCK,Truck 40t articulated,24000,80,75
+MODE-VAN,Van,1200,14,80
+MODE-SEA,Container ship,30000,67,33
+MODE-RAIL,Rail freight,60000,150,60

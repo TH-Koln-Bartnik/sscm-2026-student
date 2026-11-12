@@ -1,0 +1,8 @@
+product_id,component_id,component_name,qty_per_unit,mass_kg,unit_cost_eur,supplier_id,added_at_workcenter
+SPK-01,CMP-HOUSING,Modeled polymer enclosure kit,1,0.13,4.5,,WC1
+SPK-01,CMP-DRIVERS,Woofer tweeter and passive radiators kit,1,0.16,7,,WC1
+SPK-01,CMP-PCB,Bluetooth amplifier USB-C PCB kit,1,0.04,6,,WC2
+SPK-01,CMP-BATTERY,Li-ion polymer pack 17.28Wh (3.6V 4.8Ah reference),1,0.1,7.5,SUP-CN,WC3
+SPK-01,CMP-GRILLE,Grille and fabric kit,1,0.07,2.5,,WC3
+SPK-01,CMP-FITTINGS,Seals screws wiring and buttons kit,1,0.05,1.5,,WC2
+SPK-01,CMP-PACKAGING,Carton insert manual and USB cable kit,1,0.37,1.5,,WC5

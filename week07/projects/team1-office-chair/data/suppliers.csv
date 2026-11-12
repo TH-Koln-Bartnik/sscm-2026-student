@@ -1,0 +1,3 @@
+supplier_id,supplier_name,country,component_id,unit_price_eur,promised_lead_days,lead_time_mean_days,lead_time_sd_days,capacity_per_month,min_per_month,kg_co2e_per_unit,location_id
+SUP-CN,"Ningbo Anatec Gas Spring Co., Ltd.",CN,CMP-GAS-SPRING,10,30,35.0,3.5,15000,0,3.26,LOC-SUP-CN
+SUP-DE,Stabilus GmbH Koblenz,DE,CMP-GAS-SPRING,22.0,4,4.5,1.0,12000,0,2.91,LOC-SUP-DE

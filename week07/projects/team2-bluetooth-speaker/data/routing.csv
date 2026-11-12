@@ -1,0 +1,6 @@
+product_id,seq,workcenter_id,process_time_min,setup_time_min
+SPK-01,1,WC1,3,10
+SPK-01,2,WC2,4,10
+SPK-01,3,WC3,3,10
+SPK-01,4,WC4,6,10
+SPK-01,5,WC5,2,10

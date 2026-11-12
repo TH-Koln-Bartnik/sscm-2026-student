@@ -1,0 +1,5 @@
+lane_id,origin_id,destination_id,mode_id,distance_km,transit_days_mean,transit_days_sd
+L1-SEA,LOC-S1,LOC-PORT,sea,19000,30,4
+L2-SEA,LOC-S2,LOC-PORT,sea,19003,43,5
+L3-TRUCK,LOC-PORT,LOC-PLANT,truck,500,2,1
+L4-TRUCK,LOC-S3,LOC-PLANT,truck,1100,3,1

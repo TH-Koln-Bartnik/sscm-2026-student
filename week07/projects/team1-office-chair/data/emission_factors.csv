@@ -1,0 +1,4 @@
+factor_id,scope,value,unit,year,source_name,source_url,class
+grid_electricity_DE_2024,electricity,0.353,kg CO2e per kWh,2024,Umweltbundesamt (UBA),https://www.umweltbundesamt.de/themen/co2-emissionen-pro-kilowattstunde-strom-2025-nur,DOCUMENTED
+grid_electricity_CN_2025,electricity,0.525,kg CO2e per kWh,2025,Our World in Data,https://ourworldindata.org/grapher/electricity-mix?mapSelect=%7ECHN&source=total&metric=carbon_intensity&frequency=annual,DOCUMENTED
+crude_steel_global_2024,material,1.92,kg CO2e per kg,2024,worldsteel,https://worldsteel.org/wider-sustainability/sustainability-indicators/,DOCUMENTED

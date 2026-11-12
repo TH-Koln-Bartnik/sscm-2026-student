@@ -1,0 +1,10 @@
+product_id,component_id,component_name,qty_per_unit,mass_kg,unit_cost_eur,supplier_id,added_at_workcenter
+CHAIR-EVERY-EV15R,CMP-GAS-SPRING,Gas Spring Class 4,1,1.15,10.00,SUP-CN,WC3
+CHAIR-EVERY-EV15R,CMP-TILT-MECH,Tilt Mechanism,1,2.00,32.81,,WC3
+CHAIR-EVERY-EV15R,CMP-BASE,Chair Base,1,3.00,16.33,,WC3
+CHAIR-EVERY-EV15R,CMP-CASTERS,Caster Set,1,2.00,11.28,,WC3
+CHAIR-EVERY-EV15R,CMP-FOAM,PU Foam Cushion,1,2.50,8.00,,WC1
+CHAIR-EVERY-EV15R,CMP-UPHOLSTERY,Upholstery Fabric Set,1,0.80,5.96,,WC2
+CHAIR-EVERY-EV15R,CMP-ARMRESTS,Armrest Pair,1,3.42,25.97,,WC4
+CHAIR-EVERY-EV15R,CMP-OTHER-PARTS,additional components,1,3.63,10.00,,WC4
+CHAIR-EVERY-EV15R,CMP-PACKAGING,Packaging Set,1,3.8,4.75,,WC5

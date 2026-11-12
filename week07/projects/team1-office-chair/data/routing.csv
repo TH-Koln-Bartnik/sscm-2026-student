@@ -1,0 +1,6 @@
+product_id,seq,workcenter_id,process_time_min,setup_time_min
+CHAIR-EVERY-EV15R,1,WC1,5.0,0
+CHAIR-EVERY-EV15R,2,WC2,4.5,0
+CHAIR-EVERY-EV15R,3,WC3,7.2,0
+CHAIR-EVERY-EV15R,4,WC4,4.2,0
+CHAIR-EVERY-EV15R,5,WC5,2.1,0

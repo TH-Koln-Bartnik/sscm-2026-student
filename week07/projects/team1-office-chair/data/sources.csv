@@ -1,0 +1,139 @@
+file,row_id,column,value,source_type,source_or_calculation,sanity_check
+products.csv,CHAIR-EVERY-EV15R,mass_kg,18.5,public,Interstuhl EVERY POLSTER official web shop spec (Produktgewicht 18.5 kg)  (https://shop.interstuhl.com/de-de/produkte/every/aktionsmodell-polster-ev15r?edition=01)	, Total product weight
+products.csv,CHAIR-EVERY-EV15R,list_price_eur,310.08,public,Interstuhl EVERY POLSTER official web shop price 369.00 EUR incl 19% VAT (369.00 / 1.19 = 310.08 EUR net) (https://shop.interstuhl.com/de-de/produkte/every/aktionsmodell-polster-ev15r?edition=01) , Net selling price
+emission_factors.csv,grid_electricity_DE_2024,value,0.353,public,Umweltbundesamt (UBA) CO2-Emissionsfaktor Strommix Deutschland 2024 (0.353 kg CO2e/kWh) (https://www.umweltbundesamt.de/themen/klima-energie/energieversorgung/strom-waermeversorgung-in-zahlen),Official German grid carbon intensity benchmark 2024
+emission_factors.csv,crude_steel_global_2024,value,1.92,public,worldsteel Sustainability Indicators 2024 report (1.92 kg CO2e per kg crude steel) (https://worldsteel.org/wider-sustainability/sustainability-indicators/),Global industry average embodied carbon for primary crude steel
+emission_factors.csv,grid_electricity_CN_2025,value,0.525,public,Our World in Data / Ember Carbon Intensity of Electricity China 2025 (0.525 kg CO2e/kWh) (https://ourworldindata.org/grapher/electricity-mix?mapSelect=%7ECHN&source=total&metric=carbon_intensity&frequency=annual),Reflects higher coal share in Chinese electricity grid generation
+bom.csv,CMP-GAS-SPRING,mass_kg,1.15,public,Based on Alibaba B2B benchmark (https://www.alibaba.com/product-detail/KEDE-Durable-Hydraulic-Gas-Replacement-Mechanisms_1601577946920.html?spm=a2700.image-text-search.normal_offer.d_image.456167afvllGEU&priceId=971c62a5b558401d8555148b0c52b92a): Class 4 gas spring with 1.15 kg weight.,Typical for office chair gas lifts in bulk procurement
+bom.csv,CMP-GAS-SPRING,unit_cost_eur,10.0,public,Alibaba B2B price for Class 4 gas spring (1000+ units). Unit price: €10. Typical for OEM bulk orders. (https://www.alibaba.com/product-detail/KEDE-Durable-Hydraulic-Gas-Replacement-Mechanisms_1601577946920.html?spm=a2700.image-text-search.normal_offer.d_image.456167afvllGEU&priceId=971c62a5b558401d8555148b0c52b92a),Weight and cost values are based on benchmark data for BOM estimation
+bom.csv,CMP-TILT-MECH,mass_kg,2.0,public,https://www.amazon.de/dp/B0F43FNVCB,Product weight listed as 2 kg 
+bom.csv,CMP-TILT-MECH,unit_cost_eur,32.81,guesstimate,https://www.amazon.de/dp/B0F43FNVCB: net price 37.81 EUR minus 5 EUR B2B volume discount,B2B purchase is cheaper than retail Amazon pricing
+bom.csv,CMP-ARMRESTS,mass_kg,3.42,public,https://www.amazon.com/dp/B09JYFKM62,Product weight listed as 3.42 kg
+bom.csv,CMP-ARMRESTS,unit_cost_eur,25.97 ,guesstimate,https://www.amazon.com/dp/B09JYFKM62: net price 29.97 EUR minus 4 EUR B2B volume discount,B2B purchase is cheaper than retail Amazon pricing
+bom.csv,CMP-BASE,mass_kg,3.0,public,https://www.amazon.de/dp/B09Q3336JB,Product weight listed as 3.0 kg
+bom.csv,CMP-BASE,unit_cost_eur,16.33,guesstimate,https://www.amazon.de/dp/B09Q3336JB: net price 19.33 EUR minus 3 EUR B2B volume discount,B2B purchase is cheaper than retail Amazon pricing
+bom.csv,CMP-CASTERS,mass_kg,2.0,public,https://www.amazon.de/dp/B0C9HC432N,Product weight listed as 2.0 kg
+bom.csv,CMP-CASTERS,unit_cost_eur,11.28,guesstimate,https://www.amazon.de/dp/B0C9HC432N: net price 14.28 EUR minus 3 EUR B2B volume discount,B2B purchase is cheaper than retail Amazon pricing
+bom.csv,CMP-FOAM,mass_kg,2.5,guesstimate,Moulded polyurethane foam cushion for ergonomic office chair,Typical seat foam mass for medium-sized office chair
+bom.csv,CMP-FOAM,unit_cost_eur,8.0,guesstimate,Based on bulk-purchased moulded PU foam seat cushions and industrial foam pricing,B2B purchase of foam components is cheaper than retail replacement cushions
+bom.csv,CMP-UPHOLSTERY,mass_kg,0.8,guesstimate,https://de.aliexpress.com/item/1005009948315882.html,Estimated fabric mass required for one office chair seat and backrest cover
+bom.csv,CMP-UPHOLSTERY,unit_cost_eur,5.96,public,https://de.aliexpress.com/item/1005009948315882.html,Net price calculated from 7.09 EUR gross price
+bom.csv,CMP-OTHER-PARTS,mass_kg,3.63,guesstimate,Additional fasteners brackets plastic covers and structural elements,Weight adjustment to reach realistic complete chair mass based on example products
+bom.csv,CMP-OTHER-PARTS,unit_cost_eur,10.00,guesstimate,Additional fasteners brackets plastic covers and structural elements,Estimated cost for screws covers connectors reinforcement parts and miscellaneous hardware
+bom.csv,CMP-PACKAGING,mass_kg,3.8,public,https://www.bb-verpackungsshop.de/Faltkarton-1185-x-785-x-750-mm-2-wellig and https://www.bb-verpackungsshop.de/Luftpolsterfolie-05-x-5-m, indicates approximately 3.8 kg for a carton of this size while bubble wrap has negligible impact on total mass
+bom.csv,CMP-PACKAGING,unit_cost_eur,4.75,guesstimate,https://www.bb-verpackungsshop.de/Faltkarton-1185-x-785-x-750-mm-2-wellig and https://www.bb-verpackungsshop.de/Luftpolsterfolie-05-x-5-m;carton price 4.49 EUR plus allocated bubble wrap cost 0.26 EUR, adjusted to realistic B2B purchase amount
+bom.csv,CMP-TILT-MECH,qty_per_unit,1,guesstimate,1 mechanism per chair,Standard assembly ratio
+bom.csv,CMP-ARMRESTS,qty_per_unit,1,guesstimate,1 pair of armrests per chair,Standard assembly ratio
+bom.csv,CMP-BASE,qty_per_unit,1,guesstimate,1 chair base per chair,Standard assembly ratio
+bom.csv,CMP-CASTERS,qty_per_unit,1,guesstimate,1 caster set (5 casters) per chair,Standard assembly ratio
+bom.csv,CMP-FOAM,qty_per_unit,1,guesstimate,1 moulded foam cushion per chair,Standard assembly ratio
+bom.csv,CMP-UPHOLSTERY,qty_per_unit,1,guesstimate,1 fabric set for seat and backrest per chair,Standard assembly ratio
+bom.csv,CMP-OTHER-PARTS,qty_per_unit,1,guesstimate,1 set of miscellaneous parts per chair,Standard assembly ratio
+bom.csv,CMP-GAS-SPRING,qty_per_unit,1,guesstimate,1 gas spring per chair,Standard assembly ratio
+bom.csv,CMP-PACKAGING,qty_per_unit,1,guesstimate,1 packaging set per chair,One carton and required protective wrap per shipped chair
+workcenters.csv,WC1,num_servers,2.0,guesstimate,2 moulding stations to balance PU foam curing cycle time (Interstuhl video 07:13-08:20) (URL: https://www.youtube.com/watch?v=jqC0trQDQ04),"Bottleneck of the line: 2.78 min per chair per place (5.0 / (2 x 0.9)), capacity 864 per week"
+workcenters.csv,WC1,shift_hours,8.0,analogy,8 h single shift as in UrbanRide benchmark,Standard shift duration	
+workcenters.csv,WC1,days_per_week,5.0,analogy,5 days per week (Monday to Friday),Standard work week	
+workcenters.csv,WC1,availability,0.9,guesstimate,0.9 availability for PU foam moulding machines,Allows 10% maintenance downtime; plausibel for a machine
+workcenters.csv,WC1,process_time_cv,0.15,guesstimate,0.15 CV for semi-automated foam moulding and manual trimming,Low variability	
+workcenters.csv,WC1,fixed_cost_eur_week,2780.0,guesstimate,Labour 49.50 EUR/h (Manufacturing industry: https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/04/PD26_148_624.html) x 40h x 2 servers = 3960 EUR total	 cost per server workplace = 1980 EUR + 800 EUR machine depreciation = 2780 EUR/week. We have added up a plausible amount as an estimate for the weekly depreciation of machinery and wear and tear on tools.,Moulding equipment cost
+workcenters.csv,WC2,num_servers,2.0,guesstimate,2 upholstery workplaces for mounting fabric and pneumatic stapling (Interstuhl video 09:29-10:01) (URL: https://www.youtube.com/watch?v=jqC0trQDQ04),Prevents bottlenecking	
+workcenters.csv,WC2,shift_hours,8.0,analogy,8 h single shift as in UrbanRide benchmark,Standard shift duration	
+workcenters.csv,WC2,days_per_week,5.0,analogy,5 days per week (Monday to Friday),Standard work week	
+workcenters.csv,WC2,availability,0.9,analogy,0.90 availability for pneumatic upholstery tools,Standard availability	
+workcenters.csv,WC2,process_time_cv,0.25,analogy,0.25 CV for manual fabric wrapping and heat-gun smoothing,Moderate manual variability	
+workcenters.csv,WC2,fixed_cost_eur_week,2250.0,guesstimate,Labour 49.50 EUR/h (Manufacturing industry: https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/04/PD26_148_624.html) x 40h = 1980 EUR per workplace + 270 EUR pneumatic tool depreciation. We have added up a plausible amount as an estimate for the weekly depreciation of machinery and wear and tear on tools.,Workplace cost	
+workcenters.csv,WC3,num_servers,3.0,guesstimate,"3 workplaces for manual Autolift mechanism, gas spring & base assembly (Interstuhl video 10:01-10:42) (URL: https://www.youtube.com/watch?v=jqC0trQDQ04)","Second-busiest station: 2.67 min per chair per place (7.2 / (3 x 0.9)), capacity 900 per week; WC1 is the bottleneck (2.78 min per chair per place)"
+workcenters.csv,WC3,shift_hours,8.0,analogy,8 h single shift as in UrbanRide benchmark,Standard shift duration	
+workcenters.csv,WC3,days_per_week,5.0,analogy,5 days per week (Monday to Friday),Standard work week	
+workcenters.csv,WC3,availability,0.9,analogy,0.90 availability for manual assembly line,Standard availability	
+workcenters.csv,WC3,process_time_cv,0.35,analogy,0.35 CV for manual alignment of multi-part mechanism and base,Highest manual variability	
+workcenters.csv,WC3,fixed_cost_eur_week,2400.0,guesstimate,Labour 49.50 EUR/h (Manufacturing industry: https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/04/PD26_148_624.html)x 40h = 1980 EUR per workplace + 420 EUR conveyor/fixture cost. We have added up a plausible amount as an estimate for the weekly depreciation of machinery and wear and tear on tools.,Main assembly cost	
+workcenters.csv,WC4,num_servers,2.0,guesstimate,"2 workplaces for seat joining, armrest mounting & Ergonomic test stand (Interstuhl video 12:00-13:15) (URL: https://www.youtube.com/watch?v=jqC0trQDQ04)",Keeps utilization below 80%	
+workcenters.csv,WC4,shift_hours,8.0,analogy,8 h single shift as in UrbanRide benchmark,Standard shift duration	
+workcenters.csv,WC4,days_per_week,5.0,analogy,5 days per week (Monday to Friday),Standard work week	
+workcenters.csv,WC4,availability,0.92,analogy,0.92 availability for test rig and cordless tools,High reliability	
+workcenters.csv,WC4,process_time_cv,0.25,analogy,0.25 CV for 2D armrest setup and function test,Moderate variability	
+workcenters.csv,WC4,fixed_cost_eur_week,2200.0,guesstimate,Labour 49.50 EUR/h (Manufacturing industry: https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/04/PD26_148_624.html) x 40h = 1980 EUR per workplace + 220 EUR test rig depreciation. We have added up a plausible amount as an estimate for the weekly depreciation of machinery and wear and tear on tools.,Calibration workplace cost	
+workcenters.csv,WC5,num_servers,1.0,guesstimate,1 packaging workplace with carton sealer (Interstuhl video 13:15-13:45) (URL: https://www.youtube.com/watch?v=jqC0trQDQ04),Fast final packaging step	
+workcenters.csv,WC5,shift_hours,8.0,analogy,8 h single shift as in UrbanRide benchmark,Standard shift duration	
+workcenters.csv,WC5,days_per_week,5.0,analogy,5 days per week (Monday to Friday),Standard work week	
+workcenters.csv,WC5,availability,0.9,analogy,0.90 availability for carton sealer,Standard availability	
+workcenters.csv,WC5,process_time_cv,0.18,analogy,0.18 CV for carton taping and packing,Low variability	
+workcenters.csv,WC5,fixed_cost_eur_week,1950,guesstimate,Labour 49.50 EUR/h (https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/04/PD26_148_624.html) x 40h = 1980 EUR - slight efficiency offset + sealer depreciation = 1950 EUR. We have added up a plausible amount as an estimate for the weekly depreciation of machinery and wear and tear on tools.,Packaging station cost
+routing.csv,WC1,process_time_min,5.0,guesstimate,Interstuhl video (07:13-08:20): PU foam injection into mould + curing time + manual edge trimming with electric shears (08:05-08:20),Capacity = 864 units/wk across 2 servers (2 x 8 h x 5 d x 60 x 0.9 / 5.0 min); lowest capacity of all stations
+routing.csv,WC1,setup_time_min,0,analogy,0 setup time in baseline,No batch setup in baseline	
+routing.csv,WC2,process_time_min,4.5,guesstimate,Interstuhl video (09:29-10:01): Position Manhattan fabric + pneumatic stapling (113 staples) + string tensioning + heat-gun wrinkle smoothing,Capacity = 960 units/wk across 2 servers	
+routing.csv,WC2,setup_time_min,0,analogy,0 setup time in baseline,No batch setup in baseline	
+routing.csv,WC3,process_time_min,7.2,guesstimate,Interstuhl video (10:01-10:42 & 18:00): Mount Autolift mechanism (120s) + insert EVERY gas spring into star base & casters (120s) + bolt main frame (192s) = 432s = 7.2 min,Capacity = 900 units/wk across 3 servers; second-lowest capacity after WC1 (864)
+routing.csv,WC3,setup_time_min,0,analogy,0 setup time in baseline,No batch setup in baseline	
+routing.csv,WC4,process_time_min,4.2,guesstimate,Interstuhl video (12:00-13:15): Mount padded backrest & 2D armrests (150s) + test Autolift height lock & tilt mechanism (102s) = 252s = 4.2 min,Capacity = 1051 units/wk across 2 servers	
+routing.csv,WC4,setup_time_min,0,analogy,0 setup time in baseline,No batch setup in baseline	
+routing.csv,WC5,process_time_min,2.1,guesstimate,"Interstuhl video (13:15-13:45): Fold carton, insert chair parts + EPS caps + manual + tape seal (126s) = 2.1 min",Capacity = 1028 units/wk across 1 server	
+routing.csv,WC5,setup_time_min,0,analogy,0 setup time in baseline,No batch setup in baseline
+locations.csv,LOC-PLANT,lat,48.2045,public,Wikipedia coordinates for Messstetten (Interstuhl Tieringen plant) https://en.wikipedia.org/wiki/Me%C3%9Fstetten, Plant location
+locations.csv,LOC-PLANT,lon,8.8752,public,Wikipedia coordinates for Messstetten (Interstuhl Tieringen plant) https://en.wikipedia.org/wiki/Me%C3%9Fstetten, Plant location
+locations.csv,LOC-SUP-CN,lat,29.8683,public,Wikipedia coordinates for Ningbo supplier plant https://en.wikipedia.org/wiki/Ningbo, Supplier location
+locations.csv,LOC-SUP-CN,lon,121.544,public,Wikipedia coordinates for Ningbo supplier plant https://en.wikipedia.org/wiki/Ningbo, Supplier location
+locations.csv,LOC-SUP-DE,lat,50.3569,public,Wikipedia coordinates for Koblenz Stabilus plant https://en.wikipedia.org/wiki/Koblenz, Supplier location
+locations.csv,LOC-SUP-DE,lon,7.589,public,Wikipedia coordinates for Koblenz Stabilus plant https://en.wikipedia.org/wiki/Koblenz, Supplier location
+locations.csv,LOC-SHA,lat,30.6265,public,Wikipedia coordinates for Port of Shanghai https://en.wikipedia.org/wiki/Port_of_Shanghai, Port location
+locations.csv,LOC-SHA,lon,122.065,public,Wikipedia coordinates for Port of Shanghai https://en.wikipedia.org/wiki/Port_of_Shanghai, Port location
+locations.csv,LOC-RTM,lat,51.885,public,Wikipedia coordinates for Port of Rotterdam https://en.wikipedia.org/wiki/Port_of_Rotterdam, Port location
+locations.csv,LOC-RTM,lon,4.2867,public,Wikipedia coordinates for Port of Rotterdam https://en.wikipedia.org/wiki/Port_of_Rotterdam, Port location
+network_lanes.csv,LANE-CN-SHA,distance_km,165.0,public,"Road distance Ningbo to Port of Shanghai maps.openrouteservice https://maps.openrouteservice.org/#/directions/Ningbo,ZJ,Volksrepublik%20China/Shanghai,SH,Volksrepublik%20China/data/55,130,32,198,15,97,4,224,38,9,96,59,2,24,5,192,166,6,113,0,184,64,70,0,153,240,14,128,22,0,24,168,3,128,118,0,105,8,19,132,235,8,21,130,195,168,27,136,211,41,115,46,222,128,102,82,20,153,150,148,196,61,16,16,0,58,167,129,17,54,28,160,1,121,64,11,107,132,72,69,208,32,3,55,128,6,221,46,16,177,163,192,6,228,128,57,128,90,48,201,161,202,61,29,41,244,190,136,96,214,120,190,144,186,186,232,136,176,232,176,222,186,200,0,30,240,186,0,174,186,0,250,152,138,232,177,184,212,20,0,190,133,64,0", Drayage route
+network_lanes.csv,LANE-CN-SHA,transit_days_mean,0.5,guesstimate,165 km / 75 km/h = 2.2 h driving + port handling = 0.5 d,Truck transit in calendar days
+network_lanes.csv,LANE-CN-SHA,transit_days_sd,0.2,analogy,0.2 days variability for short road haul,Low variance (calendar days)
+network_lanes.csv,LANE-SHA-RTM,distance_km,21989.0,public,11873 nautical miles via Suez x 1.852 = 21989 km,Sea shipping route
+network_lanes.csv,LANE-SHA-RTM,transit_days_mean,35.0,public,Shanghai to Rotterdam ocean transit schedule (35 calendar days) https://searoutesnav.com/r/6nS7zAifMven,Baseline sea transit in calendar days (not working days)
+network_lanes.csv,LANE-SHA-RTM,transit_days_sd,3.0,analogy,3.0 days standard deviation via Suez,Sea transit variance (calendar days)
+network_lanes.csv,LANE-RTM-PLANT,distance_km,680.0,public,"Port of Rotterdam to Messstetten plant road distance maps.openrouteservice https://maps.openrouteservice.org/#/directions/Rotterdam,ZH,Niederlande/Kreuzb%C3%BChlstra%C3%9Fe,Me%C3%9Fstetten,BW,Deutschland/data/55,130,32,198,15,97,4,224,38,9,96,59,2,24,5,192,166,6,113,0,184,64,22,0,233,240,29,128,86,18,0,224,6,140,129,25,8,19,128,38,102,168,27,146,167,235,174,128,25,40,6,100,105,95,32,242,205,171,226,231,82,159,18,131,41,151,152,47,162,193,0,216,67,81,1,0,3,170,120,17,19,97,202,0,23,148,0,182,185,24,235,221,2,0,51,120,0,109,210,225,11,26,60,0,110,72,1,204,1,104,193,145,161,180,64,29,208,157,209,161,209,16,192,60,240,227,32,172,173,227,97,209,96,34,173,144,0,61,224,172,1,92,172,1,245,48,245,208,179,112,228,1,125,106,128,0", European truck route
+network_lanes.csv,LANE-RTM-PLANT,transit_days_mean,1.5,guesstimate,680 km / 75 km/h = 9.0 h driving + rest rules = 1.5 d,Truck transit in calendar days
+network_lanes.csv,LANE-RTM-PLANT,transit_days_sd,0.3,analogy,0.3 days standard deviation for truck transit,Truck variance (calendar days)
+network_lanes.csv,LANE-DE-PLANT,distance_km,360.0,public,"Koblenz to Messstetten plant road distance maps.openrouteservice https://maps.openrouteservice.org/#/directions/Koblenz,RP,Deutschland/Kreuzb%C3%BChlstra%C3%9Fe,Me%C3%9Fstetten,BW,Deutschland/data/55,130,32,198,15,97,4,224,38,9,96,59,2,24,5,192,166,6,113,0,184,64,118,0,232,5,96,19,128,38,1,25,136,3,128,26,98,0,100,32,102,98,207,216,129,184,108,52,227,42,12,99,69,169,26,0,88,90,119,39,92,111,74,53,27,225,99,73,178,198,42,88,3,97,7,68,4,0,14,169,224,68,77,135,40,0,94,80,2,218,231,199,160,244,8,0,205,224,1,183,75,132,44,104,240,1,185,32,3,152,2,209,131,35,66,232,129,59,160,187,163,67,162,33,129,121,224,38,64,216,218,38,195,162,193,68,219,32,0,123,192,216,2,184,216,3,234,96,27,160,230,226,40,2,251,213,0,0", Domestic truck route
+network_lanes.csv,LANE-DE-PLANT,transit_days_mean,1.0,guesstimate,360 km / 75 km/h = 4.8 h driving + loading = 1.0 d,Domestic transit in calendar days
+network_lanes.csv,LANE-DE-PLANT,transit_days_sd,0.2,analogy,0.2 days standard deviation for domestic truck,Low domestic variance (calendar days)
+freight_rates.csv,LANE-CN-SHA,rate_eur_per_shipment,120.0,analogy,Fixed drayage truck rate Ningbo to Shanghai,Drayage rate
+freight_rates.csv,LANE-CN-SHA,rate_eur_per_tkm,0.1,analogy,0.10 EUR/tkm variable truck rate,Truck tkm rate
+freight_rates.csv,LANE-CN-SHA,min_charge_eur,90.0,analogy,90 EUR minimum shipment charge,Minimum charge
+freight_rates.csv,LANE-SHA-RTM,rate_eur_per_shipment,3686,public,Drewry Container Index Shanghai-Rotterdam https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry,Ocean container rate
+freight_rates.csv,LANE-SHA-RTM,rate_eur_per_tkm,0.18,guesstimate,0.18 EUR/tkm flat container pricing,Container flat pricing
+freight_rates.csv,LANE-SHA-RTM,min_charge_eur,3686.0,guesstimate,Minimum charge equals container spot rate,Full container charge
+freight_rates.csv,LANE-RTM-PLANT,rate_eur_per_shipment,120.0,analogy,120 EUR fixed truck booking fee Rotterdam to Messstetten,Truck booking fee
+freight_rates.csv,LANE-RTM-PLANT,rate_eur_per_tkm,0.1,analogy,0.10 EUR/tkm hinterland road freight rate,Truck tkm rate
+freight_rates.csv,LANE-RTM-PLANT,min_charge_eur,90.0,analogy,90 EUR minimum charge,Minimum charge
+freight_rates.csv,LANE-DE-PLANT,rate_eur_per_shipment,150.0,analogy,150 EUR fixed truck booking fee Koblenz to Messstetten,Direct truck fee
+freight_rates.csv,LANE-DE-PLANT,rate_eur_per_tkm,0.09,analogy,0.09 EUR/tkm direct domestic truck rate,Direct truck tkm rate
+freight_rates.csv,LANE-DE-PLANT,min_charge_eur,100.0,analogy,100 EUR minimum charge,Minimum charge
+suppliers.csv,SUP-CN,capacity_per_month,15000,guesstimate,Assumed monthly supplier capacity allocation; supplier can easily deliver this capacity to cover plant demand,"Capacity of 15,000 units/month comfortably exceeds monthly plant demand of ~3,000 units"
+suppliers.csv,SUP-DE,capacity_per_month,12000,guesstimate,Assumed monthly supplier capacity allocation; supplier can easily deliver this capacity to cover plant demand,"Capacity of 12,000 units/month comfortably exceeds monthly plant demand of ~3,000 units"
+suppliers.csv,SUP-CN,lead_time_mean_days,35.0,guesstimate,"Calculated in calendar days: 5.0 prep + 0.5 truck (LANE-CN-SHA 165 km) + 3.0 Shanghai port + 35.0 ocean (LANE-SHA-RTM 21989 km) + 3.0 Rotterdam port + 1.5 truck (LANE-RTM-PLANT 680 km) = 48.0 calendar days; 48.0 x 5/7 = 34.3, rounded to 35.0 working days (the model clock counts working days)",The lead time is stored in working days (5-day week); only the lane times in network_lanes.csv are calendar days
+suppliers.csv,SUP-DE,lead_time_mean_days,4.5,guesstimate,Calculated: 3.5d order processing & factory dispatch + 1.0d direct truck (LANE-DE-PLANT 360km) = 4.5 working days (domestic: no conversion needed),Direct domestic truck transit from Koblenz to Messstetten plant
+suppliers.csv,SUP-CN,promised_lead_days,30,analogy,Contractual baseline lead time agreed with Asian supplier (30 working days),Standard contract lead time for ocean import
+suppliers.csv,SUP-CN,lead_time_sd_days,3.5,guesstimate,Estimated standard deviation of 3.5 days (~10% of 35-day mean lead time),Accounts for port congestion and sea transit variability
+suppliers.csv,SUP-DE,promised_lead_days,4,analogy,Contractual lead time agreed with domestic supplier Stabilus (4 working days),Standard domestic contract lead time
+suppliers.csv,SUP-DE,lead_time_sd_days,1.0,guesstimate,Estimated standard deviation of 1.0 day for domestic truck transit,Low domestic highway traffic variability
+suppliers.csv,SUP-CN,kg_co2e_per_unit,3.26,guesstimate,Calculated: 1.15 kg steel * 1.92 kg CO2/kg + 2.0 kWh * 0.525 kg CO2/kWh (grid_electricity_CN_2025) = 3.258 ~ 3.26 kg CO2e,Embodied carbon for Chinese manufacturing with 0.525 grid intensity
+suppliers.csv,SUP-DE,kg_co2e_per_unit,2.91,guesstimate,Calculated: 1.15 kg steel * 1.92 kg CO2/kg + 2.0 kWh * 0.353 kg CO2/kWh (grid_electricity_DE_2024) = 2.914 ~ 2.91 kg CO2e,Lower embodied carbon due to cleaner German electricity grid
+suppliers.csv,SUP-DE,unit_price_eur,22.0,guesstimate,Estimated Stabilus B2B volume price based on Ludwig Meister listing (27.41 EUR/unit at 55+ pcs) https://www.ludwigmeister.de/de/sortiment/edi/4919823,Discounted to 22.00 EUR/unit to reflect significantly higher purchasing
+suppliers.csv,SUP-CN,unit_price_eur,10.0,guesstimate,B2B industry benchmark price of 10.00 EUR for Class 4 gas lift cylinder at high volume (supplier list price is price on request),Plausible Asian OEM unit cost for high-volume procurement
+process_environment.csv,WC1,kw_running,15.0,guesstimate,PU foam reaction moulding heaters & dosing pumps: 15.0 kW running,High power station for PU cushion moulding
+process_environment.csv,WC1,kw_idle,5.0,guesstimate,Standby heating for PU moulds: 5.0 kW idle,Idle power below running power
+process_environment.csv,WC1,waste_kg_per_unit,0.15,guesstimate,"PU foam flashing, overflow & trimming scrap",Part of 0.50 kg total chair production waste
+process_environment.csv,WC1,water_l_per_unit,0,analogy,"Dry moulding and trimming process, 0 L per unit",No water required in this production step
+process_environment.csv,WC2,kw_running,3.5,guesstimate,Electric staplers (113 staples) & heat gun for fabric/leather smoothing,Plausible power for upholstery workcenter
+process_environment.csv,WC2,kw_idle,1.0,guesstimate,Heat gun standby & workstation lighting: 1.0 kW idle,Idle power below running power
+process_environment.csv,WC2,waste_kg_per_unit,0.15,guesstimate,Fabric/leather trimming scrap & staple offcuts,Part of 0.50 kg total chair production waste
+process_environment.csv,WC2,water_l_per_unit,0,analogy,"Dry upholstery process, 0 L per unit",No water required in this production step
+process_environment.csv,WC3,kw_running,1.5,guesstimate,"Cordless screwdrivers, conveyor belt drive & lights: 1.5 kW running",Light mechanical assembly station power
+process_environment.csv,WC3,kw_idle,0.5,guesstimate,Conveyor standby & workstation lights: 0.5 kW idle,Idle power below running power
+process_environment.csv,WC3,waste_kg_per_unit,0.02,guesstimate,Component protective film & small packaging scrap,Minor assembly waste
+process_environment.csv,WC3,water_l_per_unit,0,analogy,"Dry assembly process, 0 L per unit",No water required in this production step
+process_environment.csv,WC4,kw_running,3.0,guesstimate,"Pneumatic/electronic test rig, cycle test actuators & screwdrivers: 3.0 kW running",Testing and backrest assembly station power
+process_environment.csv,WC4,kw_idle,0.8,guesstimate,Test stand standby & monitoring UI: 0.8 kW idle,Idle power below running power
+process_environment.csv,WC4,waste_kg_per_unit,0.03,guesstimate,Cable ties & hardware bag packaging scrap,Minor testing waste
+process_environment.csv,WC4,water_l_per_unit,0,analogy,"Dry testing process, 0 L per unit",No water required in this production step
+process_environment.csv,WC5,kw_running,4.0,guesstimate,"Box sealer, strapping machine & packing conveyor: 4.0 kW running",Packaging station power draw
+process_environment.csv,WC5,kw_idle,1.0,guesstimate,Strapping machine standby & lights: 1.0 kW idle,Idle power below running power
+process_environment.csv,WC5,waste_kg_per_unit,0.15,guesstimate,Cardboard offcuts & EPS foam corner protective scrap,Packaging scrap
+process_environment.csv,WC5,water_l_per_unit,0,analogy,"Dry packaging process, 0 L per unit",No water required in this production step

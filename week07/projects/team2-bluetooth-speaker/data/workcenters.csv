@@ -1,0 +1,6 @@
+workcenter_id,workcenter_name,seq,num_servers,shift_hours,days_per_week,availability,process_time_cv,fixed_cost_eur_week
+WC1,Housing and driver assembly,1,1,8,5,0.9,0.15,1300
+WC2,Electronics and wiring,2,1,8,5,0.9,0.15,1300
+WC3,Battery installation and closure,3,1,8,5,0.9,0.15,1300
+WC4,Firmware and functional test,4,1,8,5,0.9,0.15,1300
+WC5,Final inspection and packing,5,1,8,5,0.9,0.15,1300

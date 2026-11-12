@@ -1,0 +1,6 @@
+workcenter_id,workcenter_name,seq,num_servers,shift_hours,days_per_week,availability,process_time_cv,fixed_cost_eur_week
+WC1,PU Foam Moulding & Trimming,1,2,8,5,0.9,0.15,2780
+WC2,Upholstery & Fabric Cover Assembly,2,2,8,5,0.9,0.25,2250
+WC3,Gas Spring Base Casters & Tilt Mechanism Sub-Assembly,3,3,8,5,0.9,0.35,2400
+WC4,Backrest Joining Armrest & Ergonomic Test,4,2,8,5,0.92,0.25,2200
+WC5,Packaging,5,1,8,5,0.9,0.18,1950

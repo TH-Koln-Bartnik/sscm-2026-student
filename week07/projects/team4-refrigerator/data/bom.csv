@@ -1,0 +1,9 @@
+product_id,component_id,component_name,qty_per_unit,mass_kg,unit_cost_eur,supplier_id,added_at_workcenter
+LH-CNC5203,CMP-COMPRESSOR,Hermetic compressor (R600a),1,7.2,14.15,SUP-CN,WC3
+LH-CNC5203,CMP-SHEET,Coated steel sheet for cabinet and doors,1,27.5,33.0,,WC1
+LH-CNC5203,CMP-PLASTIC,Plastic inner liners and drawers,1,12.0,24.0,,WC1
+LH-CNC5203,CMP-FOAM,PU foam system (insulation),1,8.0,22.4,,WC2
+LH-CNC5203,CMP-COOLKIT,"Cooling circuit kit (condenser, evaporator, tubes, refrigerant)",1,6.0,45.0,,WC3
+LH-CNC5203,CMP-ELECTRONICS,"Electronics, NoFrost fan, lighting",1,2.0,55.0,,WC3
+LH-CNC5203,CMP-INTERIOR,"Glass shelves, door bins, seals, hinges, handles",1,7.0,40.0,,WC3
+LH-CNC5203,CMP-PACKAGING,"Packaging (carton, EPS, film)",1,4.3,8.0,,WC6

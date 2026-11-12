@@ -1,0 +1,3 @@
+supplier_id,supplier_name,country,component_id,unit_price_eur,promised_lead_days,lead_time_mean_days,lead_time_sd_days,capacity_per_month,min_per_month,kg_co2e_per_unit,location_id
+SUP-CN,PKCELL candidate - modeled compatible pack,CN,CMP-BATTERY,7.5,45,67.142857,11.2,2500,500,1.416435,LOC-CN
+SUP-DE,VOLTRONIC candidate - modeled qualified backup,DE,CMP-BATTERY,12,8,10,2,1500,100,1.382747,LOC-DE

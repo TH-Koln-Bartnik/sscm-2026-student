@@ -1,0 +1,9 @@
+product_id,component_id,component_name,qty_per_unit,mass_kg,unit_cost_eur,supplier_id,added_at_workcenter
+PH-FLAG,mem,memory module (12GB+256GB),1,0.005,70,S1,WC1
+PH-FLAG,soc,flagship application processor,1,0.003,110,S-SOC,WC1
+PH-FLAG,pcb,printed circuit board,1,0.020,15,S-PCB,WC1
+PH-FLAG,disp,6.7-inch LTPO OLED display,1,0.060,90,S-DISP,WC3
+PH-FLAG,batt,5000 mAh battery,1,0.050,18,S-BATT,WC3
+PH-FLAG,cam,triple camera module (OIS),1,0.015,55,S-CAM,WC3
+PH-FLAG,chss,titanium chassis,1,0.050,20,S-CHSS,WC3
+PH-FLAG,oth,cables/screws/haptics/packaging,1,0.020,12,S-OTH,WC5

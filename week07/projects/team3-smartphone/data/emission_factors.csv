@@ -1,0 +1,3 @@
+factor_id,scope,value,unit,year,source_name,source_url,class
+grid_electricity_DE_2025,electricity,0.38,kg CO2 per kWh,2025,UBA/DESNZ,https://www.umweltbundesamt.de/themen/co2-emissionen-pro-kilowattstunde-strom-2025-nur,DOCUMENTED
+primary_titanium_global_2023,material,15.0,kg CO2e per kg,2023,typical primary titanium LCA/DESNZ,https://www.umweltbundesamt.de/themen/co2-emissionen-pro-kilogramm-2025-nur,DOCUMENTED

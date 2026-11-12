@@ -1,0 +1,122 @@
+<!doctype html><meta charset='utf-8'><body style='background:#fff'><div id="sscm" style="font-family:system-ui,Arial,sans-serif;background:#fff;color:#222;max-width:780px;margin:auto;padding:14px;border-radius:8px">
+<div id="ttl" style="font-size:20px;font-weight:700;color:#333"></div>
+<div id="sub" style="font-size:12px;color:#555;margin:2px 0 8px"></div>
+<div id="ans" style="font-size:14px;line-height:1.45;background:#f6f6f6;border-left:4px solid #2a6fdb;border-radius:4px;padding:8px 12px;margin:0 0 10px"></div>
+<div id="btns" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px"></div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;font-size:13px">
+  <button id="play" style="padding:5px 12px;border:1px solid #bbb;background:#fff;border-radius:4px;cursor:pointer;color:#222">&#9654; Play</button>
+  <span id="wk" style="min-width:70px;font-weight:600"></span>
+  <input id="sl" type="range" min="0" value="0" style="flex:1">
+  <label>speed <select id="spd"><option value="700">slow</option><option value="350" selected>normal</option><option value="120">fast</option></select></label>
+</div>
+<svg id="stage" viewBox="0 0 760 200" width="100%" style="display:block"></svg>
+<div id="note" style="font-size:11px;color:#777;margin:2px 0 8px"></div>
+<div id="kpi" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"></div>
+<svg id="chart" viewBox="0 0 760 170" width="100%" style="display:block;margin-top:8px"></svg>
+<div id="foot" style="font-size:11px;color:#777;margin-top:4px"></div>
+</div>
+<script>
+(function(){
+const D = {"product": "Interstuhl EVERY POLSTER Aktionsmodell EV15R", "unit": "chairs", "key_component": "Gas Spring Class 4", "supplier": "Ningbo Anatec (CN)", "transport": "ship via Suez + truck", "event": "Red Sea diversions 2024: ships sail around the Cape (+10-14 days); alternative supplier Stabilus (Koblenz) by truck", "stations": ["PU Foam Moulding & Trimming", "Upholstery & Fabric Cover Assembly", "Gas Spring Base Casters & Tilt Mechanism Sub-Assembly", "Backrest Joining Armrest & Ergonomic Test", "Packaging"], "key_station_index": 2, "parts_per_square": 700, "n_seeds": 10, "animation_seed": 2, "scenarios": {"baseline": {"label": "Baseline", "scoreboard": {"units_per_week": 699.8461538461539, "cost_per_unit_eur": 149.93200000000002, "kg_co2e_per_unit": 4.597094320247477, "hours_stopped": 26.808948100220427}, "scoreboard_min": {"units_per_week": 699.8269230769231, "cost_per_unit_eur": 149.93, "kg_co2e_per_unit": 4.596154429645947, "hours_stopped": 0.0}, "scoreboard_max": {"units_per_week": 699.8653846153846, "cost_per_unit_eur": 149.94, "kg_co2e_per_unit": 4.5979212282316215, "hours_stopped": 53.6890517560073}, "weeks": {"queue": [[0.01, 0.04, 0.13, 0.11, 0.16], [0.02, 0.03, 0.11, 0.11, 0.15], [0.01, 0.03, 0.14, 0.12, 0.18], [0.01, 0.03, 0.12, 0.11, 0.17], [0.01, 0.04, 0.11, 0.09, 0.18], [0.01, 0.03, 0.1, 0.12, 0.19], [0.01, 0.03, 0.1, 0.11, 0.19], [0.01, 0.04, 0.11, 0.11, 0.17], [0.0, 0.0, 57.12, 0.0, 0.0], [19.73, 0.2, 30.69, 0.37, 0.42], [48.0, 0.25, 1.76, 0.38, 0.4], [47.61, 0.23, 2.24, 0.35, 0.36], [47.24, 0.43, 2.37, 0.35, 0.36], [12.02, 0.12, 0.65, 0.24, 0.25], [0.01, 0.04, 0.09, 0.12, 0.17], [0.01, 0.03, 0.12, 0.11, 0.17], [0.01, 0.02, 0.13, 0.1, 0.16], [0.01, 0.03, 0.1, 0.11, 0.16], [0.01, 0.03, 0.11, 0.11, 0.17], [2.68, 0.2, 34.67, 0.3, 0.26], [0.01, 0.03, 1.04, 0.12, 0.19], [0.01, 0.03, 0.11, 0.11, 0.16], [0.01, 0.04, 0.12, 0.11, 0.19], [0.01, 0.03, 0.14, 0.12, 0.18], [0.01, 0.03, 0.12, 0.11, 0.16], [0.02, 0.03, 0.12, 0.1, 0.17], [0.01, 0.03, 0.12, 0.12, 0.17], [0.01, 0.03, 0.16, 0.14, 0.19], [0.01, 0.03, 0.13, 0.11, 0.18], [0.01, 0.03, 0.1, 0.13, 0.15], [0.01, 0.03, 0.13, 0.1, 0.17], [0.02, 0.04, 0.11, 0.13, 0.17], [0.01, 0.04, 0.15, 0.12, 0.16], [0.01, 0.05, 0.09, 0.12, 0.17], [0.01, 0.04, 0.12, 0.11, 0.17], [0.01, 0.04, 0.08, 0.1, 0.17], [0.01, 0.03, 0.08, 0.1, 0.17], [0.01, 0.03, 0.09, 0.1, 0.16], [0.01, 0.03, 0.13, 0.14, 0.16], [0.01, 0.03, 0.11, 0.11, 0.17], [0.01, 0.04, 0.11, 0.11, 0.16], [0.01, 0.04, 0.13, 0.1, 0.16], [0.01, 0.04, 0.15, 0.12, 0.16], [0.01, 0.03, 0.13, 0.14, 0.19], [0.01, 0.03, 0.12, 0.09, 0.16], [0.02, 0.04, 0.13, 0.11, 0.16], [0.01, 0.03, 0.13, 0.12, 0.16], [0.01, 0.04, 0.1, 0.12, 0.18], [0.01, 0.03, 0.12, 0.11, 0.17], [0.01, 0.03, 0.11, 0.13, 0.17], [0.02, 0.03, 0.12, 0.11, 0.16], [0.01, 0.04, 0.13, 0.11, 0.16]], "in_transit": [4200, 4200, 4197, 4197, 4196, 4196, 5597, 5597, 6996, 4199, 5035, 3636, 5365, 3964, 4201, 4201, 4765, 4765, 6164, 4435, 4178, 4178, 4199, 4199, 4201, 4201, 4221, 4221, 5622, 4201, 4198, 2799, 4200, 4200, 5600, 2801, 4201, 4201, 5601, 4200, 4201, 4201, 5600, 4200, 4200, 4200, 4199, 4199, 4201, 4201, 4201, 4201], "stock": [2104, 1403, 2104, 1404, 2104, 1403, 704, 4, 0, 1965, 1095, 1635, 766, 1400, 2100, 1399, 1536, 836, 136, 1186, 2101, 1401, 2101, 1400, 2100, 1400, 2079, 1378, 679, 1401, 2101, 2800, 2100, 1400, 699, 2799, 2099, 1399, 699, 1399, 2100, 1400, 700, 1400, 2100, 1400, 2100, 1400, 2100, 1399, 2100, 1400], "finished": [692, 700, 698, 702, 699, 701, 701, 698, 9, 827, 867, 860, 870, 767, 700, 701, 700, 700, 699, 678, 723, 700, 698, 701, 701, 699, 701, 699, 700, 701, 700, 699, 700, 701, 698, 702, 699, 701, 700, 700, 700, 699, 701, 699, 701, 699, 700, 700, 701, 700, 699, 700], "stopped_hours": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 39.71, 3.16, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7.86, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "supplier_down": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], "supplier": ["Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)"]}}, "disruption": {"label": "Suez closed (Red Sea diversion)", "scoreboard": {"units_per_week": 690.6346153846155, "cost_per_unit_eur": 150.494, "kg_co2e_per_unit": 4.627942663086361, "hours_stopped": 133.11934391383375}, "scoreboard_min": {"units_per_week": 679.0, "cost_per_unit_eur": 150.24, "kg_co2e_per_unit": 4.623802474546693, "hours_stopped": 98.56609896485088}, "scoreboard_max": {"units_per_week": 699.8461538461538, "cost_per_unit_eur": 150.89, "kg_co2e_per_unit": 4.6357756588758114, "hours_stopped": 217.57393297284375}, "weeks": {"queue": [[0.01, 0.04, 0.13, 0.11, 0.16], [0.02, 0.03, 0.11, 0.11, 0.15], [0.01, 0.03, 0.14, 0.12, 0.18], [0.01, 0.03, 0.12, 0.11, 0.17], [0.01, 0.04, 0.11, 0.09, 0.18], [0.01, 0.03, 0.1, 0.12, 0.19], [0.01, 0.03, 0.1, 0.11, 0.19], [0.01, 0.04, 0.11, 0.11, 0.17], [0.0, 0.0, 57.12, 0.0, 0.0], [19.73, 0.2, 30.69, 0.37, 0.42], [48.0, 0.25, 1.76, 0.38, 0.4], [47.61, 0.23, 2.24, 0.35, 0.36], [47.24, 0.43, 2.37, 0.35, 0.36], [12.02, 0.12, 0.65, 0.24, 0.25], [0.01, 0.04, 0.09, 0.12, 0.17], [0.01, 0.03, 0.12, 0.11, 0.17], [0.01, 0.02, 0.13, 0.1, 0.16], [0.01, 0.03, 0.1, 0.11, 0.16], [0.01, 0.03, 0.11, 0.11, 0.17], [0.0, 0.01, 45.82, 0.02, 0.03], [0.25, 0.03, 58.52, 0.04, 0.05], [15.32, 0.31, 34.15, 0.41, 0.41], [45.15, 0.26, 4.65, 0.33, 0.34], [48.78, 0.27, 1.21, 0.28, 0.4], [35.24, 0.23, 16.64, 0.22, 0.32], [15.68, 0.19, 33.34, 0.41, 0.45], [0.5, 0.05, 3.86, 0.18, 0.25], [0.01, 0.03, 0.11, 0.14, 0.17], [0.01, 0.03, 0.15, 0.12, 0.18], [0.01, 0.03, 0.12, 0.11, 0.17], [0.01, 0.03, 0.11, 0.11, 0.16], [0.01, 0.03, 0.12, 0.11, 0.17], [0.01, 0.05, 0.14, 0.14, 0.17], [0.01, 0.04, 0.11, 0.11, 0.17], [0.02, 0.04, 0.11, 0.12, 0.16], [0.01, 0.04, 0.09, 0.1, 0.16], [0.01, 0.03, 0.07, 0.11, 0.18], [0.01, 0.03, 0.09, 0.1, 0.17], [0.01, 0.03, 0.1, 0.13, 0.17], [0.01, 0.03, 0.12, 0.1, 0.15], [0.01, 0.03, 0.1, 0.12, 0.16], [0.01, 0.03, 0.11, 0.1, 0.17], [0.01, 0.04, 0.15, 0.11, 0.16], [0.01, 0.03, 0.14, 0.13, 0.17], [0.01, 0.03, 0.14, 0.13, 0.18], [0.01, 0.03, 0.11, 0.09, 0.16], [0.01, 0.04, 0.15, 0.11, 0.16], [0.01, 0.04, 0.1, 0.13, 0.17], [0.01, 0.04, 0.1, 0.11, 0.18], [0.02, 0.03, 0.13, 0.12, 0.17], [0.01, 0.03, 0.12, 0.14, 0.17], [0.02, 0.04, 0.13, 0.11, 0.16]], "in_transit": [4200, 4200, 4197, 4197, 4196, 4196, 5597, 5597, 6996, 4199, 5035, 3636, 5365, 3964, 4201, 4201, 5601, 4765, 6164, 6164, 5271, 5271, 4644, 4644, 4977, 4977, 5143, 5143, 5741, 4732, 4398, 2833, 4234, 4234, 5633, 2800, 4201, 4201, 5600, 4199, 4200, 4200, 5600, 4199, 4200, 4200, 4200, 4200, 4200, 4200, 4201, 4201], "stock": [2104, 1403, 2104, 1404, 2104, 1403, 704, 4, 0, 1965, 1095, 1635, 766, 1400, 2100, 1399, 700, 836, 136, 0, 1616, 720, 1477, 623, 1351, 458, 1123, 423, 559, 869, 1902, 2766, 2067, 1367, 667, 2799, 2100, 1400, 699, 1401, 2100, 1400, 699, 1401, 2101, 1400, 2099, 1400, 2100, 1399, 2099, 1400], "finished": [692, 700, 698, 702, 699, 701, 701, 698, 9, 827, 867, 860, 870, 767, 700, 701, 700, 700, 699, 141, 106, 895, 882, 854, 671, 893, 735, 699, 702, 699, 699, 701, 698, 701, 701, 698, 701, 701, 700, 700, 700, 700, 700, 700, 699, 701, 700, 699, 701, 699, 701, 698], "stopped_hours": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 39.71, 3.16, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 32.17, 35.04, 0.0, 0.0, 0.0, 9.0, 0.0, 1.14, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "supplier_down": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], "supplier": ["Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)"]}}, "countermeasure": {"label": "Suez closed + German supplier", "scoreboard": {"units_per_week": 699.8461538461539, "cost_per_unit_eur": 152.546, "kg_co2e_per_unit": 4.185125101782306, "hours_stopped": 8.285877075594351}, "scoreboard_min": {"units_per_week": 699.8269230769231, "cost_per_unit_eur": 152.54, "kg_co2e_per_unit": 4.18420240126725, "hours_stopped": 0.0}, "scoreboard_max": {"units_per_week": 699.8653846153846, "cost_per_unit_eur": 152.55, "kg_co2e_per_unit": 4.185961087576878, "hours_stopped": 42.87776905760387}, "weeks": {"queue": [[0.01, 0.04, 0.13, 0.11, 0.16], [0.02, 0.03, 0.11, 0.11, 0.15], [0.01, 0.03, 0.14, 0.12, 0.18], [0.01, 0.03, 0.12, 0.11, 0.17], [0.01, 0.04, 0.11, 0.09, 0.18], [0.01, 0.03, 0.1, 0.12, 0.19], [0.01, 0.03, 0.1, 0.11, 0.19], [0.01, 0.04, 0.11, 0.11, 0.17], [0.0, 0.0, 57.12, 0.0, 0.0], [19.73, 0.2, 30.69, 0.37, 0.42], [48.0, 0.25, 1.76, 0.38, 0.4], [47.61, 0.23, 2.24, 0.35, 0.36], [47.24, 0.43, 2.37, 0.35, 0.36], [12.02, 0.12, 0.65, 0.24, 0.25], [0.01, 0.04, 0.09, 0.12, 0.17], [0.01, 0.03, 0.12, 0.11, 0.17], [0.01, 0.02, 0.13, 0.1, 0.16], [0.01, 0.03, 0.1, 0.11, 0.16], [0.01, 0.03, 0.11, 0.11, 0.17], [0.01, 0.04, 0.14, 0.12, 0.16], [0.01, 0.03, 0.1, 0.1, 0.17], [0.01, 0.03, 0.11, 0.11, 0.16], [0.01, 0.04, 0.12, 0.11, 0.19], [0.01, 0.03, 0.14, 0.12, 0.18], [0.01, 0.03, 0.12, 0.11, 0.16], [0.02, 0.03, 0.12, 0.1, 0.17], [0.01, 0.03, 0.12, 0.12, 0.17], [0.01, 0.03, 0.16, 0.14, 0.19], [0.01, 0.03, 0.13, 0.11, 0.18], [0.01, 0.03, 0.1, 0.13, 0.15], [0.01, 0.03, 0.13, 0.1, 0.17], [0.02, 0.04, 0.11, 0.13, 0.17], [0.01, 0.04, 0.15, 0.12, 0.16], [0.01, 0.05, 0.09, 0.12, 0.17], [0.01, 0.04, 0.12, 0.11, 0.17], [0.01, 0.04, 0.08, 0.1, 0.17], [0.01, 0.03, 0.08, 0.1, 0.17], [0.01, 0.03, 0.09, 0.1, 0.16], [0.01, 0.03, 0.13, 0.14, 0.16], [0.01, 0.03, 0.11, 0.11, 0.17], [0.01, 0.04, 0.11, 0.11, 0.16], [0.01, 0.04, 0.13, 0.1, 0.16], [0.01, 0.04, 0.15, 0.12, 0.16], [0.01, 0.03, 0.13, 0.14, 0.19], [0.01, 0.03, 0.12, 0.09, 0.16], [0.02, 0.04, 0.13, 0.11, 0.16], [0.01, 0.03, 0.13, 0.12, 0.16], [0.01, 0.04, 0.1, 0.12, 0.18], [0.01, 0.03, 0.12, 0.11, 0.17], [0.01, 0.03, 0.11, 0.13, 0.17], [0.02, 0.03, 0.12, 0.11, 0.16], [0.01, 0.04, 0.13, 0.11, 0.16]], "in_transit": [4200, 4200, 4197, 4197, 4196, 4196, 5597, 5597, 6996, 4199, 5035, 3636, 5365, 3964, 4201, 4201, 4201, 3365, 3365, 3365, 2337, 1636, 0, 0, 0, 0, 0, 0, 0, 699, 0, 701, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 700, 701, 0, 0, 0, 0], "stock": [2104, 1403, 2104, 1404, 2104, 1403, 704, 4, 0, 1965, 1095, 1635, 766, 1400, 2100, 1399, 1331, 2166, 1466, 1329, 2359, 2360, 3296, 2595, 1896, 1330, 1330, 1329, 1331, 632, 1329, 629, 1330, 1330, 1329, 1331, 1330, 1330, 1330, 1329, 1331, 1330, 1330, 1330, 1330, 1330, 629, 629, 1331, 1329, 1331, 1330], "finished": [692, 700, 698, 702, 699, 701, 701, 698, 9, 827, 867, 860, 870, 767, 700, 701, 700, 700, 699, 701, 700, 700, 698, 701, 701, 699, 701, 699, 700, 701, 700, 699, 700, 701, 698, 702, 699, 701, 700, 700, 700, 699, 701, 699, 701, 699, 700, 700, 701, 700, 699, 700], "stopped_hours": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 39.71, 3.16, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "supplier_down": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], "supplier": ["Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Ningbo Anatec (CN)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)", "Stabilus GmbH (DE)"]}}}};
+const keys = Object.keys(D.scenarios);
+const COL = {baseline:'#444444', disruption:'#d62839', countermeasure:'#2a6fdb'};
+const $ = id => document.getElementById(id);
+let sc = keys[0], wk = 0, timer = null;
+const N = D.scenarios[keys[0]].weeks.finished.length;
+const maxStock = Math.max(1, ...keys.map(k => Math.max(...D.scenarios[k].weeks.stock)));
+const maxFin = Math.max(1, ...keys.map(k => Math.max(...D.scenarios[k].weeks.finished)));
+const unit = D.unit;
+$('ttl').textContent = D.product + ' · line and supply chain';
+$('sub').textContent = 'Key component: ' + D.key_component + ' · ' + D.event + ' · one year, week by week';
+$('foot').textContent = 'On the queues, one dot = 5 ' + unit + ' waiting. Numbers from results.json (mean of ' + D.n_seeds + ' seeds in the scoreboard; the movie shows seed ' + D.animation_seed + '). Line stood still = a part is missing at S' + (D.key_station_index+1) + ': a chair waits there for a gas spring, the stock is empty and no place of S' + (D.key_station_index+1) + ' is working.';
+$('sl').max = N - 1;
+const sb = (m, d) => keys.map(k => D.scenarios[k].scoreboard[m].toFixed(d)).join(' &rarr; ');
+$('ans').innerHTML = '<b>Three numbers change</b> (' + keys.map(k => D.scenarios[k].label).join(' &rarr; ') + ', mean of ' + D.n_seeds + ' seeds):<br>' +
+  'hours the line stood still <b>' + sb('hours_stopped',1) + '</b> &middot; ' + unit + ' per week <b>' + sb('units_per_week',1) + '</b> &middot; kg CO&#8322;e per unit <b>' + sb('kg_co2e_per_unit',2) + '</b>';
+keys.forEach(k => {
+  const b = document.createElement('button'); b.textContent = D.scenarios[k].label; b.dataset.k = k;
+  b.style.cssText = 'padding:5px 12px;border:1px solid #bbb;border-radius:4px;cursor:pointer;font-size:13px';
+  b.onclick = () => { sc = k; draw(); }; $('btns').appendChild(b);
+});
+function box(x,y,w,h,fill,stroke){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5" fill="${fill}" stroke="${stroke||'none'}" stroke-width="1.5"/>`}
+function txt(x,y,s,sz,col,anchor,wt){return `<text x="${x}" y="${y}" font-size="${sz}" fill="${col||'#333'}" text-anchor="${anchor||'middle'}" font-weight="${wt||400}">${s}</text>`}
+function drawStage(){
+  const S = D.scenarios[sc], W = S.weeks, i = wk;
+  const down = W.supplier_down[i], stopped = W.stopped_hours[i] > 0;
+  let s = '';
+  // supplier
+  const supName = (W.supplier && W.supplier[i]) || D.supplier;
+  s += box(8,50,120,70,'#f4f4f4',down?'#d62839':'#888');
+  s += txt(68,70,'Supplier',12,'#222','middle',700) + txt(68,86,supName,9,'#444') +
+       txt(68,106,down ? 'Suez closed' : 'delivering',10,down?'#d62839':'#2e8b57','middle',700);
+  // transit
+  const nTr = Math.min(7, Math.ceil(W.in_transit[i] / (D.parts_per_square || 700)));
+  s += txt(172,60,'in transit: ' + W.in_transit[i],10,'#444');
+  s += `<line x1="132" y1="85" x2="212" y2="85" stroke="${down?'#d62839':'#999'}" stroke-width="2" stroke-dasharray="6 4"/>`;
+  for (let k=0;k<nTr;k++) s += box(134 + k*11, 79, 9, 12, down ? '#d62839' : '#555');
+  // stock bucket
+  const bh = 110, fill = Math.round(bh * W.stock[i] / maxStock);
+  s += `<rect x="230" y="30" width="56" height="${bh}" fill="#fff" stroke="#555" stroke-width="1.5"/>`;
+  s += `<rect x="231.5" y="${30+bh-fill}" width="53" height="${fill}" fill="${W.stock[i]===0?'#d62839':'#5b8fd0'}"/>`;
+  s += txt(258,24,'Stock',11,'#222','middle',700) + txt(258,156,W.stock[i] + ' parts',10,'#444');
+  // stations
+  const x0 = 312, dx = 78;
+  s += `<line x1="${x0-10}" y1="85" x2="${x0+4*dx+80}" y2="85" stroke="#ddd" stroke-width="5"/>`;
+  D.stations.forEach((name,j) => {
+    const x = x0 + j*dx, q = W.queue[i][j], isKey = j === D.key_station_index;
+    const red = isKey && stopped;
+    s += txt(x+34,50,Math.round(q) + ' waiting',9,'#a05a00');
+    const nd = Math.min(10, Math.round(q/5));
+    for (let d=0; d<nd; d++) s += `<circle cx="${x+10+d*6}" cy="60" r="2.6" fill="#d62839"/>`;
+    s += box(x,70,68,30,red?'#d62839':'#999') + txt(x+34,89,'S'+(j+1),10,'#fff','middle',700);
+    const words = name.split(' ').slice(0,3).join(' ');
+    s += txt(x+34,116,words.length>16 ? words.slice(0,16)+'…' : words,8.5,'#444');
+  });
+  // finished
+  const fx = x0 + 5*dx + 4;
+  s += txt(fx,60,'Finished',10,'#222','start',700) + txt(fx,84,W.finished[i] ,22,'#222','start',700) +
+       txt(fx,98,'this week',9,'#555','start');
+  const cum = W.finished.slice(0,i+1).reduce((a,b)=>a+b,0);
+  s += txt(fx,112,Math.round(cum).toLocaleString('en-US') + ' so far',9,'#777','start');
+  $('stage').innerHTML = s;
+  $('note').textContent = 'Scenario: ' + S.label + (stopped ? ' — line waits for parts (' + W.stopped_hours[i].toFixed(1) + ' h this week)' : '');
+}
+function drawKpi(){
+  const S = D.scenarios[sc], b = S.scoreboard, lo = S.scoreboard_min, hi = S.scoreboard_max;
+  const f = (v,d) => v.toFixed(d);
+  const rng = (k,d) => lo ? 'range ' + f(lo[k],d) + ' – ' + f(hi[k],d) : '';
+  const T = [[f(b.units_per_week,1), unit + ' per week', rng('units_per_week',1)],
+             [f(b.cost_per_unit_eur,2) + ' €', 'total cost per unit (one year)', rng('cost_per_unit_eur',2)],
+             [f(b.kg_co2e_per_unit,2), 'kg CO₂e per unit', rng('kg_co2e_per_unit',2)],
+             [f(b.hours_stopped,1) + ' h', 'line stood still (year)', rng('hours_stopped',1)]];
+  $('kpi').innerHTML = T.map(t => `<div style="background:#f1f1f1;border-radius:6px;padding:8px 10px"><div style="font-size:20px;font-weight:700">${t[0]}</div><div style="font-size:11px;color:#444">${t[1]}</div><div style="font-size:10px;color:#888">${t[2]}</div></div>`).join('');
+}
+function drawChart(){
+  const X0=46,X1=740,Y0=14,Y1=120; let s='';
+  const x = w => X0 + (X1-X0)*w/(N-1), y = v => Y1 - (Y1-Y0)*v/maxFin;
+  s += txt(X0,9,unit + ' finished per week',9,'#555','start');
+  [0,0.5,1].forEach(g => { const v = maxFin*g; s += `<line x1="${X0}" y1="${y(v)}" x2="${X1}" y2="${y(v)}" stroke="#eee"/>` + txt(X0-4,y(v)+3,Math.round(v),8,'#777','end'); });
+  keys.forEach(k => {
+    const d = D.scenarios[k].weeks.finished.map((v,w) => (w?'L':'M') + x(w).toFixed(1) + ' ' + y(v).toFixed(1)).join(' ');
+    s += `<path d="${d}" fill="none" stroke="${COL[k]||'#888'}" stroke-width="${k===sc?2.4:1.2}" opacity="${k===sc?1:0.55}"/>`;
+  });
+  s += `<line x1="${x(wk)}" y1="${Y0}" x2="${x(wk)}" y2="${Y1}" stroke="#555" stroke-dasharray="3 3"/>`;
+  keys.forEach((k,j) => { const lx = X0 + j*230; s += `<rect x="${lx}" y="140" width="12" height="4" fill="${COL[k]||'#888'}"/>` + txt(lx+16,146,D.scenarios[k].label,9,'#444','start'); });
+  s += txt(X0,160,'week 1',8,'#777','start') + txt(X1,160,'week ' + N,8,'#777','end');
+  $('chart').innerHTML = s;
+}
+function draw(){
+  $('wk').textContent = 'Week ' + (wk+1); $('sl').value = wk;
+  [...$('btns').children].forEach(b => { const on = b.dataset.k === sc; b.style.background = on ? '#111' : '#fff'; b.style.color = on ? '#fff' : '#222'; });
+  drawStage(); drawKpi(); drawChart();
+}
+function stop(){ clearInterval(timer); timer = null; $('play').innerHTML = '&#9654; Play'; }
+function start(){ if (wk >= N-1) wk = 0; $('play').innerHTML = '&#10074;&#10074; Pause';
+  timer = setInterval(() => { if (wk < N-1) { wk++; draw(); } else stop(); }, +$('spd').value); }
+$('play').onclick = () => timer ? stop() : start();
+$('sl').oninput = e => { wk = +e.target.value; draw(); };
+$('spd').onchange = () => { if (timer) { stop(); start(); } };
+draw();
+})();
+</script>
+</body>

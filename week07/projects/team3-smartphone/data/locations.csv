@@ -1,0 +1,6 @@
+location_id,name,type,country,lat,lon
+LOC-PLANT,Phone plant (representative),plant,DE,51.05,10.43
+LOC-S1,MemCore plant,supplier,KR,37.57,126.98
+LOC-S2,MemAsia plant,supplier,TW,25.03,121.57
+LOC-S3,MemEU plant,supplier,PL,52.23,21.01
+LOC-PORT,Transshipment port,port,NL,51.92,4.48

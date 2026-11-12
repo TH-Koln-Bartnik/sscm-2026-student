@@ -1,0 +1,1145 @@
+{
+    "product": "Samsung Galaxy S25 Ultra 256GB",
+    "unit": "smartphones",
+    "component": "Memory chips",
+    "stations": [
+        "SMT",
+        "Board test",
+        "Assembly",
+        "Final test",
+        "Packaging"
+    ],
+    "scenarios": {
+        "baseline": {
+            "label": "Baseline",
+            "suppliers": "S1 MemCore (100%)",
+            "units_started": 32200,
+            "units_finished": 32196,
+            "units_per_week": 619.1538461538462,
+            "hours_stopped": 240.0,
+            "avg_units_on_line": 2.516865272052957,
+            "cost": 402.12566232376145,
+            "co2": 0.890350785460383,
+            "weeks": [
+                {
+                    "week": 1,
+                    "memory_stock": 2800.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 2,
+                    "memory_stock": 2100.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 3,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 4,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 5,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 6,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 7,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 8,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 9,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 10,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 11,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 12,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 13,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 14,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 15,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 16,
+                    "memory_stock": 2100.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 17,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 18,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 19,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 20,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 21,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 22,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 23,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 24,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 25,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 26,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 27,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 28,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 29,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 30,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 31,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 32,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 33,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 34,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 35,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 36,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 37,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 38,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 39,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 40,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 41,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 42,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 43,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 44,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 45,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 46,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 47,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 48,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 49,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 50,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 51,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 52,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                }
+            ]
+        },
+        "disruption": {
+            "label": "Red Sea Crisis",
+            "suppliers": "S1 MemCore (100%)",
+            "units_started": 31500,
+            "units_finished": 31498,
+            "units_per_week": 605.7307692307693,
+            "hours_stopped": 280.0,
+            "avg_units_on_line": 2.4612563776446175,
+            "cost": 403.1417209116364,
+            "co2": 0.890350785460383,
+            "weeks": [
+                {
+                    "week": 1,
+                    "memory_stock": 2800.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 2,
+                    "memory_stock": 2100.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 3,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 4,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 5,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 6,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 7,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 8,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 9,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 10,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 11,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 12,
+                    "memory_stock": 0.0,
+                    "units_released": 0,
+                    "missing_units": 700,
+                    "stopped_hours": 40.0
+                },
+                {
+                    "week": 13,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 14,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 15,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 16,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 17,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 18,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 19,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 20,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 21,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 22,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 23,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 24,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 25,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 26,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 27,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 28,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 29,
+                    "memory_stock": 2100.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 30,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 31,
+                    "memory_stock": 2100.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 32,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 33,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 34,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 35,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 36,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 37,
+                    "memory_stock": 2100.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 38,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 39,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 40,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 41,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 42,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 43,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 44,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 45,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 46,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 47,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 48,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 49,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 50,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 51,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 52,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                }
+            ]
+        },
+        "countermeasure": {
+            "label": "Red Sea Crisis + Dual Sourcing",
+            "suppliers": "S1 MemCore (50%) + S3 MemEU (50%)",
+            "units_started": 35000,
+            "units_finished": 34998,
+            "units_per_week": 673.0384615384615,
+            "hours_stopped": 80.0,
+            "avg_units_on_line": 2.7262749651917657,
+            "cost": 402.8283546657925,
+            "co2": 0.6903507854603831,
+            "weeks": [
+                {
+                    "week": 1,
+                    "memory_stock": 2800.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 2,
+                    "memory_stock": 2100.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 3,
+                    "memory_stock": 1750.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 4,
+                    "memory_stock": 1400.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 5,
+                    "memory_stock": 1050.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 6,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 7,
+                    "memory_stock": 350.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 8,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 9,
+                    "memory_stock": 0.0,
+                    "units_released": 350,
+                    "missing_units": 350,
+                    "stopped_hours": 20.0
+                },
+                {
+                    "week": 10,
+                    "memory_stock": 0.0,
+                    "units_released": 350,
+                    "missing_units": 350,
+                    "stopped_hours": 20.0
+                },
+                {
+                    "week": 11,
+                    "memory_stock": 0.0,
+                    "units_released": 350,
+                    "missing_units": 350,
+                    "stopped_hours": 20.0
+                },
+                {
+                    "week": 12,
+                    "memory_stock": 0.0,
+                    "units_released": 350,
+                    "missing_units": 350,
+                    "stopped_hours": 20.0
+                },
+                {
+                    "week": 13,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 14,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 15,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 16,
+                    "memory_stock": 350.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 17,
+                    "memory_stock": 350.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 18,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 19,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 20,
+                    "memory_stock": 350.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 21,
+                    "memory_stock": 0.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 22,
+                    "memory_stock": 350.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 23,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 24,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 25,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 26,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 27,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 28,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 29,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 30,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 31,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 32,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 33,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 34,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 35,
+                    "memory_stock": 1050.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 36,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 37,
+                    "memory_stock": 1050.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 38,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 39,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 40,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 41,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 42,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 43,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 44,
+                    "memory_stock": 350.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 45,
+                    "memory_stock": 350.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 46,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 47,
+                    "memory_stock": 1050.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 48,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 49,
+                    "memory_stock": 350.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 50,
+                    "memory_stock": 700.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 51,
+                    "memory_stock": 350.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                },
+                {
+                    "week": 52,
+                    "memory_stock": 350.0,
+                    "units_released": 700,
+                    "missing_units": 0,
+                    "stopped_hours": 0.0
+                }
+            ]
+        }
+    }
+}
